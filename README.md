@@ -98,10 +98,13 @@ __Ruta de detalle producto__: debe contener
 __Ruta de creación del producto__: debe contener
 
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
+  - Proveedor
   - Nombre del producto
-  - Altura (Diferenciar entre altura mínima y máxima)
-  - Peso (Diferenciar entre peso mínimo y máximo)
-  - Años de vida
+  - Costo del producto
+  - Margen 
+  - Precio final
+  - Cantidad de la compra al proveedor
+  - Calorias
 - [ ] Posibilidad de seleccionar/agregar uno o más temperamentos
 - [ ] Botón/Opción para crear una nueva raza de perro
 
