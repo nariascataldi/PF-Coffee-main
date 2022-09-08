@@ -93,7 +93,7 @@ __Ruta de detalle producto__: debe contener
 - [ ] Los campos mostrados en la ruta principal para cada producto con un detalle más amplio (lugar de procedencia del producto, si es regional, jugo de caja o exprimido).
 - [ ] Calorias para luego hacer un seguimiento dietético.
 - [ ] Cantidad de compra
-- [ ] Campo de Pago (SubTotal, Total, cubiertos)
+- [ ] Campo de Pago (SubTotal, Cubiertos, Total)
 
 __Ruta de creación del producto__: debe contener
 
