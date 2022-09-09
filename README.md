@@ -1,7 +1,6 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-# Individual Project - Henry Dogs
-
+# Grupal Project - Henry Coffee's Orders
 <img height="200" src="./logo_coffee.png" />
 
 ## Objetivos del Proyecto
@@ -16,11 +15,6 @@
 ## Horarios y Fechas
 
 El proyecto será presentado para el día 7/10/2022.
-
-## Comenzando
-
- 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
- 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
 
 ## BoilerPlate
 
@@ -50,10 +44,9 @@ Coffee`s Orders está orientado a satisfacer las necesidades de las cafeterías 
 Utilizaremos herramientas como Prisma, React Native y Redux entre otras.
 
 
-### Únicos Endpoints/Flags que pueden utilizar
+### Endpoints/Flags serán asignados más adelante
 
-- GET <https://api.thedogapi.com/v1/breeds>
-- GET <https://api.thedogapi.com/v1/breeds/search?q={raza_perro}>
+- 
 
 #### Tecnologías necesarias
 
@@ -98,17 +91,26 @@ __Ruta de detalle producto__: debe contener
 __Ruta de creación del producto__: debe contener
 
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
-  - Proveedor
-  - Nombre del producto
+
+#### Formulario para el Administrador carga del producto
+- [ ] Posibilidad de seleccionar/agregar proveedor
+- [ ] Posibilidad de seleccionar producto. Ej: Medialunas y no 🧦 🌛
   - Costo del producto
-  - Margen 
-  - Precio final
+  - Margen.
+  - Precio final (automático con posibilidad de ingresar manualmente)
   - Cantidad de la compra al proveedor
   - Calorias
-- [ ] Posibilidad de seleccionar/agregar uno o más temperamentos
-- [ ] Botón/Opción para crear una nueva raza de perro
+- [ ] Botón/Opción para guardar el producto
+- [ ] Botón/Opción para borrar el producto
+#### Formulario para el Administrador carga de proveedor
+- [ ] Nombre del proveedor
+- [ ] Contacto/tel
+- [ ] Domicilio
+- [ ] Ranking
 
-> Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre de la raza no pueda contener números o símbolos, que el peso/altura mínimo no pueda ser mayor al máximo y viceversa, etc.
+> El formulario estará validado con JavaScript y con validaciones HTML. 
+ Pueden agregar las validaciones que consideren. Por ejemplo: Que el margen esté por arriba de 1, si llegara a ser menor dar aviso que va a perdida. Si es 1 que está vendiendo al costo
+
 
 ## Base de datos
 
