@@ -106,6 +106,7 @@ __Ruta de creación del producto__: debe contener
 - [ ] Nombre del proveedor
 - [ ] Contacto/tel
 - [ ] Domicilio
+- [ ] Razon Social
 - [ ] Ranking
 
 > El formulario estará validado con JavaScript y con validaciones HTML. 
