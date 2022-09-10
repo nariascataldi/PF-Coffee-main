@@ -1,6 +1,6 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-# Grupal Project - Henry Coffee's Orders
+# __Grupal Project - Henry Coffee's Orders__
 <img height="200" src="./logo_coffee.png" />
 
 ## Objetivos del Proyecto
@@ -34,7 +34,7 @@ Adicionalmente será necesario que creen desde psql una base de datos llamada `c
 
 El contenido de `client` fue creado usando: Create React App.
 
-## Enunciado
+## __Enunciado__
 
 Proyecto Full Stack de un e-commerce para comidas rápidas. 
 Queremos desarrollar una página que permita dar fluidez y eficiencia en la toma de pedidos y su administración. Siendo ayuda tanto para el cliente como para el administrador del local.
@@ -44,9 +44,9 @@ Coffee`s Orders está orientado a satisfacer las necesidades de las cafeterías 
 Utilizaremos herramientas como Prisma, React Native y Redux entre otras.
 
 
-### Endpoints/Flags serán asignados más adelante
+#### Endpoints/Flags serán asignados más adelante
 
-- 
+  Por el momento, la info sera traida de nuestra db. 
 
 #### Tecnologías necesarias
 
@@ -55,16 +55,16 @@ Utilizaremos herramientas como Prisma, React Native y Redux entre otras.
 - [ ] Express
 - [ ] Sequelize - Postgres - Prisma
 
-## Frontend
+# Frontend
 
 Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
 
-__Pagina inicial__: deben armar una landing page con
+## __Pagina inicial__: Habrá una landing page con:
 
-- [ ] Alguna imagen de fondo representativa al proyecto
+- [ ] Imagen de fondo representativa
 - [ ] Botón para ingresar al home (`Ruta principal`)
 
-__Ruta principal__: debe contener
+## __Ruta principal__: debe contener
 
 - [ ] Input de búsqueda para encontrar porductos por nombre
 - [ ] Área donde se verá el listado de productos. Deberá mostrar su:
@@ -81,18 +81,18 @@ __Ruta principal__: debe contener
   - Catálogo / Precio
 - [ ] Paginado con scroll continuo mostrando inicialmente 9 productos
 
-__Ruta de detalle producto__: debe contener
+## __Ruta de detalle producto__: debe contener
 
 - [ ] Los campos mostrados en la ruta principal para cada producto con un detalle más amplio (lugar de procedencia del producto, si es regional, jugo de caja o exprimido).
 - [ ] Calorias para luego hacer un seguimiento dietético.
 - [ ] Cantidad de compra
 - [ ] Campo de Pago (SubTotal, Cubiertos, Total)
 
-__Ruta de creación del producto__: debe contener
+## __Ruta de creación del producto__: debe contener
 
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
 
-#### Formulario para el Administrador carga del producto
+#### Formulario para el Administrador carga/modificar el producto
 - [ ] Posibilidad de seleccionar/agregar proveedor
 - [ ] Posibilidad de seleccionar producto. Ej: Medialunas y no 🧦 🌛
   - Costo del producto
@@ -106,7 +106,6 @@ __Ruta de creación del producto__: debe contener
 - [ ] Nombre del proveedor
 - [ ] Contacto/tel
 - [ ] Domicilio
-- [ ] Razon Social
 - [ ] Ranking
 
 > El formulario estará validado con JavaScript y con validaciones HTML. 
