@@ -72,20 +72,25 @@ Una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
   - Imagen.
   - Nombre.
   - Descripción simple.
+    - celíaco
+    - calorías
+    - ranking
   - Favoritos.
   - Link para compartir.
   - Precio.
 - [ ] Botones/Opciones para filtrar por:
-  - Catálogo.
+  - Categoría.
+  - Celíaco.
 - [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente:
-  - Precio.
-  - Catálogo / Precio.
+  - Precio. (de todos los productos)
+  - Categoría / Precio. (por categoría descendente precio)
 - [ ] Paginado con scroll continuo mostrando inicialmente 9 productos.
 
 ## __Ruta de detalle producto__: Detaill
 
-- [ ] Los campos mostrados en la ruta principal para cada producto con un detalle más amplio (lugar de procedencia del producto, si es regional, jugo de caja o exprimido).
+- [ ] Los campos mostrados en la ruta principal para cada producto con un detalle más amplio (lugar de procedencia del producto, si es regional, jugo de caja o exprimido). Chamuyo
 - [ ] Calorias para luego hacer un seguimiento dietético.
+- [ ] Producto para Celíacos. (sería ideal tener sus respectivas variantes)
 - [ ] Cantidad de compra.
 - [ ] Campo de Pago (SubTotal, Cubiertos, Total).
 
@@ -103,6 +108,7 @@ Una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
 - Precio final (automático con posibilidad de ingresar manualmente).
 - Cantidad de la compra al proveedor.
 - Calorias.
+- [ ] Botón Celiaco.
 - [ ] Botón/Opción para guardar el producto.
 - [ ] Botón/Opción para borrar el producto.
 #### Carga ó modificar proveedor
@@ -144,6 +150,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - Precio Final *
   - Cantidad *
   - Calorías
+  - Celíaco
   - Imágen
   - Ranking
 - [ ] Proveedores con las siguientes propiedades:
