@@ -137,14 +137,13 @@ Una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
  - Boton de opciones según Categoría (tostado, rellenas, frío - tibio - caliente)
 
 # Base de datos
+<img height="300" src="./Modelos Coffee´s Order.jpeg" />
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
 - [ ] Producto con las siguientes propiedades:
-  - ID *
+  - id *
   - Nombre *
-  - Fecha de Caducidad *
-  - Fecha de Compra *
   - Costo *
   - Margen
   - Precio Final *
