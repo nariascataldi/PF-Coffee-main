@@ -367,56 +367,56 @@
       "title": "Simple",
       "price": 800,
       "description": "Hamburguesa con pan de papa, medallón de carne, queso cheddar, lechuga, tomate y  mayonesa casera.",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662726767/small_pizzas_01_2bb0a27d15.jpg"
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910045/small_hamburguesas_01_5d266c34fb.jpg"
     },
     {
      "id" : 52 ,
       "title": "Crispy chicken",
       "price": 700,
       "description": "Hamburguesa con pan de papa, medallón de pollo crujiente, queso cheddar, lechuga, tomate y  mayonesa casera.",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662726936/small_pizzas_02_a867da66c0.jpg"
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910128/small_hamburguesas_02_8ddfc1dbe7.jpg"
     },
     {
      "id" : 53 ,
       "title": "Mexican",
       "price": 800,
       "description": "Hamburguesa con pan de papa, medallón de pollo, queso mozzarella, lechuga, tomate y  chili.",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727035/small_pizzas_03_c5034b41eb.jpg"
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910173/small_hamburguesas_03_5cd0608111.jpg"
     },
     {
       "id" : 54 ,
       "title": "Pickles",
       "price": 800,
       "description": "Hamburguesa con pan de papa, medallón de carne, pickles, lechuga y tomate.",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727146/small_pizzas_04_d683e10524.jpg"
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910215/small_hamburguesas_04_cc3a6fd45b.jpg"
     },
     {
       "id" : 55 ,
       "title": "Cuarto de Libra",
       "price": 800,
       "description": "Hamburguesa con pan de papa, medallón de carne, queso cheddar,  ketchup,  mostaza y cebolla. ",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727517/small_pizzas_05_c9f1f84f64.jpg"
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910350/small_hamburguesas_05_e660304471.jpg"
     },
     {
       "id" : 56 ,
       "title": "Doble Cuarto de Libra",
       "price": 800,
       "description": "Hamburguesa con pan de papa, doble carne, doble queso cheddar,  ketchup,  mostaza y cebolla. ",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727660/small_pizzas_06_753fd611a6.jpg"
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910415/small_hamburguesas_06_86104a4d79.jpg"
     },
     {
      "id" : 57 ,
       "title": "Hot Dog Especial",
       "price": 450,
-      "description": "Pan, salchicha, mostaza, ketchup, salteado pollo y morrones ",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727776/small_pizzas_07_5a58d161ea.jpg"
+      "description": "Pan, salchicha, mostaza, ketchup, salteado pollo y morrones. ",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910456/small_hamburguesas_07_d4b6ed4086.jpg"
     },
     {
      "id" : 58 ,
       "title": "Doble Hot Dogs",
       "price": 1200,
       "description": "2 uds. de pancho tradicional",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727867/small_pizzas_08_e5d52bea8b.jpg"
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662910504/small_hamburguesas_08_5790f23f86.jpg"
     }
   ]
 }
