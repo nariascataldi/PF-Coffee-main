@@ -1,6 +1,6 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-# Grupal Project - Henry Coffee's Orders
+# __Grupal Project - Henry Coffee's Orders__
 <img height="200" src="./logo_coffee.png" />
 
 ## Objetivos del Proyecto
@@ -34,7 +34,7 @@ Adicionalmente será necesario que creen desde psql una base de datos llamada `c
 
 El contenido de `client` fue creado usando: Create React App.
 
-## Enunciado
+## __Enunciado__
 
 Proyecto Full Stack de un e-commerce para comidas rápidas. 
 Queremos desarrollar una página que permita dar fluidez y eficiencia en la toma de pedidos y su administración. Siendo ayuda tanto para el cliente como para el administrador del local.
@@ -44,9 +44,9 @@ Coffee`s Orders está orientado a satisfacer las necesidades de las cafeterías 
 Utilizaremos herramientas como Prisma, React Native y Redux entre otras.
 
 
-### Endpoints/Flags serán asignados más adelante
+#### Endpoints/Flags serán asignados más adelante
 
-- 
+  Por el momento, la info sera traida de nuestra db. 
 
 #### Tecnologías necesarias
 
@@ -55,54 +55,63 @@ Utilizaremos herramientas como Prisma, React Native y Redux entre otras.
 - [ ] Express
 - [ ] Sequelize - Postgres - Prisma
 
-## Frontend
+# Frontend
 
-Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
+Una aplicación de React/Redux que contiene las siguientes pantallas/rutas.
 
-__Pagina inicial__: deben armar una landing page con
+## __Pagina inicial__: Landing page con:
 
-- [ ] Alguna imagen de fondo representativa al proyecto
+- [ ] Imagen de fondo representativa
 - [ ] Botón para ingresar al home (`Ruta principal`)
+- [ ] Grilla de comentarios (imagen y comentario)
 
-__Ruta principal__: debe contener
+## __Ruta principal__: Home
 
 - [ ] Input de búsqueda para encontrar porductos por nombre
 - [ ] Área donde se verá el listado de productos. Deberá mostrar su:
-  - Imagen
-  - Nombre
-  - Descripción simple
-  - Favoritos
-  - Link para compartir
-  - Precio
+  - Imagen.
+  - Nombre.
+  - Descripción simple.
+    - celíaco
+    - calorías
+    - ranking
+  - Favoritos.
+  - Link para compartir.
+  - Precio.
 - [ ] Botones/Opciones para filtrar por:
-  - Catálogo
+  - Categoría.
+  - Celíaco.
 - [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente:
-  - Precio
-  - Catálogo / Precio
-- [ ] Paginado con scroll continuo mostrando inicialmente 9 productos
+  - Precio. (de todos los productos)
+  - Categoría / Precio. (por categoría descendente precio)
+- [ ] Paginado con scroll continuo mostrando inicialmente 9 productos.
 
-__Ruta de detalle producto__: debe contener
+## __Ruta de detalle producto__: Detaill
 
-- [ ] Los campos mostrados en la ruta principal para cada producto con un detalle más amplio (lugar de procedencia del producto, si es regional, jugo de caja o exprimido).
+- [ ] Los campos mostrados en la ruta principal para cada producto con un detalle más amplio (lugar de procedencia del producto, si es regional, jugo de caja o exprimido). Chamuyo
 - [ ] Calorias para luego hacer un seguimiento dietético.
-- [ ] Cantidad de compra
-- [ ] Campo de Pago (SubTotal, Cubiertos, Total)
+- [ ] Producto para Celíacos. (sería ideal tener sus respectivas variantes)
+- [ ] Cantidad de compra.
+- [ ] Campo de Pago (SubTotal, Cubiertos, Total).
 
-__Ruta de creación del producto__: debe contener
+## __Ruta de creación del producto__: Form Admin/Book/Cliente
 
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
-
-#### Formulario para el Administrador carga del producto
-- [ ] Posibilidad de seleccionar/agregar proveedor
-- [ ] Posibilidad de seleccionar producto. Ej: Medialunas y no 🧦 🌛
-  - Costo del producto
-  - Margen.
-  - Precio final (automático con posibilidad de ingresar manualmente)
-  - Cantidad de la compra al proveedor
-  - Calorias
-- [ ] Botón/Opción para guardar el producto
-- [ ] Botón/Opción para borrar el producto
-#### Formulario para el Administrador carga de proveedor
+### __Formulario para el Administrador__
+#### cargar ó modificar el producto
+- [ ] Posibilidad de seleccionar/agregar proveedor.
+- [ ] Posibilidad de seleccionar producto. Ej: Medialunas y no 🧦 🌛.
+- Fecha de caducidad.
+- Fecha de compra.
+- Costo del producto.
+- Margen.
+- Precio final (automático con posibilidad de ingresar manualmente).
+- Cantidad de la compra al proveedor.
+- Calorias.
+- [ ] Botón Celiaco.
+- [ ] Botón/Opción para guardar el producto.
+- [ ] Botón/Opción para borrar el producto.
+#### Carga ó modificar proveedor
 - [ ] Nombre del proveedor
 - [ ] Contacto/tel
 - [ ] Domicilio
@@ -111,49 +120,95 @@ __Ruta de creación del producto__: debe contener
 > El formulario estará validado con JavaScript y con validaciones HTML. 
  Pueden agregar las validaciones que consideren. Por ejemplo: Que el margen esté por arriba de 1, si llegara a ser menor dar aviso que va a perdida. Si es 1 que está vendiendo al costo
 
+### __Formulario para el Cliente__
+#### Libro de quejas y//ó felicitaciones
+- Fecha.
+- ranking de satisfacción (0 a 10) de triste a muy contento
+- Comentario. Texto de 500 caracteres.
+- Opción anónimo
+- Si el cliente está muy satisfecho y dejó comentario, colocar en la grilla del Landing page.
+#### Form Cliente registro
+- Nombre
+- Fecha nacimiento
+- CUIT para tipo de facturación
+#### Form Cliente Producto
+ Al ver el detalle del producto. Por ej: café que el cliente pueda indicar si necesita edulcorante diet ó azúcar...ó si a la medialuna la quiere con queso y jamón tostada etc.
+ - Comentario
+ - Boton de opciones según Categoría (tostado, rellenas, frío - tibio - caliente)
 
-## Base de datos
+# Base de datos
+<img height="300" src="./Modelos Coffee´s Order.jpeg" />
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Raza con las siguientes propiedades:
-  - ID *
+- [ ] Producto con las siguientes propiedades:
+  - id *
   - Nombre *
-  - Altura *
-  - Peso *
-  - Años de vida
-- [ ] Temperamento con las siguientes propiedades:
+  - Costo *
+  - Margen
+  - Precio Final *
+  - Cantidad *
+  - Calorías
+  - Celíaco
+  - Imágen
+  - Ranking
+- [ ] Proveedores con las siguientes propiedades:
   - ID
   - Nombre
+  - Teléfono
+  - Mail
+  - Domicilio
+  - Ranking
+- [ ] Categoría
+  - Id
+  - Nombre
+  - Cargo adicional (booleano)
 
-La relación entre ambas entidades debe ser de muchos a muchos ya que una raza de perro puede tener varios "temperamentos" en simultaneo y, a su vez, un "temperamento" puede corresponder a múltiples razas de perro distintas. Por ejemplo la raza `pug` es docil, inteligente y sociable (entre otras). Pero a su vez existen otras razas de perro que también son sociables o inteligentes.
+  _ejemplo_: Si el sandwich es tostado sale un poco más caro
+- [ ] Cliente
+  - Id
+  - Nombre
+  - Mail
+  - Fecha Nacimiento
+  - CUIT
+- [ ] Libro Q/S
+  - Id
+  - Fecha
+  - Texto
+  - Anónimo
 
-__IMPORTANTE__: Pensar como modelar los IDs de las razas de perros en la base de datos. Existen distintas formas correctas de hacerlo pero tener en cuenta que cuando hagamos click en alguna, esta puede provenir de la API o de la Base de Datos por lo que cuando muestre su detalle no debería haber ambigüedad en cual se debería mostrar. Por ejemplo si en la API la raza `Pug` tiene id = 1 y en nuestra base de datos creamos una nueva raza `Henry Pug` con id = 1, ver la forma de diferenciarlas cuando querramos acceder al detalle de la misma.
-
-## Backend
+# Backend
 
 Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
-__IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
-
-- [ ] __GET /dogs__:
-  - Obtener un listado de las razas de perro
-  - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] __GET /dogs?name="..."__:
-  - Obtener un listado de las razas de perro que contengan la palabra ingresada como query parameter
-  - Si no existe ninguna raza de perro mostrar un mensaje adecuado
-- [ ] __GET /dogs/{idRaza}__:
-  - Obtener el detalle de una raza de perro en particular
-  - Debe traer solo los datos pedidos en la ruta de detalle de raza de perro
-  - Incluir los temperamentos asociados
-- [ ] __POST /dogs__:
-  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de raza de perro por body
-  - Crea una raza de perro en la base de datos relacionada con sus temperamentos
-- [ ] __GET /temperaments__:
-  - Obtener todos los temperamentos posibles
-  - En una primera instancia deberán obtenerlos desde la API externa y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
-
-## Testing
+- [ ] __GET /productos__:
+  - Obtener un listado de los productos.
+  - Debe devolver solo los datos necesarios para la ruta principal.
+- [ ] __GET /producto?name="..."__:
+  - Obtener un listado de los productos que contengan la palabra ingresada como query parameter
+  - Si no existe ninguna producto mostrar un mensaje adecuado
+- [ ] __GET /producto/{id}__:
+  - Obtener el detalle de un producto en particular
+  - Debe traer solo los datos pedidos en la ruta de detalle del producto
+- [ ] __POST /producto__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de producto por body
+  - Crea un producto en la base de datos relacionada con su porveedor
+- [ ] __PUT /producto__:
+  - Modifica los datos recolectados desde el formulario.
+- [ ] __PUT /proveedor__:
+  - Modifica los datos recolectados desde el formulario.
+- [ ] __POST /proveedor__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de porveedor por body
+  - Crea un proveedor en la base de datos
+- [ ] __GET /porveedor__:
+  - Obtener todos los proveedores posibles
+- [ ] __PUT /Cliente__:
+  - Modifica los datos recolectados desde el formulario.
+  - Imágen
+  - Nombre
+  - Fecha de nacimiento
+  
+# Testing
 
 - [ ] Al menos tener un componente del frontend con sus tests respectivos
 - [ ] Al menos tener una ruta del backend con sus tests respectivos
