@@ -26,10 +26,23 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    createdInDB: {
+    disable: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
+      defaultValue: false
     },
-  });
+    like: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    sale_count: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
+    });
 };
+
