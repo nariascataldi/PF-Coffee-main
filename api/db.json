@@ -1,0 +1,422 @@
+{
+  "coffees" : [
+    {
+      "id" : 1 ,
+      "title": "Cappuccino",
+      "price": 300,
+      "description": "Expresso, vapor y espuma de leche a partes iguales.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662574498/small_cafe_01_852d1fd7ea.jpg"
+    },
+    {
+     "id" : 2 ,
+      "title": "Frappuccino",
+      "price": 300,
+      "description": "Café con hielo cubierto de espuma elaborado a partir de café instantáneo.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575365/small_cafe_02_5ac442febe.jpg"
+    },
+    {
+     "id" : 3 ,
+      "title": "Caramel Macchiato",
+      "price": 300,
+      "description": "Leche al vapor manchada con espresso y un toque de vainilla. Dulce, intenso y único.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575076/small_cafe_03_97d20f9703.jpg"
+    },
+    {
+      "id" : 4 ,
+      "title": "Cocolatada con salsa de chocolate",
+      "price": 300,
+      "description": "Leche parcialmente descremada. Azúcar. Leche en polvo descremada. Cacao. Y salsa de chocolate.","image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575316/small_cafe_04_83a9f09d42.jpg"
+    },
+    {
+      "id" : 5 ,
+      "title": "Latte Macchiato",
+      "price": 300,
+      "description": "Un tercio de café y el restante leche. Primero se echa la leche con espuma y luego se mancha de café.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575548/small_cafe_05_037d33552a.jpg"
+    },
+    {
+      "id" : 6 ,
+      "title": "Frappuccino con salsa de chocolate",
+      "price": 300,
+      "description": "Café con hielo cubierto de espuma elaborado a partir de café instantáneo. Cubierto con salsa de chocolate.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662574199/small_cafe_06_0f3dd02024.jpg"
+    },
+    {
+     "id" : 7 ,
+      "title": "Chocolatada fria",
+      "price": 300,
+      "description": "Leche fria con cacao.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575257/small_cafe_07_2b63f11b55.jpg"
+    },
+    {
+     "id" : 8 ,
+      "title": "Café con leche.",
+      "price": 300,
+      "description": "Leche y expresso.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662574835/small_cafe_08_3f5a0630d1.jpg"
+    },
+    {
+      "id" : 9 ,
+      "title": "Caramel Frappuccino",
+      "price": 300,
+      "description": "Licuado de jarabe de caramelo, café, hielo y leche. Cubierto de crema batida y salsa de caramelo con mantequilla.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575016/small_cafe_09_0dace480d5.jpg"
+    },
+    {
+      "id" : 10 ,
+      "title": "Batido de dulce de leche",
+      "price": 300,
+      "description": "Cubitos, leche, café y dulce de leche batidos. Decorado con salsa de chocolate y cubierto con crema batida.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662574793/small_cafe_10_87fb3339fe.jpg"
+    },
+     {
+      "id" : 11 ,
+      "title": "Americano",
+      "price": 300,
+      "description": "Expresso caliente.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662574691/small_cafe_11_f231dc094a.jpg"
+    },
+    {
+     "id" : 12 ,
+      "title": "Frappuccino de dulce de leche",
+      "price": 300,
+      "description": "Leche batida con dulce de leche. Decorado con crema batida y salsa de dulce de leche.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575437/small_cafe_12_7da3c7f5d3.jpg"
+    },
+    {
+     "id" : 13 ,
+      "title": "Frutilla Creme Frappuccino",
+      "price": 300,
+      "description": "Frappuccino a base de crema. Deliciosa mezcla de crema de frutillas batida con hielo, decorada con crema batida y salsa de frutilla.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575496/small_cafe_13_715558fd91.jpg"
+    },
+    {
+      "id" : 14 ,
+      "title": "Latte de vainilla",
+      "price": 300,
+      "description": "Café espresso con caramelo, leche descremada al vapor y toques de canela.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575620/small_cafe_14_cd3046e9bb.jpg"
+    }
+  ],
+  
+  "donuts": [
+    {
+      "id" : 15 ,
+      "title": "Donuts chocolatey",
+      "price": 500,
+      "description": "3 uds. de donas con baño y chispas de chocolate.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662577959/small_donas_01_50adc4cd3c.jpg"
+    },
+    {
+     "id" : 16 ,
+      "title": "Glazed donuts",
+      "price": 500,
+      "description": "3 uds. de donas glaseadas y topping de crocante.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662578346/small_donas_02_9d46c778c5.jpg"
+    },
+    {
+     "id" : 17 ,
+      "title": "Glazed Strawberry",
+      "price": 200,
+      "description": "Dona glaseada sabor a frutilla cubierta con toppings de azúcar multicolor.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662578346/small_donas_02_9d46c778c5.jpg"
+    },
+    {
+      "id" : 18 ,
+      "title": "Donut oreo",
+      "price": 250,
+      "description": "Dona con cubierta de chocolate blanco , chispas de chocolate y centro de oreo",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662579274/small_donas_04_24685e8de0.jpg"
+    },
+    {
+      "id" : 19 ,
+      "title": "Cherry donut",
+      "price": 250,
+      "description": "Dona con cubierta de chocolate blanco y cereal sabor cereza.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662579625/small_donas_05_e0b7b81d76.jpg"
+    },
+    {
+      "id" : 20 ,
+      "title": "Donut bonbon",
+      "price": 300,
+      "description": "Dona cubierta de chocolate blanco, decorada con chocolate negro y centro bombón.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662583452/small_donas_06_915283c563.jpg"
+    },
+    {
+     "id" : 21 ,
+      "title": "Donut Rocklets",
+      "price": 250,
+      "description": "Dona con baño de chocolate y con toppings de rocklets.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662584051/small_donas_07_775e1dee12.jpg"
+    },
+    {
+     "id" : 22 ,
+      "title": "Pack Donuts Rocklets",
+      "price": 550,
+      "description": "3 uds. de donas con baño de chocolate y toppings Roclets.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662584676/small_donas_08_e8fa851913.jpg"
+    },
+    {
+      "id" : 23 ,
+      "title": "Crispy Donuts",
+      "price": 550,
+      "description": "3 uds. de donas bañadas de chocolate amargo y crocantes de almendras.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662584898/small_donas_09_baa9035814.jpg"
+    },
+    {
+      "id" : 24 ,
+      "title": "Pack Donuts compartir",
+      "price": 1000,
+      "description": "Combo 7 donas bañadas con frutilla, chocolate negro, chocolate blanco y  toppings de crocante y azucar de color.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662585530/small_donas_10_bb4f8f55af.jpg"
+    },
+     {
+      "id" : 25 ,
+      "title": "Three Donuts",
+      "price": 550,
+      "description": "3 uds. de donas con baño de frutilla, cereza y chocolate amargo.","image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662585995/small_donas_11_e31380919e.jpg"
+    },
+    {
+     "id" : 26 ,
+      "title": "Traditional Donut",
+      "price": 200,
+      "description": "Dona sabor tradicional con baño de salsa de chocolate.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662587206/small_donas_12_b3e666885c.jpg"
+    },
+    {
+     "id" : 27 ,
+      "title": "Sticks Donut",
+      "price": 300,
+      "description": "Dona bañada con chocolate. Toppings y centro de oblea rellena de dulce de leche.",
+      "image":"https://res.cloudinary.com/dwtwnertr/image/upload/v1662587413/small_donas_14_6e513683c0.jpg"
+    }
+  ],
+
+  "cookie": [
+    {
+      "id" : 28 ,
+      "title": "Cookie Chips",
+      "price": 200,
+      "description": "Galletas de vainilla con chips de chocolate.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662589417/small_galletas_01_6348b9f4d3.jpg"
+    },
+    {
+     "id" : 29 ,
+      "title": "Cookie avena y chocolate",
+      "price": 250,
+      "description": "Paquete de 4 galletas de chocolate y avena.",
+      "image":"https://res.cloudinary.com/dwtwnertr/image/upload/v1662589872/small_galletas_02_0a70a5ad2a.jpg"
+    },
+    {
+     "id" : 30 ,
+      "title": "Muffins de Vainilla",
+      "price": 300,
+      "description": "Paquete de 7 uds. de Muffins de Vainilla",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662590268/small_galletas_03_4adf4f597f.jpg"
+    },
+    {
+      "id" : 31 ,
+      "title": "Cookie Honey",
+      "price": 250,
+      "description": "Paquete de 4 galletas de miel.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662723020/small_galletas_04_079f826629.jpg"
+    },
+    {
+      "id" : 32 ,
+      "title": "Combo Cookie Mantequilla",
+      "price": 500,
+      "description": "Combo de galletas de Mantequilla Variadas",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662723268/small_galletas_05_d9d1bbbb92.jpg"
+    },
+    {
+      "id" : 33 ,
+      "title": "Meringue Macaroons",
+      "price": 1000,
+      "description": "Combo para compartir. 6 Macarrones de merengue rellenos de dulce de leche.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662723582/small_galletas_06_2dbf276e5f.jpg"
+    }
+  ],
+
+   "cakes": [
+    {
+      "id" : 34 ,
+      "title": "Crepe Cake",
+      "price": 330,
+      "description": "Porción de pastel de crepas.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662724777/small_pastel_01_a678f84eef.jpg"
+    },
+    {
+     "id" : 35 ,
+      "title": "Waffle Strawberry Cream",
+      "price": 350,
+      "description": "Waffle con cubierta de jalea de frutilla y centro de crema batida.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662724981/small_pastel_02_97bc2ea96a.jpg"
+    },
+    {
+     "id" : 36 ,
+      "title": "Croissanterie",
+      "price": 400,
+      "description": "2 uds. de croissants rellenas de chocolate.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662725264/small_pastel_03_f262274c26.jpg"
+    },
+    {
+      "id" : 37 ,
+      "title": "Lemon Pie",
+      "price": 330,
+      "description": "Porción de tarta de limón.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662725481/small_pastel_04_a262c2441d.jpg"
+    },
+    {
+      "id" : 38 ,
+      "title": "Pudding",
+      "price": 400,
+      "description": "Porción de budín de chocolate y avellanas.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662725593/small_pastel_05_0cf1c1576c.jpg"
+    },
+    {
+      "id" : 39 ,
+      "title": "Black Jungle",
+      "price": 400,
+      "description": "Porción de torta selva negra.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662725707/small_pastel_06_fa0410c387.jpg"
+    }
+  ],
+
+  "pizza" : [
+    {
+      "id" : 40 ,
+      "title": "Spicy",
+      "price": 1200,
+      "description": "Pizza Spicy con doble queso, cebolla y tomates cherry.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662726767/small_pizzas_01_2bb0a27d15.jpg"
+    },
+    {
+     "id" : 41 ,
+      "title": "Jamón y Queso",
+      "price": 1200,
+      "description": "Pizza con jamón y queso muzzarella.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662726936/small_pizzas_02_a867da66c0.jpg"
+    },
+    {
+     "id" : 42 ,
+      "title": "Doble Queso",
+      "price": 1200,
+      "description": "Pizza con doble queso muzzarella.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727035/small_pizzas_03_c5034b41eb.jpg"
+    },
+    {
+      "id" : 43 ,
+      "title": "Especial de la Casa",
+      "price": 1200,
+      "description": "Pizza con doble queso muzzarella y pepperoni.","image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727146/small_pizzas_04_d683e10524.jpg"
+    },
+    {
+      "id" : 44 ,
+      "title": "Sausage",
+      "price": 1500,
+      "description": "Pizza con doble queso muzzarella y trozos de salchicha alemana.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727517/small_pizzas_05_c9f1f84f64.jpg"
+    },
+    {
+      "id" : 45 ,
+      "title": "Hawaiana",
+      "price": 1500,
+      "description": "Pizza con jamón, jugosa piña y queso mozzarella.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727660/small_pizzas_06_753fd611a6.jpg"
+    },
+    {
+     "id" : 46 ,
+      "title": "Bacon",
+      "price": 1500,
+      "description": "Pizza con queso muzzarella, bacon y rodajas de cebolla morada.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727776/small_pizzas_07_5a58d161ea.jpg"
+    },
+    {
+     "id" : 47 ,
+      "title": "Vegetarian",
+      "price": 1200,
+      "description": "Pizza con vegetales y queso.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727867/small_pizzas_08_e5d52bea8b.jpg"
+    },
+    {
+      "id" : 48 ,
+      "title": "Longaniza",
+      "price": 1500,
+      "description": "Pizza con queso mozzarella, salsa de tomate preparada con combinación de especias, longaniza y tocino.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727995/small_pizzas_09_5357910cf6.jpg"
+    },
+    {
+      "id" : 49 ,
+      "title": "Olive",
+      "price": 1200,
+      "description": "Pizza con muzzarella y cubierta de aceitunas negras.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662728130/small_pizzas_10_f2b31c0097.jpg"
+    },
+     {
+      "id" : 50 ,
+      "title": "Mushrooms",
+      "price": 1500,
+      "description": "Pizza con queso, jamón y champiñones",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662728235/small_pizzas_11_c358e56115.jpg"
+    }
+  ],
+
+  "hamburguers" : [
+    {
+      "id" : 51 ,
+      "title": "Simple",
+      "price": 800,
+      "description": "Hamburguesa con pan de papa, medallón de carne, queso cheddar, lechuga, tomate y  mayonesa casera.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662726767/small_pizzas_01_2bb0a27d15.jpg"
+    },
+    {
+     "id" : 52 ,
+      "title": "Crispy chicken",
+      "price": 700,
+      "description": "Hamburguesa con pan de papa, medallón de pollo crujiente, queso cheddar, lechuga, tomate y  mayonesa casera.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662726936/small_pizzas_02_a867da66c0.jpg"
+    },
+    {
+     "id" : 53 ,
+      "title": "Mexican",
+      "price": 800,
+      "description": "Hamburguesa con pan de papa, medallón de pollo, queso mozzarella, lechuga, tomate y  chili.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727035/small_pizzas_03_c5034b41eb.jpg"
+    },
+    {
+      "id" : 54 ,
+      "title": "Pickles",
+      "price": 800,
+      "description": "Hamburguesa con pan de papa, medallón de carne, pickles, lechuga y tomate.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727146/small_pizzas_04_d683e10524.jpg"
+    },
+    {
+      "id" : 55 ,
+      "title": "Cuarto de Libra",
+      "price": 800,
+      "description": "Hamburguesa con pan de papa, medallón de carne, queso cheddar,  ketchup,  mostaza y cebolla. ",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727517/small_pizzas_05_c9f1f84f64.jpg"
+    },
+    {
+      "id" : 56 ,
+      "title": "Doble Cuarto de Libra",
+      "price": 800,
+      "description": "Hamburguesa con pan de papa, doble carne, doble queso cheddar,  ketchup,  mostaza y cebolla. ",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727660/small_pizzas_06_753fd611a6.jpg"
+    },
+    {
+     "id" : 57 ,
+      "title": "Hot Dog Especial",
+      "price": 450,
+      "description": "Pan, salchicha, mostaza, ketchup, salteado pollo y morrones ",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727776/small_pizzas_07_5a58d161ea.jpg"
+    },
+    {
+     "id" : 58 ,
+      "title": "Doble Hot Dogs",
+      "price": 1200,
+      "description": "2 uds. de pancho tradicional",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727867/small_pizzas_08_e5d52bea8b.jpg"
+    }
+  ]
+}
