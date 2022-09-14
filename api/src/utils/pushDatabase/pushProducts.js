@@ -1,16 +1,15 @@
 const { Product, Diet, Category } = require('../../db.js');
-const product = require('../../../product.json');
+const json = require('../../../product.json');
 
-let json = Object(product)
 
-console.log(json);
+function pushProducts() {
+  
+  try {    
+    // let json = Object(product);
 
-async function pushProducts(json) {
-
-  try {
     for (let prop in json) {
 
-      let category = prop;
+      let category = prop; // console.log(category);
 
       json[prop].forEach(obj => {
         Product.create(obj)
