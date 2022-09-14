@@ -1,13 +1,21 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import LandingPage from './components/LandingPage/LandingPage';
+import About from './components/About/About';
+
 import './App.css';
-import { Route } from "react-router-dom";
-import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <Route component={NavBar}/>
-      <h1>Coffee`s Orders</h1>
+      <Routes>
+        <Route exact path='/' element={<LandingPage />} />
+        <Route path='/about' element={<About />} />        
+      </Routes>
     </div>
+  </BrowserRouter>
   );
 }
 
