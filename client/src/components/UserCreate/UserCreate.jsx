@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import NavBar from "../NavBar/NavBar";
 import { edadValidator } from "./validator";
 
 const FormularioUsuario = () => {
@@ -17,6 +18,7 @@ const FormularioUsuario = () => {
   const incluirTelefono = watch('incluirTelefono');
 
   return <div>
+    <NavBar />
     <h2>Formulario</h2>
     <p>Nombre: {watch('nombre')}</p>
     <form onSubmit={handleSubmit(onSubmit)}>

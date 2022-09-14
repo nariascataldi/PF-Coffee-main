@@ -2,6 +2,7 @@ const { getDiets } = require('../utils/getDiets.js');
 const { getCategories } = require('../utils/getCategories.js');
 const  getProducts  = require('../utils/getProducts.js');
 const  postProduct  = require('../utils/postProduct.js');
+const  postProvider = require('../utils/postProvider.js');
 const { getProductsQy } = require('../utils/getProductsQy.js');
 const getIDproduct = require('../utils/getIDproduct');
 const altProduct = require('../utils/altProduct');
@@ -35,6 +36,15 @@ const prodPost = async(req, res, next)=>{
     let response = await postProduct(req.body) || {};
     res.send(response)   //    petición NO  probada !!!!!! --
   } catch (e) { next(e) }
+};
+
+const providerPost = async(req, res, next) => {
+  try {
+    let response = await postProvider(req.body);
+    res.send(response)
+  } catch (error) { 
+      next(error)
+  }
 };
 
 const dietsGet = async(req, res, next)=>{
@@ -78,5 +88,6 @@ module.exports = {
   dietsGet,
   categoriesGet,
   altAttribute,
-  prodIDremove
+  prodIDremove,
+  providerPost
 }
