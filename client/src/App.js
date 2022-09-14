@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from './components/LandingPage/LandingPage';
 import About from './components/About/About';
 import UserCreate from './components/UserCreate/UserCreate';
+import Home from './components/Home/Home';
 
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
         <Route exact path='/' element={<LandingPage />} />
         <Route path='/about' element={<About />} />
         <Route path='/form' element={<UserCreate />} />
+        <Route path='/Home' element={<Home />} />
 
       </Routes>
     </div>
