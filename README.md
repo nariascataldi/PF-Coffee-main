@@ -1,7 +1,7 @@
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 # __Grupal Project - Henry Coffee's Orders__
-<img height="200" src="./logo_coffee.png" />
+<img height="200" src="client/src/assets/logo_coffee.png" />
 
 ## Objetivos del Proyecto
 
