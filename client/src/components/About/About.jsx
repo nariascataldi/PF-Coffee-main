@@ -1,8 +1,8 @@
-import styles from "./Loading.module.css"
+import styles from "../Loading/Loading.module.css"
 import { NavLink } from 'react-router-dom';
 import React, { Fragment, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import pdf from "client/src/assets/PDF - Coffee`s Orders.pdf";
+import pdf from "../../assets/PDF - Coffee`s Orders.pdf";
 
 const url = pdf;
 export default function About() {
@@ -36,7 +36,7 @@ export default function About() {
   return (
     <Fragment>
       <div className={styles.about}>
-        <NavLink exact to="/" className={styles.a}><h1>Néstor Arias</h1></NavLink>
+        <NavLink exact to="/" className={styles.a}><h1>Coffee`s Orders</h1></NavLink>
         <div className="main">
           <Document
             file={url}
