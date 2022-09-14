@@ -47,6 +47,12 @@ module.exports = (sequelize) => {
   },{
     timestamps: false
 });
-
 }
+  
+
+<<<<<<< HEAD
+}
+=======
+
+>>>>>>> carlos
 
