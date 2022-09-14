@@ -795,19 +795,19 @@
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663117119/small_copafruta_2369acf4ac.jpg"
     },
     { 
-      "id" : 101 ,
+      "id" : 110 ,
       "title": "Cup Cherry",
       "price": 600,
       "description": "Copa de cerezas calientes con helado. La gracia de esta combinación está en las distintas temperaturas. ",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663117488/cerezas_30436d02a5.jpg"
     },
     {
-      "id" : 102 ,
+      "id" : 111 ,
       "title": "Smoothie Chocolate",
       "price": 600,
       "description": "2 bochas de helado de chocolate, salsa de chocolate, chocolate y crema batida .",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663117982/small_chocolate_c9bd33dca9.jpg"
-    }
+    } 
   ]
 }
 

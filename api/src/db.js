@@ -33,7 +33,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const {Category, Comment, Diet, Order, Product, Provider, User } = sequelize.models;
 
-const { Product, Category } = sequelize.models;
+// const { Product, Category } = sequelize.models;
 
 
 // Aca vendrian las relaciones
