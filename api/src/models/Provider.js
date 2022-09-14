@@ -37,6 +37,10 @@ module.exports = (sequelize) => {
     CUIT: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    disable: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {
     timestamps: false
