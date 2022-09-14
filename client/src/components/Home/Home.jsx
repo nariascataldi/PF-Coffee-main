@@ -10,7 +10,7 @@ export default function Home(){
     const dispatch = useDispatch();
 
     let allProducts = useSelector(state => state.allProducts)
-    
+
     React.useEffect(()=> {
         dispatch(getAllProducts());
     },[])
@@ -19,7 +19,7 @@ export default function Home(){
         <div>
             {console.log(allProducts)}
             <NavBar />
-                <p>Este es el home</p>
+            <p>Este es el home</p>
             <Footer />
         </div>
     )
