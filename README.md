@@ -30,9 +30,31 @@ PORT = 3001
 FRONT = 3000
 ```
 
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
+__``Opción 1:`` Desde la consola creamos nuestra base de datos__
 
-Adicionalmente será necesario que creen desde psql una base de datos llamada `coffee`.
+```psql
+psql
+```
+Luego:
+```sequelize
+CREATE DATABASE coffee
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+COMMENT ON DATABASE coffee
+    IS 'Proyecto Grupal para soy Henry
+Queremos desarrollar una página que permita dar fluidez y eficiencia en la toma de pedidos y su administración. Siendo ayuda tanto para el cliente como para el administrador del local. El cliente podrá ver la carta y de acuerdo a ella ir eligiendo de forma dinámica los productos a consumir, su medio de pago y la demora estimada. El administrador del local podrá gestionar movimiento de caja y stock. Coffee`s Orders está orientado a satisfacer las necesidades de las cafeterías suscritas a nuestra aplicación y a sus clientes. Utilizaremos herramientas como Prisma, React Native y Redux entre otras.';
+```
+__Reacordar__
+
+Reemplazar `postgres` y `SU PASSWORD` con tus propias credenciales para conectarte a postgres.
+Para este caso sería reemplazar el ``PASSWORD``.
+Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
+
+Adicionalmente será necesario que creen desde psql una base de datos llamada __`coffee`__.
 
 El contenido de `client` fue creado usando: Create React App.
 
