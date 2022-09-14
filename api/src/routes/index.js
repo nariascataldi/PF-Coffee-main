@@ -1,11 +1,14 @@
 const { Router } = require('express');
-const { productsGet,
-        prodIDget,
-        dietsGet,
-        categoriesGet,
-        prodIDremove,
-        prodPost,
-        altAttribute  } = require('../controllers');
+const {
+  productsGet,
+  prodIDget,
+  dietsGet,
+  categoriesGet,
+  prodIDremove,
+  prodPost,
+  altAttribute,
+  orderPost,
+} = require("../controllers");
 
 
 const router = Router();
@@ -25,6 +28,6 @@ router.post('/products', prodPost);    // ruta NO probada !!!!!! --
 
 router.put('/products/:attribute', altAttribute);  // ruta NO probada !!!!!! --
 
-
+router.post('/oder', orderPost)
 
 module.exports = router;
