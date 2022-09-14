@@ -1,5 +1,9 @@
 const { Product, Diet, Category } = require('../../db.js');
-const json = require('../../../product.json');
+const product = require('../../../product.json');
+
+let json = Object(product)
+
+console.log(json);
 
 async function pushProducts (json) {
 
