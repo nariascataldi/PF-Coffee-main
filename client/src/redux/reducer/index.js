@@ -1,7 +1,8 @@
 import  { GET_ALL_PRODUCTS } from '../actions'
 
 const initialState = {
-    allProducts: []
+    allProducts: [],
+    products:[]
 };
   
 const rootReducer = (state = initialState, action) => {
@@ -9,7 +10,8 @@ const rootReducer = (state = initialState, action) => {
         case GET_ALL_PRODUCTS:
             return{
                 ...state,
-                allProducts: action.payload
+                allProducts: action.payload,
+                products: action.payload
             }
         default: 
             return { ...state }
