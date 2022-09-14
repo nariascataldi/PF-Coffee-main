@@ -5,8 +5,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("user", {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,  
       allowNull: false,
       primaryKey: true,
     },
@@ -18,12 +18,19 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false
     },
-    e_mail: {
+    mail: {
         type: DataTypes.STRING,
-        allowNull: false
+        validate: {
+          isEmail: true
+        },
+        allowNull: false,
+        unique: true
     },
     pass: {
         type: DataTypes.STRING,
+        set(value) {
+          this.setDataValue('pass', hash(this.name + value).split('').sort(() => 0.5 - Math.random()).join(''));
+        },
         allowNull: false
     },
     disable: {
@@ -33,5 +40,7 @@ module.exports = (sequelize) => {
     basket: {
         type: DataTypes.STRING
     }
-  });
+  },{
+    timestamps: false
+});
 };
