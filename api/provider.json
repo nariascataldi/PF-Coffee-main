@@ -1,0 +1,82 @@
+{
+    "providers": [
+             {
+         "id" : 101 ,
+         "name": "Panaderia PRINCESS",
+         "adress": "Av. Siempre Viva 1589, Córdoba.",
+         "phone": "54935189657412",
+         "CUIT": "3248965712595",
+         "logo": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663103598/2251afaaf01643609875773b72409974_9b83b73899.png",
+         "email": "princess_pana@gmail.com"
+       },
+       {
+         "id" : 102 ,
+         "name": "Verduleria Mr. Tomatto",
+         "adress": "Av. Los Boulevares 589, Córdoba.",
+         "phone": "54935167894231",
+         "CUIT": "327896541238",
+         "logo": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663103876/2251afaaf01643609875773b72409974_1_af0930341f.png",
+         "email": "mrTomatto.88@hotmail.com"
+       },
+       {
+         "id" : 103 ,
+         "name": "Frigorifico Ciram",
+         "adress": "Av. Fuerza Aerea Argentina 2400",
+         "phone": "935187896541",
+         "CUIT": "3289654785266",
+         "logo": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663104880/2251afaaf01643609875773b72409974_3_47a737b240.png"
+       },
+       {
+         "id" : 104 ,
+         "name": "Insumos Burger",
+         "adress": "Las Leñas 2559, Córdoba.",
+         "phone": "3519748596321",
+         "CUIT": "3258964789632",
+         "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663105391/2251afaaf01643609875773b72409974_4_efcdd4b9a5.png",
+         "email": "theBurger_Shack@outlook.com"
+       },
+       {
+         "id" : 105 ,
+         "name": "Cervezas Bear Creek",
+         "adress": "Los Nogales 589, Córdoba.",
+         "phone": "9543517963258",
+         "CUIT": "3278965412",
+         "logo": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663105575/2251afaaf01643609875773b72409974_5_9214b25a24.png",
+         "email": "cervezas_BearCreek@gmail.com"
+       },
+       {
+         "id" : 106 ,
+         "name": "Verduleria CAROLA",
+         "adress": "Uritorco 2486, Córdoba.",
+         "phone": "9543568965741",
+         "CUIT": "3258964789652",
+         "logo": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663105743/2251afaaf01643609875773b72409974_6_dd719b55b7.png",
+         "email": "carola_Ver55@gmail.com"
+       },
+       {
+         "id" : 107 ,
+         "name": "Insumos de pasteleria \"La Pasteleria\"",
+         "adress": "Av. Los Granaderos 1569, Córdoba.",
+         "phone": "9543517456321",
+         "CUIT": "325896478965",
+         "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663105975/2251afaaf01643609875773b72409974_7_a42a0a9fe8.png",
+         "email": "laPasteleria_44@gmail.com"
+       },
+       {
+         "id" : 108 ,
+         "name": "Cafeteria Sunset",
+         "adress": "Miguel Carcano 789, Córdoba.",
+         "phone": "9543518745698",
+         "CUIT": "3278965478596",
+         "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662584676/small_donas_08_e8fa851913.jpg"
+       },
+       {
+         "id" : 109 ,
+         "title": "Crispy Donuts",
+         "price": 550,
+         "description": "3 uds. de donas bañadas de chocolate amargo y crocantes de almendras.",
+         "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663106166/2251afaaf01643609875773b72409974_8_2047114572.png",
+         "email": "sunset_Coffee@hotmail.com"
+       }
+    ]
+   }
