@@ -1,18 +1,26 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { getAllProducts } from '../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../../redux/actions/index.js';
+import Footer from '../Footer/Footer.jsx';
+import NavBar from '../NavBar/NavBar.jsx';
 import './Home.css'
-import NavBar from './NavBar/NavBar';
 
 export default function Home(){
-    const dispatch = useDispatch
-    useEffect(()=> {
+
+    const dispatch = useDispatch();
+
+    let allProducts = useSelector(state => state.allProducts)
+    
+    React.useEffect(()=> {
         dispatch(getAllProducts());
     },[])
 
     return (
         <div>
-            <p>Este es el home</p>
+            {console.log(allProducts)}
+            <NavBar />
+                <p>Este es el home</p>
+            <Footer />
         </div>
     )
 }
