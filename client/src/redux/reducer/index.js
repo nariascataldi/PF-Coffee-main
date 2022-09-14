@@ -1,4 +1,4 @@
-import  {GET_ALL_PRODUCTS} from '../actions'
+import  { GET_ALL_PRODUCTS } from '../actions'
 
 const initialState = {
     allProducts: []
@@ -11,8 +11,9 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 allProducts: action.payload
             }
+        default: 
+            return { ...state }
     }
-    return state
 }
 
 export default rootReducer;
