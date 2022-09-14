@@ -1,6 +1,6 @@
 import React from "react";  
-import { useSelector } from "react-redux";
 import {useState} from 'react'
+import { useSelector } from "react-redux";
 import Card from "../Card";
 import Paginated from "../../Paginated";
 
@@ -15,7 +15,7 @@ export default function Cards (){
         const currentProducts= allProducts.slice(indexOfFirst, indexOfLast)
         const paginated= (pageNumber)=>{
             setCurrentPage(pageNumber)
-        }
+
 
     if(!currentProducts.length){
         return (
@@ -24,6 +24,7 @@ export default function Cards (){
     }
     return (
         <div>
+
             <div>
                 <Paginated 
                     productsPerPage={productsPerPage}
@@ -42,10 +43,9 @@ export default function Cards (){
                     title={p.title}
                     price={p.price}
                     />
-                 })}
-            
-        </div>
-        
+            })}  
+            </div>
+
         </div>
     ) 
 }
