@@ -1,4 +1,4 @@
-import  {GET_ALL_PRODUCTS} from '../actions'
+import  { GET_ALL_PRODUCTS } from '../actions'
 
 const initialState = {
     allProducts: []
