@@ -8,6 +8,8 @@ const NavBar = () => {
     return (
         <nav className='parentNav'>
             <Link to='/home'>Home</Link>
+            <Link to='/about'>About</Link>
+            <Link to='/form'>Form</Link>
             <img src={ logo } alt="img" className='logo'/>
         </nav>
     );
