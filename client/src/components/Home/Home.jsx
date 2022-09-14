@@ -6,6 +6,7 @@ import NavBar from '../NavBar/NavBar.jsx';
 import './Home.css'
 
 export default function Home(){
+
     const dispatch = useDispatch();
 
     React.useEffect(()=> {
@@ -15,7 +16,7 @@ export default function Home(){
     return (
         <div>
             <NavBar />
-            <p>Este es el home</p>
+                <p>Este es el home</p>
             <Footer />
         </div>
     )
