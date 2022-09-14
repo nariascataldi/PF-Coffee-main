@@ -50,9 +50,4 @@ module.exports = (sequelize) => {
 }
   
 
-<<<<<<< HEAD
-}
-=======
-
->>>>>>> carlos
 
