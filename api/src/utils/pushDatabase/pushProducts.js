@@ -4,7 +4,7 @@ const json = require('../../../product.json');
 
 function pushProducts() {
   
-  try {    
+  try {     
     // let json = Object(product);
 
     for (let prop in json) {
