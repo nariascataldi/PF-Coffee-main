@@ -1,5 +1,5 @@
 const { Category } = require('../../db.js');
-const db = require('../../db.json');
+const db = require('../../../product.json');
 
 
 let cat = Object.keys(db);

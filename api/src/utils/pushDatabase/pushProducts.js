@@ -1,5 +1,5 @@
 const { Product, Diet, Category } = require('../../db.js');
-const json = require('../../db.json');
+const json = require('../../../product.json');
 
 async function pushProducts (json) {
 
@@ -11,14 +11,14 @@ async function pushProducts (json) {
       json[prop].forEach(obj => {
         Product.create(obj)       
           .then(async(myProduct) => {
-              let allDts = await Diet.findAll();
+              // let allDts = await Diet.findAll();
               let allCategories = await Category.findAll();
               // await Promise.all( [allDts, allCategories] ); // si fuesen más promesas
 
-              let newsDts = allDts.filter(o=> obj.diets.includes(o.name));
+              // let newsDts = allDts.filter(o=> obj.diets.includes(o.name));
               let myCateg = allCategories.find(o=> o.name === category);
               
-              let incDiets = newsDts.map( (d)=> myProduct.addDiet(d.id) );
+              // let incDiets = newsDts.map( (d)=> myProduct.addDiet(d.id) );
               let incCat = myProduct.addCategory(myCateg.id);
               
           })
