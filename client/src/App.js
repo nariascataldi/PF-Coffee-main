@@ -1,15 +1,18 @@
 import './App.css';
-import { Route } from "react-router-dom";
-import NavBar from './components/NavBar/NavBar';
-import Footer from './components/Footer/Footer';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <Route component={NavBar}/>
-      <h1>Coffee`s Orders</h1>
-      <Route component={ Footer }/>
+      <Routes>
+        <Route exact path='/' element={<LandingPage />} />
+        <Route path='/about' element={<About />} />        
+      </Routes>
     </div>
+  </BrowserRouter>
   );
 }
 
