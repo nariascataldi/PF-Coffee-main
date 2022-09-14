@@ -1,12 +1,30 @@
 const { Router } = require('express');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+const { productsGet,
+        prodIDget,
+        dietsGet,
+        categoriesGet,
+        prodIDremove,
+        prodPost,
+        altAttribute  } = require('../controllers');
 
 
 const router = Router();
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
+
+router.get('/products', productsGet);  // ruta NO probada !!!!!! --
+
+router.get('/products/:id', prodIDget);   // ruta NO probada !!!!!! --
+
+router.get('/diets', dietsGet);     // ruta NO probada !!!!!! --
+
+router.get('/categories', categoriesGet);    // ruta NO probada !!!!!! --
+
+router.delete('/products/remove', prodIDremove);  // ruta NO probada !!!!!! --
+
+router.post('/products', prodPost);    // ruta NO probada !!!!!! --
+
+router.put('/products/:attribute', altAttribute);  // ruta NO probada !!!!!! --
+
 
 
 module.exports = router;
