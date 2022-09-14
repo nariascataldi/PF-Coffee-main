@@ -308,7 +308,8 @@
       "id" : 43 ,
       "title": "Especial de la Casa",
       "price": 1200,
-      "description": "Pizza con doble queso muzzarella y pepperoni.","image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727146/small_pizzas_04_d683e10524.jpg"
+      "description": "Pizza con doble queso muzzarella y pepperoni.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727146/small_pizzas_04_d683e10524.jpg"
     },
     {
       "id" : 44 ,
@@ -531,7 +532,7 @@
     }
   ],
 
-  "craft beers": [
+  "craft-beers": [
     {
       "id" : 74 ,
       "title": "Honey Beer",
@@ -674,6 +675,138 @@
       "price": 3000,
       "description": "Picada fresca. Rodajas de loganiza, jamón crudo, quesos, y deliciosas salsas de la casa para acompañar y debustar con pan de papa y semillas.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663099897/medium_picada_2_ac91868b17.jpg"
+    }
+  ],
+
+   "gaseosas-aguas" : [
+    {
+      "id" : 94 ,
+      "title": "Sprite Original",
+      "price": 300,
+      "description": "Gaseosa Sprite - 500ml",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113259/small_Sprite_botella_500ml_vaso_blanco_1_5f27b76cf3.jpg"
+    },
+    {
+      "id" : 95 ,
+      "title": "Fanta Limón",
+      "price": 300,
+      "description": "Gaseosa Fanta sabor limón- 500ml",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113332/small_Fanta_Limon_botella_500ml_vaso_blanco_1_486d96334a.jpg"
+    },
+    {
+      "id" : 96 ,
+      "title": "Fanta Naranja",
+      "price": 300,
+      "description": "Gaseosa Fanta sabor naranja - 500ml.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113392/small_Fanta_Naranja_botella_500ml_vaso_blanco_1_5a5f0f0929.jpg"
+    },
+    {
+      "id" : 97 ,
+      "title": "Coca-Cola Original",
+      "price": 300,
+      "description": "Gaseosa Coca-Cola sabor original - 500ml.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113455/small_Coca_Cola_Sabor_Original_botella_500ml_vaso_blanco_1_7d0b8ff9d1.jpg"
+    },
+    {
+      "id" : 98 ,
+      "title": "Coca-Cola Zero",
+      "price": 300,
+      "description": "Gaseosa Coca-Cola cero azúcar - 500ml",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113515/small_Coca_Cola_Zero_Azucar_botella_500ml_vaso_blanco_New_1_a9bb649625.jpg"
+    },
+    {
+      "id" : 99 ,
+      "title": "Coca-Cola Light",
+      "price": 300,
+      "description": "Gaseosa Coca-Cola Light - 500ml",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113629/small_Coca_Cola_Sabor_Light_botella_500ml_vaso_blanco_1_d963f9b587.jpg"
+    },
+    {
+      "id" : 100 ,
+      "title": "Agua Mineral",
+      "price": 200,
+      "description": "Agua Mineral -aquaBona 500ml.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113700/small_Aquabona_botella_500ml_blanco_1_bfd2f8abf3.jpg"
+    },
+    { 
+      "id" : 101 ,
+      "title": "Agua saborizada Limón",
+      "price": 250,
+      "description": "Agua sabor Limón -Aquarius 500ml.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113805/small_Aquarius_Limon_botella_500ml_vaso_blanco_1_040f886ec4.jpg"
+    },
+    {
+      "id" : 102 ,
+      "title": "Agua saborizada Naranja",
+      "price": 250,
+      "description": "Agua sabor Naranja -Aquarius 500ml.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113925/small_Aquarius_Naranja_botella_500ml_vaso_blanco_1_488e6267c1.jpg"
+    }
+  ],
+
+   "ice-cream" : [
+    {
+      "id" : 103 ,
+      "title": "Ice Mango ",
+      "price": 500,
+      "description": "Copa de helado de mango, mascarpone y chocolate con flan.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663115468/small_helado_son_flan_d67dcdc738.jpg"
+    },
+    {
+      "id" : 104 ,
+      "title": "Ice BANANA ROYAL ",
+      "price": 500,
+      "description": "Helado de americana, bananas, jalea de chocolate, chantilly y frutilla o cereza",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663115942/small_paris_7fdc98fcb6.jpg"
+    },
+    {
+      "id" : 105 ,
+      "title": "Ice Fruit",
+      "price": 600,
+      "description": "Helado de vainilla o chocolate a gusto. Kiwi, frutillas, banana, manzana, durazno. Crema chantilly.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663116078/small_heladofrutas_a6b042fb80.jpg"
+    },
+    {
+      "id" : 106 ,
+      "title": "Ice Selva Negra",
+      "price": 600,
+      "description": "Helado de chocolate, cerezas y crema batida.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663116317/small_black_3c4fec04d0.jpg"
+    },
+    {
+      "id" : 107 ,
+      "title": "Ice Capelina Frutilla",
+      "price": 500,
+      "description": "Bochas de helado de frutilla y frutillas frescas sobre capelina ondeada, decorada de cubanito rellenos de frutilla.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663116539/small_frutilla_17cabffdc4.jpg"
+    },
+    {
+      "id" : 108 ,
+      "title": "Ice Cream Kids",
+      "price": 400,
+      "description": "Bocha de helado a elección, cucurucho de oblea, Rocklets. Ideal para los mas chiquitos.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663116930/small_heladokind_b8e3f94ede.jpg"
+    },
+    {
+      "id" : 109 ,
+      "title": "Ice Cup Frutal",
+      "price": 600,
+      "description": "Copa con frutas, arándanos congelados, cerezas, peras leche condensada, bocha de helado a elección. Decorado con salsa de arándanos y  crema chantilly.",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663117119/small_copafruta_2369acf4ac.jpg"
+    },
+    { 
+      "id" : 101 ,
+      "title": "Cup Cherry",
+      "price": 600,
+      "description": "Copa de cerezas calientes con helado. La gracia de esta combinación está en las distintas temperaturas. ",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663117488/cerezas_30436d02a5.jpg"
+    },
+    {
+      "id" : 102 ,
+      "title": "Smoothie Chocolate",
+      "price": 600,
+      "description": "2 bochas de helado de chocolate, salsa de chocolate, chocolate y crema batida .",
+      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663117982/small_chocolate_c9bd33dca9.jpg"
     }
   ]
 }
