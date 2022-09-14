@@ -45,7 +45,7 @@
 @media screen and (max-width: 576px) {
   .LandingPage {
     background-color: rgba(64, 64, 100);
-    background-image: url(../assets/image/dog.png);
+    background-image: url(../../assets/logo_coffee.png);
     background-position: center;
     background-size: contain;
     height: 100vh;

@@ -1,0 +1,28 @@
+.conteiner{
+  background-image: url(../../assets/A_small_cup_of_coffee.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: black;
+  height: 60vh;
+}
+.spinner {
+  margin: 10vw;
+  padding: 5rem;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border-left-color: #09f;
+
+  animation: spin 1s ease infinite;
+
+}
+@keyframes spin {
+  0%{
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
