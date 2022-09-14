@@ -15,8 +15,7 @@ export default function Cards (){
         const currentProducts= allProducts.slice(indexOfFirst, indexOfLast)
         const paginated= (pageNumber)=>{
             setCurrentPage(pageNumber)
-
-
+              }
     if(!currentProducts.length){
         return (
             <div><h3>Not found!</h3></div>
