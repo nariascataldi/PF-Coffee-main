@@ -105,7 +105,7 @@ const altAttribute = async (req, res, next)=>{
 		let myAlt = await altProduct(id, attribute, value) || {};
 		res.send(myAlt)            // petición   probada !!!!!! --
 	} catch (e) { next (e) }
-};
+}; 
 
 const prodIDremove = async (req, res, next) => {
   try {
