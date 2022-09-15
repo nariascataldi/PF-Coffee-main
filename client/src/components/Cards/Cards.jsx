@@ -6,14 +6,14 @@ import Paginated from "../Paginated/Paginated";
 import './Cards.css';
 
 export default function Cards (){
-    const {allProducts} = useSelector(state=>state)
+    const {products} = useSelector(state=>state)
 
         //paginado
         const[currentPage, setCurrentPage]=useState(1)
         const[productsPerPage, setProductsPerPage]= useState(12)
         const indexOfLast= currentPage * productsPerPage
         const indexOfFirst= indexOfLast - productsPerPage
-        const currentProducts= allProducts.slice(indexOfFirst, indexOfLast)
+        const currentProducts= products.slice(indexOfFirst, indexOfLast)
         const paginated= (pageNumber)=>{
             setCurrentPage(pageNumber)
               }
@@ -28,7 +28,7 @@ export default function Cards (){
             <div className='paginado'>
                 <Paginated 
                     productsPerPage={productsPerPage}
-                    allProducts={allProducts.length}
+                    allProducts={products.length}
                     paginated={paginated}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
