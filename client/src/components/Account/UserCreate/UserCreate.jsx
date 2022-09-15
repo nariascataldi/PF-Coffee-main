@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import NavBar from "../NavBar/NavBar";
+import NavBar from "../../NavBar/NavBar";
 import { edadValidator } from "./validator";
 
 const FormularioUsuario = () => {
