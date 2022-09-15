@@ -71,7 +71,8 @@
       "price": 300,
       "description": "Licuado de jarabe de caramelo, café, hielo y leche. Cubierto de crema batida y salsa de caramelo con mantequilla.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575016/small_cafe_09_0dace480d5.jpg",
-      "provider": ["Cafeteria Sunset","Crispy Breaskfast"]
+      "provider": ["Cafeteria Sunset","Crispy Breaskfast"],
+      "diets": [ "dairy free" ]
     },
     {
       "id" : 10 ,
@@ -111,7 +112,8 @@
       "price": 300,
       "description": "Café espresso con caramelo, leche descremada al vapor y toques de canela.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662575620/small_cafe_14_cd3046e9bb.jpg",
-      "provider": ["Cafeteria Sunset","Crispy Breaskfast"]
+      "provider": ["Cafeteria Sunset","Crispy Breaskfast"],
+      "diets": [ "sugar free" ]
     }
   ],
   
@@ -122,7 +124,8 @@
       "price": 500,
       "description": "3 uds. de donas con baño y chispas de chocolate.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662577959/small_donas_01_50adc4cd3c.jpg",
-      "provider": ["Insumos de pasteleria \"La Pasteleria\"","Crispy Breaskfast"]
+      "provider": ["Insumos de pasteleria \"La Pasteleria\"","Crispy Breaskfast"],
+      "diets": [ "gluten free", "sugar free", "vegetarian" ]
     },
     {
      "id" : 16 ,
@@ -186,7 +189,8 @@
       "price": 550,
       "description": "3 uds. de donas bañadas de chocolate amargo y crocantes de almendras.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662584898/small_donas_09_baa9035814.jpg",
-      "provider": ["Insumos de pasteleria \"La Pasteleria\"","Crispy Breaskfast"]
+      "provider": ["Insumos de pasteleria \"La Pasteleria\"","Crispy Breaskfast"],
+      "diets": [ "gluten free", "sugar free", "vegetarian" ]
     },
     {
       "id" : 24 ,
@@ -237,7 +241,8 @@
       "price": 250,
       "description": "Paquete de 4 galletas de chocolate y avena.",
       "image":"https://res.cloudinary.com/dwtwnertr/image/upload/v1662589872/small_galletas_02_0a70a5ad2a.jpg",
-      "provider": ["Insumos de pasteleria \"La Pasteleria\"","Crispy Breaskfast", "Panaderia PRINCESS"]
+      "provider": ["Insumos de pasteleria \"La Pasteleria\"","Crispy Breaskfast", "Panaderia PRINCESS"],
+      "diets": [ "gluten free", "sugar free", "vegetarian" ]
     },
     {
      "id" : 30 ,
@@ -304,7 +309,8 @@
       "price": 330,
       "description": "Porción de tarta de limón.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662725481/small_pastel_04_a262c2441d.jpg",
-      "provider": ["Insumos de pasteleria \"La Pasteleria\"", "Panaderia PRINCESS"]
+      "provider": ["Insumos de pasteleria \"La Pasteleria\"", "Panaderia PRINCESS"],
+      "diets": [ "gluten free" ]
     },
     {
       "id" : 38 ,
@@ -331,7 +337,8 @@
       "price": 1200,
       "description": "Pizza Spicy con doble queso, cebolla y tomates cherry.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662726767/small_pizzas_01_2bb0a27d15.jpg",
-      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"]
+      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"],
+      "diets": [ "vegetarian" ]
     },
     {
      "id" : 41 ,
@@ -347,7 +354,8 @@
       "price": 1200,
       "description": "Pizza con doble queso muzzarella.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727035/small_pizzas_03_c5034b41eb.jpg",
-      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"]
+      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"],
+      "diets": [ "vegetarian" ]
     },
     {
       "id" : 43 ,
@@ -387,7 +395,8 @@
       "price": 1200,
       "description": "Pizza con vegetales y queso.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662727867/small_pizzas_08_e5d52bea8b.jpg",
-      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"]
+      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"],
+      "diets": [ "vegetarian" ]
     },
     {
       "id" : 48 ,
@@ -403,7 +412,8 @@
       "price": 1200,
       "description": "Pizza con muzzarella y cubierta de aceitunas negras.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662728130/small_pizzas_10_f2b31c0097.jpg",
-      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"]
+      "provider": ["Verdulería Mr. Tomatto", "Verdulería CAROLA", "Panaderia PRINCESS"],
+      "diets": [ "gluten free", "vegetarian" ]
     },
      {
       "id" : 50 ,
@@ -540,7 +550,8 @@
       "price": 300,
       "description": "En vez de disfrutarlo en productos artificiales, dale a tu té natural un toque de auténtico jugo de durazno. Anímate a endulzar con el almíbar de melocotones enlatados para más aroma.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663081498/small_te_verde_y_durazno_6a2d8b3c2a.jpg",
-      "provider": ["Crispy Breaskfast"]
+      "provider": ["Crispy Breaskfast"],
+      "diets": [ "sugar free" ]
     },
     {
      "id" : 66 ,
@@ -572,7 +583,8 @@
       "price": 300,
       "description": "Combinar una parte de té verde con una de jugo de manzana clarificado y un chorrito de jugo de limón. El sabor resultará frutal, gustoso y con la aromática base \nde la infusión. Puedes incorporar un poco de canela y trozos de manzana para potenciar el sabor.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663081860/small_47866586_l_1_696x469_43d5defad3.jpg",
-      "provider": ["Crispy Breaskfast"]
+      "provider": ["Crispy Breaskfast"],
+      "diets": [ "sugar free" ]
     },
     {
       "id" : 70 ,
@@ -738,7 +750,8 @@
       "price": 600,
       "description": "Rodajas de tomate y queso Reggianito, aceite de oliva y albahaca fresca. Ideal para acompañar alguna de nuetras opciones anteriores.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663098081/small_picada_Caprese_b7d601a788.jpg",
-      "provider": ["Frigorifico Ciram", "Verdulería Mr. Tomatto"]
+      "provider": ["Frigorifico Ciram", "Verdulería Mr. Tomatto"],
+      "diets": [ "vegetarian" ]
     },
     {
       "id" : 90 ,
@@ -754,7 +767,8 @@
       "price": 800,
       "description": "Rodajas de queso Parmesano, trozos de queso Holandés o Gouda, queso Roquefort, con el toque de uvas pasas.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663099030/picada_de_quesos_268b51ce7d.jpg",
-      "provider": ["Frigorifico Ciram"]
+      "provider": ["Frigorifico Ciram"],
+      "diets": [ "vegetarian" ]
     },
      {
       "id" : 92 ,
@@ -813,7 +827,8 @@
       "price": 300,
       "description": "Gaseosa Coca-Cola cero azúcar - 500ml",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113515/small_Coca_Cola_Zero_Azucar_botella_500ml_vaso_blanco_New_1_a9bb649625.jpg",
-      "provider": ["Cafeteria Sunset"]
+      "provider": ["Cafeteria Sunset"],
+      "diets": [ "sugar free" ]
     },
     {
       "id" : 99 ,
@@ -821,7 +836,8 @@
       "price": 300,
       "description": "Gaseosa Coca-Cola Light - 500ml",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113629/small_Coca_Cola_Sabor_Light_botella_500ml_vaso_blanco_1_d963f9b587.jpg",
-      "provider": ["Cafeteria Sunset"]
+      "provider": ["Cafeteria Sunset"],
+      "diets": [ "sugar free" ]
     },
     {
       "id" : 100 ,
@@ -829,7 +845,8 @@
       "price": 200,
       "description": "Agua Mineral -aquaBona 500ml.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663113700/small_Aquabona_botella_500ml_blanco_1_bfd2f8abf3.jpg",
-      "provider": ["Cafeteria Sunset"]
+      "provider": ["Cafeteria Sunset"],
+      "diets": [ "sugar free" ]
     },
     { 
       "id" : 101 ,
@@ -856,7 +873,8 @@
       "price": 500,
       "description": "Copa de helado de mango, mascarpone y chocolate con flan.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663115468/small_helado_son_flan_d67dcdc738.jpg",
-      "provider": ["Cafeteria Sunset", "Insumos de pasteleria \"La Pasteleria\""]
+      "provider": ["Cafeteria Sunset", "Insumos de pasteleria \"La Pasteleria\""],
+      "diets": [ "vegan" ]
     },
     {
       "id" : 104 ,
