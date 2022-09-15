@@ -26,12 +26,14 @@ import NavBar from '../NavBar/NavBar';
 function Perfil() {
   return (
     <div>
-      <div>
+      <div id="NavBar">
         <NavBar />
       </div>
-      <div>
-          <div><NavBarPerfil /></div>
-          <div><UserCreate></UserCreate></div>
+      <div id="Body">
+        <div id="NavBarPerfil">
+
+        </div>
+        <div id="Detal"><UserCreate></UserCreate></div>
       </div>
     </div>
   )
