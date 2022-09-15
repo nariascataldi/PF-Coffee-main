@@ -1,5 +1,6 @@
 import axios from 'axios';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
+export const GET_DETAIL = "GET_DETAIL"
 
 export function getAllProducts (){
     return async function (dispatch){
@@ -10,3 +11,18 @@ export function getAllProducts (){
         })
     }
 };
+
+export function getDetail(id){
+    return async function (dispatch){
+        try{
+            var json= await axios.get(`http://localhost:3001/products/${id}`);
+            return dispatch ({
+                type: GET_DETAIL,
+                payload: json.data
+            })
+        }
+        catch(error){
+            console.log("el error del detalle es: ", error)
+        }
+    }
+}
