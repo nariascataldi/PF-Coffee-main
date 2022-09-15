@@ -46,14 +46,14 @@
   overflow: scroll;
 }
 
-/* Pantallas de menos de 1180px de ancho */
-@media screen and (max-width: 1180px) {
+/* Pantallas medianas */
+@media screen and (max-width: 800px) {
   .bodyHome {
-    background-color: black;
+    background-color: rgb(89, 55, 55);
   }
 }
 
-/* Pantallas de menos de 500px de ancho */
+/* Pantallas chicas */
 @media screen and (max-width: 500px) {
   .bodyHome {
     background-color: aliceblue;

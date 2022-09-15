@@ -34,7 +34,9 @@ function Perfil() {
         <button>Perfil</button>
         <button>Direcciones</button>
         <button>Pedidos Anteriores</button>
+        <NavLink exact to='../home'>
         <button>Salir</button>
+        </NavLink>
         </div>
         <div className={styles.container1}><UserCreate></UserCreate></div>
       </div>
