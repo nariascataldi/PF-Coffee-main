@@ -21,7 +21,7 @@ const FormularioUsuario = () => {
 
   return <div>
     <h2>Editar Perfil</h2>
-    <p>Nombre: {watch('nombre')}</p>
+    {/* <p>Nombre: {watch('nombre')}</p> */}
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>Nombre</label>
