@@ -1,5 +1,6 @@
 import axios from 'axios';
-export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
+export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
+export const GET_BY_TITLE = 'GET_BY_TITLE'
 
 export function getAllProducts (){
     return async function (dispatch){
@@ -10,3 +11,9 @@ export function getAllProducts (){
         })
     }
 };
+export function getByTitle (payload){
+    return {
+        type: GET_BY_TITLE,
+        payload
+    }
+}
