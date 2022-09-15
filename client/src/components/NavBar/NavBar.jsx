@@ -20,24 +20,7 @@ const handleSubmit=(e)=>{
 }
 
     return (
-<<<<<<< HEAD
-        <nav className='parentNav'>
-            <div className='element-nav'>
-            <Link to='/home' className='link-nav1'>Home</Link>
-            <Link to='/form' className='link-nav'>Form</Link>
-            <form className='searchBar' onSubmit={(e)=>handleSubmit(e)}>
-            <input className='input-search' type='text' onChange={d=>handleOnChange(d)} value={busqueda} placeholder='Search...' />
-                
-                <button className='search-button' type='submit'><BsSearch/></button>
-            </form>
-            <Link to='/about' className='link-nav'>About</Link>
-            
-            </div>
-            <img src={ logo } alt="img" className='logo'/>
-            
-        </nav>
-=======
-        <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">Coffee`s orders</a>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -80,8 +63,13 @@ const handleSubmit=(e)=>{
                 </ul>
             </div>
         </div>
+        <form className='searchBar' onSubmit={(e)=>handleSubmit(e)}>
+            <input className='input-search' type='text' onChange={d=>handleOnChange(d)} value={busqueda} placeholder='Search...' />
+                <button className='search-button' type='submit'><BsSearch/></button>
+            </form>
+       
+        <img src={ logo } alt="img" className='logo'/>
     </nav>
->>>>>>> b3c46f983836824fd834fdfb32b41bde14978603
     );
 };
 
