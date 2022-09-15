@@ -15,23 +15,24 @@
     [] editar --> form Editar perfil
 [] Footer
 ---- y ver de colocar un boton flotante con los productos más populares  
-*/ 
+*/
 
 import React from "react";
 import { NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from './LandingPage.module.css';
+import UserCreate from '../Account/UserCreate/UserCreate';
+import NavBar from '../NavBar/NavBar';
 
-function LandingPage() {
-  console.log("Bienvenidos")
+function Perfil() {
   return (
-    <div className={styles.LandingPage}>
-      <div className={styles.home}>
-        <NavLink to='/about'>
-          <button className={styles.button} id='button'>Coffee`s Orders</button>
-        </NavLink>
+    <div>
+      <div>
+        <NavBar />
+      </div>
+      <div>
+          <UserCreate></UserCreate>
       </div>
     </div>
   )
 }
-export default LandingPage;
+export default Perfil;
