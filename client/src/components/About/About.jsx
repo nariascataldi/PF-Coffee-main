@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import React, { Fragment, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import pdf from "../../assets/PDF - Coffee`s Orders.pdf";
+import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 
 const url = pdf;
 export default function About() {
@@ -35,6 +37,7 @@ export default function About() {
 
   return (
     <Fragment>
+      <NavBar/>
       <div className={styles.about}>
         <NavLink exact to="/" className={styles.a}><h1>Coffee`s Orders</h1></NavLink>
         <div className="main">
@@ -68,6 +71,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      <Footer />
     </Fragment>
   );
 }
