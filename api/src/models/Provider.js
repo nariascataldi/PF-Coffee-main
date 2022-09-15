@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
       unique: true
     },
     logo: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     adress: {
@@ -37,6 +37,10 @@ module.exports = (sequelize) => {
     CUIT: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    disable: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   }, {
     timestamps: false
