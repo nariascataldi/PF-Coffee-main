@@ -19,21 +19,24 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import UserCreate from '../Account/UserCreate/UserCreate';
 import NavBar from '../NavBar/NavBar';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from "./Perfil.module.css";
+
 function Perfil() {
   return (
-    <div>
-      <div id="NavBar">
-        <NavBar />
-      </div>
-      <div id="Body">
-        <div id="NavBarPerfil">
-
+    <div className={styles.bodyHome}>
+      <div className={styles.navBar}> <NavBar /> </div>
+      <div className={styles.container}>
+        <div className={styles.navBarPerfil}>
+        <button>Perfil</button>
+        <button>Direcciones</button>
+        <button>Pedidos Anteriores</button>
+        <button>Salir</button>
         </div>
-        <div id="Detal"><UserCreate></UserCreate></div>
+        <div className={styles.container1}><UserCreate></UserCreate></div>
       </div>
     </div>
   )
