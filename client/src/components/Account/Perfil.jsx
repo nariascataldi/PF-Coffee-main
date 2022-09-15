@@ -30,7 +30,8 @@ function Perfil() {
         <NavBar />
       </div>
       <div>
-          <UserCreate></UserCreate>
+          <div><NavBarPerfil /></div>
+          <div><UserCreate></UserCreate></div>
       </div>
     </div>
   )
