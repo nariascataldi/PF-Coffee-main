@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-
 import { edadValidator } from "./validator";
+
 
 const FormularioUsuario = () => {
 
