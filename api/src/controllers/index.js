@@ -69,14 +69,6 @@ const prodPost = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
-const providerPost = async (req, res, next) => {
-  try {
-    let response = await postProvider(req.body);
-    res.send(response)
-  } catch (error) {
-    next(error)
-  }
-};
 
 const dietsGet = async (req, res, next) => {
   try {
