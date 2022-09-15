@@ -3,48 +3,28 @@
   width: 100vw;
   height: 100vh;
 }
-  .navBar {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: stretch;
-    justify-content: flex-start;
-    align-items: stretch;
-  }
-    .navBar_f1 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: space-around;
-    align-items: center;
-    }
-      .btnContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-wrap: nowrap;
-      }     
-          
-  .navBar_f2 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    /* align-content: stretch; */
-    justify-content: flex-end;
-    align-items: baseline;
-    width: 20vw;
-  }
-.container{
+.navBar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.container {
   display: flex;
   flex-direction: row;
 }
-.container1{
-  width: 80vw;
-  height: 80vh;
-  min-height: 80vh;
-  overflow: scroll;
-}
+  .navBarPerfil{
+    display: flex;
+    flex-direction: column;
+  }
+  .container1 {
+    width: 80vw;
+    height: 80vh;
+    min-height: 80vh;
+    overflow: scroll;
+  }
 
 /* Pantallas medianas */
 @media screen and (max-width: 800px) {
