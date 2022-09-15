@@ -1,11 +1,15 @@
 const { getDiets } = require('../utils/getDiets.js');
 const { getCategories } = require('../utils/getCategories.js');
+const { getComment } = require("../utils/getComment");
 const  getProducts  = require('../utils/getProducts.js');
 const  postProduct  = require('../utils/postProduct.js');
 const { getProductsQy } = require('../utils/getProductsQy.js');
 const getIDproduct = require('../utils/getIDproduct');
 const altProduct = require('../utils/altProduct');
 const deleteProduct = require('../utils/deleteProduct.js');
+const postProvider = require("../utils/postProvider");
+const postComment = require('../utils/postComment.js');
+
 
 const productsGet = async(req, res, next)=>{
   try {
@@ -51,6 +55,14 @@ const categoriesGet = async(req, res, next)=>{
   } catch (e) { next(e) }
 };
 
+const commentGet = async (req, res, next) =>{
+  try {
+    let comm = await getComment() || [];
+    res.send(comm)
+  } catch (error) {
+    next(error)
+  }
+}
 const altAttribute = async (req, res, next)=>{
 	try {
 		let { attribute } = req.params;
@@ -71,12 +83,41 @@ const prodIDremove = async (req, res, next)=>{
 	} catch (e) { next (e) }
 };
 
+const providerPost = async(req, res, next) => {
+  try {
+    // console.log("input en controllers API: ", req.body);
+    let response = await postProvider(req.body) || {};
+
+    res.send(response);
+  } catch (error) {
+    next(error);
+  }
+}
+
+const commentPost = async (req, res, next) => {
+  try {
+    // console.log("input en controllers API: ", req.body);
+  let response = await postComment(req.body) || {};
+  
+    res.send(response); 
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   productsGet,
   prodIDget,
   prodPost,
   dietsGet,
   categoriesGet,
+  commentGet,
   altAttribute,
-  prodIDremove
+  prodIDremove,
+  prodIDremove,
+  providerPost,
+  commentPost
 }
+
+  
+

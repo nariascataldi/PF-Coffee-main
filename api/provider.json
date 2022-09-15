@@ -68,13 +68,6 @@
       "adress": "Miguel Carcano 789, Córdoba.",
       "phone": "9543518745698",
       "CUIT": "3278965478596",
-      "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1662584676/small_donas_08_e8fa851913.jpg"
-    },
-    {
-      "id" : 128 ,
-      "title": "Crispy Donuts",
-      "price": 550,
-      "description": "3 uds. de donas bañadas de chocolate amargo y crocantes de almendras.",
       "image": "https://res.cloudinary.com/dwtwnertr/image/upload/v1663106166/2251afaaf01643609875773b72409974_8_2047114572.png",
       "email": "sunset_Coffee@hotmail.com"
     }
