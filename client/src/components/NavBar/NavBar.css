@@ -1,10 +1,4 @@
-.parentNav {
-    display: flex;
-    justify-content: space-between;
-}
-
-.logo {
-    width: 3vw;
-    height: 6vh;
-    padding-left: 15px;
+.links {
+    text-decoration: none;
+    color: inherit;
 }
