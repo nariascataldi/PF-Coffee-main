@@ -20,7 +20,6 @@ export default function Home(){
         <div className='home-container'>
             {console.log(allProducts)}
             <NavBar />
-            <p>Este es el home</p>
             <Cards/>
             <Footer />
         </div>
