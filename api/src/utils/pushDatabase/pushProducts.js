@@ -1,4 +1,4 @@
-const { Product, Diet, Category } = require('../../db.js');
+const { Product, Diet, Category, Provider } = require('../../db.js');
 const json = require('../../../product.json');
 
 
@@ -14,16 +14,24 @@ function pushProducts() {
       json[prop].forEach(obj => {
         Product.create(obj)
           .then(async (myProduct) => {
-            // let allDts = await Diet.findAll();
-            let allCategories = await Category.findAll();
-            // await Promise.all( [allDts, allCategories] ); // si fuesen más promesas
-
-            // let newsDts = allDts.filter(o=> obj.diets.includes(o.name));
+            let allCategories = await Category.findAll();            
             let myCateg = allCategories.find(o => o.name === category);
-
-            // let incDiets = newsDts.map( (d)=> myProduct.addDiet(d.id) );
             let incCat = myProduct.addCategory(myCateg.id);
-
+            return myProduct;
+          })
+          .then(async (myProduct) => {
+            let allProviders = await Provider.findAll();            
+            let myProv = allProviders.filter(o=> obj.provider.includes(o.name));
+            let incProv = myProduct.addProvider(myProv.id);
+            return myProduct;
+          })
+          .then(async (myProduct) => {   
+            if (obj.diets) {
+              let allDts = await Diet.findAll();
+              let newsDts = allDts.filter(o=> obj.diets.includes(o.name));
+              let incDiets = newsDts.map( (d)=> myProduct.addDiet(d.id) );              
+            }            
+            return myProduct;
           })
           .catch(e => console.log('falló en Product.create():', e));
       });

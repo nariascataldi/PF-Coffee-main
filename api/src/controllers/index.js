@@ -1,5 +1,6 @@
 const { getDiets } = require('../utils/getDiets.js');
 const { getCategories } = require('../utils/getCategories.js');
+const { getComment } = require("../utils/getComment");
 const getProducts = require('../utils/getProducts.js');
 const postProduct = require('../utils/postProduct.js');
 const postProvider = require('../utils/postProvider.js');
@@ -7,8 +8,10 @@ const { getProductsQy } = require('../utils/getProductsQy.js');
 const getIDproduct = require('../utils/getIDproduct');
 const altProduct = require('../utils/altProduct');
 const deleteProduct = require('../utils/deleteProduct.js');
+const postComment = require('../utils/postComment.js');
 const getProviders = require('../utils/getProviders.js');
 const getIdProvider = require('../utils/getIDprovider.js');
+
 
 const productsGet = async (req, res, next) => {
   try {
@@ -69,14 +72,6 @@ const prodPost = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
-const providerPost = async (req, res, next) => {
-  try {
-    let response = await postProvider(req.body);
-    res.send(response)
-  } catch (error) {
-    next(error)
-  }
-};
 
 const dietsGet = async (req, res, next) => {
   try {
@@ -92,16 +87,25 @@ const categoriesGet = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
-const altAttribute = async (req, res, next) => {
+const commentGet = async (req, res, next) =>{
   try {
-    let { attribute } = req.params;
-    let { id, value } = req.query;
+    let comm = await getComment() || [];
+    res.send(comm)
+  } catch (error) {
+    next(error)
+  }
+};
 
-    console.log(id); console.log(attribute); console.log(value);
-
-    let myAlt = await altProduct(id, attribute, value) || {};
-    res.send(myAlt)            // petición NO  probada !!!!!! --
-  } catch (e) { next(e) }
+const altAttribute = async (req, res, next)=>{
+	try {
+		let { attribute } = req.params;
+	  let { id, value } = req.query;
+    
+    console.log(id);  console.log(attribute); console.log(value);
+    
+		let myAlt = await altProduct(id, attribute, value) || {};
+		res.send(myAlt)            // petición NO  probada !!!!!! --
+	} catch (e) { next (e) }
 };
 
 const prodIDremove = async (req, res, next) => {
@@ -112,15 +116,43 @@ const prodIDremove = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
+const providerPost = async(req, res, next) => {
+  try {
+    // console.log("input en controllers API: ", req.body);
+    let response = await postProvider(req.body) || {};
+
+    res.send(response);
+  } catch (error) {
+    next(error);
+  }
+}
+
+const commentPost = async (req, res, next) => {
+  try {
+    // console.log("input en controllers API: ", req.body);
+  let response = await postComment(req.body) || {};
+  
+    res.send(response); 
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   productsGet,
   prodIDget,
   prodPost,
   dietsGet,
   categoriesGet,
+  commentGet,
   altAttribute,
   prodIDremove,
   providerPost,
+  commentPost,
   providersGet,
   providerIDget
+
 }
+
+  
+

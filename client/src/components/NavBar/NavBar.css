@@ -1,33 +1,4 @@
-.parentNav {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 8px;
-    padding-right: 8px;
-    background-color: #E3EFFB;
-    border-bottom-width: 1.3px;
-    border-bottom-style: solid;
-    border-bottom-color:  #000;
-}
-.element-nav{
-    padding-top: 30px;
-    padding-bottom: 22px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-.logo {
-    width: 7vw;
-    height: 13vh;
-}
-.link-nav{
-    margin-left: 4px;
-    margin-right: 40px;
-}
-.link-nav1{
-    margin-left: 4px;
-    margin-right: 40px;
-}
+
 .searchBar{
     margin-left: 300px;
     margin-right: 90px;
@@ -55,4 +26,8 @@
     border-bottom-right-radius: 15px;
     padding-right: 14px;
     color: white;   
+}
+.links {
+    text-decoration: none;
+    color: inherit;
 }
