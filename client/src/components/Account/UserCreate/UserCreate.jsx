@@ -1,17 +1,21 @@
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import NavBar from "../NavBar/NavBar";
 import { edadValidator } from "./validator";
+import "bootstrap/dist/css/bootstrap.min.css";
+import DatePicker from 'react-datepicker'; 
+import 'react-datepicker/dist/react-datepicker.css';
+
+// https://reactdatepicker.com/
 
 const FormularioUsuario = () => {
+
+  const [selectedDate, setselectedDate] = useState(null);
 
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
       nombre: '',
       apellido: '',
       direccion: '',
-
-
-
     }
   });
 
@@ -23,9 +27,8 @@ const FormularioUsuario = () => {
   const incluirCUIT = watch('incluirCUIT');
 
   return <div>
-    <NavBar />
-    <h2>Formulario</h2>
-    <p>Nombre: {watch('nombre')}</p>
+    <h2>Editar Perfil</h2>
+    {/* <p>Nombre: {watch('nombre')}</p> */}
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>Nombre</label>
@@ -69,10 +72,15 @@ const FormularioUsuario = () => {
       </div>
       <div>
         <label>Fecha Nacimiento</label>
-        <input type="text" placeholder="javascript@brave.etc" {...register('edad', {
-          validate: edadValidator
-        })} />
-        {errors.edad && <p>La edad debe estar entre 18 y 65</p>}
+        <DatePicker 
+          selected={selectedDate}
+          onChange={date => setselectedDate(date)}
+          dateFormat='dd/MM/yyyy'
+          isClearable
+          showYearDropdown
+          scrollableYearDropdown
+          placeholderText="dd/mm/yyyy"
+        />
       </div>
       <div>
         <label>¿Incluir CUIT?</label>

@@ -1,18 +1,28 @@
-const { Provider } = require('../db.js');
 
-let postProvider = async(obj) => {
-    let { name, adress, phone, CUIT, logo, mail } = obj;
+const { Provider, Product } = require("../db.js");
 
-    if (name.includes(' ')) {
-        name = name.split(' ').map(p=> p.slice(0,1).toUpperCase().concat(p.slice(1).toLowerCase())).join(' ')
-      } else { name = name[0].toUpperCase().concat(name.slice(1).toLowerCase()) };
+const postProvider = async (obj) => {
+  let { name, mail, logo, adress, phone, CUIT, title } = obj;
 
-    let prov = await Provider.create({ name, adress, phone, CUIT, logo, mail });
+  // console.log(title, stars, comment);
 
-    let provCreated = await Provider.findOne({
-        where:{ name: provCreated.name}
-    });
-    return provCreated;
+  let providerCreate = await Provider.create({
+    name,
+    mail,
+    logo,
+    adress,
+    phone,
+    CUIT,
+  });
+  // console.log(commentCreate)
+
+let provDb = await Product.findAll({
+  where: { title: title },
+  include: [Provider],
+});
+providerCreate.addProduct(provDb);
+    return providerCreate;
 };
 
-module.export = postProvider;
+module.exports = postProvider;
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Paginated.css'
 
 export default function Paginated ({productsPerPage, allPoducts, paginated, currentPage, setCurrentPage}){
     const pageNumber= []
@@ -7,9 +8,9 @@ export default function Paginated ({productsPerPage, allPoducts, paginated, curr
         pageNumber.push(i)
     }
     return(
-        <div>
-            <ul>
-                <button
+        <div className='botones-paginado'>
+            
+                <button className='boton-next'
                     disabled= {currentPage === 1}
                     onClick={()=>
                     setCurrentPage(currentPage === 1 ?
@@ -17,7 +18,7 @@ export default function Paginated ({productsPerPage, allPoducts, paginated, curr
                         currentPage - 1)}
                 >Prev.</button>
 
-                <li>
+                
                     {pageNumber && pageNumber.map((number)=>(
                         <button
                             key={number}
@@ -26,9 +27,9 @@ export default function Paginated ({productsPerPage, allPoducts, paginated, curr
                             {number}
                         </button>
                     ))}
-                </li>
+            
 
-                <button
+                <button className='boton-next'
                     disabled={currentPage === pageNumber.length}
                     onClick={()=>
                     setCurrentPage(currentPage === totalPage ?
@@ -38,7 +39,7 @@ export default function Paginated ({productsPerPage, allPoducts, paginated, curr
                 >
                     Next.
                 </button>
-            </ul>
+        
         </div>
     )
 }
