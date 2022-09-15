@@ -1,19 +1,19 @@
 /* En este componente Perfil necesito que tenga:
 [] Heder
-  [] NavBar
+  [✔️] NavBar
 [] una barra lateral iz con:
   [] Imágen
-  [] Perfil
+  [✔️] Perfil
   [] Direcciones
   [] Tarjeta de Crédito
   [] Autenticación
   [] Suscripto
   [] Pedidos Anteriores
-  [] Salir --> Home
+  [✔️] Salir --> Home
 [] Body
   [] Detalle del Perfil ---> editar
-    [] editar --> form Editar perfil
-[] Footer
+    [✔️] editar --> form Editar perfil
+[✔️] Footer
 ---- y ver de colocar un boton flotante con los productos más populares  
 */
 
@@ -21,6 +21,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import UserCreate from '../Account/UserCreate/UserCreate';
 import NavBar from '../NavBar/NavBar';
+import Footer from '../Footer/Footer';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Perfil.module.css";
@@ -40,6 +42,7 @@ function Perfil() {
         </div>
         <div className={styles.container1}><UserCreate></UserCreate></div>
       </div>
+      <Footer ></Footer>
     </div>
   )
 }
