@@ -1,5 +1,5 @@
 .bodyHome {
-  background-color: rgb(255, 225, 0);
+  background-color: #eef7fc;
   width: 100vw;
   height: 100vh;
 }
@@ -49,7 +49,7 @@
 /* Pantallas medianas */
 @media screen and (max-width: 800px) {
   .bodyHome {
-    background-color: rgb(89, 55, 55);
+    background-color: #eefcf3;
   }
 }
 
