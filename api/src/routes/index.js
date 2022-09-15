@@ -14,9 +14,9 @@ const { productsGet,
 const router = Router();
 
 
-router.get('/products', productsGet);  // ruta NO probada !!!!!! --
+router.get('/products', productsGet);  // ruta probada !!!!!! --
 
-router.get('/products/:id', prodIDget);   // ruta NO probada !!!!!! --
+router.get('/products/:id', prodIDget);   // ruta probada !!!!!! --
 
 router.get('/diets', dietsGet);     // ruta NO probada !!!!!! --
 
