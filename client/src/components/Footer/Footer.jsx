@@ -7,7 +7,7 @@ export default function Footer () {
 
     return (
 
-        <footer class=" text-center " style={{backgroundColor:'#FCEEF0'}}>
+        <footer class="text-center" style={{backgroundColor:'#FCEEF0'}}>
 
           <div class="container p-4">
 
