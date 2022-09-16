@@ -21,22 +21,20 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import UserCreate from '../Account/UserCreate/UserCreate';
 import NavBar from '../NavBar/NavBar';
+import ShinyButton from './ShinyButton';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Perfil.module.css";
+import style from "./ShinyButton.module.css"
 
 function Perfil() {
+
   return (
     <div className={styles.bodyHome}>
       <div className={styles.navBar}> <NavBar /> </div>
       <div className={styles.container}>
         <div className={styles.navBarPerfil}>
-        <button>Perfil</button>
-        <button>Direcciones</button>
-        <button>Pedidos Anteriores</button>
-        <NavLink exact to='../home'>
-        <button>Salir</button>
-        </NavLink>
+        <ShinyButton/>
         </div>
         <div className={styles.container1}><UserCreate></UserCreate></div>
       </div>
@@ -44,3 +42,31 @@ function Perfil() {
   )
 }
 export default Perfil;
+
+// import React from 'react';
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// import Register from '../Account/UserCreate'
+
+
+
+// function Perfil() {
+//   return (
+//     <div className={styles.bodyHome}>
+//       <div className={styles.navBar}> <NavBar /> </div>
+//       <div className={styles.container}>
+//         <div className={styles.navBarPerfil}>
+//           <ShinyButton />
+//         </div>
+//         <div className={styles.container1}>
+//           <Routes>
+//             <Route path='/userRegister' element={<Register />} />
+//           </Routes>
+//           </div>
+//       </div>
+//     </div>
+
+//   );
+// }
+
+// export default Perfil;

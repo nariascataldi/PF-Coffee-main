@@ -31,7 +31,6 @@ const FormularioUsuario = () => {
     e.target.reset();
   }
   const incluirCUIT = watch('incluirCUIT');
-
   return <div>
     <h2>Editar Perfil</h2>
     {/* <p>Nombre: {watch('name')}</p> */}
