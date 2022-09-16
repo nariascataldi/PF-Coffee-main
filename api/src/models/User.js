@@ -3,6 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
+
   sequelize.define("user", {
     id: {
       type: DataTypes.INTEGER,
@@ -20,38 +21,36 @@ module.exports = (sequelize) => {
     },
     status: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    mail: {
+        allowNull: false,
+      },
+      mail: {
         type: DataTypes.STRING,
         validate: {
-          isEmail: true
+          isEmail: true,
         },
         allowNull: false,
-        unique: true
-    },
-    pass: {
+        unique: true,
+      },
+      pass: {
         type: DataTypes.STRING,
-        set(value) {
-          this.setDataValue('pass', hash(this.name + value).split('').sort(() => 0.5 - Math.random()).join(''));
-        },
-        allowNull: false
-    },
-    avatar: {
-        type: DataTypes.TEXT,
-
-    },
-    birthday: {
-        type: DataTypes.STRING
-    },
-    disable: {
+        allowNull: false,
+      },
+      // avatar: {
+      //   type: DataTypes.TEXT,
+      // },
+      birthday: {
+        type: DataTypes.STRING,
+      },
+      disable: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
+      },
+      basket: {
+        type: DataTypes.STRING,
+      },
     },
-    basket: {
-        type: DataTypes.STRING
+    {
+      timestamps: false,
     }
-  },{
-    timestamps: false
-});
+  );
 };
