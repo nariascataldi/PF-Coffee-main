@@ -12,6 +12,7 @@ const dispatch = useDispatch();
 
 const handleOnChange=(d)=>{
     setBusqueda(d.target.value)
+    dispatch(getByTitle(busqueda));
 };
 const handleSubmit=(e)=>{
     e.preventDefault()
@@ -22,6 +23,7 @@ const handleSubmit=(e)=>{
     return (
     <nav className="navbar navbar-expand-lg">
         <div class="container-fluid">
+        <img src={ logo } alt="img" className='logo'/>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
             <li class="nav-item">
@@ -62,7 +64,7 @@ const handleSubmit=(e)=>{
             </ul>
             </div>
         </div>
-        <img src={ logo } alt="img" className='logo'/>
+        
     </nav>
     );
 };
