@@ -30,7 +30,6 @@ const FormularioUsuario = () => {
     alert('User create successfuly!');
     e.target.reset();
   }
-
   const incluirCUIT = watch('incluirCUIT');
 
   return <div>
