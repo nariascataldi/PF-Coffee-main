@@ -1,13 +1,14 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from "./ShinyButton.module.css"
 
 
 const ShinyButton = () => {
-  var buttonRef = React.useRef(null)
+  const buttonRef = React.useRef(null)
   function mouseMoveEvent(e) {
-    var { x } = buttonRef.current.getBoundingClientRect();
+    const { x, y } = buttonRef.current.getBoundingClientRect();
     buttonRef.current.style.setProperty('--x', e.clientX - x);
+    buttonRef.current.style.setProperty('--y', e.clientY - y);
   }
 
   React.useEffect(() => {
@@ -19,12 +20,11 @@ const ShinyButton = () => {
 
   return (
     <Fragment>
-        <button ref={buttonRef} className={style.shiny}>Perfil</button>
-        <button ref={buttonRef} className={style.shiny}>Perfil</button>
+        <button>Perfil</button>
           <button>Direcciones</button>
           <button>Pedidos Anteriores</button>
           <NavLink exact to='../home'>
-            <button>Salir</button>
+            <button ref={buttonRef} className={style.shiny}>Salir</button>
           </NavLink>
     </Fragment>
   );
