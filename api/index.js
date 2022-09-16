@@ -8,11 +8,10 @@ const pushProviders = require('./src/utils/pushDatabase/pushProviders.js');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  
-  pushCategories();
-  pushProducts(); 
   pushProviders();
-  // pushDiets();  
+  pushCategories();
+  pushDiets();
+  pushProducts();     
   
   server.listen(PORT, () => {
     console.log(`%s listening at ${PORT}`); 
