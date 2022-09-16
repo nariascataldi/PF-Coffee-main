@@ -11,6 +11,9 @@ const deleteProduct = require('../utils/deleteProduct.js');
 const postComment = require('../utils/postComment.js');
 const getProviders = require('../utils/getProviders.js');
 const getIdProvider = require('../utils/getIDprovider.js');
+const getUsers = require('../utils/getUsers.js');
+const { getUsersQy } = require('../utils/getUsersQy.js');
+const postUser = require('../utils/postUser');
 
 
 const productsGet = async (req, res, next) => {
@@ -138,6 +141,32 @@ const commentPost = async (req, res, next) => {
   }
 };
 
+const userPost = async (req, res, next) => {
+  try {
+    // console.log("input en controllers API: ", req.body);
+  let response = await postUser(req.body) || {};
+  
+    res.send(response); 
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+const usersGet = async (req, res, next) => {
+  try {
+    let { data } = req.query; console.log(data);
+    if (!data) {
+      let rdts = await getUsers() || [];
+      console.log(rdts.length);
+      return res.send(rdts)  //    petición NO  probada !!!!!! --
+    };
+    let response = await getUsersQy(data);
+    if (response.length === 0) response = [{ msg: 'There are no users with that word in their title. Try another possible denomination' }];
+    res.send(response)              //    petición NO  probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
 module.exports = {
   productsGet,
   prodIDget,
@@ -150,7 +179,9 @@ module.exports = {
   providerPost,
   commentPost,
   providersGet,
-  providerIDget
+  providerIDget,
+  userPost,
+  usersGet
 
 }
 
