@@ -42,6 +42,7 @@ export default function Cards (){
                     image={p.image}
                     title={p.title}
                     price={p.price}
+                    key={p.id}
                     />
             })}  
             </div>
