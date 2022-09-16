@@ -1,0 +1,16 @@
+.card{ background-color: #eef7fc;
+    display: grid;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: auto;
+    height: auto;
+}
+.img{
+height: 350px;
+}
+.fondo{
+    background-color: #eef7fc;
+}
+.none{
+    text-decoration: none;
+}
