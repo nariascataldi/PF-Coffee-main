@@ -14,7 +14,6 @@ import style from './UserCreate.module.css';
 const FormularioUsuario = () => {
   const dispatch = useDispatch();
   const [birthday, setBirthday] = useState(null);
-
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
       name: 'Brendan',
@@ -24,7 +23,6 @@ const FormularioUsuario = () => {
       pass: 'abcdefgh',
     }
   });
-
   const onSubmit = (data, e) => {
     console.log(data);
     e.preventDefault();
