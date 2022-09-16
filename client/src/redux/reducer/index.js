@@ -1,4 +1,14 @@
-import  { GET_ALL_CATEGORIES, GET_ALL_DIETS, GET_BY_TITLE, GET_ALL_PRODUCTS, GET_ALL_PROVIDERS, GET_PRODUCT_DETAIL, GET_DETAIL, GET_PROVIDER_DETAIL } from '../actions'
+import  { 
+    GET_ALL_CATEGORIES, 
+    GET_ALL_DIETS, 
+    GET_BY_TITLE, 
+    GET_ALL_PRODUCTS, 
+    GET_ALL_PROVIDERS, 
+    GET_PRODUCT_DETAIL, 
+    GET_DETAIL, 
+    GET_PROVIDER_DETAIL,
+    POST_USER
+ } from '../actions'
 
 const initialState = {
     allProducts: [],
@@ -61,6 +71,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 detail: action.payload
             }
+
+        case POST_USER:
+            return {
+                ...state
+            }            
 
 
         default: 
