@@ -42,3 +42,31 @@ function Perfil() {
   )
 }
 export default Perfil;
+
+// import React from 'react';
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+// import Register from '../Account/UserCreate'
+
+
+
+// function Perfil() {
+//   return (
+//     <div className={styles.bodyHome}>
+//       <div className={styles.navBar}> <NavBar /> </div>
+//       <div className={styles.container}>
+//         <div className={styles.navBarPerfil}>
+//           <ShinyButton />
+//         </div>
+//         <div className={styles.container1}>
+//           <Routes>
+//             <Route path='/userRegister' element={<Register />} />
+//           </Routes>
+//           </div>
+//       </div>
+//     </div>
+
+//   );
+// }
+
+// export default Perfil;

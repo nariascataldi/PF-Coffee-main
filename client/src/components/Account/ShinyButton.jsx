@@ -20,12 +20,10 @@ const ShinyButton = () => {
 
   return (
     <Fragment>
-        <button>Perfil</button>
-          <button>Direcciones</button>
-          <button>Pedidos Anteriores</button>
-          <NavLink exact to='../home'>
-            <button ref={buttonRef} className={style.shiny}>Salir</button>
-          </NavLink>
+      <NavLink exact to='../home' className={style.shiny} >Perfil</NavLink>
+      <NavLink exact to='../home' className={style.shiny} >Direcciones</NavLink>
+      <NavLink exact to='../home' className={style.shiny} >Pedidos Anteriores</NavLink>
+      <NavLink exact to='../home' ref={buttonRef} className={style.shiny} >Salir</NavLink>
     </Fragment>
   );
 
