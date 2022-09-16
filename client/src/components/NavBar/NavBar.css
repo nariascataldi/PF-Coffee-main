@@ -20,6 +20,7 @@
     padding-left: 10px;
     outline: none;
     width: 280px;
+    cursor: pointer;
 }
 .input-search::placeholder{
     color: rgb(243, 241, 241);
@@ -31,7 +32,8 @@
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     padding-right: 14px;
-    color: white;   
+    color: white;
+    cursor: pointer;   
 }
 .logo{
     width: 14vh;
@@ -39,4 +41,19 @@
 .links {
     text-decoration: none;
     color: inherit;
+}
+.input-filter{
+    border-radius: 12px;
+    width: 100px;
+    padding-left: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: #DD6873;
+    border-color: #DD6873;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+.label-filter{
+    color: #DD6873;
 }

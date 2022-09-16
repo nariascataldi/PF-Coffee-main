@@ -7,7 +7,9 @@ import  {
     GET_PRODUCT_DETAIL, 
     GET_DETAIL, 
     GET_PROVIDER_DETAIL,
-    POST_USER
+    POST_USER,
+    SET_FILTER_STATE,
+    FILTER
  } from '../actions'
 
 const initialState = {
@@ -18,7 +20,12 @@ const initialState = {
     providerDetail: {},
     categories: [],
     diets: [],
-    detail: []
+    detail: [],
+    filterBy : {
+        title: '',
+        category: '',
+        diet:''
+    }
 }
 
   
@@ -75,7 +82,32 @@ const rootReducer = (state = initialState, action) => {
         case POST_USER:
             return {
                 ...state
-            }            
+            }    
+            
+        case SET_FILTER_STATE :
+            return {
+                ...state,
+                filterBy:{
+                    ...state.filterBy,
+                    ...action.payload
+                }
+
+            }
+        case FILTER:
+            const allProd = state.allProducts;
+            const titleFilter = state.filterBy.title==='' ? allProd : allProd.filter(e=>{
+                return e.title.toLowerCase().includes(state.filterBy.title.toLocaleLowerCase())
+            })
+            const filterCategory= state.filterBy.category === "" ? titleFilter : titleFilter.filter(e=>{
+                return e.categories.map(d=>d.name).includes(state.filterBy.category) 
+            })
+            const filterDiet= state.filterBy.diet=== "" ? filterCategory : filterCategory.filter(e=>{
+                return e.diets.map(d=>d.name).includes(state.filterBy.diet)
+            })
+            return {
+                ...state ,
+                products: [...filterDiet]
+            }
 
 
         default: 
