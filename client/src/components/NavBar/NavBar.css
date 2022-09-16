@@ -1,7 +1,13 @@
-
+.navbar{
+    border-bottom: 1.35px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .searchBar{
-    margin-left: 300px;
-    margin-right: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input-search{
@@ -26,6 +32,9 @@
     border-bottom-right-radius: 15px;
     padding-right: 14px;
     color: white;   
+}
+.logo{
+    width: 14vh;
 }
 .links {
     text-decoration: none;

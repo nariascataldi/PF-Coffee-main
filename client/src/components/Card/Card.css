@@ -5,13 +5,22 @@
     align-items: center;
     text-align: center;
     background-color:#EEF7FC;
-    margin: 2px;
+    margin: 4px;
     margin-left: 1px;
     width: 180px;
     cursor: pointer;
     border-radius: 12px;
     padding: 4px;
     max-height: 210px;
+}
+.card-container:hover{
+    background-color: #55c5c03d ;
+    width: 186px;
+    height: auto;
+}
+.card-container:active{
+    background-color: #55c5c065 ;
+    width: 182px;
 }
 .img-card{
     height: 140px;
@@ -21,6 +30,7 @@
 .name-card{
     padding: 1px;
     margin: 1px;
+    font-size: 16px;
 }
 .card-price{
     padding: 1px;
