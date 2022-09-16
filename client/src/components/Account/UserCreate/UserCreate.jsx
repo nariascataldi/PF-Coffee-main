@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { edadValidator } from "./validator";
-import "bootstrap/dist/css/bootstrap.min.css";
-import DatePicker from 'react-datepicker'; 
+import DatePicker from 'react-datepicker';
+import { postUser } from "../../../redux/actions";
+import { useDispatch } from "react-redux";
+
 import 'react-datepicker/dist/react-datepicker.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import style from './UserCreate.module.css';
 
 // https://reactdatepicker.com/
 
 const FormularioUsuario = () => {
-
+  const dispatch = useDispatch();
   const [birthday, setBirthday] = useState(null);
-
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
       name: 'Brendan',
@@ -21,12 +23,13 @@ const FormularioUsuario = () => {
       pass: 'abcdefgh',
     }
   });
-
   const onSubmit = (data, e) => {
     console.log(data);
+    e.preventDefault();
+    dispatch(postUser(data));
+    alert('User create successfuly!');
     e.target.reset();
   }
-
   const incluirCUIT = watch('incluirCUIT');
 
   return <div>
@@ -76,7 +79,7 @@ const FormularioUsuario = () => {
       </div>
       <div className={style.birthday}>
         <label>Fecha Nacimiento</label>
-        <DatePicker 
+        <DatePicker
           selected={birthday}
           onChange={date => setBirthday(date)}
           dateFormat='dd/MM/yyyy'
