@@ -1,9 +1,10 @@
-import  { GET_ALL_PRODUCTS ,GET_BY_TITLE } from '../actions'
+
+import  { GET_ALL_PRODUCTS, GET_DETAIL, GET_BY_TITLE } from '../actions'
 
 const initialState = {
     allProducts: [],
+    detail: []
     products:[]
-
 };
   
 const rootReducer = (state = initialState, action) => {
@@ -23,6 +24,12 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 products:dataTilte
             }
+        case GET_DETAIL:
+            return{
+                ...state,
+                detail: action.payload
+            }
+
         default: 
             return { ...state }
     }   
