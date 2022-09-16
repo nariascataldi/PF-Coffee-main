@@ -38,11 +38,12 @@ export default function Cards (){
             <div className="cards-wraper">
                 {currentProducts && currentProducts.map(p=>{
                     return <Card
+                    key={p.id}
+                    id={p.id}
                     name={p.name}
                     image={p.image}
                     title={p.title}
                     price={p.price}
-                    key={p.id}
                     />
             })}  
             </div>
