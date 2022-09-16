@@ -1,18 +1,21 @@
 .boton-next{
-    background-color: #DD6873 ;
-    color: white;
-    border-color:#DD6873;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#E3EFFB ;
+    color:#DD6873 ;
+    border-color:#E3EFFB;
     border-radius: 3px;
     margin: 6px;
+    font-size: 50px;
+    padding: 0.1px;
+    border: none;
 }
 .boton-next:hover{
-    background-color: #b4444f ;
-    border-color: #b4444f ;
+    color:#ca2334;
 }
 .boton-next:active{
-    background-color: #c94351 ;
-    color: white;
-    border-color:#c94351 ;
+    color: #c94351 ;
 }
 .botones-paginado{
     display: flex;

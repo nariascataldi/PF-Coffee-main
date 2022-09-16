@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
       unique: true
     },
     logo: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     adress: {
