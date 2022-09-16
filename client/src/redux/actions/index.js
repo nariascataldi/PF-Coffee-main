@@ -24,7 +24,7 @@ export function getDetail(id){
         }
         catch(error){
             console.log("el error del detalle es: ", error)
-        }
+        }}}
 export function getByTitle (payload){
     return {
         type: GET_BY_TITLE,

@@ -3,7 +3,7 @@ import  { GET_ALL_PRODUCTS, GET_DETAIL, GET_BY_TITLE } from '../actions'
 
 const initialState = {
     allProducts: [],
-    detail: []
+    detail: [],
     products:[]
 };
   

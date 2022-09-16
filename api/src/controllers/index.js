@@ -72,10 +72,6 @@ const prodPost = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> b3c46f983836824fd834fdfb32b41bde14978603
 const dietsGet = async (req, res, next) => {
   try {
     let o = await getDiets() || [];
