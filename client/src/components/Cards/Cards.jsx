@@ -17,9 +17,9 @@ export default function Cards (){
         const paginated= (pageNumber)=>{
             setCurrentPage(pageNumber)
               }
-    if(!currentProducts.length){
+    if(!products.length){
         return (
-            <div><h3>Not found!</h3></div>
+            <div><h3>Product not found!</h3></div>
         )
     }
   
@@ -29,7 +29,7 @@ export default function Cards (){
             <div className='paginado'>
                 <Paginated 
                     productsPerPage={productsPerPage}
-                    products={products.length}
+                    products={products}
                     paginated={paginated}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}

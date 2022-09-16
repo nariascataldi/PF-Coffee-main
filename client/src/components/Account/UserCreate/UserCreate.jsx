@@ -38,7 +38,7 @@ const FormularioUsuario = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.name}>
         <label>Nombre</label>
-        <input type="text" placeholder="Brendan" {...register('name', {
+        <input className='inp-formu-user' type="text" placeholder="Brendan" {...register('name', {
           required: true,
           maxLength: 20,
           pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
@@ -50,7 +50,7 @@ const FormularioUsuario = () => {
       </div>
       <div className={style.lastName}>
         <label>Apellido</label>
-        <input type="text" placeholder="Eich" {...register('lastName', {
+        <input className='inp-formu-user' type="text" placeholder="Eich" {...register('lastName', {
           required: true,
           maxLength: 20,
           pattern: /^[A-Za-z]+$/i
@@ -61,14 +61,14 @@ const FormularioUsuario = () => {
       </div>
       <div className={style.mail}>
         <label>Email</label>
-        <input type="text" placeholder="javascript@brave.etc" {...register('mail', {
+        <input className='inp-formu-user' type="text" placeholder="javascript@brave.etc" {...register('mail', {
           pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
         })} />
         {errors.mail?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
       </div>
       <div className={style.pass}>
         <label>Contraseña</label>
-        <input type="password" placeholder="8 letras" {...register('pass', {
+        <input className='inp-formu-user' type="password" placeholder="8 letras" {...register('pass', {
           required: true,
           maxLength: 8,
           pattern: /^[A-Za-z]+$/i,
@@ -92,15 +92,15 @@ const FormularioUsuario = () => {
       </div>
       <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>
-        <input type="checkbox" {...register('incluirCUIT')} />
+        <input className='inp-formu-user' type="checkbox" {...register('incluirCUIT')} />
       </div>
       {incluirCUIT && (
         <div className={style.numberCUIT}>
           <label>CUIT</label>
-          <input type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
+          <input className='inp-formu-user' type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
         </div>
       )}
-      <input type="submit" value="Enviar" />
+      <input className='inp-formu-user' type="submit" value="Enviar" />
     </form>
   </div>
 }
