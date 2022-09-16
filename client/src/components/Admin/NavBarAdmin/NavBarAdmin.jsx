@@ -26,8 +26,8 @@ const NavBar = () => {
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <Link to='/form' className='links'>
-                  Form
+                <Link to='/productCreate' className='links'>
+                  Formulario Producto Admin
                 </Link>
               </a>
             </li>
