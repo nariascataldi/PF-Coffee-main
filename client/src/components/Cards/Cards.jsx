@@ -1,4 +1,4 @@
-import React from "react";  
+import React, { useEffect } from "react";  
 import {useState} from 'react'
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
@@ -6,29 +6,30 @@ import Paginated from "../Paginated/Paginated";
 import './Cards.css';
 
 export default function Cards (){
-    const {allProducts} = useSelector(state=>state)
+    const {products} = useSelector(state=>state)
 
         //paginado
         const[currentPage, setCurrentPage]=useState(1)
         const[productsPerPage, setProductsPerPage]= useState(12)
         const indexOfLast= currentPage * productsPerPage
         const indexOfFirst= indexOfLast - productsPerPage
-        const currentProducts= allProducts.slice(indexOfFirst, indexOfLast)
+        const currentProducts= products.slice(indexOfFirst, indexOfLast)
         const paginated= (pageNumber)=>{
             setCurrentPage(pageNumber)
               }
-    if(!currentProducts.length){
+    if(!products.length){
         return (
-            <div><h3>Not found!</h3></div>
+            <div><h3>Product not found!</h3></div>
         )
     }
+  
     return (
         <div>
 
             <div className='paginado'>
                 <Paginated 
                     productsPerPage={productsPerPage}
-                    allProducts={allProducts.length}
+                    products={products}
                     paginated={paginated}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
@@ -38,6 +39,8 @@ export default function Cards (){
             <div className="cards-wraper">
                 {currentProducts && currentProducts.map(p=>{
                     return <Card
+                    key={p.id}
+                    id={p.id}
                     name={p.name}
                     image={p.image}
                     title={p.title}

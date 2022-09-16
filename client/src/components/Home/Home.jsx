@@ -18,7 +18,6 @@ export default function Home(){
 
     return (
         <div className='home-container'>
-            {console.log(allProducts)}
             <NavBar />
             <Cards/>
             <Footer />

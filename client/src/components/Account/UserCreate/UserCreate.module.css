@@ -52,7 +52,7 @@
   width: 10vw;
 }
 
-input {
+.inp-formu-user{
   border: 2px solid #ccc;
   border-radius: 4px;
   padding: 5px;
@@ -65,7 +65,7 @@ input {
 
 p {
   /* display: none; */
-  color: lemonchiffon;
+  color: orangered;
   font-size: large;
 }
 
