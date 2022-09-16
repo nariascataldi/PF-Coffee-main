@@ -8,7 +8,8 @@ export const GET_ALL_DIETS = 'GET_ALL_DIETS'
 export const GET_DETAIL = "GET_DETAIL"
 export const GET_BY_TITLE = 'GET_BY_TITLE'
 export const POST_USER = 'POST_USER'
-
+export const SET_FILTER_STATE = 'SET_FILTER_STATE'
+export const FILTER = 'FILTER'
 
 
 export function getAllProducts (){
@@ -108,4 +109,15 @@ export function postUser(payload) {
       console.log({response});
       return response;
     }
-  }
+  };
+export function setFilterState (payload){
+    return {
+        type: SET_FILTER_STATE ,
+        payload
+    }
+};
+export function filter (){
+    return{
+        type:FILTER ,
+    }
+};
