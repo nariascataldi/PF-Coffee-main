@@ -1,11 +1,10 @@
-const { Product, User, Comment, Order } = require('../db.js');
+const { Product, User } = require('../db.js');
 
 
 async function getUsers () {
 
-  let users = await User.findAll({include: [ Product, Order, Comment ]})  
-      .then( response=> response)
-      .catch( e=> console.log(e) );
+  let users = await User.findAll({ include:  Product })  
+      
 
   return users;
 
