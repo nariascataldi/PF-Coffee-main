@@ -41,12 +41,12 @@ const FormularioUsuario = () => {
         <input type="text" placeholder="Brendan" {...register('name', {
           required: true,
           maxLength: 20,
-          pattern: /^[A-Za-z]+$/i,
+          pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
 
         })} />
         {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
         {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
+        {errors.name?.type === 'pattern' && <p>El campo nombre contener letras</p>}
       </div>
       <div className={style.lastName}>
         <label>Apellido</label>
@@ -87,6 +87,7 @@ const FormularioUsuario = () => {
           showYearDropdown
           scrollableYearDropdown
           placeholderText="dd/mm/yyyy"
+          maxDate={new Date()}
         />
       </div>
       <div className={style.checkCUIT}>
