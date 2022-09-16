@@ -5,13 +5,12 @@ import { useSelector } from 'react-redux';
 
 export default function Paginated ({productsPerPage, products, paginated, currentPage, setCurrentPage}){
     const pageNumber= []
-    let totalPage= Math.ceil(products/productsPerPage)
+    let totalPage= Math.ceil(products.length/productsPerPage)
     for(let i=1; i<=totalPage; i++){
         pageNumber.push(i)
     }
     useEffect (()=>{
         if (currentPage > pageNumber.length) { paginated(1)} 
-        console.log(pageNumber.length)
         },[products])
     return(
         <div className='botones-paginado'>

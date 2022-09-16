@@ -7,7 +7,7 @@ export default function Card ({id,title,image,price}){
             <p>{id}</p>
             <img className='img-card' src={image}/>
             <h4 className='name-card'>{title}</h4>
-              <p>{price}</p>   
+              <p>$ {price}</p>   
         </div>  
     )
 }
