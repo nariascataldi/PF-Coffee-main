@@ -6,7 +6,6 @@ export const GET_PROVIDER_DETAIL = 'GET_PROVIDER_DETAIL'
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES'
 export const GET_ALL_DIETS = 'GET_ALL_DIETS'
 export const GET_DETAIL = "GET_DETAIL"
-
 export const GET_BY_TITLE = 'GET_BY_TITLE'
 
 
@@ -31,6 +30,8 @@ export function getDetail(id){
         catch(error){
             console.log("el error del detalle es: ", error)
         }
+    }
+};
 export function getByTitle (payload){
     return {
         type: GET_BY_TITLE,

@@ -1,4 +1,4 @@
-import  { GET_ALL_CATEGORIES, GET_ALL_DIETS, GET_BY_TITLE, GET_ALL_PRODUCTS, GET_ALL_PROVIDERS, GET_PRODUCT_DETAIL, GET_PROVIDER_DETAIL } from '../actions'
+import  { GET_ALL_CATEGORIES, GET_ALL_DIETS, GET_BY_TITLE, GET_ALL_PRODUCTS, GET_ALL_PROVIDERS, GET_PRODUCT_DETAIL, GET_DETAIL, GET_PROVIDER_DETAIL } from '../actions'
 
 const initialState = {
     allProducts: [],
@@ -7,7 +7,7 @@ const initialState = {
     providers: [],
     providerDetail: {},
     categories: [],
-    diets: []
+    diets: [],
     detail: []
 }
 
