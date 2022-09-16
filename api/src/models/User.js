@@ -14,6 +14,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    lastName:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     status: {
         type: DataTypes.STRING,
         allowNull: false
@@ -32,6 +36,13 @@ module.exports = (sequelize) => {
           this.setDataValue('pass', hash(this.name + value).split('').sort(() => 0.5 - Math.random()).join(''));
         },
         allowNull: false
+    },
+    avatar: {
+        type: DataTypes.TEXT,
+
+    },
+    birthday: {
+        type: DataTypes.STRING
     },
     disable: {
         type: DataTypes.BOOLEAN,

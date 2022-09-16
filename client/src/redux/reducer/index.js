@@ -1,8 +1,10 @@
-import  { GET_ALL_PRODUCTS, GET_DETAIL } from '../actions'
+
+import  { GET_ALL_PRODUCTS, GET_DETAIL, GET_BY_TITLE } from '../actions'
 
 const initialState = {
     allProducts: [],
     detail: []
+    products:[]
 };
   
 const rootReducer = (state = initialState, action) => {
@@ -10,7 +12,17 @@ const rootReducer = (state = initialState, action) => {
         case GET_ALL_PRODUCTS:
             return{
                 ...state,
-                allProducts: action.payload
+                allProducts: action.payload,
+                products: action.payload
+            }
+        case GET_BY_TITLE :
+            const allP = state.allProducts;
+            const dataTilte= allP.filter((p)=>{
+                return p.title.toLowerCase().includes(action.payload.toLowerCase())
+            })
+            return{
+                ...state,
+                products:dataTilte
             }
         case GET_DETAIL:
             return{
@@ -20,7 +32,8 @@ const rootReducer = (state = initialState, action) => {
 
         default: 
             return { ...state }
-    }
+    }   
+        
 }
 
 export default rootReducer;

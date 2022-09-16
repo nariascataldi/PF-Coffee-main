@@ -1,0 +1,26 @@
+.boton-next{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#E3EFFB ;
+    color:#DD6873 ;
+    border-color:#E3EFFB;
+    border-radius: 3px;
+    margin: 6px;
+    font-size: 50px;
+    padding: 0.1px;
+    border: none;
+}
+.boton-next:hover{
+    color:#ca2334;
+}
+.boton-next:active{
+    color: #c94351 ;
+}
+.botones-paginado{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:flex-end;
+    
+}

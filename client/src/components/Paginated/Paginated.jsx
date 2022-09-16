@@ -1,4 +1,6 @@
 import React from 'react';
+import './Paginated.css';
+import {BsChevronCompactRight,BsChevronCompactLeft} from 'react-icons/bs';
 
 export default function Paginated ({productsPerPage, allPoducts, paginated, currentPage, setCurrentPage}){
     const pageNumber= []
@@ -7,17 +9,17 @@ export default function Paginated ({productsPerPage, allPoducts, paginated, curr
         pageNumber.push(i)
     }
     return(
-        <div>
-            <ul>
-                <button
+        <div className='botones-paginado'>
+            
+                <button className='boton-next'
                     disabled= {currentPage === 1}
                     onClick={()=>
                     setCurrentPage(currentPage === 1 ?
                         currentPage :
                         currentPage - 1)}
-                >Prev.</button>
+                ><BsChevronCompactLeft/></button>
 
-                <li>
+                
                     {pageNumber && pageNumber.map((number)=>(
                         <button
                             key={number}
@@ -26,19 +28,17 @@ export default function Paginated ({productsPerPage, allPoducts, paginated, curr
                             {number}
                         </button>
                     ))}
-                </li>
+            
 
-                <button
+                <button className='boton-next'
                     disabled={currentPage === pageNumber.length}
                     onClick={()=>
                     setCurrentPage(currentPage === totalPage ?
                         currentPage :
                         currentPage + 1)
                     }
-                >
-                    Next.
-                </button>
-            </ul>
+                ><BsChevronCompactRight/></button>
+        
         </div>
     )
 }
