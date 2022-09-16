@@ -4,7 +4,7 @@ import './Card.css';
 
 export default function Card ({id,title,image,price}){
     return (
-        <Link to={`/detail/${id}`}>
+        <Link to={`/detail/${id}`} className="link-card">
         <div className='card-container'>
         
             <img className='img-card' src={image}/>

@@ -1,4 +1,4 @@
-import React from "react";  
+import React, { useEffect } from "react";  
 import {useState} from 'react'
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
@@ -22,13 +22,14 @@ export default function Cards (){
             <div><h3>Not found!</h3></div>
         )
     }
+  
     return (
         <div>
 
             <div className='paginado'>
                 <Paginated 
                     productsPerPage={productsPerPage}
-                    allProducts={products.length}
+                    products={products.length}
                     paginated={paginated}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}

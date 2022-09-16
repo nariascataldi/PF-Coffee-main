@@ -20,9 +20,8 @@ const handleSubmit=(e)=>{
 }
 
     return (
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg">
         <div class="container-fluid">
-        <a class="navbar-brand" href="#">Coffee`s orders</a>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
             <li class="nav-item">
@@ -39,6 +38,10 @@ const handleSubmit=(e)=>{
                 </Link>
             </a>
         </li>
+        <form className='searchBar' onSubmit={(e)=>handleSubmit(e)}>
+            <input className='input-search' type='text' onChange={d=>handleOnChange(d)} value={busqueda} placeholder='Search...' />
+                <button className='search-button' type='submit'><BsSearch/></button>
+        </form>
         <li class="nav-item">
           <a class="nav-link" href="#">
             <Link to='/form' className='links'>
@@ -56,18 +59,9 @@ const handleSubmit=(e)=>{
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
             </li>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-                </ul>
+            </ul>
             </div>
         </div>
-        <form className='searchBar' onSubmit={(e)=>handleSubmit(e)}>
-            <input className='input-search' type='text' onChange={d=>handleOnChange(d)} value={busqueda} placeholder='Search...' />
-                <button className='search-button' type='submit'><BsSearch/></button>
-            </form>
-       
         <img src={ logo } alt="img" className='logo'/>
     </nav>
     );
