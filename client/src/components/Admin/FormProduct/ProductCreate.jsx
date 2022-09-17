@@ -79,25 +79,23 @@ const FormularioProducto = () => {
       </div>
       <div className={style.image}>
         <label>Imágen del Producto</label>
-        <input className={style.input_formu} type="text" placeholder="direccion de img" {...register('description', {
-          required: true,
+        <input className={style.input_formu} type="text" placeholder="direccion de img" {...register('image', {
+          required: false,
           maxLength: 100,
           pattern: /(https?:\/\/.*\.(?:png|jpg))/,
         })} />
-        {errors.description?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
-        {errors.description?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
-        {errors.description?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
+        {errors.image?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
+        {errors.image?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
+        {errors.image?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
       </div>
-      <div className={style.pass}>
-        <label>Contraseña</label>
-        <input className={style.input_formu} type="password" placeholder="8 letras" {...register('pass', {
+      <div className={style.stock}>
+        <label>Cantidad</label>
+        <input className={style.input_formu} type="number" placeholder="8 letras" {...register('stock', {
           required: true,
-          maxLength: 8,
           pattern: /^[A-Za-z]+$/i,
         })} />
-        {errors.name?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 8 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
+        {errors.stock?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
+        {errors.stock?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
       </div>
       <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>
