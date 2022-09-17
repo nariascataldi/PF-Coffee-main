@@ -19,7 +19,7 @@ const FormularioProducto = () => {
       price: '0',                         //*
       cost: '0',                          //*
       description: 'client',              //*
-      image: 'javascript@brave.etc',
+      image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/18/8d/1a/cafe-tinto-de-la-sierra.jpg',
       // disable: false,
       // like: '5',
       stock: '10',
@@ -41,7 +41,12 @@ const FormularioProducto = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.title}>
         <label>Nombre</label>
-        <input className={style.input_formu} type="text" placeholder="Nombre" {...register('title', {
+        <input 
+        className={style.input_formu} 
+        type="text" 
+        placeholder="Nombre" 
+        maxLength={50}
+        {...register('title', {
           required: true,
           // minLength: 1, está en la función externa validators
           maxLength: 50,
@@ -61,12 +66,27 @@ const FormularioProducto = () => {
         {errors.price?.type === 'required' && <p className={style.p_form}>Campo obligatorio</p>}
         {errors.price?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan letras</p>}
       </div>
-      <div className={style.mail}>
-        <label>Email</label>
-        <input className={style.input_formu} type="text" placeholder="Opcional" {...register('mail', {
-          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
+      <div className={style.description}>
+        <label>Descripción del Producto</label>
+        <input className={style.input_formu} type="text" placeholder="Opcional" {...register('description', {
+          required: true,
+          maxLength: 400,
+          pattern: /^[A-Za-z]+$/i,
         })} />
-        {errors.mail?.type === 'pattern' && <p className={style.p_form}>El formato del email es incorrecto</p>}
+        {errors.description?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
+        {errors.description?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
+        {errors.description?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
+      </div>
+      <div className={style.image}>
+        <label>Imágen del Producto</label>
+        <input className={style.input_formu} type="text" placeholder="direccion de img" {...register('description', {
+          required: true,
+          maxLength: 100,
+          pattern: /(https?:\/\/.*\.(?:png|jpg))/,
+        })} />
+        {errors.description?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
+        {errors.description?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
+        {errors.description?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
       </div>
       <div className={style.pass}>
         <label>Contraseña</label>
