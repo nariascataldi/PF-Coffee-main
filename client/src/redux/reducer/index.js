@@ -10,7 +10,8 @@ import {
   POST_USER,
   POST_PRODUCT,
   SET_FILTER_STATE,
-  FILTER
+  FILTER,
+  POST_PROVIDERS
 } from '../actions'
 
 const initialState = {
@@ -112,6 +113,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         products: [...filterDiet]
+      }
+    case POST_PROVIDERS :
+      return{
+        ...state,
+        providers: action.payload
       }
 
     default:
