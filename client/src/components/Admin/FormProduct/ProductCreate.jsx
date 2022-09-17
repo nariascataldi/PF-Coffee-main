@@ -92,7 +92,7 @@ const FormularioProducto = () => {
         <label>Cantidad</label>
         <input className={style.input_formu} type="number" placeholder="8 letras" {...register('stock', {
           required: true,
-          pattern: /^[A-Za-z]+$/i,
+          pattern: /^\d{1,2}$/,
         })} />
         {errors.stock?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
         {errors.stock?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
