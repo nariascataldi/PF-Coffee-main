@@ -34,49 +34,49 @@ const FormularioUsuario = () => {
   const incluirCUIT = watch('incluirCUIT');
   return <div>
     <h2>Editar Perfil</h2>
-    {/* <p>Nombre: {watch('name')}</p> */}
+    {/* <p className={style.p_form}>Nombre: {watch('name')}</p> */}
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.name}>
         <label>Nombre</label>
-        <input className='inp-formu-user' type="text" placeholder="Brendan" {...register('name', {
+        <input className={style.input_formu} type="text" placeholder="Brendan" {...register('name', {
           required: true,
           maxLength: 20,
           pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
           validate: nameValidator
 
         })} />
-        {errors.name?.type === 'validate' && <p>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
+        {errors.name?.type === 'validate' && <p className={style.p_form}>El campo nombre es requerido</p>}
+        {errors.name?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 20 caracteres</p>}
+        {errors.name?.type === 'pattern' && <p className={style.p_form}>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
       </div>
       <div className={style.lastName}>
         <label>Apellido</label>
-        <input className='inp-formu-user' type="text" placeholder="Eich" {...register('lastName', {
+        <input className={style.input_formu} type="text" placeholder="Eich" {...register('lastName', {
           required: true,
           maxLength: 20,
           pattern: /^[A-Za-z]+$/i
         })} />
-        {errors.lastName?.type === 'required' && <p>El campo apellido es requerido</p>}
-        {errors.lastName?.type === 'maxLength' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
-        {errors.lastName?.type === 'pattern' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'required' && <p className={style.p_form}>El campo apellido es requerido</p>}
+        {errors.lastName?.type === 'maxLength' && <p className={style.p_form}>El campo apellido debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'pattern' && <p className={style.p_form}>El campo apellido debe tener menos de 20 caracteres</p>}
       </div>
       <div className={style.mail}>
         <label>Email</label>
-        <input className='inp-formu-user' type="text" placeholder="javascript@brave.etc" {...register('mail', {
+        <input className={style.input_formu} type="text" placeholder="javascript@brave.etc" {...register('mail', {
           pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
         })} />
-        {errors.mail?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
+        {errors.mail?.type === 'pattern' && <p className={style.p_form}>El formato del email es incorrecto</p>}
       </div>
       <div className={style.pass}>
         <label>Contraseña</label>
-        <input className='inp-formu-user' type="password" placeholder="8 letras" {...register('pass', {
+        <input className={style.input_formu} type="password" placeholder="8 letras" {...register('pass', {
           required: true,
           maxLength: 8,
           pattern: /^[A-Za-z]+$/i,
         })} />
-        {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 8 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p>El campo nombre debe tener letras</p>}
+        {errors.name?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
+        {errors.name?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 8 caracteres</p>}
+        {errors.name?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
       </div>
       <div className={style.birthday}>
         <label>Fecha Nacimiento</label>
@@ -93,15 +93,15 @@ const FormularioUsuario = () => {
       </div>
       <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>
-        <input className='inp-formu-user' type="checkbox" {...register('incluirCUIT')} />
+        <input className={style.input_formu} type="checkbox" {...register('incluirCUIT')} />
       </div>
       {incluirCUIT && (
         <div className={style.numberCUIT}>
           <label>CUIT</label>
-          <input className='inp-formu-user' type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
+          <input className={style.input_formu} type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
         </div>
       )}
-      <input className='inp-formu-user' type="submit" value="Enviar" />
+      <input className={style.input_formu} type="submit" value="Enviar" />
     </form>
   </div>
 }
