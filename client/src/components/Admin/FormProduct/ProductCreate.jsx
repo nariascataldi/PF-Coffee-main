@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { titleValidator } from "./validators";
-import { postUser } from "../../../redux/actions"; //2
+import { postProduct } from "../../../redux/actions"; //2
 import { useDispatch } from "react-redux";
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -30,7 +30,7 @@ const FormularioProducto = () => {
   const onSubmit = (data, e) => {
     console.log(data);
     e.preventDefault();
-    dispatch(postUser(data));
+    dispatch(postProduct(data));
     alert('User create successfuly!');
     e.target.reset();
   }
