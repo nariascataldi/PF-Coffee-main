@@ -35,7 +35,7 @@ const FormularioUsuario = () => {
   return <div>
     <h2>Editar Perfil</h2>
 
-    <p className={style.p_form}>Pass: {watch('pass')}</p>
+    {/* <p className={style.p_form}>Pass: {watch('pass')}</p> */}
     
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.name}>
