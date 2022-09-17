@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { titleValidator } from "./validators";
 import { postProduct } from "../../../redux/actions"; //2
@@ -18,13 +18,13 @@ const FormularioProducto = () => {
       title: 'Café café tinto',
       price: '0',                         //*
       cost: '0',                          //*
+      margen: '100',                      //*
       description: 'client',              //*
       image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/18/8d/1a/cafe-tinto-de-la-sierra.jpg',
       // disable: false,
       // like: '5',
       stock: '10',
-      diet: '',
-
+      diet: 'dairy free',
     }
   });
   const onSubmit = (data, e) => {
