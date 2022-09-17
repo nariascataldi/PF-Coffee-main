@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { edadValidator } from "./validator";
+import { nameValidator } from "./validators";
 import DatePicker from 'react-datepicker';
 import { postUser } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import 'react-datepicker/dist/react-datepicker.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import style from './UserCreate.module.css';
+
 
 // https://reactdatepicker.com/
 
@@ -41,11 +42,12 @@ const FormularioUsuario = () => {
           required: true,
           maxLength: 20,
           pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
+          validate: nameValidator
 
         })} />
-        {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
+        {errors.name?.type === 'validate' && <p>El campo nombre es requerido</p>}
         {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p>El campo nombre contener letras</p>}
+        {errors.name?.type === 'pattern' && <p>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
       </div>
       <div className={style.lastName}>
         <label>Apellido</label>

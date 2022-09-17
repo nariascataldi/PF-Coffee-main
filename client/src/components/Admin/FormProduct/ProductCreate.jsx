@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { titleValidator } from "./validators";
 import { postUser } from "../../../redux/actions"; //2
 import { useDispatch } from "react-redux";
 
@@ -36,20 +36,21 @@ const FormularioProducto = () => {
   }
   const incluirCUIT = watch('incluirCUIT');
   return <div>
-    <h2>Editar Perfil</h2>
+    <h2>Producto</h2>
      {/* <p>Nombre: {watch('title')}</p> */}
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.title}>
         <label>Nombre</label>
-        <input className='inp-formu-user' type="text" placeholder="Brendan" {...register('title', {
+        <input className='inp-formu-user' type="text" placeholder="Nombre" {...register('title', {
           required: true,
-          minLength: 1,
-          maxLength: 50,
+          // minLength: 1, está en la función externa validators
+          maxLength: 20,
           pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
+          validate: titleValidator
         })} />
-        {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 50 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p>El campo nombre contener letras</p>}
+        {errors.title?.type === 'validate' && <p>El campo nombre es requerido</p>}
+        {errors.title?.type === 'maxLength' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
+        {errors.title?.type === 'pattern' && <p>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
       </div>
       <div className={style.lastName}>
         <label>Apellido</label>
@@ -58,13 +59,13 @@ const FormularioProducto = () => {
           maxLength: 20,
           pattern: /^[A-Za-z]+$/i
         })} />
-        {errors.lastName?.type === 'required' && <p>El campo apellido es requerido</p>}
-        {errors.lastName?.type === 'maxLength' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
-        {errors.lastName?.type === 'pattern' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'required' && <p>Campo obligatorio</p>}
+        {errors.lastName?.type === 'maxLength' && <p>Debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'pattern' && <p>Solo se aceptan letras</p>}
       </div>
       <div className={style.mail}>
         <label>Email</label>
-        <input className='inp-formu-user' type="text" placeholder="javascript@brave.etc" {...register('mail', {
+        <input className='inp-formu-user' type="text" placeholder="Opcional" {...register('mail', {
           pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
         })} />
         {errors.mail?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
