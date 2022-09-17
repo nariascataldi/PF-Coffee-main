@@ -94,8 +94,8 @@ const FormularioProducto = () => {
           required: true,
           pattern: /^\d{1,2}$/,
         })} />
-        {errors.stock?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
-        {errors.stock?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
+        {errors.stock?.type === 'required' && <p className={style.p_form}>El campo es requerido</p>}
+        {errors.stock?.type === 'pattern' && <p className={style.p_form}>Debe contener numeros</p>}
       </div>
       <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>
