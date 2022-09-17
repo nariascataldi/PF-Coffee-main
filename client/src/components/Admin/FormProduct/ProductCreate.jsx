@@ -79,7 +79,7 @@ const FormularioProducto = () => {
       </div>
       <div className={style.image}>
         <label>Imágen del Producto</label>
-        <input className={style.input_formu} type="text" placeholder="direccion de img" {...register('image', {
+        <input className={style.input_formu} type="text" placeholder="📷 URL" {...register('image', {
           required: false,
           maxLength: 100,
           pattern: /(https?:\/\/.*\.(?:png|jpg))/,
@@ -90,7 +90,7 @@ const FormularioProducto = () => {
       </div>
       <div className={style.stock}>
         <label>Cantidad</label>
-        <input className={style.input_formu} type="number" placeholder="8 letras" {...register('stock', {
+        <input className={style.input_formu} type="number" placeholder="🔢" {...register('stock', {
           required: true,
           pattern: /^\d{1,2}$/,
         })} />
@@ -113,14 +113,3 @@ const FormularioProducto = () => {
 }
 
 export default FormularioProducto;
-/* <div className={}>
-<label>Dirección</label>
-<input type="text" placeholder="Calle Mocha 1995, Salta, Argentina" {...register('direccion', {
-  required: true
-})} />
-</div> 
-<div>
-<label>Teléfono</label>
-<input type="tel" placeholder="+54 9 387 123 1234" {...register("Mobile number", { required: true, minLength: 6, maxLength: 12 })} />
-</div>
-*/
