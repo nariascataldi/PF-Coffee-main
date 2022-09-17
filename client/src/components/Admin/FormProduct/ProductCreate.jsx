@@ -18,9 +18,9 @@ const FormularioProducto = () => {
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
       title: 'Café café tinto',
-      price: '0',                         //*
-      cost: '0',                          //*
-      margen: '100',                      //*
+      cost: '5',                          //*
+      margin: '100',                      //*
+      price: '',                         //*
       description: 'client',              //*
       image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/18/8d/1a/cafe-tinto-de-la-sierra.jpg',
       // disable: false,
@@ -37,36 +37,56 @@ const FormularioProducto = () => {
     e.target.reset();
   }
   const incluirCUIT = watch('incluirCUIT');
+
   return <div>
     <h2>Producto</h2>
-    {/* <p className={style.p_form}>Nombre: {watch('title')}</p> */}
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.title}>
         <label>Nombre</label>
-        <input 
-        className={style.input_formu} 
-        type="text" 
-        placeholder="Nombre" 
-        maxLength={50}
-        {...register('title', {
-          required: true,
-          // minLength: 1, está en la función externa validators
-          maxLength: 50,
-          pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
-          validate: titleValidator
-        })} />
+        <input
+          className={style.input_formu}
+          type="text"
+          placeholder="Nombre del Producto"
+          maxLength={50}
+          {...register('title', {
+            required: true,
+            // minLength: 1, está en la función externa validators
+            maxLength: 50,
+            pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
+            validate: titleValidator
+          })} />
         {errors.title?.type === 'validate' && <p className={style.p_form}>El campo nombre es requerido</p>}
         {errors.title?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 20 caracteres</p>}
         {errors.title?.type === 'pattern' && <p className={style.p_form}>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
       </div>
+      <div className={style.cost}>
+        <label>Precio del Proveedor</label>
+        <input className={style.input_formu} type="number" placeholder="5" {...register('cost', {
+          required: false,
+          pattern: /^\d{1,2}$/,
+
+        })} />
+        {errors.cost?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+      </div>
+      <div className={style.margin}>
+        <label>Margen</label>
+        <input className={style.input_formu} type="number" placeholder="5" {...register('margin', {
+          required: false,
+          pattern: /^\d{1,2}$/,
+
+        })} />
+        {errors.margin?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+      </div>
       <div className={style.price}>
         <label>Precio al Público</label>
-        <input className={style.input_formu} type="number" placeholder="5" {...register('price', {
+        <p className={style.p_form}>Sugerido: {Math.floor(watch('cost') * ((watch('margin') / 100) + 1))}</p>
+        <input className={style.input_formu} type="number" {...register('price', {
           required: true,
           pattern: /^\d{1,2}$/,
+
         })} />
         {errors.price?.type === 'required' && <p className={style.p_form}>Campo obligatorio</p>}
-        {errors.price?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan letras</p>}
+        {errors.price?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
       </div>
       <div className={style.description}>
         <label>Descripción del Producto</label>
@@ -81,7 +101,7 @@ const FormularioProducto = () => {
       </div>
       <div className={style.image}>
         <label>Imágen del Producto</label>
-        <input className={style.input_formu} type="text" placeholder="📷 URL" {...register('image', {
+        <input className={style.input_formu} type="url" placeholder="📷 URL" {...register('image', {
           required: false,
           maxLength: 100,
           pattern: /(https?:\/\/.*\.(?:png|jpg))/,
@@ -106,7 +126,7 @@ const FormularioProducto = () => {
       {incluirCUIT && (
         <div className={style.numberCUIT}>
           <label>CUIT</label>
-          <input className={style.input_formu} type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
+          <input className={style.input_formu} type="number" placeholder="" {...register('CUIT')} />
         </div>
       )}
       <input className={style.input_formu} type="submit" value="Enviar" />
