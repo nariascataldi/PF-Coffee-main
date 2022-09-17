@@ -9,6 +9,8 @@ export const GET_DETAIL = "GET_DETAIL"
 export const GET_BY_TITLE = 'GET_BY_TITLE'
 export const POST_USER = 'POST_USER'
 export const POST_PRODUCT = 'POST_PRODUCT'
+export const SET_FILTER_STATE = 'SET_FILTER_STATE'
+export const FILTER = 'FILTER'
 
 
 export function getAllProducts() {
@@ -104,6 +106,7 @@ export const createProduct = (postData) => {
 };
 
 export function postUser(payload) {
+
   return async function () {
     console.log('actions postUser ', { payload });
     const response = await axios.post('/users', payload);
@@ -120,3 +123,21 @@ export function postProduct(payload) {
     return response;
   }
 }
+    return async function () {
+      console.log('actions postUser ',{payload});
+      const response = await axios.post('/users', payload);
+      console.log({response});
+      return response;
+    }
+  };
+export function setFilterState (payload){
+    return {
+        type: SET_FILTER_STATE ,
+        payload
+    }
+};
+export function filter (){
+    return{
+        type:FILTER ,
+    }
+};
