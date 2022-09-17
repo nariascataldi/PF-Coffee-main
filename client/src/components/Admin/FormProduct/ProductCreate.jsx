@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import DatePicker from 'react-datepicker';
-import { postUser } from "../../../redux/actions";
+import { postUser } from "../../../redux/actions"; //2
 import { useDispatch } from "react-redux";
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -13,14 +12,19 @@ import style from './ProductCreate.module.css';
 
 const FormularioProducto = () => {
   const dispatch = useDispatch();
-  const [birthday, setBirthday] = useState(null);
+
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
-      name: 'Brendan',
-      lastName: 'Eich',
-      status: 'client',
-      mail: 'javascript@brave.etc',
-      pass: 'abcdefgh',
+      title: 'Brendan', 
+      price: '0',                         //*
+      cost: '0',                          //*
+      description: 'client',              //*
+      image: 'javascript@brave.etc',      
+      // disable: false,
+      // like: '5',
+      stock: '10',                        
+      diet: '',
+
     }
   });
   const onSubmit = (data, e) => {
@@ -33,18 +37,18 @@ const FormularioProducto = () => {
   const incluirCUIT = watch('incluirCUIT');
   return <div>
     <h2>Editar Perfil</h2>
-    {/* <p>Nombre: {watch('name')}</p> */}
+     {/* <p>Nombre: {watch('title')}</p> */}
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={style.name}>
+      <div className={style.title}>
         <label>Nombre</label>
-        <input className='inp-formu-user' type="text" placeholder="Brendan" {...register('name', {
+        <input className='inp-formu-user' type="text" placeholder="Brendan" {...register('title', {
           required: true,
-          maxLength: 20,
+          minLength: 1,
+          maxLength: 50,
           pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
-
         })} />
         {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
+        {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 50 caracteres</p>}
         {errors.name?.type === 'pattern' && <p>El campo nombre contener letras</p>}
       </div>
       <div className={style.lastName}>
@@ -75,19 +79,6 @@ const FormularioProducto = () => {
         {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
         {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 8 caracteres</p>}
         {errors.name?.type === 'pattern' && <p>El campo nombre debe tener letras</p>}
-      </div>
-      <div className={style.birthday}>
-        <label>Fecha Nacimiento</label>
-        <DatePicker
-          selected={birthday}
-          onChange={date => setBirthday(date)}
-          dateFormat='dd/MM/yyyy'
-          isClearable
-          showYearDropdown
-          scrollableYearDropdown
-          placeholderText="dd/mm/yyyy"
-          maxDate={new Date()}
-        />
       </div>
       <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>
