@@ -22,7 +22,6 @@ export function getAllProducts() {
     })
   }
 };
-
 export function getDetail(id) {
   return async function (dispatch) {
     try {
@@ -37,15 +36,12 @@ export function getDetail(id) {
     }
   }
 };
-
 export function getByTitle(payload) {
   return {
     type: GET_BY_TITLE,
     payload
-
   }
 }
-
 export function getProductDetail(id) {
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/products/${id}`);
@@ -55,7 +51,6 @@ export function getProductDetail(id) {
     })
   }
 };
-
 export function getAllProviders() {
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/providers`);
@@ -65,7 +60,6 @@ export function getAllProviders() {
     })
   }
 };
-
 export function getProviderDetail(id) {
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/providers/${id}`);
@@ -75,7 +69,6 @@ export function getProviderDetail(id) {
     })
   }
 };
-
 export function getAllCategories() {
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/categories`);
@@ -85,7 +78,6 @@ export function getAllCategories() {
     })
   }
 };
-
 export function getAllDiets() {
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/diets`);
@@ -95,7 +87,6 @@ export function getAllDiets() {
     })
   }
 };
-
 export const createProduct = (postData) => {
   return () => {
     axios.post('http://localhost:3001/products', postData)
@@ -104,9 +95,7 @@ export const createProduct = (postData) => {
       })
   }
 };
-
 export function postUser(payload) {
-
   return async function () {
     console.log('actions postUser ', { payload });
     const response = await axios.post('/users', payload);
@@ -114,30 +103,22 @@ export function postUser(payload) {
     return response;
   }
 }
-
 export function postProduct(payload) {
   return async function () {
-    console.log('actions postUser ', { payload });
+    console.log('actions postProduct ', { payload });
     const response = await axios.post('/products', payload);
     console.log({ response });
     return response;
   }
 }
-    return async function () {
-      console.log('actions postUser ',{payload});
-      const response = await axios.post('/users', payload);
-      console.log({response});
-      return response;
-    }
-  };
-export function setFilterState (payload){
-    return {
-        type: SET_FILTER_STATE ,
-        payload
-    }
+export function setFilterState(payload) {
+  return {
+    type: SET_FILTER_STATE,
+    payload
+  }
 };
-export function filter (){
-    return{
-        type:FILTER ,
-    }
+export function filter() {
+  return {
+    type: FILTER,
+  }
 };

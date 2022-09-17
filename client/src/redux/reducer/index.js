@@ -1,32 +1,32 @@
-import  { 
-    GET_ALL_CATEGORIES, 
-    GET_ALL_DIETS, 
-    GET_BY_TITLE, 
-    GET_ALL_PRODUCTS, 
-    GET_ALL_PROVIDERS, 
-    GET_PRODUCT_DETAIL, 
-    GET_DETAIL, 
-    GET_PROVIDER_DETAIL,
-    POST_USER,
-    POST_PRODUCT
-    SET_FILTER_STATE,
-    FILTER
- } from '../actions'
+import {
+  GET_ALL_CATEGORIES,
+  GET_ALL_DIETS,
+  GET_BY_TITLE,
+  GET_ALL_PRODUCTS,
+  GET_ALL_PROVIDERS,
+  GET_PRODUCT_DETAIL,
+  GET_DETAIL,
+  GET_PROVIDER_DETAIL,
+  POST_USER,
+  POST_PRODUCT,
+  SET_FILTER_STATE,
+  FILTER
+} from '../actions'
 
 const initialState = {
-    allProducts: [],
-    products:[],
-    productDetail: {},
-    providers: [],
-    providerDetail: {},
-    categories: [],
-    diets: [],
-    detail: [],
-    filterBy : {
-        title: '',
-        category: '',
-        diet:''
-    }
+  allProducts: [],
+  products: [],
+  productDetail: {},
+  providers: [],
+  providerDetail: {},
+  categories: [],
+  diets: [],
+  detail: [],
+  filterBy: {
+    title: '',
+    category: '',
+    diet: ''
+  }
 }
 
 
@@ -85,35 +85,34 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
-        case POST_USER:
-            return {
-                ...state
-            }    
-            
-        case SET_FILTER_STATE :
-            return {
-                ...state,
-                filterBy:{
-                    ...state.filterBy,
-                    ...action.payload
-                }
+    case POST_USER:
+      return {
+        ...state
+      }
+    case SET_FILTER_STATE:
+      return {
+        ...state,
+        filterBy: {
+          ...state.filterBy,
+          ...action.payload
+        }
 
-            }
-        case FILTER:
-            const allProd = state.allProducts;
-            const titleFilter = state.filterBy.title==='' ? allProd : allProd.filter(e=>{
-                return e.title.toLowerCase().includes(state.filterBy.title.toLocaleLowerCase())
-            })
-            const filterCategory= state.filterBy.category === "" ? titleFilter : titleFilter.filter(e=>{
-                return e.categories.map(d=>d.name).includes(state.filterBy.category) 
-            })
-            const filterDiet= state.filterBy.diet=== "" ? filterCategory : filterCategory.filter(e=>{
-                return e.diets.map(d=>d.name).includes(state.filterBy.diet)
-            })
-            return {
-                ...state ,
-                products: [...filterDiet]
-            }
+      }
+    case FILTER:
+      const allProd = state.allProducts;
+      const titleFilter = state.filterBy.title === '' ? allProd : allProd.filter(e => {
+        return e.title.toLowerCase().includes(state.filterBy.title.toLocaleLowerCase())
+      })
+      const filterCategory = state.filterBy.category === "" ? titleFilter : titleFilter.filter(e => {
+        return e.categories.map(d => d.name).includes(state.filterBy.category)
+      })
+      const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
+        return e.diets.map(d => d.name).includes(state.filterBy.diet)
+      })
+      return {
+        ...state,
+        products: [...filterDiet]
+      }
 
     default:
       return { ...state }
