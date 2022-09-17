@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { titleValidator } from "./validators";
 import { postProduct } from "../../../redux/actions"; //2
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import 'react-datepicker/dist/react-datepicker.css';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +12,8 @@ import style from './ProductCreate.module.css';
 
 const FormularioProducto = () => {
   const dispatch = useDispatch();
+  var diet = useSelector((state) => state.diets);
+
 
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
