@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { titleValidator } from "./validators";
-import { postUser } from "../../../redux/actions"; //2
+import { postProduct } from "../../../redux/actions"; //2
 import { useDispatch } from "react-redux";
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -19,7 +19,7 @@ const FormularioProducto = () => {
       price: '0',                         //*
       cost: '0',                          //*
       description: 'client',              //*
-      image: 'javascript@brave.etc',
+      image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/18/8d/1a/cafe-tinto-de-la-sierra.jpg',
       // disable: false,
       // like: '5',
       stock: '10',
@@ -30,7 +30,7 @@ const FormularioProducto = () => {
   const onSubmit = (data, e) => {
     console.log(data);
     e.preventDefault();
-    dispatch(postUser(data));
+    dispatch(postProduct(data));
     alert('User create successfuly!');
     e.target.reset();
   }
@@ -41,7 +41,12 @@ const FormularioProducto = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.title}>
         <label>Nombre</label>
-        <input className={style.input_formu} type="text" placeholder="Nombre" {...register('title', {
+        <input 
+        className={style.input_formu} 
+        type="text" 
+        placeholder="Nombre" 
+        maxLength={50}
+        {...register('title', {
           required: true,
           // minLength: 1, está en la función externa validators
           maxLength: 50,
@@ -61,23 +66,36 @@ const FormularioProducto = () => {
         {errors.price?.type === 'required' && <p className={style.p_form}>Campo obligatorio</p>}
         {errors.price?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan letras</p>}
       </div>
-      <div className={style.mail}>
-        <label>Email</label>
-        <input className={style.input_formu} type="text" placeholder="Opcional" {...register('mail', {
-          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-        })} />
-        {errors.mail?.type === 'pattern' && <p className={style.p_form}>El formato del email es incorrecto</p>}
-      </div>
-      <div className={style.pass}>
-        <label>Contraseña</label>
-        <input className={style.input_formu} type="password" placeholder="8 letras" {...register('pass', {
+      <div className={style.description}>
+        <label>Descripción del Producto</label>
+        <input className={style.input_formu} type="text" placeholder="Opcional" {...register('description', {
           required: true,
-          maxLength: 8,
+          maxLength: 400,
           pattern: /^[A-Za-z]+$/i,
         })} />
-        {errors.name?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 8 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
+        {errors.description?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
+        {errors.description?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
+        {errors.description?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
+      </div>
+      <div className={style.image}>
+        <label>Imágen del Producto</label>
+        <input className={style.input_formu} type="text" placeholder="direccion de img" {...register('image', {
+          required: false,
+          maxLength: 100,
+          pattern: /(https?:\/\/.*\.(?:png|jpg))/,
+        })} />
+        {errors.image?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
+        {errors.image?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
+        {errors.image?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
+      </div>
+      <div className={style.stock}>
+        <label>Cantidad</label>
+        <input className={style.input_formu} type="number" placeholder="8 letras" {...register('stock', {
+          required: true,
+          pattern: /^[A-Za-z]+$/i,
+        })} />
+        {errors.stock?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
+        {errors.stock?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
       </div>
       <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>

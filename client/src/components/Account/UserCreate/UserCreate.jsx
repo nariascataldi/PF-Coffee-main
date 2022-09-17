@@ -21,7 +21,7 @@ const FormularioUsuario = () => {
       lastName: 'Eich',
       status: 'client',
       mail: 'javascript@brave.etc',
-      pass: 'abcdefgh',
+      pass: 'abcdefghA1!',
     }
   });
   const onSubmit = (data, e) => {
@@ -34,7 +34,9 @@ const FormularioUsuario = () => {
   const incluirCUIT = watch('incluirCUIT');
   return <div>
     <h2>Editar Perfil</h2>
-    {/* <p className={style.p_form}>Nombre: {watch('name')}</p> */}
+
+    {/* <p className={style.p_form}>Pass: {watch('pass')}</p> */}
+    
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.name}>
         <label>Nombre</label>
@@ -69,14 +71,20 @@ const FormularioUsuario = () => {
       </div>
       <div className={style.pass}>
         <label>Contraseña</label>
-        <input className={style.input_formu} type="password" placeholder="8 letras" {...register('pass', {
+        <input 
+        className={style.input_formu} 
+        type="password" 
+        placeholder="8 letras" 
+        
+        {...register('pass', {
           required: true,
-          maxLength: 8,
-          pattern: /^[A-Za-z]+$/i,
+          minLength: 8,
+          maxLength: 15,
+          pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/,
         })} />
-        {errors.name?.type === 'required' && <p className={style.p_form}>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 8 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p className={style.p_form}>El campo nombre debe tener letras</p>}
+        {errors.pass?.type === 'required' && <p className={style.p_form}>Es requerido</p>}
+        {errors.pass?.type === 'maxLength' && <p className={style.p_form}>estar entre 8 y 15 caracteres</p>}
+        {errors.pass?.type === 'pattern' && <p className={style.p_form}>Caracteres</p>}
       </div>
       <div className={style.birthday}>
         <label>Fecha Nacimiento</label>
