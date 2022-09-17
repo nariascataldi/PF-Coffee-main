@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true, 
     },
     price: {
       type: DataTypes.INTEGER,

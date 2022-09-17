@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { edadValidator } from "./validator";
+import { nameValidator } from "./validators";
 import DatePicker from 'react-datepicker';
 import { postUser } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import 'react-datepicker/dist/react-datepicker.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import style from './UserCreate.module.css';
+
 
 // https://reactdatepicker.com/
 
@@ -20,7 +21,7 @@ const FormularioUsuario = () => {
       lastName: 'Eich',
       status: 'client',
       mail: 'javascript@brave.etc',
-      pass: 'abcdefgh',
+      pass: 'abcdefghA1!',
     }
   });
   const onSubmit = (data, e) => {
@@ -31,51 +32,59 @@ const FormularioUsuario = () => {
     e.target.reset();
   }
   const incluirCUIT = watch('incluirCUIT');
-
   return <div>
     <h2>Editar Perfil</h2>
-    {/* <p>Nombre: {watch('name')}</p> */}
+
+    {/* <p className={style.p_form}>Pass: {watch('pass')}</p> */}
+    
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={style.name}>
         <label>Nombre</label>
-        <input type="text" placeholder="Brendan" {...register('name', {
+        <input className={style.input_formu} type="text" placeholder="Brendan" {...register('name', {
           required: true,
           maxLength: 20,
           pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
+          validate: nameValidator
 
         })} />
-        {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p>El campo nombre contener letras</p>}
+        {errors.name?.type === 'validate' && <p className={style.p_form}>El campo nombre es requerido</p>}
+        {errors.name?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 20 caracteres</p>}
+        {errors.name?.type === 'pattern' && <p className={style.p_form}>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
       </div>
       <div className={style.lastName}>
         <label>Apellido</label>
-        <input type="text" placeholder="Eich" {...register('lastName', {
+        <input className={style.input_formu} type="text" placeholder="Eich" {...register('lastName', {
           required: true,
           maxLength: 20,
           pattern: /^[A-Za-z]+$/i
         })} />
-        {errors.lastName?.type === 'required' && <p>El campo apellido es requerido</p>}
-        {errors.lastName?.type === 'maxLength' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
-        {errors.lastName?.type === 'pattern' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'required' && <p className={style.p_form}>El campo apellido es requerido</p>}
+        {errors.lastName?.type === 'maxLength' && <p className={style.p_form}>El campo apellido debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'pattern' && <p className={style.p_form}>El campo apellido debe tener menos de 20 caracteres</p>}
       </div>
       <div className={style.mail}>
         <label>Email</label>
-        <input type="text" placeholder="javascript@brave.etc" {...register('mail', {
+        <input className={style.input_formu} type="text" placeholder="javascript@brave.etc" {...register('mail', {
           pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
         })} />
-        {errors.mail?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
+        {errors.mail?.type === 'pattern' && <p className={style.p_form}>El formato del email es incorrecto</p>}
       </div>
       <div className={style.pass}>
         <label>Contraseña</label>
-        <input type="password" placeholder="8 letras" {...register('pass', {
+        <input 
+        className={style.input_formu} 
+        type="password" 
+        placeholder="8 letras" 
+        
+        {...register('pass', {
           required: true,
-          maxLength: 8,
-          pattern: /^[A-Za-z]+$/i,
+          minLength: 8,
+          maxLength: 15,
+          pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/,
         })} />
-        {errors.name?.type === 'required' && <p>El campo nombre es requerido</p>}
-        {errors.name?.type === 'maxLength' && <p>El campo nombre debe tener menos de 8 caracteres</p>}
-        {errors.name?.type === 'pattern' && <p>El campo nombre debe tener letras</p>}
+        {errors.pass?.type === 'required' && <p className={style.p_form}>Es requerido</p>}
+        {errors.pass?.type === 'maxLength' && <p className={style.p_form}>estar entre 8 y 15 caracteres</p>}
+        {errors.pass?.type === 'pattern' && <p className={style.p_form}>Caracteres</p>}
       </div>
       <div className={style.birthday}>
         <label>Fecha Nacimiento</label>
@@ -92,15 +101,15 @@ const FormularioUsuario = () => {
       </div>
       <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>
-        <input type="checkbox" {...register('incluirCUIT')} />
+        <input className={style.input_formu} type="checkbox" {...register('incluirCUIT')} />
       </div>
       {incluirCUIT && (
         <div className={style.numberCUIT}>
           <label>CUIT</label>
-          <input type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
+          <input className={style.input_formu} type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
         </div>
       )}
-      <input type="submit" value="Enviar" />
+      <input className={style.input_formu} type="submit" value="Enviar" />
     </form>
   </div>
 }

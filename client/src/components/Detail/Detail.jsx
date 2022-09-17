@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {getDetail} from '../../redux/actions'
+import './Detail.css'
 
 
 export default function Detail(props){
@@ -18,30 +19,33 @@ export default function Detail(props){
     console.log("detail: ", detail)
     return(
 
-        <div>
+        <div className='card'>
             {
                 detail ?
-                <div key={detail.id}>
-                    <h3>{detail.title}</h3>
-                    <img src={detail.image} alt="Image product"/>
-                    <div>
-                        <ul>
-                            <li>Description: <p>{detail.description}</p></li>
-                            <li>Price: <p>{detail.price} $</p></li>
-                            <li>Like: <p>{detail.like}</p></li>
-                            <li>Stock: <p>{detail.stock}</p></li>
-                            <li>Diets: <p>aca las diets</p></li>
-                            
-                           <li>Categories: <p>{detail.categories?.map(e=>e.name)}</p></li>
-                        </ul>
+                <div key={detail.id}>                   
+                    <img src={detail.image} className='card-img-top img' alt="Image product"/>
+                    <div className='card-body'>
+                    <h3 className='card-title'>{detail.title}</h3>
                     </div>
+                    
+                        <ul className='list-group list-group-flush'>
+                            <li className='list-group-item fondo'>Description: {detail.description}</li>
+                            <li className='list-group-item fondo'>Price: {detail.price} $</li>
+                            <li className='list-group-item fondo'>Like: {detail.like}</li>
+                            <li className='list-group-item fondo'>Stock: {detail.stock}</li>
+                            <li className='list-group-item fondo'>Diets: aca las diets</li>                          
+                            <li className='list-group-item fondo'>Categories: {detail.categories?.map(e=>e.name)}</li>
+                        </ul>
+                    
                 </div> :
                 <p>Cargando...</p>
 
                         }
+            <div className='card-body none'>            
             <Link to="/home">
-                <button><span>Volver</span></button>
+                <span>Volver</span>
             </Link>
+            </div>
         </div>
     )
 }

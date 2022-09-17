@@ -8,7 +8,7 @@ function LandingPage() {
   return (
     <div className={styles.LandingPage}>
       <div className={styles.home}>
-        <Link to='/about'>
+        <Link to='/home'>
           <button className={styles.button} id='button'>Coffee`s Orders</button>
         </Link>
       </div>
