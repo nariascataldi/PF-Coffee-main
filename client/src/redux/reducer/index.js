@@ -26,7 +26,8 @@ const initialState = {
   filterBy: {
     title: '',
     category: '',
-    diet: ''
+    diet: '',
+    sort:''
   }
 }
 
@@ -110,9 +111,34 @@ const rootReducer = (state = initialState, action) => {
       const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
         return e.diets.map(d => d.name).includes(state.filterBy.diet)
       })
+      const sort = state.filterBy.sort === ''? filterDiet : state.filterBy.sort=== 'Z-A' ? filterDiet.sort((a,b)=>{
+        let A = a.title.toLowerCase();
+                let B = b.title.toLowerCase();
+                if(A == B) {
+                    return 0; 
+                  }
+                if(A > B) {
+                    return -1;
+                  }
+                  if(A < B) {
+                    return 1;
+                  }
+        }) : state.filterBy.sort==='A-Z' && filterDiet.sort((a,b)=>{
+                let A = a.title.toLowerCase();
+                let B = b.title.toLowerCase();
+                  if(A == B) {
+                    return 0; 
+                  }
+                  if(A < B) {
+                    return -1;
+                  }
+                  if(A > B) {
+                    return 1;
+                  }
+              })
       return {
         ...state,
-        products: [...filterDiet]
+        products: [...sort]
       }
     case POST_PROVIDERS :
       return{
