@@ -1,0 +1,11 @@
+.parent404 {
+    display: flex;
+    margin: auto;
+    height: 88vh;
+    background-color: #E3EFFB;
+}
+
+.imgNotFound {
+    width: 20%;
+    height: 50%;
+}

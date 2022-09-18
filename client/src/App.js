@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Perfil from './components/Account/Perfil';
 
 import './App.css';
+import NotFound from './components/404/404';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/form' element={<Perfil />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
   );
