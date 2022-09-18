@@ -12,4 +12,18 @@
 
 .imgText {
     width: 100%; 
+    padding: 20px;
+}
+
+.homeButton {
+    text-decoration: none;
+    padding: 4.5px;
+    background-color:#DD6873;
+    border:none;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+}
+.homeButton:hover {
+    color: white;
 }
