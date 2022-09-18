@@ -1,4 +1,4 @@
-.boton-next{
+.boton-next1{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,11 +10,13 @@
     font-size: 50px;
     padding: 0.1px;
     border: none;
+    cursor: pointer;
+    padding-top: 100px;
 }
-.boton-next:hover{
+.boton-next1:hover{
     color:#ca2334;
 }
-.boton-next:active{
+.boton-next1:active{
     color: #720510 ;
 }
 .botones-paginado{

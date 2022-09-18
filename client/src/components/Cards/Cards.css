@@ -4,4 +4,11 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 52px;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.not-found{
+padding: 40px;
+padding-left: 260px;
+padding-bottom: 250px;
 }

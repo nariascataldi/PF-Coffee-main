@@ -3,14 +3,15 @@ const { Product, Diet, Category, Provider } = require('../db.js');
 let postProduct = async(obj)=>{
   try {
     console.log('input en utils postProduct API: ', obj);
-    let { title, price, description, image, stock, diets, categories, providers  } = obj;
-    // // capitalize
-    // if (title.includes(' ')) {
-    //   title = title.split(' ').map(p=> p.slice(0,1).toUpperCase().concat(p.slice(1).toLowerCase())).join(' ')
-    // } else { title = title[0].toUpperCase().concat(title.slice(1).toLowerCase()) };
+    let { title, price, description, image, stock, cost, margin, diets, categories, providers  } = obj;
+
+    // capitalize
+    if (title.includes(' ')) {
+       title = title.split(' ').map(p=> p.slice(0,1).toUpperCase().concat(p.slice(1).toLowerCase())).join(' ')
+    } else { title = title[0].toUpperCase().concat(title.slice(1).toLowerCase()) };
 
 
-    let prod = await Product.create({ title, price, description, image, stock });  
+    let prod = await Product.create({ title, price, description, image, stock, cost, margin });  
 
     let prodCread = await Product.findOne({ where: { title: title } }); //  console.log(prodCread); console.log(title);
 

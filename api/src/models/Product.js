@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: true, 
     },
     price: {
       type: DataTypes.INTEGER,
@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     image: {
       type: DataTypes.TEXT,
@@ -41,6 +41,12 @@ module.exports = (sequelize) => {
     sale_count: {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    cost: {
+      type: DataTypes.INTEGER
+    },
+    margin: {
+      type: DataTypes.INTEGER
     }
 
   },{
