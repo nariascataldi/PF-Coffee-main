@@ -10,7 +10,6 @@ let postUser = async(obj)=>{
      status,
      mail,
      pass,
-     avatar,
      birthday,
    });
 

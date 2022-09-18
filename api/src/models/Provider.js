@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
     },
     logo: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     adress: {
       type: DataTypes.STRING,
