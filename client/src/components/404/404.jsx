@@ -13,9 +13,11 @@ const NotFound = () => {
                 <NavBar/>
             </div>
             <div className='parent404'>
-                <img src={imgNotFound} alt="notFound" className='imgNotFound'/>
-                <h5 className='titleNotFound'>Esta página no esta disponible</h5>
-                <Link to='/home'>Home</Link>
+                <img src={imgNotFound} alt="notFound" className='img-responsive center-block d-block mx-auto' id='image'/>
+                <div className='imgText'>
+                    <h5 className='titleNotFound'>Parece que esta página no existe</h5>
+                    <Link to='/home'>Home</Link>
+                </div>
             </div>
             <div>
                 <Footer />

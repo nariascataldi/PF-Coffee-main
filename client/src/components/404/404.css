@@ -1,11 +1,15 @@
 .parent404 {
-    display: flex;
-    margin: auto;
-    height: 88vh;
     background-color: #E3EFFB;
+    height: 88vh;
+    left: 0;
+    text-align: center;
+    padding-top: 150px;
 }
 
-.imgNotFound {
-    width: 20%;
-    height: 50%;
+#image {
+    height: 40%;
+}
+
+.imgText {
+    width: 100%; 
 }
