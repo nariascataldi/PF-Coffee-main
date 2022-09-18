@@ -1,10 +1,11 @@
-import styles from "../Loading/Loading.module.css"
 import { NavLink } from 'react-router-dom';
 import React, { Fragment, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import pdf from "../../assets/PDF - Coffee`s Orders.pdf";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+
+import styles from "../About/About.module.css"
 
 const url = pdf;
 export default function About() {
