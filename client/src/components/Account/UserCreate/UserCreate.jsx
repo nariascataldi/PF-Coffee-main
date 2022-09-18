@@ -1,100 +1,128 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { edadValidator } from "./validator";
-import "bootstrap/dist/css/bootstrap.min.css";
-import DatePicker from 'react-datepicker'; 
+import { nameValidator } from "./validators";
+import DatePicker from 'react-datepicker';
+import { postUser } from "../../../redux/actions";
+import { useDispatch } from "react-redux";
+
 import 'react-datepicker/dist/react-datepicker.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import style from './UserCreate.module.css';
+
 
 // https://reactdatepicker.com/
 
 const FormularioUsuario = () => {
-
-  const [selectedDate, setselectedDate] = useState(null);
-
+  const dispatch = useDispatch();
+  const [birthday, setBirthday] = useState(null);
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
-      nombre: '',
-      apellido: '',
-      direccion: '',
+      name: 'Brendan',
+      lastName: 'Eich',
+      status: 'client',
+      mail: 'javascript@brave.etc',
+      pass: 'abcdefghA1!',
     }
   });
-
   const onSubmit = (data, e) => {
     console.log(data);
+    e.preventDefault();
+    dispatch(postUser(data));
+    alert('User create successfuly!');
     e.target.reset();
   }
-
   const incluirCUIT = watch('incluirCUIT');
-
   return <div>
     <h2>Editar Perfil</h2>
-    {/* <p>Nombre: {watch('nombre')}</p> */}
+
+    {/* <p className={style.p_form}>Pass: {watch('pass')}</p> */}
+    
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
+      <div className={style.name}>
         <label>Nombre</label>
-        <input type="text" placeholder="Brendan" {...register('nombre', {
+        <input className={style.input_formu} type="text" placeholder="Brendan" {...register('name', {
           required: true,
           maxLength: 20,
-          pattern: /^[A-Za-z]+$/i,
+          pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
+          validate: nameValidator
 
         })} />
-        {errors.nombre?.type === 'required' && <p>El campo nombre es requerido</p>}
-        {errors.nombre?.type === 'maxLength' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
-        {errors.nombre?.type === 'pattern' && <p>El campo nombre debe tener menos de 20 caracteres</p>}
+        {errors.name?.type === 'validate' && <p className={style.p_form}>El campo nombre es requerido</p>}
+        {errors.name?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 20 caracteres</p>}
+        {errors.name?.type === 'pattern' && <p className={style.p_form}>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
       </div>
-      <div>
+      <div className={style.lastName}>
         <label>Apellido</label>
-        <input type="text" placeholder="Eich" {...register('apellido', {
+        <input className={style.input_formu} type="text" placeholder="Eich" {...register('lastName', {
           required: true,
           maxLength: 20,
           pattern: /^[A-Za-z]+$/i
         })} />
-        {errors.apellido?.type === 'required' && <p>El campo apellido es requerido</p>}
-        {errors.apellido?.type === 'maxLength' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
-        {errors.apellido?.type === 'pattern' && <p>El campo apellido debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'required' && <p className={style.p_form}>El campo apellido es requerido</p>}
+        {errors.lastName?.type === 'maxLength' && <p className={style.p_form}>El campo apellido debe tener menos de 20 caracteres</p>}
+        {errors.lastName?.type === 'pattern' && <p className={style.p_form}>El campo apellido debe tener menos de 20 caracteres</p>}
       </div>
-      <div>
-        <label>Dirección</label>
-        <input type="text" placeholder="Calle Mocha 1995, Salta, Argentina" {...register('direccion', {
-          required: true
-        })} />
-      </div>
-      <div>
+      <div className={style.mail}>
         <label>Email</label>
-        <input type="text" placeholder="javascript@brave.etc" {...register('email', {
+        <input className={style.input_formu} type="text" placeholder="javascript@brave.etc" {...register('mail', {
           pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
         })} />
-        {errors.email?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
+        {errors.mail?.type === 'pattern' && <p className={style.p_form}>El formato del email es incorrecto</p>}
       </div>
-      <div>
-        <label>Teléfono</label>
-        <input type="tel" placeholder="+54 9 387 123 1234" {...register("Mobile number", { required: true, minLength: 6, maxLength: 12 })} />
+      <div className={style.pass}>
+        <label>Contraseña</label>
+        <input 
+        className={style.input_formu} 
+        type="password" 
+        placeholder="8 letras" 
+        
+        {...register('pass', {
+          required: true,
+          minLength: 8,
+          maxLength: 15,
+          pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}$/,
+        })} />
+        {errors.pass?.type === 'required' && <p className={style.p_form}>Es requerido</p>}
+        {errors.pass?.type === 'maxLength' && <p className={style.p_form}>estar entre 8 y 15 caracteres</p>}
+        {errors.pass?.type === 'pattern' && <p className={style.p_form}>Caracteres</p>}
       </div>
-      <div>
+      <div className={style.birthday}>
         <label>Fecha Nacimiento</label>
-        <DatePicker 
-          selected={selectedDate}
-          onChange={date => setselectedDate(date)}
+        <DatePicker
+          selected={birthday}
+          onChange={date => setBirthday(date)}
           dateFormat='dd/MM/yyyy'
           isClearable
           showYearDropdown
           scrollableYearDropdown
           placeholderText="dd/mm/yyyy"
+          maxDate={new Date()}
         />
       </div>
-      <div>
+      <div className={style.checkCUIT}>
         <label>¿Incluir CUIT?</label>
-        <input type="checkbox" {...register('incluirCUIT')} />
+        <input className={style.input_formu} type="checkbox" {...register('incluirCUIT')} />
       </div>
       {incluirCUIT && (
-        <div>
+        <div className={style.numberCUIT}>
           <label>CUIT</label>
-          <input type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
+          <input className={style.input_formu} type="number" placeholder="javascript@brave.etc" {...register('CUIT')} />
         </div>
       )}
-      <input type="submit" value="Enviar" />
+      <input className={style.input_formu} type="submit" value="Enviar" />
     </form>
   </div>
 }
 
 export default FormularioUsuario;
+/* <div className={}>
+<label>Dirección</label>
+<input type="text" placeholder="Calle Mocha 1995, Salta, Argentina" {...register('direccion', {
+  required: true
+})} />
+</div> 
+<div>
+<label>Teléfono</label>
+<input type="tel" placeholder="+54 9 387 123 1234" {...register("Mobile number", { required: true, minLength: 6, maxLength: 12 })} />
+</div>
+*/
