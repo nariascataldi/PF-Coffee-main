@@ -22,6 +22,7 @@ export default function Cards() {
       <div><h3>Not found!</h3></div>
     )
   }
+  console.log(setProductsPerPage);
   return (
     <div>
 

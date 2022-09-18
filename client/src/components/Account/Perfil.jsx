@@ -18,14 +18,11 @@
 */
 
 import React from "react";
-import { NavLink } from "react-router-dom";
 import UserCreate from '../Account/UserCreate/UserCreate';
 import NavBar from '../NavBar/NavBar';
 import ShinyButton from './ShinyButton';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Perfil.module.css";
-import style from "./ShinyButton.module.css"
 
 function Perfil() {
 
