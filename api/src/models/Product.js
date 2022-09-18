@@ -36,7 +36,6 @@ module.exports = (sequelize) => {
     },
     stock: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       defaultValue: 0
     },
     sale_count: {
