@@ -8,6 +8,7 @@ import Perfil from './components/Account/Perfil';
 
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
 import ProductCreate from './components/Admin/FormProduct/ProductCreate';
+import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 
 import './App.css';
 
@@ -23,6 +24,8 @@ function App() {
         <Route path='/form' element={<Perfil />} />
         <Route exact path='/homeAdmin' element={<HomeAdmin />} />
         <Route exact path='/productCreate' element={<ProductCreate />} />
+        <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
+
       </Routes>
     </div>
 
