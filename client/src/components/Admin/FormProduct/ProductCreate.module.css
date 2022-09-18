@@ -1,0 +1,140 @@
+/* .container {
+  height: 100vh;
+  background-image: url('../../assets/');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+} */
+
+.bkgcolor {
+  position: absolute;
+  height: 90vh;
+  width: 100%;
+  top: 5vh;
+  left: 9vw;
+}
+
+.form {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: blanchedalmond;
+  border-radius: 1rem;
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  padding: 20px;
+
+  font-family: 'Droid serif', serif;
+  font-size: 36px;
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.min_max_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1px 1px;
+  align-items: center;
+  grid-template-rows: masonry;
+  justify-items: stretch;
+}
+
+.inputLarge {
+  width: 70vw;
+}
+
+.inputSmall {
+  width: 10vw;
+}
+
+.input_formu{
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 5px;
+  transition: width .35s ease-in-out;
+  background: rgba(244, 223, 121, 0.5);
+  color: rgb(14, 3, 61);
+  font-size: large;
+}
+
+.p_form {
+  /* display: none; */
+  color: orangered;
+  font-size: large;
+}
+
+.tempSelect {
+  background: rgba(244, 223, 121, 0.5);
+  margin: 5px 0;
+  padding: 5px 0;
+  font-size: large;
+  color: rgb(14, 3, 61);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.tempOption {
+  color: black;
+}
+
+.selectedItems {
+ display: flex;
+ background-color: rgba(244, 223, 121, 0.5);
+ border-radius: 10px;
+ width: 20vw;
+ margin: 2px;
+ padding: 2px;
+ justify-content: space-around;
+ flex-wrap: nowrap;
+ flex-direction: row;
+}
+
+.divtemps {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.selectedtemps {
+  display: contents;
+  font-size: large;
+  padding: 10px;
+  color: blanchedalmond;
+}
+
+.createButton {
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  font-size: large;
+  border-radius: 5px;
+  border: 2px solid rgb(212, 79, 79);
+  background-color: white;
+  color: rgb(212, 79, 79);
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.createButton:hover {
+  background-color: rgba(150, 212, 79, 0.73);
+  color: white;
+}
+
+
+
+.buttonclose {
+  margin: 4px;
+  border-radius: 1rem;
+  background-color: white;
+  border: 1px rgb(212, 79, 79);
+  color: rgb(212, 79, 79);
+}

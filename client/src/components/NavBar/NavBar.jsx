@@ -3,73 +3,108 @@ import logo from './img/logo_coffee.png'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
 import {BsSearch} from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
-import { getByTitle } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getByTitle, setFilterState } from '../../redux/actions';
+import Menu from './Menu';
+
 
 const NavBar = () => {
-const [busqueda, setBusqueda] = useState('');
+    const {categories,diets} = useSelector(state=>state)
+    const [busqueda, setBusqueda] = useState('');
+    const [menu,setMenu] = useState(false);
+
 const dispatch = useDispatch();
 
 const handleOnChange=(d)=>{
     setBusqueda(d.target.value)
+    dispatch(getByTitle(busqueda));
+
 };
 const handleSubmit=(e)=>{
     e.preventDefault()
-    dispatch(getByTitle(busqueda));
+    dispatch(setFilterState({title:busqueda}));
     setBusqueda('')
 }
+function handleSelect(e){
+    dispatch(setFilterState({[e.target.name]:e.target.value}));
+}
+
+const handleOnClick=()=>{
+    setMenu(!menu)
+ }
 
     return (
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#">Coffee`s orders</a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">
-                    <Link to='/home' className='links'>
-                            Home
-                    </Link>
-                </a>
-            </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <Link to='/about' className='links'>
-                    About
-                </Link>
-            </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <Link to='/form' className='links'>
-            Form
-            </Link>
-          </a>
-        </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown link
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </li>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-                </ul>
+    
+            <div className='navbar'>
+                <div className="menu-logo">
+                     <div className='contenedor-menu'>
+                        <div id='navMenu' className={menu? 'active' : ''} onClick={()=>handleOnClick()}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <img src={ logo } alt="img" className='logo'/>
+                </div>
+
+
+                    <li className="nav-item">
+                        <a className="nav-link" aria-current="page" href="#">
+                            <Link to='/home' className='links'>
+                                    Home
+                            </Link>
+                        </a>
+                    </li>
+
+                    <form className='searchBar' onSubmit={(e)=>handleSubmit(e)}>
+                        <input className='input-search' type='text' name='title' onChange={d=>handleOnChange(d)} value={busqueda} placeholder='Search...' />
+                            <button className='search-button' type='submit'><BsSearch/></button>
+                    </form>
+
+                    <li className="nav-item">
+                        <a className="nav-link" href="#">
+                            <Link to='/about' className='links'>
+                                About
+                            </Link>
+                        </a>
+                    </li>
+
+                    <li className="nav-item">
+                        <Link to='/form' className='links nav-link'>
+                            Form
+                        </Link>
+                    </li>
+                
+
+                <div className='box'>
+                    <select name='category' className='input-filter' onChange={handleSelect} >
+                            <option value=''>Categories</option> 
+                                {categories?.map((p)=>{
+                                    return <option key={p.id} value={p.name}>{p.name}</option>
+                                })}
+                    </select>
+                </div>
+
+                <div className='box'>
+                    <select name='diet' className='input-filter' onChange={handleSelect} >
+                        <option value=''>Diets</option> 
+                            {diets?.map((p)=>{
+                                return <option key={p.id} value={p.name}>{p.name}</option>
+                            })}
+                    </select>
+                </div>
+                <div className='box'>
+                    <select name='sort' className='input-filter' onChange={handleSelect}>
+                        <option value=''>Sort</option>
+                        <option value='A-Z'>A-Z</option> 
+                        <option value='Z-A'>Z-A</option>      
+                    </select>
+                </div>
+                <Menu
+                    menu={menu}
+                />
             </div>
-        </div>
-        <form className='searchBar' onSubmit={(e)=>handleSubmit(e)}>
-            <input className='input-search' type='text' onChange={d=>handleOnChange(d)} value={busqueda} placeholder='Search...' />
-                <button className='search-button' type='submit'><BsSearch/></button>
-            </form>
-       
-        <img src={ logo } alt="img" className='logo'/>
-    </nav>
+   
     );
 };
 

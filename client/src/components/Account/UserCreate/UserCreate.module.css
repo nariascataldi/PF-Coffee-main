@@ -52,7 +52,7 @@
   width: 10vw;
 }
 
-input {
+.input_formu{
   border: 2px solid #ccc;
   border-radius: 4px;
   padding: 5px;
@@ -63,9 +63,9 @@ input {
   font-size: large;
 }
 
-p {
+.p_form {
   /* display: none; */
-  color: lemonchiffon;
+  color: orangered;
   font-size: large;
 }
 
