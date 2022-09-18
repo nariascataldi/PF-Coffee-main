@@ -10,7 +10,7 @@ export default function Cards (){
 
         //paginado
         const[currentPage, setCurrentPage]=useState(1)
-        const[productsPerPage, setProductsPerPage]= useState(12)
+        const[productsPerPage, setProductsPerPage]= useState(8)
         const indexOfLast= currentPage * productsPerPage
         const indexOfFirst= indexOfLast - productsPerPage
         const currentProducts= products.slice(indexOfFirst, indexOfLast)
@@ -19,7 +19,7 @@ export default function Cards (){
               }
     if(!products.length){
         return (
-            <div><h3>Product not found!</h3></div>
+            <div className='not-found'><h4>Product not found!</h4></div>
         )
     }
   

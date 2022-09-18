@@ -15,7 +15,7 @@ export default function Paginated ({productsPerPage, products, paginated, curren
     return(
         <div className='botones-paginado'>
             
-                <button className='boton-next'
+                <button className='boton-next1'
                     disabled= {currentPage === 1}
                     onClick={()=>
                     setCurrentPage(currentPage === 1 ?
@@ -36,7 +36,7 @@ export default function Paginated ({productsPerPage, products, paginated, curren
                     ))}
             
 
-                <button className='boton-next'
+                <button className='boton-next1'
                     disabled={currentPage === pageNumber.length}
                     onClick={()=>
                     setCurrentPage(currentPage === totalPage ?
