@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import style from "./ShinyButton.module.css"
 
@@ -19,12 +19,12 @@ const ShinyButton = () => {
   }, [buttonRef])
 
   return (
-    <Fragment>
+    <div className={style.container}>
       <NavLink exact to='../home' className={style.shiny} >Perfil</NavLink>
       <NavLink exact to='../home' className={style.shiny} >Direcciones</NavLink>
       <NavLink exact to='../home' className={style.shiny} >Pedidos Anteriores</NavLink>
       <NavLink exact to='../home' ref={buttonRef} className={style.shiny} >Salir</NavLink>
-    </Fragment>
+    </div>
   );
 
 }
