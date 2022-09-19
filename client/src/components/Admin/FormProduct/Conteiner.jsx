@@ -1,7 +1,17 @@
 import React, { Fragment } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../../../redux/actions/index.js';
+
 import FormularioProducto from './ProductCreate';
+import Cards from '../CardsAdmin/CardsAdminScss';
 
 export default function Conteiner() {
+
+  const dispatch = useDispatch();
+  let allProducts = useSelector(state => state.allProducts)
+  React.useEffect(() => {
+    dispatch(getAllProducts());
+  }, [])
 
   return (
     <Fragment>
@@ -22,16 +32,17 @@ export default function Conteiner() {
       </nav>
       <div class="container my-3 py-5">
         <div class="row">
-          <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
-            <FormularioProducto/>
+          <div id='formularioProducto' class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
+            <FormularioProducto />
           </div>
-          <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
-            <h2>Listado de lenguajes</h2>
+          <div id='ListadoProductos' class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
+            <h2>Listado de Productos</h2>
+            <Cards></Cards>
             <table class="table table-dark table-striped">
               <thead>
                 <tr>
-                  <th class="centrado">#</th>
-                  <th class="centrado">Lenguaje</th>
+                  <th class="centrado">Imagen</th>
+                  <th class="centrado">Productos</th>
                   <th class="centrado">Cantidad de programadores</th>
                 </tr>
               </thead>

@@ -63,46 +63,50 @@ const FormularioProducto = () => {
         {errors.title?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 20 caracteres</p>}
         {errors.title?.type === 'pattern' && <p className={style.p_form}>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
       </div>
-      <div id='Costo' className="mb-3">
-        <label
-          for='cost'
-          className="form-label"
-        >Precio del Proveedor</label>
-        <input
-          id="cost"
-          className="form-control"
-          type="number"
-          placeholder="5"
-          {...register('cost', {
-            required: false,
-            pattern: /^\d{1,2}$/,
+      <div id='Costo_Margen' className="row">
+        <div id='Costo' className="col">
+          <label
+            for='cost'
+            className="form-label"
+          >Precio del Proveedor</label>
+          <input
+            id="cost"
+            className="form-control"
+            type="number"
+            placeholder="5"
+            {...register('cost', {
+              required: false,
+              pattern: /^\d{1,2}$/,
 
-          })} />
-        {errors.cost?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
-      </div>
-      <div id="Margen" className="mb-3">
-        <label
-          for='margin'
-          className="form-label"
-        >Margen</label>
-        <input
-          id="margin"
-          className="form-control"
-          type="number"
-          placeholder="5"
-          {...register('margin', {
-            required: false,
-            pattern: /^\d{1,2}$/,
+            })} />
+          {errors.cost?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+        </div>
+        <div id="Margen" className="col">
+          <label
+            for='margin'
+            className="form-label"
+          >Margen</label>
+          <input
+            id="margin"
+            className="form-control"
+            type="number"
+            placeholder="5"
+            {...register('margin', {
+              required: false,
+              pattern: /^\d{1,2}$/,
 
-          })} />
-        {errors.margin?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+            })} />
+          {errors.margin?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+        </div>
       </div>
+
       <div id="PrecioPublico" className="mb-3">
         <label
           for="price"
           className="form-label"
         >Precio al Público</label>
-        <p className={style.p_form}>Sugerido: {Math.floor(watch('cost') * ((watch('margin') / 100) + 1))}</p>
+        <p className={style.p_form}>Sugerido: {Math.round((watch('cost') * ((watch('margin') / 100) + 1)))}</p>
+        {/* <p className={style.p_form}>Valor: {((watch('cost') * ((watch('margin') / 100) + 1)))}</p> */}
         <input
           id="price"
           className="form-control"
