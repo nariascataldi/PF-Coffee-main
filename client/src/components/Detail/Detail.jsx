@@ -1,12 +1,13 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {getDetail} from '../../redux/actions'
 import './Detail.css'
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import {BsChevronCompactRight,BsChevronCompactLeft} from 'react-icons/bs';
+import Loading from '../Loading/Loading';
 
 
 export default function Detail(props){
@@ -14,9 +15,17 @@ export default function Detail(props){
     console.log("las props: ", props)
     const dispatch= useDispatch()
     const {id}= useParams()
-    useEffect(()=>{
+    // para Loading
+    const [load, setLoad] = useState(false);
+
+    useEffect(()=> {
+        setLoad(true);
         dispatch(getDetail(id));//
+        setTimeout(()=>{
+            setLoad(false)
+        },3000);
     },[dispatch])
+    
 
     const {detail}= useSelector(state=>state)
     console.log("detail: ", detail)
@@ -24,8 +33,8 @@ export default function Detail(props){
         <div>
         <div className='card'>
             <NavBar/>
-            {
-                detail ?
+            { load ? <Loading/> :
+                !detail? null :
                 <div key={detail.id} className='card-detail'> 
                     <div className='card-body none'>            
                         <Link className='back-boton-detail' to="/home">
@@ -50,8 +59,7 @@ export default function Detail(props){
                     </div>
                     
                     
-                </div> :
-                <p>Cargando...</p>
+                </div> 
 
                         }
             
