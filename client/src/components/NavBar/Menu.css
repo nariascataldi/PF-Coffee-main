@@ -6,13 +6,14 @@
     width: 210px;
     height: 320px;
     position: fixed;
-    top: 89.3px;
+    top: 88.5px;
     right: 100%;
     color: rgb(97, 97, 97);
     background-color: #E3EFFB;
     transition: all 0.5s ease-in-out;
     text-decoration: none;
-    border: 1px solid rgb(97, 97, 97) ;
+    border: 1.5px solid rgb(97, 97, 97) ;
+    border-top: 1.3px;
     border-bottom-right-radius: 8px;
     padding-top: 3%;
     padding-bottom: 10%;
@@ -24,9 +25,30 @@
 .box-menu{
     margin-bottom: 100px;
     background-color: #E3EFFB;
-    margin-bottom: 3px;
+    color: #E3EFFB;
+    margin-bottom: 1px;
     border: 1.4px solid #E3EFFB;
     border-bottom-color: rgb(97, 97, 97);
     width: 100%;
     padding-left: 18px;
+}
+.box-menu1{
+    margin-bottom: 100px;
+    background-color: #E3EFFB;
+    margin-bottom: 1px;
+    border: 1.4px solid #E3EFFB;
+    border-bottom-color: rgb(97, 97, 97);
+    width: 100%;
+    padding-left: 18px;
+}
+.menubutton-crate-product{
+    width: 100%;
+    border: none;
+    height: 46px;
+    color: rgb(97, 97, 97);
+    background-color: #E3EFFB ;
+}
+.menubutton-crate-product:hover{
+    color:#DD6873;
+    font-weight: 600;
 }

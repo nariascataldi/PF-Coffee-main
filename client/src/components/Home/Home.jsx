@@ -1,12 +1,13 @@
 
-import React ,{useEffect} from 'react';
+import React ,{useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filter, getAllDiets, getAllProducts  } from '../../redux/actions/index.js';
-import { getAllCategories } from "../../redux/actions/index.js";
+import { getAllCategories, clearDetail } from "../../redux/actions/index.js";
 
 import NavBar from "../NavBar/NavBar.jsx";
 import Cards from '../Cards/Cards.jsx';
 import Footer from '../Footer/Footer.jsx';
+
 
 
 import './Home.css'
@@ -15,11 +16,18 @@ export default function Home(){
 
     const dispatch = useDispatch();
 
-    const {allProducts, filterBy }= useSelector(state => state)
+    const {allProducts, filterBy }= useSelector(state => state);
+    // para Loading
+    const [load, setLoad] = useState(false);
 
     useEffect(()=> {
+        setLoad(true);
         dispatch(getAllProducts());
-    },[])
+        setTimeout(()=>{
+            setLoad(false)
+        },4000)
+        dispatch(clearDetail())
+    },[dispatch])
     useEffect(()=>{
         dispatch(filter())
     },[filterBy,allProducts]);
@@ -36,7 +44,7 @@ export default function Home(){
     return (
         <div className='home-container'>
             <NavBar />
-            <Cards/>
+            <Cards  load={load}/>
             <Footer />
         </div>
     )
