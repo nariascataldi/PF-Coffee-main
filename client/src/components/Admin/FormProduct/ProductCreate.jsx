@@ -38,18 +38,18 @@ const FormularioProducto = () => {
   }
 
   return <div>
-    <h2>Producto</h2>
+    <h2>Product</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div id="Nombre" className="mb-3">
         <label
           for='title'
           className="form-label"
-        >Nombre</label>
+        >Name</label>
         <input
           id='title'
           className="form-control"
           type="text"
-          placeholder="Nombre del Producto"
+          placeholder="Product name"
           maxLength={50}
           autoFocus
           {...register('title', {
@@ -59,16 +59,16 @@ const FormularioProducto = () => {
             pattern: /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/,
             validate: titleValidator
           })} />
-        {errors.title?.type === 'validate' && <p className={style.p_form}>El campo nombre es requerido</p>}
-        {errors.title?.type === 'maxLength' && <p className={style.p_form}>El campo nombre debe tener menos de 20 caracteres</p>}
-        {errors.title?.type === 'pattern' && <p className={style.p_form}>Comience el nombre con letra mayúscula. Solo se aceptan los caracteres "":.,_-</p>}
+        {errors.title?.type === 'validate' && <p className={style.p_form}>Name is required</p>}
+        {errors.title?.type === 'maxLength' && <p className={style.p_form}>name must be less than 20 characters</p>}
+        {errors.title?.type === 'pattern' && <p className={style.p_form}>Begin the Name with a capital letter. Only the following characters are accepted "":.,_-</p>}
       </div>
       <div id='Costo_Margen' className="row">
         <div id='Costo' className="col">
           <label
             for='cost'
             className="form-label"
-          >Precio del Proveedor</label>
+          >Provider price</label>
           <input
             id="cost"
             className="form-control"
@@ -79,13 +79,13 @@ const FormularioProducto = () => {
               pattern: /^\d{1,2}$/,
 
             })} />
-          {errors.cost?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+          {errors.cost?.type === 'pattern' && <p className={style.p_form}>Only numbers accepted</p>}
         </div>
         <div id="Margen" className="col">
           <label
             for='margin'
             className="form-label"
-          >Margen</label>
+          >Margin</label>
           <input
             id="margin"
             className="form-control"
@@ -96,7 +96,7 @@ const FormularioProducto = () => {
               pattern: /^\d{1,2}$/,
 
             })} />
-          {errors.margin?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+          {errors.margin?.type === 'pattern' && <p className={style.p_form}>Only numbers accepted</p>}
         </div>
       </div>
 
@@ -104,8 +104,8 @@ const FormularioProducto = () => {
         <label
           for="price"
           className="form-label"
-        >Precio al Público</label>
-        <p className={style.p_form}>Sugerido: {Math.round((watch('cost') * ((watch('margin') / 100) + 1)))}</p>
+        >Retail price</label>
+        <p className={style.p_form}>Suggested: {Math.round((watch('cost') * ((watch('margin') / 100) + 1)))}</p>
         {/* <p className={style.p_form}>Valor: {((watch('cost') * ((watch('margin') / 100) + 1)))}</p> */}
         <input
           id="price"
@@ -116,14 +116,14 @@ const FormularioProducto = () => {
             pattern: /^\d{1,2}$/,
 
           })} />
-        {errors.price?.type === 'required' && <p className={style.p_form}>Campo obligatorio</p>}
-        {errors.price?.type === 'pattern' && <p className={style.p_form}>Solo se aceptan números</p>}
+        {errors.price?.type === 'required' && <p className={style.p_form}>Required field</p>}
+        {errors.price?.type === 'pattern' && <p className={style.p_form}>Only numbers accepted</p>}
       </div>
       <div id="Descripcion" className="mb-3">
         <label
           for='description'
           className="form-label"
-        >Descripción del Producto</label>
+        >Product description</label>
         <textarea
           id="description"
           className="form-control"
@@ -134,15 +134,15 @@ const FormularioProducto = () => {
             maxLength: 400,
             pattern: /^[A-Za-z]+$/i,
           })} />
-        {errors.description?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
-        {errors.description?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
-        {errors.description?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
+        {errors.description?.type === 'required' && <p className={style.p_form}>Required field</p>}
+        {errors.description?.type === 'required' && <p className={style.p_form}>Exceeds maximum characters</p>}
+        {errors.description?.type === 'pattern' && <p className={style.p_form}>Only letters</p>}
       </div>
       <div id="Imagen" className="mb-3">
         <label
           for='image'
           className="form-label"
-        >Imágen del Producto</label>
+        >Product Image</label>
         <input
           id="image"
           className="form-control"
@@ -153,15 +153,15 @@ const FormularioProducto = () => {
             maxLength: 100,
             pattern: /(https?:\/\/.*\.(?:png|jpg))/,
           })} />
-        {errors.image?.type === 'required' && <p className={style.p_form}>Campo requerido</p>}
-        {errors.image?.type === 'required' && <p className={style.p_form}>Excede al máximo de caracteres</p>}
-        {errors.image?.type === 'pattern' && <p className={style.p_form}>Agregar description con solo letras</p>}
+        {errors.image?.type === 'required' && <p className={style.p_form}>Required field</p>}
+        {errors.image?.type === 'required' && <p className={style.p_form}>Exceeds maximum characters</p>}
+        {errors.image?.type === 'pattern' && <p className={style.p_form}>Only letters</p>}
       </div>
       <div id="Cantidad" className="mb-3">
         <label
           for='stock'
           className="form-label"
-        >Cantidad</label>
+        >Quantity</label>
         <input
           id="stock"
           className="form-control"
@@ -171,8 +171,8 @@ const FormularioProducto = () => {
             required: true,
             pattern: /^\d{1,2}$/,
           })} />
-        {errors.stock?.type === 'required' && <p className={style.p_form}>El campo es requerido</p>}
-        {errors.stock?.type === 'pattern' && <p className={style.p_form}>Debe contener numeros</p>}
+        {errors.stock?.type === 'required' && <p className={style.p_form}>Required field</p>}
+        {errors.stock?.type === 'pattern' && <p className={style.p_form}>Only numbers</p>}
       </div>
       <div id="Desactivo" className="form-check form-switch">
         <input
@@ -184,10 +184,10 @@ const FormularioProducto = () => {
         <label
           className="form-check-label"
           for="flexSwitchCheckDefault"
-        >Desactivo</label>
+        >Deactivated</label>
       </div>
       <div id="Guardar" className="d-grid gap-2">
-        <input className="btn btn-success" type="submit" value="Guardar" />
+        <input className="btn btn-success" type="submit" value="Save" />
       </div>
     </form>
   </div>

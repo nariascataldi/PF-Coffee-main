@@ -17,15 +17,15 @@ export default function ProductAdmin() {
     <Fragment>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Administrador</a>
+          <a class="navbar-brand" href="#">Administrator</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ms-auto">
               <a class="nav-link" href="./home">Home</a>
-              <a class="nav-link" href="#">Proveedores</a>
-              <a class="nav-link" href="#">Usuarios</a>
+              <a class="nav-link" href="#">Providers</a>
+              <a class="nav-link" href="#">Users</a>
             </div>
           </div>
         </div>

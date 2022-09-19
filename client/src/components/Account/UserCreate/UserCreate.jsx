@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 // import 'react-datepicker/dist/react-datepicker.css';
 // import "bootstrap/dist/css/bootstrap.min.css";
-import style from './UserCreate.css';
+import style from './UserCreate.module.css';
 
 
 // https://reactdatepicker.com/
@@ -35,21 +35,16 @@ const FormularioUsuario = () => {
   const incluirCUIT = watch('incluirCUIT');
   
   return (
-    <div className='container'>
-      <div className='created'>
-        <h2 className='title'>Edit profile</h2>
+    <div className= {style.container}>
+      <div className= {style.created}>
+        <h2 className= {style.title}>Edit profile</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-<<<<<<< HEAD
           <div>
             <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Name</label>
-=======
-          <div >
-            <label className={style.label}>Nombre</label>
->>>>>>> 02def2b5c14a01a10646b228a2ed930cf4c0d77a
+            <label className={style.forLabel('input-group-text')}>Name</label>
             <input
-              className='form-control forInput'
+              className={style.forInput('form-control')}
               type="text"
               placeholder="Brendan"
               {...register("name", {
@@ -75,9 +70,9 @@ const FormularioUsuario = () => {
             )}
             </div>
             <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Last name</label>
+            <label className={style.forLabel('input-group-text')}>Last name</label>
             <input
-              className='form-control forInput'
+              className={style.forInput('form-control')}
               type="text"
               placeholder="Eich"
               {...register("lastName", {
@@ -102,9 +97,9 @@ const FormularioUsuario = () => {
           </div>
 
           <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>E-mail</label>
+            <label className={style.forLabel('input-group-text')}>E-mail</label>
             <input
-              className='form-control forInput'
+              className={style.forInput('form-control ')}
               type="text"
               placeholder="javascript@brave.etc"
               {...register("mail", {
@@ -116,9 +111,9 @@ const FormularioUsuario = () => {
             )}
           </div>
           <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Password</label>
+            <label className={style.forLabel('input-group-text')}>Password</label>
             <input
-              className='form-control forInput'
+              className={style.forInput('form-control')}
               type="password"
               placeholder="8 letras"
               {...register("pass", {
@@ -141,9 +136,9 @@ const FormularioUsuario = () => {
           </div>
 
           <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Date of Birth</label>
+            <label className={style.forLabel('input-group-text')}>Date of Birth</label>
             <DatePicker
-              className='form-control forDate'
+              className={style.forDate('form-control')}
               selected={birthday}
               onChange={(date) => setBirthday(date)}
               dateFormat="dd/MM/yyyy"
@@ -166,15 +161,15 @@ const FormularioUsuario = () => {
           </div>
           {incluirCUIT && (
             <div className= "input-group input-group-sm mb-3">
-              <label className='input-group-text forLabel'>CUIT</label>
+              <label className={style.forLabel('input-group-text')}>CUIT</label>
               <input
-                className='form-control forDate'
+                className={style.forDate('form-control')}
                 type="number"
                 {...register("CUIT")}
               />
             </div>
           )}
-          <button className='createButton' type="submit" value="Enviar">
+          <button className={style.createButton} type="submit" value="Enviar">
           Send
           </button>
           </div>
