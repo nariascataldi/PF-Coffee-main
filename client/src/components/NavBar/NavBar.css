@@ -59,6 +59,9 @@
     color: rgb(97, 97, 97);
     outline: none;
     cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px;
 }
 .label-filter{
     color: #DD6873;

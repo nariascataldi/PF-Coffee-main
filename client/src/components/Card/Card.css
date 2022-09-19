@@ -24,9 +24,9 @@
     width: 182px;
 }
 .img-card{
-    height: 140px;
-    max-width: 100px;
-    border-radius: 4px;
+    height: 200px;
+    max-width: 150px;
+    border-radius: 10px;
 }
 .name-card{
     padding: 1px;

@@ -1,6 +1,7 @@
 //este Landing será puesto en el Home como un componente más
 import React from "react";
 import { Link } from "react-router-dom";
+
 import styles from './LandingPage.module.css';
 
 function LandingPage() {

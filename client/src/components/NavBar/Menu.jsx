@@ -13,7 +13,8 @@ export default function Menu({menu}){
     //  seasonSinDuplicado = [...new Set(seasonactivities)]
     //  console.log(seasonactivities);
     //  console.log(seasonSinDuplicado)
-    return  (<div className={`menu-container ${menu ? "open" : ""}`}> 
+    return  (
+        <div className={`menu-container ${menu ? "open" : ""}`}> 
         <div className='box-menu'>
         <p>Menu</p>
         </div>
