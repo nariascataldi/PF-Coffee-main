@@ -5,7 +5,7 @@ import { getAllProducts } from '../../../redux/actions/index.js';
 import FormularioProducto from './ProductCreate';
 import Cards from '../CardsAdmin/CardsAdminScss';
 
-export default function Conteiner() {
+export default function ProductAdmin() {
 
   const dispatch = useDispatch();
   let allProducts = useSelector(state => state.allProducts)
