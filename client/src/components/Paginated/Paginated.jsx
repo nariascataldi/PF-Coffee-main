@@ -28,7 +28,7 @@ export default function Paginated ({productsPerPage, products, paginated, curren
                         <button
                             key={number}
                             onClick={()=>paginated(number)}
-                            className={`number ${currentPage===number? "active1" : ""}`}
+                            className={`number-home ${currentPage===number? "active1" : ""}`}
 
                         >
                             {number}
