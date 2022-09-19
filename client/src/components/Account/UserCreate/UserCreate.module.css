@@ -1,5 +1,4 @@
 .container {
-  display:flex;
   padding-top: 5px;
   border: 1px solid white;
   border-radius: 50px;
@@ -14,23 +13,17 @@
     margin: 50px 50px 50px 50px;
     color: #0c0c0c; padding: 30px;
     margin-top: 2rem;
-    text-align: center;
 }
 
 .title{
    display: flex;
    justify-content: center;
    margin-top: -40px;
-   color: rgb(212, 79, 79);
+ 
 }
 
 .label{
   font-weight: bold;
-  color:black;
-  display: block;
-  align-items:center;
-  align-self:center;
-  padding: auto;
 }
 
 .input_form{
@@ -110,24 +103,4 @@
   cursor: pointer;
   background-color: #e1818b;
   color: #E3EFFB
-}
-
-.forLabel{
-  min-width: 150px;
-  
-  color: white;
-  background-color: #dd6873;
-  border: none;
-}
-.forInput{
-  color:#dd6873;
-  max-width: 300px;
-  border: none;
-  background-color: #e4c8cb;
-}
-.forDate{
-  color:#dd6873;
-  max-width: 150px;
-  border: none;
-  background-color: #e4c8cb;
 }
