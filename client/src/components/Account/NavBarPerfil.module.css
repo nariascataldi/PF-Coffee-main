@@ -1,4 +1,4 @@
-.shiny {
+.navBarPerfil {
   display: flex;
   color: #dd6873;
   position: relative;
@@ -15,19 +15,7 @@
   margin-right: 70px;
 }
 
-.shiny::after {
-  content: "";
-  position: absolute;
-  top: calc(var(--y, 0) * 1px - 50px);
-  left: calc(var(--x, 0) * 1px - 50px);
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(#fceef0, #3984ff00 80%);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.shiny:hover {
+.navBarPerfil:hover {
   opacity: 1;
   cursor: pointer;
   background-color: #e1818b;
