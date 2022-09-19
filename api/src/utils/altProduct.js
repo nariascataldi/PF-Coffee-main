@@ -10,8 +10,8 @@ async function altProduct(id, attribute, value) {
 
 	let myProd = await Product.findByPk(id)
 		.then( (r)=>{ // console.log(r);
-			if (attribute === 'likes' && r.likes) {  
-					value = parseInt(value) + parseInt(r.likes);
+			if (attribute === 'like' && r.like) {  
+					value = parseInt(value) + parseInt(r.like);
 			};
 			r.update({[attribute]: value})     // 'actulizamos el atributo de la actividad'
 			return r;

@@ -21,8 +21,8 @@ function pushProducts() {
           })
           .then(async (myProduct) => {
             let allProviders = await Provider.findAll();            
-            let myProv = allProviders.filter(o=> obj.provider.includes(o.name));
-            let incProv = myProduct.addProvider(myProv.id);
+            let newsProvs = allProviders.filter(o=> obj.provider.includes(o.name));            
+            let incProv = newsProvs.map( (pv)=> myProduct.addProvider(pv.id) );  
             return myProduct;
           })
           .then(async (myProduct) => {   
