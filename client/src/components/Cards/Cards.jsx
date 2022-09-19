@@ -3,9 +3,10 @@ import {useState} from 'react'
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import Paginated from "../Paginated/Paginated";
+import Loading from "../Loading/Loading";
 import './Cards.css';
-
-export default function Cards (){
+ 
+export default function Cards ({load}){
     const {products} = useSelector(state=>state)
 
         //paginado
@@ -16,7 +17,10 @@ export default function Cards (){
         const currentProducts= products.slice(indexOfFirst, indexOfLast)
         const paginated= (pageNumber)=>{
             setCurrentPage(pageNumber)
-              }
+              };
+
+    
+
     if(!products.length){
         return (
             <div className='not-found'><h4>Product not found!</h4></div>
@@ -37,15 +41,16 @@ export default function Cards (){
             </div>
 
             <div className="cards-wraper">
-                {currentProducts && currentProducts.map(p=>{
-                    return <Card
-                    key={p.id}
-                    id={p.id}
-                    name={p.name}
-                    image={p.image}
-                    title={p.title}
-                    price={p.price}
-                    />
+                {load? <Loading/> :
+                    currentProducts.map(p=>{
+                        return <Card
+                        key={p.id}
+                        id={p.id}
+                        name={p.name}
+                        image={p.image}
+                        title={p.title}
+                        price={p.price}
+                        />
             })}  
             </div>
 
