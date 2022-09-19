@@ -11,7 +11,6 @@
     padding: 0.1px;
     border: none;
     cursor: pointer;
-    padding-top: 100px;
 }
 .boton-next1:hover{
     color:#ca2334;
@@ -24,22 +23,21 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items:flex-end;
+    margin-top: 87px;
+    padding-top: 12px;
     
 }
-.number{
-   
-    
+.number-home{
     background-color:#EEF7FC; 
     color: rgb(190, 205, 218);
     margin-bottom: 12px;
-    margin: 10px;
-    padding: 10px;
+    padding: 6px;
     background: none;
     border: none;
     border-radius: 5px;
 }
-.number:hover{
-    background-color: #d63040;
+.number-home:hover{
+    background-color: #DD6873;
     color: white;
 }
 .active1{
@@ -47,20 +45,20 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    background-color: #DD6873;
+    background-color: #E3EFFB;
     border-radius: 2px;
-    border-color: #DD6873;
-    color:white;
+    font-weight: 600;
+    color:#DD6873;
     box-shadow: none;
     cursor: pointer;
     justify-content: center;
     align-items: center;
 }
 
-.number:active{
+.number-home:active{
     background-color: rgb(180, 37, 37);
     border-radius: 2px;
     border-color:rgb(187, 187, 187);
-    color:black;
+    color:rgb(247, 241, 241);
     transition: 1s;
 }
