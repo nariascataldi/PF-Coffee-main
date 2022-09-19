@@ -11,7 +11,8 @@ import {
   POST_PRODUCT,
   SET_FILTER_STATE,
   FILTER,
-  POST_PROVIDERS
+  POST_PROVIDERS,
+  CLEAR_DETAIL
 } from '../actions'
 
 const initialState = {
@@ -53,6 +54,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         productDetail: action.payload
+      }
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        productDetail: {},
+        detail: []
       }
     case GET_ALL_PROVIDERS:
       return {

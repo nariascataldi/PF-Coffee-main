@@ -12,6 +12,7 @@ export const POST_PRODUCT = 'POST_PRODUCT'
 export const SET_FILTER_STATE = 'SET_FILTER_STATE'
 export const FILTER = 'FILTER'
 export const POST_PROVIDERS = 'POST_PROVIDERS'
+export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 
 
 export function getAllProducts() {
@@ -37,6 +38,11 @@ export function getDetail(id) {
       console.log("el error del detalle es: ", error)
 
     }
+  }
+};
+export function clearDetail () {
+  return {
+    type: CLEAR_DETAIL
   }
 };
 export function getByTitle(payload) {
