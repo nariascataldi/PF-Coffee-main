@@ -39,14 +39,8 @@ const FormularioUsuario = () => {
         <h2 className={style.title}>Editar Perfil</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-<<<<<<< HEAD
-          <div>
-            <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Name</label>
-=======
           <div >
             <label className={style.label}>Nombre</label>
->>>>>>> developer
             <input
               className={style.input_form}
               type="text"
