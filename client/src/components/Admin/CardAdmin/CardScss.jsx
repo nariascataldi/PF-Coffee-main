@@ -20,7 +20,7 @@ export default function Card({ id, title, image, price, cost, margin, descriptio
         <tbody>
           <tr>
             <td class="centrado"> <p>{id}</p> </td>
-            <td class="centrado"> <img className='img-thumbnail' src={image} alt='cartas' /> </td>
+            <td class="centrado"> <img className='img-thumbnail' width='70 vw' src={image} alt='cartas' /> </td>
             <td class="centrado"> {title} </td>
             <td class="centrado"> $ {price} </td>
             <td class="centrado"> $ {cost} </td>
