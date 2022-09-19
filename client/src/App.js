@@ -7,11 +7,13 @@ import Detail from './components/Detail/Detail';
 import Perfil from './components/Account/Perfil';
 
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
+import Conteiner from './components/Admin/FormProduct/Conteiner'
 import ProductCreate from './components/Admin/FormProduct/ProductCreate';
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 
-import './App.css';
 import NotFound from './components/404/404';
+
+import './App.css';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route exact path='/homeAdmin' element={<HomeAdmin />} />
         <Route exact path='/productCreate' element={<ProductCreate />} />
         <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
+        <Route exact path= '/conteiner' element={<Conteiner />}/>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
