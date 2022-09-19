@@ -33,31 +33,6 @@
   padding: auto;
 }
 
-/* .bkgcolor {
-  position: absolute;
-  height: 90vh;
-  width: 100%;
-  top: 5vh;
-  left: 9vw;
-}
-
-.min_max_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1px 1px;
-  align-items: center;
-  grid-template-rows: masonry;
-  justify-items: stretch;
-}
-
-.inputLarge {
-  width: 70vw;
-}
-
-.inputSmall {
-  width: 10vw;
-} */
-
 .input_form{
   border: 2px solid #ccc;
   background: rgba(244, 224, 121, 0.268); padding: .8em;

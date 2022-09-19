@@ -40,9 +40,14 @@ const FormularioUsuario = () => {
         <h2 className='title'>Edit profile</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
+<<<<<<< HEAD
           <div>
             <div className="input-group input-group-sm mb-3">
             <label className='input-group-text forLabel'>Name</label>
+=======
+          <div >
+            <label className={style.label}>Nombre</label>
+>>>>>>> 02def2b5c14a01a10646b228a2ed930cf4c0d77a
             <input
               className='form-control forInput'
               type="text"
