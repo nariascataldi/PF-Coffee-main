@@ -36,39 +36,8 @@ export default function Conteiner() {
             <FormularioProducto />
           </div>
           <div id='ListadoProductos' class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
-            <h2>Listado de Productos</h2>
-            <Cards></Cards>
-            <table class="table table-dark table-striped">
-              <thead>
-                <tr>
-                  <th class="centrado">Imagen</th>
-                  <th class="centrado">Productos</th>
-                  <th class="centrado">Cantidad de programadores</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="centrado">1</td>
-                  <td class="centrado">JavaScript</td>
-                  <td class="centrado">21</td>
-                </tr>
-                <tr>
-                  <td class="centrado">2</td>
-                  <td class="centrado">Python</td>
-                  <td class="centrado">110</td>
-                </tr>
-                <tr>
-                  <td class="centrado">3</td>
-                  <td class="centrado">C#</td>
-                  <td class="centrado">45</td>
-                </tr>
-                <tr>
-                  <td class="centrado">4</td>
-                  <td class="centrado">Ruby</td>
-                  <td class="centrado">31</td>
-                </tr>
-              </tbody>
-            </table>
+            {/* <h2>Listado de Productos</h2> */}
+            <Cards />
           </div>
         </div>
       </div>

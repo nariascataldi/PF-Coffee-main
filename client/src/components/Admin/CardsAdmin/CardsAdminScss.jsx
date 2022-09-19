@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "../CardAdmin/CardScss";
-import Paginated from "../PaginatedAdmin/PaginatedAdminScss";
+import Paginated from "../PaginatedAdmin/PaginatedAdmin";
 
 
 export default function Cards() {
@@ -35,13 +35,18 @@ export default function Cards() {
         />
       </div>
 
-      <div className="cards-wraper">
+      <div>
         {currentProducts && currentProducts.map(p => {
           return <Card
-            name={p.name}
+            id={p.id}
             image={p.image}
             title={p.title}
             price={p.price}
+            cost={p.cost}
+            margin={p.margin}
+            description={p.description}
+            like={p.like}
+            stock={p.stock}
           />
         })}
       </div>
