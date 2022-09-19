@@ -5,10 +5,9 @@ import DatePicker from 'react-datepicker';
 import { postUser } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
 
-
-// import 'react-datepicker/dist/react-datepicker.css';
-// import "bootstrap/dist/css/bootstrap.min.css";
-import style from './UserCreate.css';
+import 'react-datepicker/dist/react-datepicker.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import style from './UserCreate.module.css';
 
 
 // https://reactdatepicker.com/
@@ -35,21 +34,15 @@ const FormularioUsuario = () => {
   const incluirCUIT = watch('incluirCUIT');
   
   return (
-    <div className='container'>
-      <div className='created'>
-        <h2 className='title'>Edit profile</h2>
+    <div className={style.container}>
+      <div className={style.created}>
+        <h2 className={style.title}>Editar Perfil</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-<<<<<<< HEAD
-          <div>
-            <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Name</label>
-=======
           <div >
             <label className={style.label}>Nombre</label>
->>>>>>> 02def2b5c14a01a10646b228a2ed930cf4c0d77a
             <input
-              className='form-control forInput'
+              className={style.input_form}
               type="text"
               placeholder="Brendan"
               {...register("name", {
@@ -60,24 +53,23 @@ const FormularioUsuario = () => {
               })}
             />
             {errors.name?.type === "validate" && (
-              <p className={style.p_form}>name is required</p>
+              <p className={style.p_form}>El campo nombre es requerido</p>
             )}
             {errors.name?.type === "maxLength" && (
               <p className={style.p_form}>
-                name field must be less than 20 characters
+                El campo nombre debe tener menos de 20 caracteres
               </p>
             )}
             {errors.name?.type === "pattern" && (
               <p className={style.p_form}>
-                Begin the name with a capital letter. Only the following characters are accepted
-                characters "":.,_-
+                Comience el nombre con letra mayúscula. Solo se aceptan los
+                caracteres "":.,_-
               </p>
             )}
-            </div>
-            <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Last name</label>
+
+            <label className={style.label}>Apellido</label>
             <input
-              className='form-control forInput'
+              className={style.input_form}
               type="text"
               placeholder="Eich"
               {...register("lastName", {
@@ -87,24 +79,24 @@ const FormularioUsuario = () => {
               })}
             />
             {errors.lastName?.type === "required" && (
-              <p className={style.p_form}>last name required</p>
+              <p className={style.p_form}>El campo apellido es requerido</p>
             )}
             {errors.lastName?.type === "maxLength" && (
               <p className={style.p_form}>
-                last name field must be less than 20 characters
+                El campo apellido debe tener menos de 20 caracteres
               </p>
             )}
             {errors.lastName?.type === "pattern" && (
               <p className={style.p_form}>
-                last name field must be less than 20 characters
+                El campo apellido debe tener menos de 20 caracteres
               </p>
             )}
           </div>
 
-          <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>E-mail</label>
+          <div className={style.mail}>
+            <label className={style.label}>Email</label>
             <input
-              className='form-control forInput'
+              className={style.input_form}
               type="text"
               placeholder="javascript@brave.etc"
               {...register("mail", {
@@ -112,13 +104,13 @@ const FormularioUsuario = () => {
               })}
             />
             {errors.mail?.type === "pattern" && (
-              <p className={style.p_form}>Email formatting is incorrect</p>
+              <p className={style.p_form}>El formato del email es incorrecto</p>
             )}
           </div>
-          <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Password</label>
+          <div className={style.pass}>
+            <label className={style.label}>Contraseña</label>
             <input
-              className='form-control forInput'
+              className={style.input_form}
               type="password"
               placeholder="8 letras"
               {...register("pass", {
@@ -130,20 +122,20 @@ const FormularioUsuario = () => {
               })}
             />
             {errors.pass?.type === "required" && (
-              <p className={style.p_form}>Password is required</p>
+              <p className={style.p_form}>Es requerido</p>
             )}
             {errors.pass?.type === "maxLength" && (
-              <p className={style.p_form}>Must be between 8 and 15 characters</p>
+              <p className={style.p_form}>estar entre 8 y 15 caracteres</p>
             )}
             {errors.pass?.type === "pattern" && (
-              <p className={style.p_form}>Characters</p>
+              <p className={style.p_form}>Caracteres</p>
             )}
           </div>
 
-          <div className="input-group input-group-sm mb-3">
-            <label className='input-group-text forLabel'>Date of Birth</label>
+          <div>
+            <label className={style.label}>Fecha Nacimiento</label>
             <DatePicker
-              className='form-control forDate'
+              className={style.input_form}
               selected={birthday}
               onChange={(date) => setBirthday(date)}
               dateFormat="dd/MM/yyyy"
@@ -155,29 +147,27 @@ const FormularioUsuario = () => {
             />
           </div>
 
-          <div >
-            <label className=''>Include CUIT?</label>
+          <div className={style.checkCUIT}>
+            <label className={style.label}>¿Incluir CUIT?</label>
             <input
-              className='form-check-input mt-0 '
-              aria-label="Checkbox for following text input"
+              className={style.input_form}
               type="checkbox"
               {...register("incluirCUIT")}
             />
           </div>
           {incluirCUIT && (
-            <div className= "input-group input-group-sm mb-3">
-              <label className='input-group-text forLabel'>CUIT</label>
+            <div className={style.numberCUIT}>
+              <label className={style.label}>CUIT</label>
               <input
-                className='form-control forDate'
+                className={style.input_form}
                 type="number"
                 {...register("CUIT")}
               />
             </div>
           )}
-          <button className='createButton' type="submit" value="Enviar">
-          Send
+          <button className={style.createButton} type="submit" value="Enviar">
+            Enviar
           </button>
-          </div>
         </form>
       </div>
     </div>
