@@ -1,10 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import {
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
 import logo from './img/logo_coffee.png'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
@@ -14,7 +8,7 @@ import { getByTitle, setFilterState } from '../../redux/actions';
 import Menu from './Menu';
 
 
-const NavBar = () => {
+const NavBar = ({ noFilters }) => {
     const {categories,diets} = useSelector(state=>state)
     const [busqueda, setBusqueda] = useState('');
     const [menu,setMenu] = useState(false);
@@ -50,7 +44,7 @@ const handleOnClick=()=>{
                             <span></span>
                         </div>
                     </div>
-                    <img src={ logo } alt="img" className='logo'/>
+                    <Link to='/home'><img src={ logo } alt="img" className='logo'/></Link>
                 </div>
 
 
@@ -75,14 +69,10 @@ const handleOnClick=()=>{
                         </a>
                     </li>
 
-                    <li className="nav-item">
-                        <Link to='/form' className='links nav-link'>
-                            Form
-                        </Link>
-                    </li>
                 
-
-                <div>
+                {!noFilters &&
+                 <>
+                    <div>
                     <select name='category' className='input-filter' onChange={handleSelect} >
                             <option value=''>Categories</option> 
                                 {categories?.map((p)=>{
@@ -106,6 +96,14 @@ const handleOnClick=()=>{
                         <option value='Z-A'>Z-A</option>      
                     </select>
                 </div>
+                 </>
+                }
+                {noFilters &&   
+                 <>
+                  <h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><p></p><p></p><p></p><p></p><p></p><p></p>
+                 </>
+                }
+                
                 <Menu
                     menu={menu}
                 />

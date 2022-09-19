@@ -23,7 +23,7 @@ export default function Detail(props){
     return(
         <div>
         <div className='card'>
-            <NavBar/>
+            <NavBar noFilters/>
             {
                 detail ?
                 <div key={detail.id} className='card-detail'> 
