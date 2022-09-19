@@ -32,7 +32,8 @@ export default function Detail(props){
     return(
         <div>
         <div className='card'>
-            <NavBar/>
+
+            <NavBar noFilters/>
             { load ? <Loading/> :
                 !detail? null :
                 <div key={detail.id} className='card-detail'> 
