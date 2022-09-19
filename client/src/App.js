@@ -11,10 +11,10 @@ import ProductCreate from './components/Admin/FormProduct/ProductCreate';
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 
 import './App.css';
+import NotFound from './components/404/404';
 
 function App() {
   return (
-
     <div>
       <Routes>
         <Route exact path='/' element={<LandingPage />} />
@@ -25,10 +25,9 @@ function App() {
         <Route exact path='/homeAdmin' element={<HomeAdmin />} />
         <Route exact path='/productCreate' element={<ProductCreate />} />
         <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
-
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
-
   );
 }
 
