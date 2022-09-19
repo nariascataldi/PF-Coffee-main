@@ -3,3 +3,11 @@
   color: orangered;
   font-size: medium;
 }
+#submit{
+  background-color: #DD6873;
+  color: white;
+  border-color: #DD6873;
+  border-radius: 3px;
+  margin: 6px;
+  box-shadow: 5px 5px 10px black;
+}
