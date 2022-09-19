@@ -10,7 +10,7 @@ const Providers = () => {
         <div>
             <NavBar />
                 <div className='parentProvider'>
-                    <h1>Provieders</h1> 
+                    <h1>Providers</h1> 
                     <ProviderCards />
                 </div>
             <Footer />

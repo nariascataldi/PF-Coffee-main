@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useForm } from "react-hook-form";
 import { titleValidator } from "./validators";
 import { postProduct } from "../../../redux/actions"; //2
@@ -14,6 +15,7 @@ const FormularioProducto = () => {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
   const navigate= useNavigate();
+
 
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
     defaultValues: {
