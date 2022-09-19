@@ -18,20 +18,24 @@
 */
 
 import React from "react";
-import UserCreate from '../Account/UserCreate/UserCreate';
+import { NavLink } from "react-router-dom";
+//componentes
 import NavBar from '../NavBar/NavBar';
-import ShinyButton from './ShinyButton';
+import UserCreate from '../Account/UserCreate/UserCreate';
+//estilos
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Perfil.module.css";
 
 function Perfil() {
-
   return (
     <div className={styles.bodyHome}>
       <div className={styles.navBar}> <NavBar /> </div>
       <div className={styles.container}>
         <div className={styles.navBarPerfil}>
-        <ShinyButton/>
+          <NavLink exact to='../home'  >Perfil</NavLink>
+          <NavLink exact to='../home'  >Direcciones</NavLink>
+          <NavLink exact to='../home'  >Pedidos Anteriores</NavLink>
+          <NavLink exact to='../home'  >Salir</NavLink>
         </div>
         <div className={styles.container1}><UserCreate></UserCreate></div>
       </div>
