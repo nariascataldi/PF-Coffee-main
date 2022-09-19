@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useForm } from "react-hook-form";
 import { titleValidator } from "./validators";
 import { postProduct } from "../../../redux/actions"; //2
@@ -13,6 +14,7 @@ import style from './ProductCreate.module.css';
 const FormularioProducto = () => {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
+
 
 
   const { register, formState: { errors }, watch, handleSubmit } = useForm({

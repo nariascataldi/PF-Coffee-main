@@ -1,9 +1,8 @@
 .conteiner{
-  background-image: url(../../assets/A_small_cup_of_coffee.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  background-color: black;
+  background-color: #E3EFFB;
   height: 60vh;
 }
 .spinner {
