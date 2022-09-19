@@ -5,8 +5,8 @@ import DatePicker from 'react-datepicker';
 import { postUser } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
 
-// import 'react-datepicker/dist/react-datepicker.css';
-// import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-datepicker/dist/react-datepicker.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import style from './UserCreate.module.css';
 
 
@@ -39,7 +39,7 @@ const FormularioUsuario = () => {
         <h2 className={style.title}>Editar Perfil</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <div >
             <label className={style.label}>Nombre</label>
             <input
               className={style.input_form}
