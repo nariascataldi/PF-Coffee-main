@@ -80,6 +80,13 @@ const handleOnClick=()=>{
                             Form
                         </Link>
                     </li>
+
+                    <li className="nav-item">
+                        <Link to='/providers' className='links nav-link'>
+                            Providers
+                        </Link>
+                    </li>
+                    
                 
 
                 <div>
