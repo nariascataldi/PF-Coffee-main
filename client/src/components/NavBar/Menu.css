@@ -1,5 +1,5 @@
 .menu-container{
-    display: flex;
+    display: inline-block;
     justify-content:space-between;
     flex-direction: column;
     align-items: center;
@@ -17,8 +17,6 @@
     padding-top: 3%;
     padding-bottom: 10%;
     
-    
-
 }
 .menu-container.open{
     transform: translateX(95%);

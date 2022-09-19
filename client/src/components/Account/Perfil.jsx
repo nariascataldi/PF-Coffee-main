@@ -20,7 +20,7 @@
 import React from "react";
 import UserCreate from '../Account/UserCreate/UserCreate';
 import NavBar from '../NavBar/NavBar';
-import ShinyButton from './ShinyButton';
+import NavBarPerfil from './NavBarPerfil';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "./Perfil.module.css";
 
@@ -28,12 +28,16 @@ function Perfil() {
 
   return (
     <div className={styles.bodyHome}>
-      <div className={styles.navBar}> <NavBar /> </div>
+      <div className={styles.navBar}>
+        <NavBar />
+      </div>
       <div className={styles.container}>
         <div className={styles.navBarPerfil}>
-        <ShinyButton/>
+          <NavBarPerfil />
         </div>
-        <div className={styles.container1}><UserCreate></UserCreate></div>
+        <div className={styles.container1}>
+          <UserCreate />
+        </div>
       </div>
     </div>
   )

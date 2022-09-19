@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import {
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from "reactstrap";
 import logo from './img/logo_coffee.png'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
@@ -76,7 +82,7 @@ const handleOnClick=()=>{
                     </li>
                 
 
-                <div className='box'>
+                <div>
                     <select name='category' className='input-filter' onChange={handleSelect} >
                             <option value=''>Categories</option> 
                                 {categories?.map((p)=>{

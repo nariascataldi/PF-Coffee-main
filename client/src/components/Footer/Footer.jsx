@@ -93,77 +93,68 @@ export default function Footer () {
               <div className="row">
 
                 <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                  <h5 className="text-uppercase">Links</h5>
+                  <b className="text-uppercase">institucional</b>
         
                   <ul className="list-unstyled mb-0">
                     <li>
-                      <a href="#!" className="text-dark">Link 1</a>
+                      <a href="#!" className="footer">Quiénes somos</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 2</a>
+                      <a href="#!" className="footer">Cómo comprar</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 3</a>
-                    </li>
-                    <li>
-                      <a href="#!" className="text-dark">Link 4</a>
+                      <a href="#!" className="footer">Factura A</a>
                     </li>
                   </ul>
                 </div>
 
                 <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                  <h5 className="text-uppercase">Links</h5>
+                  <b className="text-uppercase">legal</b>
         
                   <ul className="list-unstyled mb-0">
                     <li>
-                      <a href="#!" className="text-dark">Link 1</a>
+                      <a href="#!" className="footer">Términos y Condiciones</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 2</a>
+                      <a href="#!" className="footer">Privacidad de datos</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 3</a>
+                      <a href="#!" className="footer">Arrepentimiento de compra</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 4</a>
+                      <a href="#!" className="footer">Promociones Vigentes</a>
                     </li>
                   </ul>
                 </div>
 
                 <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                  <h5 className="text-uppercase">Links</h5>
+                  <b className="text-uppercase">cliente</b>
         
                   <ul className="list-unstyled mb-0">
                     <li>
-                      <a href="#!" className="text-dark">Link 1</a>
+                      <a href="#!" className="footer">Mi cuenta</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 2</a>
+                      <a href="#!" className="footer">Mis Favoritos</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 3</a>
+                      <a href="#!" className="footer">Acceso Clientes</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 4</a>
+                      <a href="#!" className="footer">Registrarse</a>
                     </li>
                   </ul>
                 </div>
 
                 <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                  <h5 className="text-uppercase">Links</h5>
+                  <b className="text-uppercase">servicios</b>
         
                   <ul className="list-unstyled mb-0">
                     <li>
-                      <a href="#!" className="text-dark">Link 1</a>
+                      <a href="#!" className="footer">0810-666-CAFE(2233)</a>
                     </li>
                     <li>
-                      <a href="#!" className="text-dark">Link 2</a>
-                    </li>
-                    <li>
-                      <a href="#!" className="text-dark">Link 3</a>
-                    </li>
-                    <li>
-                      <a href="#!" className="text-dark">Link 4</a>
+                      <a href="#!" className="footer">Contáctanos</a>
                     </li>
                   </ul>
                 </div>
@@ -174,9 +165,9 @@ export default function Footer () {
 
           </div>
 
-          <div className="text-center p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
-            © 2020 Copyright:
-            <a className="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+          <div className="text-center p-1" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
+            © 2022 Copyright
+            <a className="footer" href="https://mdbootstrap.com/"></a>
           </div>
         </footer>
         )

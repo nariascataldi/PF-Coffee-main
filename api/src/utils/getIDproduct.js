@@ -7,7 +7,7 @@ async function getIDproduct (id) {
     let response = await Product.findOne({
         // logging: console.log,
         where: { id: id },
-        include: [ Diet, Category,  Comment ] // Provider,
+        include: [ Diet, Category, Provider, Comment ] // Provider,
       });
     return response;
 

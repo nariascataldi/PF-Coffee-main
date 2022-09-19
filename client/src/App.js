@@ -7,11 +7,12 @@ import Detail from './components/Detail/Detail';
 import Perfil from './components/Account/Perfil';
 
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
-import ProductCreate from './components/Admin/FormProduct/ProductCreate';
+import ProductAdmin from './components/Admin/FormProduct/ProductAdmin'
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 
-import './App.css';
 import NotFound from './components/404/404';
+
+import './App.css';
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/form' element={<Perfil />} />
         <Route exact path='/homeAdmin' element={<HomeAdmin />} />
-        <Route exact path='/productCreate' element={<ProductCreate />} />
+        <Route exact path= '/productAdmin' element={<ProductAdmin />}/>
         <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

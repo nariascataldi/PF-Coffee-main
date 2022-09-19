@@ -14,6 +14,7 @@ const getIdProvider = require('../utils/getIDprovider.js');
 const getUsers = require('../utils/getUsers.js');
 const { getUsersQy } = require('../utils/getUsersQy.js');
 const postUser = require('../utils/postUser');
+const addFavourite = require('../utils/addFavourite');
 
 
 const productsGet = async (req, res, next) => {
@@ -102,11 +103,16 @@ const altAttribute = async (req, res, next)=>{
 	try {
 		let { attribute } = req.params;
 	  let { id, value } = req.query;
-    
+    let myAlt = {};
     console.log(id);  console.log(attribute); console.log(value);
-    
-		let myAlt = await altProduct(id, attribute, value) || {};
-		res.send(myAlt)            // petición   probada !!!!!! --
+
+    if (attribute === 'addFavourite') {
+      myAlt = await addFavourite(id, attribute, value) || {};
+		  res.send(myAlt)            // petición   probada !!!!!! --
+    } else {
+      myAlt = await altProduct(id, attribute, value) || {};
+    };		                      // petición   probada !!!!!! --
+		res.send(myAlt)            
 	} catch (e) { next (e) }
 }; 
 
