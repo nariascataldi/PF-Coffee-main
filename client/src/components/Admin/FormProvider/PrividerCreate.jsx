@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { postProviders } from "../../../redux/actions";
+import { postCloudinaryPhoto, postProviders } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-
-
+import { Container, FormGroup, Input } from 'reactstrap'
+import style from './ProviderCreate.module.css'
+import axios from "axios";
 
 
 const FormProvider = () => {
     const dispatch= useDispatch();
     const navigate= useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [image, setImage] = useState('');
+
     const { register, handleSubmit, formState:{errors}} = useForm({
         defaultValues:{
             name: 'your name',
@@ -28,6 +32,26 @@ const FormProvider = () => {
         alert('Correctly created')
         navigate('/home')
     }
+
+    const uploadImage = async (e) => {
+        const files = e.target.files;
+        const data = new FormData();
+        data.append('file', files[0]);
+        data.append('upload_preset', 'Provider');
+        setLoading(true);
+        const res = await fetch(
+            'https://api.cloudinary.com/v1_1/drcjpfj7t/image/upload/',
+            {
+                method: 'POST',
+                body: data
+            }
+        )
+        const file = await res.json();
+        console.log(res)
+        setImage(file.secure_url)
+        setLoading(false)
+    }
+
     return (
         <div>
             <h2>Provider</h2>
@@ -57,7 +81,18 @@ const FormProvider = () => {
                 </div>
                 <div>
                 <label>Logo: </label>
-                <input type="text" {...register('logo')}/>
+                <Container>
+                    <p>Subiendo imagenes</p>
+                    <FormGroup className={style.formGroup}>
+                        <Input 
+                            type="file"
+                            name="file"
+                            placeholder="Logo"
+                            onChange={uploadImage}
+                            className={style.inputProvider}
+                        />
+                    </FormGroup>
+                </Container>
                 </div>
                 <div>
                 <label>Phone: </label>

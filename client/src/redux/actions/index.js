@@ -45,6 +45,7 @@ export function clearDetail () {
     type: CLEAR_DETAIL
   }
 };
+
 export function getByTitle(payload) {
   return {
     type: GET_BY_TITLE,
@@ -120,6 +121,16 @@ export function postProduct(payload) {
     return response;
   }
 }
+
+export const postCloudinaryPhoto = (postData) => {
+  return () => {
+    axios.post('https://api.cloudinary.com/v1_1/drcjpfj7t/image/upload', postData)
+      .then(response => {
+        console.log(response.data)
+      })
+  }
+};
+
 export function setFilterState(payload) {
   return {
     type: SET_FILTER_STATE,
