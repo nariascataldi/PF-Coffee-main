@@ -8,7 +8,7 @@ const Providers = () => {
 
     return (
         <div>
-            <NavBar />
+            <NavBar noFilters />
                 <div className='parentProvider'>
                     <h1>Providers</h1> 
                     <ProviderCards />
