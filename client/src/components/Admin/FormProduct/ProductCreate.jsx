@@ -5,16 +5,19 @@ import { titleValidator } from "./validators";
 import { postProduct } from "../../../redux/actions"; //2
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
+import SelectsAnidados from '../components/SelectsAnidados';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import style from './ProductCreate.module.css';
+
 
 // https://reactdatepicker.com/
 
 const FormularioProducto = () => {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
 
   const { register, formState: { errors }, watch, handleSubmit } = useForm({
@@ -190,6 +193,7 @@ const FormularioProducto = () => {
           for="flexSwitchCheckDefault"
         >Disable</label>
       </div>
+      <SelectsAnidados />
       <div id="Guardar" className="d-grid gap-2">
         <input id={style.submit} className="btn btn-success" type="submit" value="Save" />
       </div>
