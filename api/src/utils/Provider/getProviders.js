@@ -1,4 +1,4 @@
-const { Provider } = require('../db.js');
+const { Provider } = require('../../db.js');
 
 async function getProviders() {
     let providers = await Provider.findAll();

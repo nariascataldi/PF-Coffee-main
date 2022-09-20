@@ -1,4 +1,4 @@
-const { Comment } = require("../db.js");
+const { Comment } = require("../../db");
 
 async function getComment() {
   

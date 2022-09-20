@@ -1,4 +1,4 @@
-const { Product, Diet, Category, Provider } = require('../db.js');
+const { Product, Diet, Category, Provider } = require('../../db.js');
 
 let postProduct = async(obj)=>{
   try {
