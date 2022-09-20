@@ -137,8 +137,9 @@ const providerPost = async(req, res, next) => {
 
 const commentPost = async (req, res, next) => {
   try {
-    // console.log("input en controllers API: ", req.body);
-  let response = await postComment(req.body) || {};
+    // let {id_prod, stars, coment} = req.body;
+    console.log("input en controllers API: ", req.body);
+    let response = await postComment(req.body) || {};
   
     res.send(response); 
   } catch (error) {

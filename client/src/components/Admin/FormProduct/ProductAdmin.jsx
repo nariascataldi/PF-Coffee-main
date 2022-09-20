@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getAllProducts } from '../../../redux/actions/index.js';
 
 import FormularioProducto from './ProductCreate';
@@ -9,10 +9,10 @@ import NavBar from '../NavBarAdmin/NavBarAdmin.jsx';
 export default function ProductAdmin() {
 
   const dispatch = useDispatch();
-  let allProducts = useSelector(state => state.allProducts)
+  // let allProducts = useSelector(state => state.allProducts)
   React.useEffect(() => {
     dispatch(getAllProducts());
-  }, [])
+  }, [dispatch])
 
   return (
     <Fragment>
