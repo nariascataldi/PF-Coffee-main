@@ -12,8 +12,6 @@ import StarRating from '../StarRating/StarRating';
 
 
 export default function Detail(props){
-    
-    console.log("las props: ", props)
     const dispatch= useDispatch()
     const {id}= useParams()
     // para Loading
@@ -49,7 +47,7 @@ export default function Detail(props){
         alert('Comment create successfuly!');        
     };   
 
-   
+
     return(
         <div>
         <div className='card'>

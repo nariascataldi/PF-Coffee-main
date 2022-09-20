@@ -1,16 +1,16 @@
 .LandingPage {
   /* A Friend in Need */
-  background-image: url(../../assets/A_small_cup_of_coffee.jpeg); 
+  background-image: url(../../assets/logo_coffee.png); 
   background-size: cover;
   background-position: center;
   height: 100vh;
   background-repeat: no-repeat;
-  background-color: rgba(64, 64, 100, 0.9);
+  background-color: #eef7f3;
   display: flex;
   justify-content: left;
 
 }
-
+/*rgba(64, 64, 100, 0.9)*/
 .home {
   display: flex;
   justify-content: center;
@@ -34,17 +34,17 @@
   transform: scale(1.5);
 }
 
-/* Pantallas de menos de 992px de ancho */
+/* Pantallas de menos de 992px de ancho //rgba(64, 64, 100) */
 @media screen and (max-width: 992px) {
   .LandingPage {
-    background-color: rgba(64, 64, 100);
+    background-color: #eef7f3;
   }
 }
 
-/* Pantallas de menos de 576px de ancho */
+/* Pantallas de menos de 576px de ancho //rgba(64, 64, 100) */
 @media screen and (max-width: 576px) {
   .LandingPage {
-    background-color: rgba(64, 64, 100);
+    background-color: #eef7f3;
     background-image: url(../../assets/logo_coffee.png);
     background-position: center;
     background-size: contain;

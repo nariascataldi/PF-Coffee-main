@@ -71,7 +71,7 @@ const FormularioProducto = () => {
           <label
             for='cost'
             className="form-label"
-          >Supplier Price</label>
+          >Provider price</label>
           <input
             id="cost"
             className="form-control"
@@ -82,7 +82,7 @@ const FormularioProducto = () => {
               pattern: /^\d{1,2}$/,
 
             })} />
-          {errors.cost?.type === 'pattern' && <p className={style.p_form}>Only numbers are accepted</p>}
+          {errors.cost?.type === 'pattern' && <p className={style.p_form}>Only numbers accepted</p>}
         </div>
         <div id="Margen" className="col">
           <label
@@ -99,7 +99,7 @@ const FormularioProducto = () => {
               pattern: /^\d{1,2}$/,
 
             })} />
-          {errors.margin?.type === 'pattern' && <p className={style.p_form}>Only numbers are accepted</p>}
+          {errors.margin?.type === 'pattern' && <p className={style.p_form}>Only numbers accepted</p>}
         </div>
       </div>
 
@@ -145,7 +145,7 @@ const FormularioProducto = () => {
         <label
           for='image'
           className="form-label"
-        >Imágen del Producto</label>
+        >Product Image</label>
         <input
           id="image"
           className="form-control"

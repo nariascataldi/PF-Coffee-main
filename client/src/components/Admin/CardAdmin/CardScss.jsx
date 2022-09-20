@@ -7,13 +7,13 @@ export default function Card({ id, title, image, price, cost, margin, descriptio
         <thead>
           <tr>
             <th class="centrado">id</th>
-            <th class="centrado">Imagen</th>
-            <th class="centrado">Productos</th>
-            <th class="centrado">Precio</th>
-            <th class="centrado">Costo</th>
-            <th class="centrado">Margen</th>
-            <th class="centrado">Descripción</th>
-            <th class="centrado">Me Gustan</th>
+            <th class="centrado">Image</th>
+            <th class="centrado">Products</th>
+            <th class="centrado">Price</th>
+            <th class="centrado">Cost</th>
+            <th class="centrado">Margin</th>
+            <th class="centrado">Description</th>
+            <th class="centrado">Like</th>
             <th class="centrado">Stock</th>
           </tr>
         </thead>
