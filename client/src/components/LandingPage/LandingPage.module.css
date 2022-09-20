@@ -1,6 +1,6 @@
 .LandingPage {
   /* A Friend in Need */
-  background-image: url(C:\Users\User\Desktop\PF-Coffee-main\client\src\assets\logo_coffee.png); 
+  background-image: url(../../assets/logo_coffee.png); 
   background-size: cover;
   background-position: center;
   height: 100vh;
