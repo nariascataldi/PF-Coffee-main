@@ -193,7 +193,7 @@ const FormularioProducto = () => {
           for="flexSwitchCheckDefault"
         >Disable</label>
       </div>
-
+      <SelectsAnidados />
       <div id="Guardar" className="d-grid gap-2">
         <input id={style.submit} className="btn btn-success" type="submit" value="Save" />
       </div>
