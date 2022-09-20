@@ -1,19 +1,20 @@
 .conteiner{
-  background-image: url(../../assets/A_small_cup_of_coffee.jpeg);
+  background-image: url(../../assets/logo_coffee.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  background-color: black;
-  height: 60vh;
+  background-color: #E3EFFB;
+  height: 20vh;
+  padding-bottom: 500px;
 }
 .spinner {
   margin: 10vw;
   padding: 5rem;
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  width: 80px;
-  height: 80px;
+  border: 4px solid rgb(231, 99, 121);
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border-left-color: #09f;
+  border-left-color: rgb(231, 99, 121);
 
   animation: spin 1s ease infinite;
 

@@ -5,8 +5,9 @@ import DatePicker from 'react-datepicker';
 import { postUser } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
 
-import 'react-datepicker/dist/react-datepicker.css';
-import "bootstrap/dist/css/bootstrap.min.css";
+
+// import 'react-datepicker/dist/react-datepicker.css';
+// import "bootstrap/dist/css/bootstrap.min.css";
 import style from './UserCreate.module.css';
 
 
@@ -32,17 +33,17 @@ const FormularioUsuario = () => {
     e.target.reset();
   }
   const incluirCUIT = watch('incluirCUIT');
-  
+
   return (
     <div className={style.container}>
       <div className={style.created}>
-        <h2 className={style.title}>Editar Perfil</h2>
+        <h2 className={style.title}>Edit profile</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div >
-            <label className={style.label}>Nombre</label>
+          <div className="input-group input-group-sm mb-3">
+            <label className={style.forLabel('input-group-text')}>Name</label>
             <input
-              className={style.input_form}
+              className={style.forInput('form-control')}
               type="text"
               placeholder="Brendan"
               {...register("name", {
@@ -66,10 +67,11 @@ const FormularioUsuario = () => {
                 caracteres "":.,_-
               </p>
             )}
-
-            <label className={style.label}>Apellido</label>
+          </div>
+          <div className="input-group input-group-sm mb-3">
+            <label className={style.forLabel('input-group-text')}>Last name</label>
             <input
-              className={style.input_form}
+              className={style.forInput('form-control')}
               type="text"
               placeholder="Eich"
               {...register("lastName", {
@@ -93,10 +95,10 @@ const FormularioUsuario = () => {
             )}
           </div>
 
-          <div className={style.mail}>
-            <label className={style.label}>Email</label>
+          <div className="input-group input-group-sm mb-3">
+            <label className={style.forLabel('input-group-text')}>E-mail</label>
             <input
-              className={style.input_form}
+              className={style.forInput('form-control ')}
               type="text"
               placeholder="javascript@brave.etc"
               {...register("mail", {
@@ -107,10 +109,10 @@ const FormularioUsuario = () => {
               <p className={style.p_form}>El formato del email es incorrecto</p>
             )}
           </div>
-          <div className={style.pass}>
-            <label className={style.label}>Contraseña</label>
+          <div className="input-group input-group-sm mb-3">
+            <label className={style.forLabel('input-group-text')}>Password</label>
             <input
-              className={style.input_form}
+              className={style.forInput('form-control')}
               type="password"
               placeholder="8 letras"
               {...register("pass", {
@@ -132,10 +134,10 @@ const FormularioUsuario = () => {
             )}
           </div>
 
-          <div>
-            <label className={style.label}>Fecha Nacimiento</label>
+          <div className="input-group input-group-sm mb-3">
+            <label className={style.forLabel('input-group-text')}>Date of Birth</label>
             <DatePicker
-              className={style.input_form}
+              className={style.forDate('form-control')}
               selected={birthday}
               onChange={(date) => setBirthday(date)}
               dateFormat="dd/MM/yyyy"
@@ -156,17 +158,17 @@ const FormularioUsuario = () => {
             />
           </div>
           {incluirCUIT && (
-            <div className={style.numberCUIT}>
-              <label className={style.label}>CUIT</label>
+            <div className="input-group input-group-sm mb-3">
+              <label className={style.forLabel('input-group-text')}>CUIT</label>
               <input
-                className={style.input_form}
+                className={style.forDate('form-control')}
                 type="number"
                 {...register("CUIT")}
               />
             </div>
           )}
           <button className={style.createButton} type="submit" value="Enviar">
-            Enviar
+            Send
           </button>
         </form>
       </div>

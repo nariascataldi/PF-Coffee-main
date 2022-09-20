@@ -4,7 +4,7 @@ import { getAllProducts } from '../../../redux/actions/index.js';
 
 import FormularioProducto from './ProductCreate';
 import Cards from '../CardsAdmin/CardsAdminScss';
-import NavBar from '../NavBarAdmin/NavBarAdmin.jsx';
+import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx';
 
 export default function ProductAdmin() {
 
@@ -16,7 +16,7 @@ export default function ProductAdmin() {
 
   return (
     <Fragment>
-      <NavBar />
+      <NavBarAdmin />
       <div class="container my-3 py-5">
         <div class="row">
           <div id='formularioProducto' class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">

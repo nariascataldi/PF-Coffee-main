@@ -25,7 +25,7 @@ export default function Home(){
         dispatch(getAllProducts());
         setTimeout(()=>{
             setLoad(false)
-        },4000)
+        },1000)
         dispatch(clearDetail())
     },[dispatch])
     useEffect(()=>{

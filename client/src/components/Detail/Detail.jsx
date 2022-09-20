@@ -11,8 +11,6 @@ import Loading from '../Loading/Loading';
 
 
 export default function Detail(props){
-    
-    console.log("las props: ", props)
     const dispatch= useDispatch()
     const {id}= useParams()
     // para Loading
@@ -23,12 +21,11 @@ export default function Detail(props){
         dispatch(getDetail(id));//
         setTimeout(()=>{
             setLoad(false)
-        },3000);
+        },1000);
     },[dispatch])
     
 
     const {detail}= useSelector(state=>state)
-    console.log("detail: ", detail)
     return(
         <div>
         <div className='card'>

@@ -70,12 +70,6 @@ const handleOnClick=()=>{
                     </li>
 
                     <li className="nav-item">
-                        <Link to='/form' className='links nav-link'>
-                            Form
-                        </Link>
-                    </li>
-
-                    <li className="nav-item">
                         <Link to='/providers' className='links nav-link'>
                             Providers
                         </Link>
@@ -86,6 +80,7 @@ const handleOnClick=()=>{
                     <div>
                     <select name='category' className='input-filter' onChange={handleSelect} >
                             <option value=''>Categories</option> 
+                            <option value=''>None</option>
                                 {categories?.map((p)=>{
                                     return <option key={p.id} value={p.name}>{p.name}</option>
                                 })}
@@ -95,6 +90,7 @@ const handleOnClick=()=>{
                 <div className='box'>
                     <select name='diet' className='input-filter' onChange={handleSelect} >
                         <option value=''>Diets</option> 
+                        <option value=''>None</option>
                             {diets?.map((p)=>{
                                 return <option key={p.id} value={p.name}>{p.name}</option>
                             })}
