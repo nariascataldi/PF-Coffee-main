@@ -43,6 +43,8 @@ const FormularioProducto = () => {
   return <div>
     <h2>Product</h2>
     <form onSubmit={handleSubmit(onSubmit)}>
+
+
       <div id="Nombre" className="mb-3">
         <label
           for='title'
@@ -102,7 +104,6 @@ const FormularioProducto = () => {
           {errors.margin?.type === 'pattern' && <p className={style.p_form}>Only numbers accepted</p>}
         </div>
       </div>
-
       <div id="PrecioPublico" className="mb-3">
         <label
           for="price"
