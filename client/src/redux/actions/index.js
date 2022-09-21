@@ -161,7 +161,7 @@ export const clearCloudinaryResponse = () => {
   };
 };
 
-};
+
 export const postComment = (postData) => {
   return () => {
     console.log('en actions: ', postData);
