@@ -12,10 +12,12 @@ const { productsGet,
         providersGet,
         providerIDget,
         altAttribute,
-        commentPost,
-        userPost,
+        commentPost,        
         usersGet,
         userIDget  } = require('../controllers');
+
+const { userRegist,
+        userLogin } = require('../controllers/authControllers.js');
 
 // import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
 
@@ -60,7 +62,11 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! --
 
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
-router.post('/users', userPost);     // ruta NO probada !!!!!! --
+                     //----Auth
+
+router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
+
+router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
 
 
 //---------------PUT

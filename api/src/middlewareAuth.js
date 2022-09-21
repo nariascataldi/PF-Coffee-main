@@ -12,6 +12,6 @@ const  middlewareAuth = (req, res, next) => { // eslint-disable-line no-unused-v
       return res.status(401).json({error: 'token missing or invalid'})
     }
     next();
-  };
+};
 
   module.exports = middlewareAuth;
