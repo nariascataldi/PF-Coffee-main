@@ -7,10 +7,10 @@ import Cards from '../CardsAdmin/CardsAdmin';
 // import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx';
 
 import { BsSearch } from 'react-icons/bs';
-import FormProduct from './ProductCreate';
+import FormProductEdit from './ProductEdit.jsx';
 
 
-export default function ProductAdmin() {
+export default function ProductAdminEdit() {
 
   const [busqueda, setBusqueda] = useState('');
 
@@ -36,7 +36,7 @@ export default function ProductAdmin() {
       <div className="container my-3 py-5">
         <div className="row">
           <div id='formularioProducto' className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
-            <FormProduct />
+            <FormProductEdit />
           </div>
           <div id='ListadoProductos' className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
           {/* <button onClick={() => window.location.reload(false)}>Click to reload!</button> */}
