@@ -13,6 +13,8 @@ export const SET_FILTER_STATE = 'SET_FILTER_STATE'
 export const FILTER = 'FILTER'
 export const POST_PROVIDERS = 'POST_PROVIDERS'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
+export const GET_CLOUDINARY_RESPONSE = 'GET_CLOUDINARY_RESPONSE'
+export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
 export const POST_COMMENT = 'POST_COMMENT'
 
 
@@ -46,6 +48,7 @@ export function clearDetail () {
     type: CLEAR_DETAIL
   }
 };
+
 export function getByTitle(payload) {
   return {
     type: GET_BY_TITLE,
@@ -97,6 +100,15 @@ export function getAllDiets() {
     })
   }
 };
+export const postCloudinaryPhoto = (postData) => {
+  return async (dispatch) => {
+    const json = await axios.post('https://api.cloudinary.com/v1_1/drcjpfj7t/image/upload', postData)
+    return dispatch({
+      type: GET_CLOUDINARY_RESPONSE,
+      payload: json.data
+    })
+  }
+};
 export const createProduct = (postData) => {
   return () => {
     axios.post('http://localhost:3001/products', postData)
@@ -121,6 +133,8 @@ export function postProduct(payload) {
     return response;
   }
 }
+
+
 export function setFilterState(payload) {
   return {
     type: SET_FILTER_STATE,
@@ -137,6 +151,16 @@ export function postProviders(payload){
     const info= await axios.post('http://localhost:3001/providers', payload);
     return info;
   }
+
+}
+export const clearCloudinaryResponse = () => {
+  return async function (dispatch) {
+      dispatch({
+          type: CLEAR_CLOUDINARY_RESPONSE
+      })
+  };
+};
+
 };
 export const postComment = (postData) => {
   return () => {

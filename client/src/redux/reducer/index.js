@@ -13,6 +13,8 @@ import {
   FILTER,
   POST_PROVIDERS,
   CLEAR_DETAIL,
+  GET_CLOUDINARY_RESPONSE,
+  CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT
 } from '../actions'
 
@@ -25,6 +27,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
+  responseCloudinary: {},
   filterBy: {
     title: '',
     category: '',
@@ -148,6 +151,16 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         providers: action.payload
+      }
+    case GET_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: action.payload
+      }
+    case CLEAR_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: {}
       }
     case POST_COMMENT :
       return{
