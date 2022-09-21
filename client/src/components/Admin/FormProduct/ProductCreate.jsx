@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDiets, postProduct, getAllProviders } from "../../../redux/actions"; //2
+import { getAllDiets, postProduct, getAllProviders, getAllCategories } from "../../../redux/actions"; //2
 import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -43,6 +43,7 @@ export default function FormularioProducto() {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
   var provider = useSelector((state) => state.providers);
+  var categories = useSelector((state) => state.categories);
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ export default function FormularioProducto() {
   useEffect(() => {
     dispatch(getAllDiets())
     dispatch(getAllProviders())
+    dispatch(getAllCategories())
   }, [dispatch])
 
   const [post, setPost] = useState({
@@ -106,7 +108,6 @@ export default function FormularioProducto() {
   };
   /**Diet */
   function handleSelectDiets(e) {
-
     console.log('Handle ', e.target.value);
     setPost({
       ...post,
@@ -115,11 +116,18 @@ export default function FormularioProducto() {
   };
   /**Providers */
   function handleSelectProv(e) {
-
     console.log('HandlePro ', e.target.value);
     setPost({
       ...post,
       providers: [e.target.value]
+    });
+  };
+  /**Categories */
+  function handleSelectCate(e) {
+    console.log('HandleCat ', e.target.value);
+    setPost({
+      ...post,
+      categories: [e.target.value]
     });
   };
   
@@ -312,6 +320,31 @@ export default function FormularioProducto() {
                   className={style.dietOption}
                 >
                   {prov.name}
+                </option>
+              ))
+            }
+          </select>
+          {errors.diet && (
+            <p style={{ float: 'right' }}>{errors.diet}</p>
+          )}
+        </div>
+        <div className={style.categories}>
+          <select
+            onChange={e => handleSelectCate(e)}
+            defaultValue='default'
+            className={style.dietSelect}>
+            <option
+              value="default"
+              disabled
+              className={style.dietOption}>Choose Categorie</option>
+            {categories &&
+              categories.map((cate) => cate.name && (
+                <option
+                  key={cate.name}
+                  value={cate.name}
+                  className={style.dietOption}
+                >
+                  {cate.name}
                 </option>
               ))
             }
