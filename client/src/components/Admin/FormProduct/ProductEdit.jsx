@@ -39,7 +39,7 @@ function validate(post) {
   return errors;
 }
 
-export default function FormProduct() {
+export default function FormProductEdit() {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
   var provider = useSelector((state) => state.providers);
