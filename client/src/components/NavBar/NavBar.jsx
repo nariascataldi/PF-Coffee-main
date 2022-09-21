@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import logo from './img/logo_coffee.png'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
-import {BsSearch} from 'react-icons/bs';
+import {BsSearch, BsFillCartFill, BsFillCartPlusFill} from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getByTitle, setFilterState } from '../../redux/actions';
 import Menu from './Menu';
@@ -102,9 +102,11 @@ const handleOnClick=()=>{
                         <option value='A-Z'>A-Z</option> 
                         <option value='Z-A'>Z-A</option>      
                     </select>
+                    
                 </div>
                  </>
                 }
+                <Link to='/fillCart'><BsFillCartFill className='carrito-nav-user'/></Link>
                 {noFilters &&   
                  <>
                   <h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><p></p><p></p><p></p><p></p><p></p><p></p>

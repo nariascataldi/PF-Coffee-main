@@ -13,6 +13,7 @@ export const SET_FILTER_STATE = 'SET_FILTER_STATE'
 export const FILTER = 'FILTER'
 export const POST_PROVIDERS = 'POST_PROVIDERS'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
+export const FILL_CART = 'FILL_CART'
 
 
 export function getAllProducts() {
@@ -131,6 +132,12 @@ export function filter() {
     type: FILTER,
   }
 };
+export function fillCart(payload){
+  return {
+    type: FILL_CART ,
+    payload
+  }
+}
 export function postProviders(payload){
   return async function(dispatch){
     const info= await axios.post('http://localhost:3001/providers', payload);

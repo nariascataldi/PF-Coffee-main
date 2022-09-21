@@ -11,6 +11,7 @@ import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import NotFound from './components/404/404';
 import Providers from './components/Providers/Providers';
 import './App.css';
+import FillCart from './components/FillCart/FillCart';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path= '/productAdmin' element={<ProductAdmin />}/>
         <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
         <Route exact path= '/providers' element={<Providers />}/>
+        <Route exact path= '/fillCart' element={<FillCart/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

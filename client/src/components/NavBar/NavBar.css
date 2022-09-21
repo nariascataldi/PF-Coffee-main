@@ -9,6 +9,7 @@
     width: 100%;
     z-index: 10;
     padding-right: 20px;
+    height: 90px;
 }
 
 .searchBar{
@@ -43,7 +44,7 @@
     cursor: pointer;   
 }
 .logo{
-    width: 14vh;
+    width: 13vh;
     padding-left: 14px;
 }
 .links {
@@ -58,7 +59,7 @@
     margin-left: 4px;
     margin-right: 6px;
     background-color: #E3EFFB;
-    border-color: #DD6873;
+    border-color: #E3EFFB ;
     color: rgb(97, 97, 97);
     outline: none;
     cursor: pointer;
@@ -136,4 +137,19 @@
 }
 #navMenu.active >  span:nth-child(3) {
     transform: translateY(-9px) rotate(90deg);
+}
+.carrito-nav-user{
+    color: #DD6873;
+    width:56px;
+    height:26px;
+    padding-bottom:2px;
+    cursor:pointer;
+}
+.carrito-nav-user:hover{
+    padding-bottom:0.5px;
+    color:#D32F2F;
+}
+.carrito-nav-user:active{
+    color:#B71C1C;
+    padding-bottom:1px;
 }

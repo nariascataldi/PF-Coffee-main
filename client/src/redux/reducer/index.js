@@ -12,7 +12,8 @@ import {
   SET_FILTER_STATE,
   FILTER,
   POST_PROVIDERS,
-  CLEAR_DETAIL
+  CLEAR_DETAIL,
+  FILL_CART,
 } from '../actions'
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
+  fillCart:[],
   filterBy: {
     title: '',
     category: '',
@@ -146,6 +148,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         products: [...sort]
+      }
+    case FILL_CART :
+      return {
+        ...state,
+        fillCart: action.payload
       }
     case POST_PROVIDERS :
       return{
