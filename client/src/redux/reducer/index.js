@@ -12,7 +12,10 @@ import {
   SET_FILTER_STATE,
   FILTER,
   POST_PROVIDERS,
-  CLEAR_DETAIL
+  CLEAR_DETAIL,
+  GET_CLOUDINARY_RESPONSE,
+  CLEAR_CLOUDINARY_RESPONSE,
+  POST_COMMENT
 } from '../actions'
 
 const initialState = {
@@ -24,6 +27,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
+  responseCloudinary: {},
   filterBy: {
     title: '',
     category: '',
@@ -86,10 +90,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         detail: action.payload
       }
-    case POST_USER:
-      return {
-        ...state
-      }
     case POST_PRODUCT:
       return {
         ...state
@@ -121,7 +121,7 @@ const rootReducer = (state = initialState, action) => {
       const sort = state.filterBy.sort === ''? filterDiet : state.filterBy.sort=== 'Z-A' ? filterDiet.sort((a,b)=>{
         let A = a.title.toLowerCase();
                 let B = b.title.toLowerCase();
-                if(A == B) {
+                if(A === B) {
                     return 0; 
                   }
                 if(A > B) {
@@ -133,7 +133,7 @@ const rootReducer = (state = initialState, action) => {
         }) : state.filterBy.sort==='A-Z' && filterDiet.sort((a,b)=>{
                 let A = a.title.toLowerCase();
                 let B = b.title.toLowerCase();
-                  if(A == B) {
+                  if(A === B) {
                     return 0; 
                   }
                   if(A < B) {
@@ -151,6 +151,20 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         providers: action.payload
+      }
+    case GET_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: action.payload
+      }
+    case CLEAR_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: {}
+      }
+    case POST_COMMENT :
+      return{
+        ...state
       }
 
     default:

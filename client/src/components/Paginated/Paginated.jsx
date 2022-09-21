@@ -11,7 +11,7 @@ export default function Paginated ({productsPerPage, products, paginated, curren
     }
     useEffect (()=>{
         if (currentPage > pageNumber.length) { paginated(1)} 
-        },[products])
+        },[products, currentPage, pageNumber, paginated])
     return(
         <div className='botones-paginado'>
             
