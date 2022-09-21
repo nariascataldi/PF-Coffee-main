@@ -12,7 +12,9 @@ import {
   SET_FILTER_STATE,
   FILTER,
   POST_PROVIDERS,
-  CLEAR_DETAIL
+  CLEAR_DETAIL,
+  GET_CLOUDINARY_RESPONSE,
+  CLEAR_CLOUDINARY_RESPONSE
 } from '../actions'
 
 const initialState = {
@@ -24,6 +26,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
+  responseCloudinary: {},
   filterBy: {
     title: '',
     category: '',
@@ -152,7 +155,16 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         providers: action.payload
       }
-
+    case GET_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: action.payload
+      }
+    case CLEAR_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: {}
+      }
     default:
       return { ...state }
   }

@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { postCloudinaryPhoto, postProviders } from "../../../redux/actions";
-import { useDispatch } from "react-redux";
+import { clearCloudinaryResponse, postCloudinaryPhoto, postProviders } from "../../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { Container, FormGroup, Input } from 'reactstrap'
 import style from './ProviderCreate.module.css'
 import axios from "axios";
+import { useEffect } from "react";
 
 
 const FormProvider = () => {
     const dispatch= useDispatch();
     const navigate= useNavigate();
+    let responseCloudinary = useSelector(state => state.responseCloudinary)
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState('');
 
@@ -39,16 +41,17 @@ const FormProvider = () => {
         data.append('file', files[0]);
         data.append('upload_preset', 'Provider');
         setLoading(true);
-        const res = await fetch(
-            'https://api.cloudinary.com/v1_1/drcjpfj7t/image/upload/',
-            {
-                method: 'POST',
-                body: data
-            }
-        )
-        const file = await res.json();
-        console.log(res)
-        setImage(file.secure_url)
+        // const res = await fetch(
+        //     'https://api.cloudinary.com/v1_1/drcjpfj7t/image/upload/',
+        //     {
+        //         method: 'POST',
+        //         body: data
+        //     }
+        // )
+        // const file = await res.json();
+        // console.log(res)
+        await dispatch(postCloudinaryPhoto(data))
+        setImage(responseCloudinary.secure_url)
         setLoading(false)
     }
 
@@ -110,6 +113,13 @@ const FormProvider = () => {
                 </div>
                 <input type="submit" value="Enviar"/>
             </form>
+            <div>
+                {
+                    !responseCloudinary ? null : (
+                        <img src={responseCloudinary.secure_url}/>
+                    )
+                }
+            </div>
         </div>
     )
 }
