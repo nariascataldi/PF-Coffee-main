@@ -20,10 +20,10 @@ export default function HomeAdmin() {
     <NavBarAdmin></NavBarAdmin>
       <div className="container my-3 py-5">
         <div className="row">
-          <div id='NavBarIzq' className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
+          <div id='NavBarIzq' className="col-sm-12 col-md-2 col-lg-2 col-xl-2 py-4 bg-white">
             <NavBarAdminIzq />
           </div>
-          <div id='Productos' className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
+          <div id='Productos' className="col-sm-12 col-md-10 col-lg-10 col-xl-10 py-4 bg-white">
             <ProductAdmin></ProductAdmin>
           </div>
         </div>
