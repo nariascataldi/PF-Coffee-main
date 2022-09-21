@@ -16,6 +16,7 @@ export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 export const GET_CLOUDINARY_RESPONSE = 'GET_CLOUDINARY_RESPONSE'
 export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
 export const POST_COMMENT = 'POST_COMMENT'
+export const GET_LOGIN = 'GET_LOGIN'
 
 
 export function getAllProducts() {
@@ -169,5 +170,14 @@ export const postComment = (postData) => {
       .then(response => {
         console.log(response.data)
       })
+  }
+};
+export function loginService(user) {
+  return async function (dispatch) {
+    const json = await axios.post('http://localhost:3001/login', user);
+    return dispatch({
+      type: GET_LOGIN,
+      payload: json.data
+    })
   }
 };

@@ -1,4 +1,4 @@
-const { Product, Diet, Category, Provider, Comment } = require('../db.js');
+const { Product, Diet, Category, Provider, Comment } = require('../../db.js');
 
 
 async function getIDproduct (id) {

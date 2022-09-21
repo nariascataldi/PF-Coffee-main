@@ -1,4 +1,4 @@
-const { Product } = require('../db.js');
+const { Product } = require('../../db.js');
 
 async function deleteProduct(id) {
 
