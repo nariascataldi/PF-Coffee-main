@@ -14,6 +14,11 @@ export const FILTER = 'FILTER'
 export const POST_PROVIDERS = 'POST_PROVIDERS'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 export const FILL_CART = 'FILL_CART'
+export const RESET_FILL_CART ='RESET_FILL_CART'
+export const GET_CLOUDINARY_RESPONSE = 'GET_CLOUDINARY_RESPONSE'
+export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
+export const POST_COMMENT = 'POST_COMMENT'
+export const GET_LOGIN = 'GET_LOGIN'
 
 
 export function getAllProducts() {
@@ -46,6 +51,7 @@ export function clearDetail () {
     type: CLEAR_DETAIL
   }
 };
+
 export function getByTitle(payload) {
   return {
     type: GET_BY_TITLE,
@@ -90,9 +96,22 @@ export function getAllCategories() {
 };
 export function getAllDiets() {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/diets`);
+    try {
+      var info = await axios.get('/diets', {}); 
+      return dispatch({
+        type: GET_ALL_DIETS,
+        payload: info.data
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+export const postCloudinaryPhoto = (postData) => {
+  return async (dispatch) => {
+    const json = await axios.post('https://api.cloudinary.com/v1_1/drcjpfj7t/image/upload', postData)
     return dispatch({
-      type: GET_ALL_DIETS,
+      type: GET_CLOUDINARY_RESPONSE,
       payload: json.data
     })
   }
@@ -121,6 +140,8 @@ export function postProduct(payload) {
     return response;
   }
 }
+
+
 export function setFilterState(payload) {
   return {
     type: SET_FILTER_STATE,
@@ -138,9 +159,42 @@ export function fillCart(payload){
     payload
   }
 }
+export function resetFillCart () {
+  return{
+      type:RESET_FILL_CART
+  }
+}
 export function postProviders(payload){
   return async function(dispatch){
     const info= await axios.post('http://localhost:3001/providers', payload);
     return info;
   }
+
 }
+export const clearCloudinaryResponse = () => {
+  return async function (dispatch) {
+      dispatch({
+          type: CLEAR_CLOUDINARY_RESPONSE
+      })
+  };
+};
+
+
+export const postComment = (postData) => {
+  return () => {
+    console.log('en actions: ', postData);
+    axios.post('http://localhost:3001/comment', postData)
+      .then(response => {
+        console.log(response.data)
+      })
+  }
+};
+export function loginService(user) {
+  return async function (dispatch) {
+    const json = await axios.post('http://localhost:3001/login', user);
+    return dispatch({
+      type: GET_LOGIN,
+      payload: json.data
+    })
+  }
+};
