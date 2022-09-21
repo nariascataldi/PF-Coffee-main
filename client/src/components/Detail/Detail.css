@@ -18,22 +18,22 @@ padding-left: 20px;
     width: 300px;
     
 }
-.list-group-flush{
+.list_group_flush{
     border-radius: 12px;
 }
 .none{
     text-decoration: none;
 } 
-.card-detail{
+.card_detail{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 80px;
 }
-.text-detail{
+.text_detail{
 margin-right: 130px;
 }
-.back-boton-detail{
+.back_boton_detail{
 text-decoration: none;
 display: flex;
 justify-content: center;
