@@ -108,7 +108,7 @@ export default function FormularioProducto() {
     console.log('Handle ', e.target.value);
     setPost({
       ...post,
-      diet: Array.from(new Set([e.target.value]))
+      diet: e.target.value
     });
   };
   function handleDelete(el) {
