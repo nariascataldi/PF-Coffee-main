@@ -19,6 +19,7 @@ export const GET_CLOUDINARY_RESPONSE = 'GET_CLOUDINARY_RESPONSE'
 export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
 export const POST_COMMENT = 'POST_COMMENT'
 export const GET_LOGIN = 'GET_LOGIN'
+export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 
 
 export function getAllProducts() {
@@ -153,9 +154,16 @@ export function filter() {
     type: FILTER,
   }
 };
-export function fillCart(payload){
+export function setFillCart(payload){
   return {
     type: FILL_CART ,
+    payload
+  }
+}
+export function fillCartLocalS(payload){
+  localStorage.setItem('productCart',JSON.stringify(payload))
+  return {
+    type: FILL_CART_LOCAL_S ,
     payload
   }
 }

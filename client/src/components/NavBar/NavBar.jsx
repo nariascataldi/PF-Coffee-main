@@ -9,10 +9,10 @@ import Menu from './Menu';
 
 
 const NavBar = ({ noFilters }) => {
-    const {categories,diets} = useSelector(state=>state)
+    const {categories,diets,fillCart} = useSelector(state=>state)
     const [busqueda, setBusqueda] = useState('');
     const [menu,setMenu] = useState(false);
-
+    const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
 const dispatch = useDispatch();
 
 const handleOnChange=(d)=>{
@@ -87,7 +87,7 @@ const handleOnClick=()=>{
                     </select>
                 </div>
 
-                <div className='box'>
+                <div>
                     <select name='diet' className='input-filter' onChange={handleSelect} >
                         <option value=''>Diets</option> 
                         <option value=''>None</option>
@@ -96,7 +96,7 @@ const handleOnClick=()=>{
                             })}
                     </select>
                 </div>
-                <div className='box'>
+                <div>
                     <select name='sort' className='input-filter' onChange={handleSelect}>
                         <option value=''>Sort</option>
                         <option value='A-Z'>A-Z</option> 
@@ -106,7 +106,7 @@ const handleOnClick=()=>{
                 </div>
                  </>
                 }
-                <Link to='/fillCart'><BsFillCartFill className='carrito-nav-user'/></Link>
+                <Link className='link-contdor-cart' to='/fillCart'><BsFillCartFill className='carrito-nav-user'/><p className='contador-carrito'>{ localStorageCart.length>0 && localStorageCart.length}</p></Link>
                 {noFilters &&   
                  <>
                   <h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><p></p><p></p><p></p><p></p><p></p><p></p>

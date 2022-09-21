@@ -17,7 +17,8 @@ import {
   RESET_FILL_CART,
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
-  POST_COMMENT
+  POST_COMMENT,
+  fillCart
 } from '../actions'
 
 const initialState = {
@@ -153,7 +154,7 @@ const rootReducer = (state = initialState, action) => {
     case FILL_CART :
       return {
         ...state,
-        fillCart: action.payload
+        fillCart: [...state.fillCart,action.payload]
       }
     case RESET_FILL_CART : 
       return {
