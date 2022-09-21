@@ -15,6 +15,7 @@ export const POST_PROVIDERS = 'POST_PROVIDERS'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 export const GET_CLOUDINARY_RESPONSE = 'GET_CLOUDINARY_RESPONSE'
 export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
+export const POST_COMMENT = 'POST_COMMENT'
 
 
 export function getAllProducts() {
@@ -150,6 +151,7 @@ export function postProviders(payload){
     const info= await axios.post('http://localhost:3001/providers', payload);
     return info;
   }
+
 }
 export const clearCloudinaryResponse = () => {
   return async function (dispatch) {
@@ -157,4 +159,15 @@ export const clearCloudinaryResponse = () => {
           type: CLEAR_CLOUDINARY_RESPONSE
       })
   };
+};
+
+};
+export const postComment = (postData) => {
+  return () => {
+    console.log('en actions: ', postData);
+    axios.post('http://localhost:3001/comment', postData)
+      .then(response => {
+        console.log(response.data)
+      })
+  }
 };

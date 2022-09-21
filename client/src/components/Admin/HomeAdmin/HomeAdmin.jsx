@@ -11,7 +11,7 @@ export default function HomeAdmin() {
   let allProducts = useSelector(state => state.allProducts)
   React.useEffect(() => {
     dispatch(getAllProducts());
-  }, [])
+  }, [dispatch])
   return (
     <div className='home-container'>
       {console.log(allProducts)}

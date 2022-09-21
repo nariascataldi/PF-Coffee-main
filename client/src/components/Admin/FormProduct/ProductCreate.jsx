@@ -13,7 +13,7 @@ import style from './ProductCreate.module.css';
 
 const FormularioProducto = () => {
   const dispatch = useDispatch();
-  var diet = useSelector((state) => state.diets);
+  // var diet = useSelector((state) => state.diets);
   const navigate= useNavigate();
 
 
