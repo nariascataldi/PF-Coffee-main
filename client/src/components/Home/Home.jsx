@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer.jsx';
 
 
 
-import './Home.css'
+import style from './Home.module.css'
 
 export default function Home(){
 
@@ -42,7 +42,7 @@ export default function Home(){
 
 
     return (
-        <div className='home-container'>
+        <div className={style.home_container}>
             <NavBar />
             <Cards  load={load}/>
             <Footer />
