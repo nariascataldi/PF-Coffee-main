@@ -94,11 +94,15 @@ export function getAllCategories() {
 };
 export function getAllDiets() {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/diets`);
-    return dispatch({
-      type: GET_ALL_DIETS,
-      payload: json.data
-    })
+    try {
+      var info = await axios.get('/diets', {}); 
+      return dispatch({
+        type: GET_ALL_DIETS,
+        payload: info.data
+      })
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 export const postCloudinaryPhoto = (postData) => {
