@@ -4,7 +4,7 @@ import { getAllProducts, getByTitle, setFilterState } from '../../../redux/actio
 
 import FormularioProducto from './ProductCreate';
 import Cards from '../CardsAdmin/CardsAdmin';
-import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx';
+// import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx';
 
 import { BsSearch } from 'react-icons/bs';
 
@@ -31,13 +31,13 @@ export default function ProductAdmin() {
 
   return (
     <Fragment>
-      <NavBarAdmin />
-      <div class="container my-3 py-5">
-        <div class="row">
-          <div id='formularioProducto' class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
+      {/* <NavBarAdmin /> */}
+      <div className="container my-3 py-5">
+        <div className="row">
+          <div id='formularioProducto' className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
             <FormularioProducto />
           </div>
-          <div id='ListadoProductos' class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
+          <div id='ListadoProductos' className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
           {/* <button onClick={() => window.location.reload(false)}>Click to reload!</button> */}
             {/* Search Bar */}
 
