@@ -1,4 +1,4 @@
-.menu-container{
+.menu_container{
     display: inline-block;
     justify-content:space-between;
     flex-direction: column;
@@ -19,10 +19,10 @@
     padding-bottom: 10%;
     
 }
-.menu-container.open{
+.menu_container.open{
     transform: translateX(95%);
 }
-.box-menu{
+.box_menu{
     margin-bottom: 100px;
     background-color: #E3EFFB;
     color: #E3EFFB;
@@ -32,7 +32,7 @@
     width: 100%;
     padding-left: 18px;
 }
-.box-menu1{
+.box_menu1{
     margin-bottom: 100px;
     background-color: #E3EFFB;
     margin-bottom: 1px;
@@ -41,14 +41,14 @@
     width: 100%;
     padding-left: 18px;
 }
-.menubutton-crate-product{
+.menubutton_crate_product{
     width: 100%;
     border: none;
     height: 46px;
     color: rgb(97, 97, 97);
     background-color: #E3EFFB ;
 }
-.menubutton-crate-product:hover{
+.menubutton_crate_product:hover{
     color:#DD6873;
     font-weight: 600;
 }

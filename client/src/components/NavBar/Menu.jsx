@@ -1,7 +1,7 @@
 import React from 'react';
 // import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import './Menu.css';
+import style from './Menu.module.css';
 
 export default function Menu({menu}){
 
@@ -15,18 +15,18 @@ export default function Menu({menu}){
     //  console.log(seasonactivities);
     //  console.log(seasonSinDuplicado)
     return  (
-        <div className={`menu-container ${menu ? "open" : ""}`}> 
-        <div className='box-menu1'>
+        <div className={style.menu_container ${menu ? "open" : ""}}> 
+        <div className={style.box_menu1}>
         <p></p>
         </div>
-        <div className='box-menu'>
-            <Link to='/productAdmin'><button className='menubutton-crate-product'>Add a new product</button></Link>
+        <div className={style.box_menu}>
+            <Link to='/productAdmin'><button className={style.menubutton_crate_product}>Add a new product</button></Link>
         </div>
-        <div className='box-menu'>
-        <button className='menubutton-crate-product'>Add new Provider</button>
+        <div className={style.box_menu}>
+        <button className={style.menubutton_crate_product}>Add new Provider</button>
         </div>
-        <div className='box-menu'>
-        <button className='menubutton-crate-product'>Log in</button>
+        <div className={style.box_menu}>
+        <button className={style.menubutton_crate_product}>Log in</button>
         </div>
     </div>)
 
