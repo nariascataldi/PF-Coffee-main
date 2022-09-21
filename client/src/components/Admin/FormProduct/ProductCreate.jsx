@@ -111,16 +111,7 @@ export default function FormularioProducto() {
       diet: e.target.value
     });
   };
-  function handleDelete(el) {
-    setPost({
-      ...post,
-      diet: post.diet.filter((d) => d !== post.diet),
-    });
-  }
-
-  // var option = diet?.map(diet => diet.name)
-  // console.log({ option });
-
+  
   return (
     <>
       <h2>Product</h2>
@@ -293,14 +284,6 @@ export default function FormularioProducto() {
           {errors.diet && (
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
-          <div className={style.sidebar_box}>
-            <p>You have selected that:</p>
-              {post.diet && <div className={style.selectedItems}>
-                <p>{post.diet}</p>
-                <button onClick={() => handleDelete(post.diet)}>x</button>
-              </div>}
-            
-          </div>
         </div>
         <div id="Guardar" className="d-grid gap-2">
           <input
