@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import logo from './img/logo_coffee.png'
+import logo from '../../assets/logo_coffee.png'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
 import {BsSearch} from 'react-icons/bs';

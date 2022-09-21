@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
-import imgNotFound from './img/404.jpg'
+import imgNotFound from '../../assets/404.jpg'
 import './404.css'
 import { Link } from 'react-router-dom';
 
