@@ -1,52 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";  
+import {useState} from 'react'
 import { useSelector } from "react-redux";
-import Card from "../CardAdmin/Card";
-import Paginated from "../PaginatedAdmin/PaginatedAdmin";
+import Card from "../CardAdmin/CardScss";
+import Paginated from "../../Paginated/Paginated";
+import Loading from "../../Loading/Loading";
 
-import './Cards.css';
+ 
+export default function Cards ({load}){
+    const {products} = useSelector(state=>state)
 
-export default function Cards() {
-  const { allProducts } = useSelector(state => state)
+        //paginado
+        const[currentPage, setCurrentPage]=useState(1)
+        const[productsPerPage, setProductsPerPage]= useState(8)
+        const indexOfLast= currentPage * productsPerPage
+        const indexOfFirst= indexOfLast - productsPerPage
+        const currentProducts= products.slice(indexOfFirst, indexOfLast)
+        const paginated= (pageNumber)=>{
+            setCurrentPage(pageNumber)
+              };
 
-  //paginado
-  const [currentPage, setCurrentPage] = useState(1)
-  const [productsPerPage, setProductsPerPage] = useState(12)
-  const indexOfLast = currentPage * productsPerPage
-  const indexOfFirst = indexOfLast - productsPerPage
-  const currentProducts = allProducts.slice(indexOfFirst, indexOfLast)
-  const paginated = (pageNumber) => {
-    setCurrentPage(pageNumber)
-  }
-  if (!currentProducts.length) {
+    
+
+    if(!products.length){
+        return (
+            <div className='not-found'><h4>Product not found!</h4></div>
+        )
+    }
+  
     return (
-      <div><h3>Not found!</h3></div>
-    )
+        <div>
+
+            <div className='paginado'>
+                <Paginated 
+                    productsPerPage={productsPerPage}
+                    products={products}
+                    paginated={paginated}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
+            </div>
+
+            <div className="cards-wraper">
+                {load? <Loading/> :
+                    currentProducts.map(p=>{
+                        return <Card
+                        key={p.id}
+                        id={p.id}
+                        name={p.name}
+                        image={p.image}
+                        title={p.title}
+                        price={p.price}
+                        />
+            })}  
+            </div>
+
+        </div>
+    ) 
   }
-  console.log(setProductsPerPage);
-  return (
-    <div>
-
-      <div className='paginado'>
-        <Paginated
-          productsPerPage={productsPerPage}
-          allProducts={allProducts.length}
-          paginated={paginated}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
-
-      <div className="cards-wraper">
-        {currentProducts && currentProducts.map(p => {
-          return <Card
-            name={p.name}
-            image={p.image}
-            title={p.title}
-            price={p.price}
-          />
-        })}
-      </div>
-
-    </div>
-  )
-}

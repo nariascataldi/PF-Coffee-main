@@ -103,7 +103,8 @@ export default function FormularioProducto() {
         diet: '',
       })
       e.target.reset();
-      navigate('/productAdmin')
+      window.location.reload(false);
+      navigate('/productAdmin');
     }
   };
   /**Diet */
