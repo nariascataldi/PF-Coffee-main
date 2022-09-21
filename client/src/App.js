@@ -11,6 +11,7 @@ import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import NotFound from './components/404/404';
 import Providers from './components/Providers/Providers';
 import './App.css';
+import FormularioUsuario from './components/Account/UserCreate/UserCreate';
 
 function App() {
   return (

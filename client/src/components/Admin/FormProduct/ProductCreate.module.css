@@ -11,3 +11,34 @@
   margin: 6px;
   box-shadow: 5px 5px 10px black;
 }
+.dietSelect {
+  background: rgba(244, 223, 121, 0.5);
+  margin: 5px 0;
+  padding: 5px 0;
+  font-size: large;
+  color: rgb(14, 3, 61);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.dietOption {
+  color: black;
+  background-color: aliceblue;
+}
+.selecteddiets {
+  display: contents;
+  font-size: large;
+  padding: 10px;
+  color: blanchedalmond;
+}
+.selectedItems {
+  display: flex;
+  background-color: rgba(244, 223, 121, 0.5);
+  border-radius: 10px;
+  width: 20vw;
+  margin: 2px;
+  padding: 2px;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+ }

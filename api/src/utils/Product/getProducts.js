@@ -1,5 +1,5 @@
-const { Product } = require('../db.js');
-const { Diet, Category, Provider } = require('../db.js');
+const { Product } = require('../../db.js');
+const { Diet, Category, Provider } = require('../../db.js');
 
 async function getProducts () {
 

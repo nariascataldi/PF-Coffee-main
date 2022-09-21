@@ -1,8 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../../redux/actions/index.js';
+import ProductAdmin from '../FormProduct/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
-import CardsAdmin from '../CardsAdmin/CardsAdmin';
+import NavBarAdminIzq from '../NavBarAdmin/NavBarAdminIzq';
+// import CardsAdmin from '../CardsAdmin/CardsAdmin';
 
 import './HomeAdm.css'
 
@@ -13,10 +15,19 @@ export default function HomeAdmin() {
     dispatch(getAllProducts());
   }, [dispatch])
   return (
+
     <div className='home-container'>
-      {console.log(allProducts)}
-      <NavBarAdmin />
-      <CardsAdmin />
+    <NavBarAdmin></NavBarAdmin>
+      <div className="container my-3 py-5">
+        <div className="row">
+          <div id='NavBarIzq' className="col-sm-12 col-md-2 col-lg-2 col-xl-2 py-4 bg-white">
+            <NavBarAdminIzq />
+          </div>
+          <div id='Productos' className="col-sm-12 col-md-10 col-lg-10 col-xl-10 py-4 bg-white">
+            <ProductAdmin></ProductAdmin>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-const { Product, Diet, Category, Comment, Provider, Op } = require('../db.js');
+const { Product, Diet, Category, Comment, Provider, Op } = require('../../db.js');
 
 let getProductsQy = async(data)=>{
 
