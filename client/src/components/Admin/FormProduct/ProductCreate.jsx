@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDiets, postProduct } from "../../../redux/actions"; //2
+import { getAllDiets, postProduct, getAllProviders } from "../../../redux/actions"; //2
 import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -10,7 +10,7 @@ import style from './ProductCreate.module.css';
 var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
 var testDescription = /^[A-Za-z]+$/i;
-var testNumber = /^\d{1,2}$/;
+// var testNumber = /^\d{1,2}$/;
 
 
 function validate(post) {
@@ -32,7 +32,7 @@ function validate(post) {
   /** IMAGE */
   if (!testImage.test(post.image)) errors.image = `Enter the URL of a representative image in jpg or png format`;
   /** stock */
-  if (!post.stock || !testNumber.test(post.stock)) errors.stock = `Enter a number of product`;
+  if (!post.stock) errors.stock = `Enter a number of product`;
   /** Diet */
   if (![post.diet].length) errors.diet = 'Choose at least one type of diet';
 
@@ -42,12 +42,14 @@ function validate(post) {
 export default function FormularioProducto() {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
+  var provider = useSelector((state) => state.providers);
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllDiets())
+    dispatch(getAllProviders())
   }, [dispatch])
 
   const [post, setPost] = useState({
@@ -108,7 +110,16 @@ export default function FormularioProducto() {
     console.log('Handle ', e.target.value);
     setPost({
       ...post,
-      diet: e.target.value
+      diets: [e.target.value]
+    });
+  };
+  /**Providers */
+  function handleSelectProv(e) {
+
+    console.log('HandlePro ', e.target.value);
+    setPost({
+      ...post,
+      providers: [e.target.value]
     });
   };
   
@@ -239,7 +250,6 @@ export default function FormularioProducto() {
             type="number"
             placeholder="🔢"
             required={true}
-            pattern={/^\d{1, 2}$/}
             value={post.stock}
             key='stock'
             name='stock'
@@ -277,6 +287,31 @@ export default function FormularioProducto() {
                   className={style.dietOption}
                 >
                   {diet.name}
+                </option>
+              ))
+            }
+          </select>
+          {errors.diet && (
+            <p style={{ float: 'right' }}>{errors.diet}</p>
+          )}
+        </div>
+        <div className={style.providers}>
+          <select
+            onChange={e => handleSelectProv(e)}
+            defaultValue='default'
+            className={style.dietSelect}>
+            <option
+              value="default"
+              disabled
+              className={style.dietOption}>Choose Provider</option>
+            {provider &&
+              provider.map((prov) => prov.name && (
+                <option
+                  key={prov.name}
+                  value={prov.name}
+                  className={style.dietOption}
+                >
+                  {prov.name}
                 </option>
               ))
             }
