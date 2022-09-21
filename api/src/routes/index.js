@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const middlewareAuth = require('../middlewareAuth');
 
 const { productsGet,
         prodIDget,
@@ -11,12 +12,14 @@ const { productsGet,
         providersGet,
         providerIDget,
         altAttribute,
-        commentPost,
-        userPost,
+        commentPost,        
         usersGet,
         userIDget  } = require('../controllers');
 
+const { userRegist,
+        userLogin } = require('../controllers/authControllers.js');
 
+// import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
 
 const router = Router();
 
@@ -51,15 +54,19 @@ router.delete('/products/remove', prodIDremove);  // ruta probada !!!!!! --
 
 //---------------POST
 
-router.post('/products', prodPost);    // ruta probada !!!!!! --
+router.post('/products', middlewareAuth, prodPost);    // ruta probada !!!!!! --
 
 router.post("/providers", providerPost);   // ruta probada !!!!!! --
 
 router.post('/comment', commentPost);     // ruta probada !!!!!! --
 
-// router.post("/orders", orderPost);   // ruta NO probada !!!!!! --
+// router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
-router.post('/users', userPost);     // ruta NO probada !!!!!! --
+                     //----Auth
+
+router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
+
+router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
 
 
 //---------------PUT
