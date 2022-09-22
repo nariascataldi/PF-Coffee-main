@@ -4,9 +4,9 @@ const { User, SECRET } = require('../db.js');
 
 
 
-const userRegist = async(obj)=>{
+const userRegist = async(req,res,next)=>{
    
-    let { name, lastName, status, mail, pass, avatar, birthday } = obj;
+    let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
 
     let salt = await bcrypt.genSalt(10);
     pass = await bcrypt.hash(pass, salt);
@@ -23,7 +23,7 @@ const userRegist = async(obj)=>{
         { expiresIn: 86400 } //---> un día // 60 * 60 * 24 * 7 ---> una semana
     );
 
-    return token;
+    res.send({  token  })
   }
   
 
@@ -32,11 +32,11 @@ const userLogin = async(req,res,next)=>{
     const { username, password } = req.body;
     const user = await User.findOne({ where: {mail: username} });
 
-    const passwordContext = user === null ? 
+    const passwordContext = (user === null) ? 
         false : await bcrypt.compare(password, user.pass);
     
     if (!(user && passwordContext)) {
-        res.status(401).json({error:'invalid user or password'})
+       return res.status(401).json({error:'invalid user or password'})
     };
     const userForToken = {
         username: user.mail,

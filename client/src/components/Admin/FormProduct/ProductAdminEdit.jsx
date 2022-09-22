@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { getAllProducts, getByTitle, setFilterState } from '../../../redux/actions/index.js';
 
 import FormularioProducto from './ProductCreate';
-import Cards from '../CardsAdmin/CardsAdmin';
+import Cards from '../CardsAdmin/CardsAdminEdit';
 // import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx';
 
 import { BsSearch } from 'react-icons/bs';

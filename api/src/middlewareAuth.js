@@ -1,17 +1,29 @@
 const jwt = require('jsonwebtoken');
+const { User } = require('./db');
 
 const  middlewareAuth = (req, res, next) => { // eslint-disable-line no-unused-vars
-    let token = null;
-    const authorization = req.get('authorization');
+    try {
+      let tokenBis = null; 
+    const authorization = req.get('authorization'); 
+    const token = req.headers['x-access-token'];
     if (authorization === authorization.toLowerCase().startsWith('bearer')) {
-      token = authorization.substring(7)
+      tokenBis = authorization.substring(7)
     };
-    decodeToken = jwt.verify(token, SECRET);
+    const decodeToken = jwt.verify(token, SECRET);    
   
-    if (!token || !decodeToken.id) {
-      return res.status(401).json({error: 'token missing or invalid'})
-    }
+    if (!token || !decodeToken.id || token !== tokenBis) {
+      return res.status(403).json({error: 'token missing or invalid'})
+    };
+    const user = User.findByPk(decodeToken.id);
+
+    if (!user) {  
+      return res.status(403).json({error: 'user missing or invalid'})
+    };    
+
     next();
+    } catch (error) {
+      res.status(404).json({error: 'Unauthorized'})
+    }
 };
 
   module.exports = middlewareAuth;

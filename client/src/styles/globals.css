@@ -1,0 +1,60 @@
+:root {
+          --primary: #E3EFFB;
+          --smooth:  #e1818b;
+          --strong:  #DD6873;
+          --black:   #262626;
+          --white:   #FFF;
+          --fuente-principal: 'Outfit', sans-serif;
+}
+
+html {
+          font-size: 45%;
+  
+}
+
+*,
+*:before,
+*:after {
+          box-sizing: inherit;
+}
+
+body {
+          font-size: 2rem;
+          font-family: var(--fuente-principal);
+          line-height: 1.5;
+}
+
+img {
+          max-width: 100%;
+}
+
+[class*="contenedor"] {
+          max-width: 120rem;
+          margin: 0 auto;
+          width: 95%;
+}
+
+[class*="heading"] {
+          font-size: 4rem;
+          text-align: center;
+          font-weight: 900;
+          color: var(--primary);
+          margin: 5rem 0;
+}
+
+
+/*
+:root {
+          --primary: #E3EFFB;
+          --smooth: #e1818b;
+          --strong: #DD6873;
+          --negro: #262626;
+          --blanco: #FFF;
+          --fuente-principal: 'Outfit', sans-serif;}  => CUSTOM PROPERTIES de CSS nativo
+
+          IMAGENES RESPONSIVES => img {max-width: 100%}
+
+    ESTILOS GLOBALES PARA QUE APLIQUEN A TODO EL PROYECTO, NO A UN COMPONENTE EN ESPECIFICO COMO LOS MODULOS.
+
+=>  La hoja de estilos NORMALIZE.CSS sirve para resetear y que los estilos sean consistentes en diferentes navegadores.
+*/
