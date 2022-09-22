@@ -1,28 +1,10 @@
-/* En este componente Perfil necesito que tenga:
-[] Heder
-  [] NavBar
-[] una barra lateral iz con:
-  [] Imágen
-  [] Perfil
-  [] Direcciones
-  [] Tarjeta de Crédito
-  [] Autenticación
-  [] Suscripto
-  [] Pedidos Anteriores
-  [] Salir --> Home
-[] Body
-  [] Detalle del Perfil ---> editar
-    [] editar --> form Editar perfil
-[] Footer
----- y ver de colocar un boton flotante con los productos más populares  
-*/
-
 import React from "react";
+
 import UserCreate from '../Account/UserCreate/UserCreate';
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../NavBar';
 import NavBarPerfil from './NavBarPerfil';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from "./Perfil.module.css";
+
+import styles from "../../styles/Perfil.module.css";
 
 function Perfil() {
 
@@ -43,6 +25,25 @@ function Perfil() {
   )
 }
 export default Perfil;
+
+/* En este componente Perfil necesito que tenga:
+[] Heder
+  [] NavBar
+[] una barra lateral iz con:
+  [] Imágen
+  [] Perfil
+  [] Direcciones
+  [] Tarjeta de Crédito
+  [] Autenticación
+  [] Suscripto
+  [] Pedidos Anteriores
+  [] Salir --> Home
+[] Body
+  [] Detalle del Perfil ---> editar
+    [] editar --> form Editar perfil
+[] Footer
+---- y ver de colocar un boton flotante con los productos más populares  
+*/
 
 // import React from 'react';
 // import { BrowserRouter, Route, Routes } from "react-router-dom";
