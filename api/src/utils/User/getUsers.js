@@ -1,4 +1,4 @@
-const { Product, User } = require('../db.js');
+const { Product, User } = require('../../db.js');
 
 
 async function getUsers () {

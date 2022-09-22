@@ -55,6 +55,27 @@ padding-left: 200px;
     text-decoration: none;
 } 
 
+.ad_cart {
+    background-color: #DD6873;
+    color: white;
+    border-radius: 12px;
+    border: none;
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.ad_cart:hover {
+    background-color: #bd3d4a;
+    height: 52px;
+    margin-bottom: 0px;
+}
+
+.ad_cart:active {
+    background-color: #B71C1C;
+}
+
 
 
 

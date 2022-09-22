@@ -1,5 +1,5 @@
 
-const { Provider, Product } = require("../db.js");
+const { Provider, Product } = require("../../db.js");
 
 const postProvider = async (obj) => {
   let { name, mail, logo, adress, phone, CUIT, products } = obj;

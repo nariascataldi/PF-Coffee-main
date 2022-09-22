@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsFillCartFill, BsFillCartPlusFill } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
@@ -11,9 +11,10 @@ import Menu from "../components/NavBar/Menu";
 import styles from '../styles/NavBar.module.css'
 
 const NavBar = ({ noFilters }) => {
-  const { categories, diets } = useSelector((state) => state);
+  const { categories, diets, fillCart } = useSelector((state) => state);
   const [busqueda, setBusqueda] = useState("");
   const [menu, setMenu] = useState(false);
+  const localStorageCart = JSON.parse(localStorage.getItem("carrito"));
 
   const dispatch = useDispatch();
 
@@ -38,32 +39,24 @@ const NavBar = ({ noFilters }) => {
     <div className={styles.navbar}>
       <div className={styles.menu_logo}>
         <div className={styles.contenedor_menu}>
-          <div
-            id="navMenu"
-            onClick={() => handleOnClick()}
-          >
+          <div id="navMenu" onClick={() => handleOnClick()}>
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
         <Link to="/home">
-          <img src={logo} alt="img" 
-          className={styles.logo} />
+          <img src={logo} alt="img" className={styles.logo} />
         </Link>
       </div>
 
       <li className={styles.nav_item}>
-          <Link 
-          to="/home" 
-          className={styles.links}>
-            Home
-          </Link>
+        <Link to="/home" className={styles.links}>
+          Home
+        </Link>
       </li>
 
-      <form 
-          className={styles.searchBar} 
-          onSubmit={(e) => handleSubmit(e)}>
+      <form className={styles.searchBar} onSubmit={(e) => handleSubmit(e)}>
         <input
           className={styles.input_search}
           type="text"
@@ -72,25 +65,19 @@ const NavBar = ({ noFilters }) => {
           value={busqueda}
           placeholder="Search..."
         />
-        <button 
-          className={styles.search_button} 
-          type="submit">
+        <button className={styles.search_button} type="submit">
           <BsSearch />
         </button>
       </form>
 
       <li className={styles.nav_item}>
-          <Link 
-          to="/about" 
-          className={styles.links}>
-            About
-          </Link>
+        <Link to="/about" className={styles.links}>
+          About
+        </Link>
       </li>
 
       <li className={styles.nav_item}>
-        <Link 
-        to="/providers" 
-        className={styles.links}>
+        <Link to="/providers" className={styles.links}>
           Providers
         </Link>
       </li>
@@ -145,6 +132,18 @@ const NavBar = ({ noFilters }) => {
           </div>
         </>
       )}
+      <Link 
+      className={styles.link_contador}
+      to="/fillCart">
+        <BsFillCartFill 
+        className={styles.carrito_nav} 
+        />
+        <p 
+        className={styles.contador_carrito}
+        >
+          {localStorageCart.length > 0 && localStorageCart.length}
+        </p>
+      </Link>
       {noFilters && (
         <>
           <h2></h2>

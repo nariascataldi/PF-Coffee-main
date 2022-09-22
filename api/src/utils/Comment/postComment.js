@@ -1,4 +1,4 @@
-const { Product, Comment } = require("../db.js");
+const { Product, Comment } = require("../../db.js");
 
 const postComment = async (obj) => {
   let { id, stars, comment } = obj;

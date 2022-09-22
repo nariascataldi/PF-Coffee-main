@@ -3,7 +3,14 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
-import { getDetail, postComment } from '../redux/actions';
+import {
+  fillCart,
+  fillCartLocalS,
+  getDetail,
+  postComment,
+  setFillCart,
+} from "../redux/actions";
+
 import NavBar from './NavBar';
 import Footer from './Footer';
 import Loading from './Loading';
@@ -13,105 +20,127 @@ import styles from '../styles/Detail.module.css'
 
 
 export default function Detail(props){
-    const dispatch= useDispatch()
-    const {id}= useParams()
-    // para Loading
-    const [load, setLoad] = useState(false);
-    const [stars, SetStars] = useState(0);
-    const [comment, setComment] = useState('');
+  const dispatch = useDispatch();
+  const { fillCart } = useSelector((state) => state);
+  const { id } = useParams();
+  // para Loading
+  const [load, setLoad] = useState(false);
+  const [stars, SetStars] = useState(0);
+  const [comment, setComment] = useState("");
 
-    const {detail}= useSelector(state=>state)
-    console.log("detail: ", detail)
+  const { detail } = useSelector((state) => state);
+  // console.log("detail: ", detail)
 
-    useEffect(()=> {
-        setLoad(true);
-        dispatch(getDetail(id));//
-        setTimeout(()=>{
-            setLoad(false)
-        },3000);
-    },[dispatch]);
+  useEffect(() => {
+    setLoad(true);
+    dispatch(getDetail(id)); //
+    setTimeout(() => {
+      setLoad(false);
+    }, 3000);
+  }, [dispatch]);
 
-    const handleStar = (e)=>{
-        e.preventDefault();
-        SetStars(e.target.value);
-    };
+  const handleStar = (e) => {
+    e.preventDefault();
+    SetStars(e.target.value);
+  };
 
-    const handleChange = (e)=>{
-        e.preventDefault();
-        setComment(e.target.value);
-    };
+  const handleChange = (e) => {
+    e.preventDefault();
+    setComment(e.target.value);
+  };
 
-    const handleSubmit = (e) => {
-        console.log(id); console.log(stars); console.log(comment);
-        e.preventDefault();
-        dispatch(postComment({id, stars, comment}));
-        alert('Comment create successfuly!');        
-    };   
+  const handleSubmit = (e) => {
+    console.log(id);
+    console.log(stars);
+    console.log(comment);
+    e.preventDefault();
+    dispatch(postComment({ id, stars, comment }));
+    alert("Comment create successfuly!");
+  };
 
+  //actualizo el estado de redux 'filtCart' con la variable arrayLs
+  let arrayLs = [];
+  const handleOnClick = () => {
+    arrayLs.push(detail);
+    dispatch(setFillCart(arrayLs));
+    alert("Product successfuly added!");
+  };
+  // lleno el local storage con el estado de redux 'fillCart
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(fillCart));
+  }, [fillCart]);
 
-    return (
-      <div>
-        <div className={styles.card}>
-          <NavBar noFilters />
-          {load ? (
-            <Loading />
-          ) : !detail ? null : (
-            <div key={detail.id} className={styles.detail}>
+  return (
+    <div>
+      <div className={styles.card}>
+        <NavBar noFilters />
+        {load ? (
+          <Loading />
+        ) : !detail ? null : (
+          <div key={detail.id} className={styles.detail}>
+            <div>
+              <Link className={styles.back} to="/home">
+                <button>&#171;</button>
+              </Link>
+            </div>
+            <div>
+              <img
+                src={detail.image}
+                className={styles.img}
+                alt="Image product"
+              />
+            </div>
+            <div className={styles.text}>
               <div>
-                <Link className={styles.back} to="/home">
-                  <button>&#171;</button>
-                </Link>
+                <h1>{detail.title}</h1>
+                <h3>$ {detail.price}</h3>
               </div>
+              <ul className={styles.list}>
+                <li className={styles.fondo}>{detail.description}</li>
+                <li className={styles.fondo}>Like: {detail.like}</li>
+                <li className={styles.fondo}>Stock: {detail.stock}</li>
+                <li className={styles.fondo}>
+                  Diets: {detail.diets?.map((e) => e.name)}
+                </li>
+                <li className={styles.fondo}>
+                  Categories: {detail.categories?.map((e) => e.name)}
+                </li>
+              </ul>
               <div>
-                <img
-                  src={detail.image}
-                  className={styles.img}
-                  alt="Image product"
-                />
-              </div>
-              <div className={styles.text}>
-                <div>
-                  <h1>{detail.title}</h1>
-                  <h3>$ {detail.price}</h3>
-                </div>
-                <ul className={styles.list}>
-                  <li className={styles.fondo}>{detail.description}</li>
-                  <li className={styles.fondo}>Like: {detail.like}</li>
-                  <li className={styles.fondo}>Stock: {detail.stock}</li>
-                  <li className={styles.fondo}>
-                    Diets: {detail.diets?.map((e) => e.name)}
-                  </li>
-                  <li className={styles.fondo}>
-                    Categories: {detail.categories?.map((e) => e.name)}
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.box}>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                  <h4>Comment</h4>
-                  <input
-                    type="text"
-                    onChange={(e) => handleChange(e)}
-                    placeholder="complete..."
-                  />
-                  <h4>Starts</h4>
-                  <input
-                    type="number"
-                    onChange={(e) => handleStar(e)}
-                    placeholder="1->5"
-                    min="1"
-                    max="5"
-                  />
-                  <StarRating stars={stars} />
-                  <br />
-                  <br />
-                  <input type="submit" value="qualify" />
-                </form>
+                <button 
+                className={styles.ad_cart}
+                onClick={handleOnClick}>
+                  Add to cart <BsArrowRight />
+                </button>
               </div>
             </div>
-          )}
-        </div>
-        <Footer />
+
+            <div className={styles.box}>
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <h4>Comment</h4>
+                <input
+                  type="text"
+                  onChange={(e) => handleChange(e)}
+                  placeholder="complete..."
+                />
+                <h4>Starts</h4>
+                <input
+                  type="number"
+                  onChange={(e) => handleStar(e)}
+                  placeholder="1->5"
+                  min="1"
+                  max="5"
+                />
+                <StarRating stars={stars} />
+                <br />
+                <br />
+                <input type="submit" value="qualify" />
+              </form>
+            </div>
+          </div>
+        )}
       </div>
-    );
+      <Footer />
+    </div>
+  );
 }
