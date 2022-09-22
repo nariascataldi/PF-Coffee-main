@@ -6,8 +6,8 @@ import { postUser } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
 
 
-// import 'react-datepicker/dist/react-datepicker.css';
-// import "bootstrap/dist/css/bootstrap.min.css";
+import 'react-datepicker/dist/react-datepicker.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import style from './UserCreate.module.css';
 
 
@@ -39,12 +39,11 @@ const FormularioUsuario = () => {
     <div className={style.container}>
       <div className={style.created}>
         <h2 className={style.title}>Edit profile</h2>
-
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="input-group input-group-sm mb-3">
-            <label className={style.forLabel('input-group-text')}>Name</label>
+            <label className={style.forLabel}>Name</label>
             <input
-              className={style.forInput('form-control')}
+              className={style.forInput}
               type="text"
               placeholder="Brendan"
               {...register("name", {
@@ -70,9 +69,9 @@ const FormularioUsuario = () => {
             )}
           </div>
           <div className="input-group input-group-sm mb-3">
-            <label className={style.forLabel('input-group-text')}>Last name</label>
+            <label className={style.forLabel}>Last name</label>
             <input
-              className={style.forInput('form-control')}
+              className={style.forInput}
               type="text"
               placeholder="Eich"
               {...register("lastName", {
@@ -95,11 +94,10 @@ const FormularioUsuario = () => {
               </p>
             )}
           </div>
-
           <div className="input-group input-group-sm mb-3">
-            <label className={style.forLabel('input-group-text')}>E-mail</label>
+            <label className={style.forLabel}>E-mail</label>
             <input
-              className={style.forInput('form-control ')}
+              className={style.forInput}
               type="text"
               placeholder="javascript@brave.etc"
               {...register("mail", {
@@ -111,9 +109,9 @@ const FormularioUsuario = () => {
             )}
           </div>
           <div className="input-group input-group-sm mb-3">
-            <label className={style.forLabel('input-group-text')}>Password</label>
+            <label className={style.forLabel}>Password</label>
             <input
-              className={style.forInput('form-control')}
+              className={style.forInput}
               type="password"
               placeholder="8 letras"
               {...register("pass", {
@@ -134,11 +132,10 @@ const FormularioUsuario = () => {
               <p className={style.p_form}>Caracteres</p>
             )}
           </div>
-
           <div className="input-group input-group-sm mb-3">
-            <label className={style.forLabel('input-group-text')}>Date of Birth</label>
+            <label className={style.forLabel}>Date of Birth</label>
             <DatePicker
-              className={style.forDate('form-control')}
+              className={style.forDate}
               selected={birthday}
               onChange={(date) => setBirthday(date)}
               dateFormat="dd/MM/yyyy"
@@ -149,7 +146,6 @@ const FormularioUsuario = () => {
               maxDate={new Date()}
             />
           </div>
-
           <div className={style.checkCUIT}>
             <label className={style.label}>¿Incluir CUIT?</label>
             <input
@@ -160,9 +156,9 @@ const FormularioUsuario = () => {
           </div>
           {incluirCUIT && (
             <div className="input-group input-group-sm mb-3">
-              <label className={style.forLabel('input-group-text')}>CUIT</label>
+              <label className={style.forLabel}>CUIT</label>
               <input
-                className={style.forDate('form-control')}
+                className={style.forDate}
                 type="number"
                 {...register("CUIT")}
               />
