@@ -12,6 +12,8 @@ import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
+
+
 import NotFound from './components/404';
 
 
@@ -35,6 +37,7 @@ function App() {
         <Route exact path= '/providers' element={<Providers />}/>
 
         <Route exact path='/formusers' element={<FormularioUsuario/>}/>
+        <Route exact path= '/perfil' element={<Perfil />}/>
 
         <Route exact path= '/fillCart' element={<FillCart/>} />
 
