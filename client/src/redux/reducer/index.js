@@ -30,7 +30,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
-  fillCart:[],
+  fillCart: JSON.parse(localStorage.getItem('carrito')),
   responseCloudinary: {},
   filterBy: {
     title: '',
