@@ -4,7 +4,6 @@ import { getAllProducts } from '../../../redux/actions/index.js';
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
 import ProductAdmin from '../Product/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
-// import { useForm } from "react-hook-form";
 import CrudApp from '../CRUD/CrudAppProduct.js';
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,25 +16,12 @@ export default function HomeAdmin() {
     dispatch(getAllProducts());
   }, [dispatch])
 
-  // const { watch, register } = useForm({
-  //   defaultValues: {
-  //     homeAdmin: true
-  //   }
-  // })
-
   const [framework, setFramework] = useState('homeAdmin');
 
   const cambioRadioFramework = e => {
     setFramework(e.target.value);
   }
-  // const homeAdmin = watch('homeAdmin');
-  // const product = watch('product');
-  // const productEdit = watch('productEdit');
-  // const provider = watch('provider');
-  // const user = watch('user');
-  // const finance = watch('finance');
-  // const todo = watch('todo');
-
+  
   return (
     <div className='home-container'>
       <NavBarAdmin></NavBarAdmin>

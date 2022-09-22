@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/Paginated.css';
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Paginated({ productsPerPage, allPoducts, paginated, currentPage, setCurrentPage }) {
@@ -9,7 +9,7 @@ export default function Paginated({ productsPerPage, allPoducts, paginated, curr
     pageNumber.push(i)
   }
   return (
-    <div className='botones-paginado'>
+    <div >
       <button className='boton-next'
         disabled={currentPage === 1}
         onClick={() =>
