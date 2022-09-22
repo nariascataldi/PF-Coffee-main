@@ -15,6 +15,7 @@ const { productsGet,
         userPost,
         usersGet,
         userIDget  } = require('../controllers');
+const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
 
 
@@ -61,10 +62,13 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! --
 
 router.post('/users', userPost);     // ruta NO probada !!!!!! --
 
+router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
+
 
 //---------------PUT
 
 router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! --
+
 
 
 
