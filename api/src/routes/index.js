@@ -4,7 +4,6 @@ const { Router } = require('express');
 
 
 const { productsGet,
-<<<<<<< HEAD
         prodIDget,
         dietsGet,
         categoriesGet,
@@ -20,21 +19,6 @@ const { productsGet,
         usersGet,
         userIDget  } = require('../controllers');
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
-=======
-  prodIDget,
-  dietsGet,
-  categoriesGet,
-  commentGet,
-  prodIDremove,
-  prodPost,
-  providerPost,
-  providersGet,
-  providerIDget,
-  altAttribute,
-  commentPost,
-  usersGet,
-  userIDget } = require('../controllers');
->>>>>>> developer
 
 const { userRegist,
   userLogin } = require('../controllers/authControllers.js');
