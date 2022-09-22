@@ -13,6 +13,7 @@ import Providers from './components/Providers/Providers';
 import './App.css';
 import FillCart from './components/FillCart/FillCart';
 import FormularioUsuario from './components/Account/UserCreate/UserCreate';
+import CrudApp from './components/Admin/CRUD/CrudAppProduct';
 import NotFound from './components/404/404';
 
 
@@ -35,6 +36,7 @@ function App() {
 
         <Route exact path= '/fillCart' element={<FillCart/>} />
 
+        <Route exact path='/crud/product' element={<CrudApp/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
