@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts } from '../../../redux/actions/index.js';
+import { getAllProducts, getByTitle, setFilterState } from '../../../redux/actions/index.js';
+
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
 import ProductAdmin from '../Product/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
 import CrudApp from '../CRUD/CrudAppProduct.js';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../../../styles/Admin/HomeAdm.css'
+import '../../../styles/Admin/HomeAdm.css';
+import style from '../../../styles/Admin/NavBarAdm.module.css';
+import { BsSearch } from 'react-icons/bs';
+
 
 export default function HomeAdmin() {
   const dispatch = useDispatch();
+  const [busqueda, setBusqueda] = useState('');
 
   React.useEffect(() => {
     dispatch(getAllProducts());
@@ -21,7 +26,15 @@ export default function HomeAdmin() {
   const cambioRadioFramework = e => {
     setFramework(e.target.value);
   }
-  
+  const handleOnChange = (d) => {
+    setBusqueda(d.target.value)
+    dispatch(getByTitle(busqueda));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(setFilterState({ title: busqueda }));
+    setBusqueda('')
+  }
   return (
     <div className='home-container'>
       <NavBarAdmin></NavBarAdmin>
@@ -60,7 +73,15 @@ export default function HomeAdmin() {
             </div>
           </div>
           <div id='Productos' className="col-sm-12 col-md-11 col-lg-11 col-xl-11 py-4 bg-white">
-            {framework === 'homeAdmin' && <Cards />}
+            {framework === 'homeAdmin' &&
+              <div>
+                <form className={style.searchBar} onSubmit={(e) => handleSubmit(e)}>
+                  <input className={style.input_search} type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
+                  <button className={style.search_button} type='submit'><BsSearch /></button>
+                </form>
+                <Cards />
+              </div>
+            }
             {framework === 'product' && <ProductAdmin />}
             {framework == 'productEdit' && <CrudApp />}
             {/* {provider}
