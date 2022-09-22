@@ -1,6 +1,10 @@
 const { Router } = require('express');
+// const middlewareAuth = require('../middlewareAuth');
+// const middlewareAdmin = require('../middlewareAdmin');
+
 
 const { productsGet,
+<<<<<<< HEAD
         prodIDget,
         dietsGet,
         categoriesGet,
@@ -16,8 +20,26 @@ const { productsGet,
         usersGet,
         userIDget  } = require('../controllers');
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
+=======
+  prodIDget,
+  dietsGet,
+  categoriesGet,
+  commentGet,
+  prodIDremove,
+  prodPost,
+  providerPost,
+  providersGet,
+  providerIDget,
+  altAttribute,
+  commentPost,
+  usersGet,
+  userIDget } = require('../controllers');
+>>>>>>> developer
 
+const { userRegist,
+  userLogin } = require('../controllers/authControllers.js');
 
+// import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
 
 const router = Router();
 
@@ -36,7 +58,7 @@ router.get('/comment', commentGet)   // ruta probada !!!!!! --
 
 router.get('/providers', providersGet);    // ruta probada !!!!!! --
 
-router.get('/providers/:id', providerIDget);      // ruta probada !!!!!! --
+router.get('/providers/:id', providerIDget);      // ruta probada !!!!!! -- middlewareAdmin,
 
 router.get('/users', usersGet);    // ruta NO probada !!!!!! --
 
@@ -52,22 +74,26 @@ router.delete('/products/remove', prodIDremove);  // ruta probada !!!!!! --
 
 //---------------POST
 
-router.post('/products', prodPost);    // ruta probada !!!!!! --
+router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
 
-router.post("/providers", providerPost);   // ruta probada !!!!!! --
+router.post("/providers", providerPost);   // ruta probada !!!!!! -- middlewareAdmin,
 
-router.post('/comment', commentPost);     // ruta probada !!!!!! --
+router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAuth,
 
-// router.post("/orders", orderPost);   // ruta NO probada !!!!!! --
+// router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
-router.post('/users', userPost);     // ruta NO probada !!!!!! --
+//----Validation
+
+router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
+
+router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
 
 //---------------PUT
 
-router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! --
+router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! -- middlewareAdmin,
 
 
 

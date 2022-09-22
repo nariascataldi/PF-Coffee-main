@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import {useState} from 'react'
 import { useSelector } from "react-redux";
 import Card from "../CardAdmin/CardAdmin";
-import Paginated from "../../Paginated/Paginated";
-import Loading from "../../Loading/Loading";
+import Paginated from "../../Paginated";
+import Loading from "../../Loading";
 
  
 export default function Cards ({load}){
@@ -18,8 +18,6 @@ export default function Cards ({load}){
         const paginated= (pageNumber)=>{
             setCurrentPage(pageNumber)
               };
-
-    
 
     if(!products.length){
         return (

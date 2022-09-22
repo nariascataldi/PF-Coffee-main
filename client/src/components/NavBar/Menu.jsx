@@ -23,10 +23,10 @@ export default function Menu({menu}){
             <Link to='/productAdmin'><button className='menubutton-crate-product'>Add a new product</button></Link>
         </div>
         <div className='box-menu'>
-        <button className='menubutton-crate-product'>Add new Provider</button>
+        <Link to='/providerCreate'><button className='menubutton-crate-product'>Add new Provider</button></Link>
         </div>
         <div className='box-menu'>
-        <button className='menubutton-crate-product'>Log in</button>
+        <Link to='/providers'><button className='menubutton-crate-product'>Log in</button></Link>
         </div>
     </div>)
 
