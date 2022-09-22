@@ -142,7 +142,7 @@ const NavBar = ({ noFilters }) => {
         <p 
         className={styles.contador_carrito}
         >
-          {localStorageCart.length > 0 && localStorageCart.length}
+          {/* {localStorageCart.length > 0 && localStorageCart.length} */}
         </p>
       </Link>
       {noFilters && (
