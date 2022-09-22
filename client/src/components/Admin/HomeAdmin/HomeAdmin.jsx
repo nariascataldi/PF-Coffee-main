@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../../redux/actions/index.js';
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
-import ProductAdmin from '../FormProduct/ProductAdmin.jsx';
+import ProductAdmin from '../Product/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
 import { useForm } from "react-hook-form";
 
