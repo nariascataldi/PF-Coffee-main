@@ -15,18 +15,13 @@ import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import CrudApp from './components/Admin/CRUD/CrudAppProduct';
 
-
 import NotFound from './components/404';
-
-
 
 import './styles/normalize.css'
 import './styles/globals.css'
 
-
 function App() {
-  return (
-    <div>
+  return (import CrudApp from './components/Admin/CRUD/CrudAppProduct';    <div>
       <Routes>
         <Route exact path='/' element={<LandingPage />} />
         <Route path='/home' element={<Home />} />
