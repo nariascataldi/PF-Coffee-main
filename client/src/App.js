@@ -9,11 +9,12 @@ import Perfil from './components/Account/Perfil';
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
 import ProductAdmin from './components/Admin/FormProduct/ProductAdmin'
 import ProductAdminEdit from './components/Admin/FormProduct/ProductAdminEdit';
-import Providers from "./components/Providers/Providers";
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
-import CrudApp from './components/Admin/CRUD/CrudAppProduct';
+import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
+import NotFound from './components/404';
+
 
 import NotFound from './components/404';
 
