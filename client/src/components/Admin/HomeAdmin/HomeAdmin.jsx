@@ -35,6 +35,7 @@ export default function HomeAdmin() {
     dispatch(setFilterState({ title: busqueda }));
     setBusqueda('')
   }
+
   return (
     <div className='home-container'>
       <NavBarAdmin></NavBarAdmin>
