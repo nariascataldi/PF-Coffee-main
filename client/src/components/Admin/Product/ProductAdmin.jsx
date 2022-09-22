@@ -38,8 +38,6 @@ export default function ProductAdmin() {
             <FormProduct />
           </div>
           <div id='ListadoProductos' className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
-          {/* <button onClick={() => window.location.reload(false)}>Click to reload!</button> */}
-            {/* Search Bar */}
 
             <form className={style.searchBar} onSubmit={(e) => handleSubmit(e)}>
               <input className={style.input_search} type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
