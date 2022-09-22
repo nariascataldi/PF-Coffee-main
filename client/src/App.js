@@ -9,7 +9,6 @@ import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
 import ProductAdmin from './components/Admin/FormProduct/ProductAdmin'
 import ProductAdminEdit from './components/Admin/FormProduct/ProductAdminEdit';
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
-import Providers from "./components/Providers/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import NotFound from './components/404';

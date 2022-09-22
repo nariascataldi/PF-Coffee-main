@@ -1,11 +1,11 @@
 import React from "react";  
 import { useSelector } from "react-redux";
-import Footer from "../Footer/Footer";
-import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer";
+import NavBar from "../NavBar";
 import './FillCart.css';
 
 
-export default function fillCart (){
+export default function FillCart (){
 
     const {allProducts} = useSelector(state=>state);
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
