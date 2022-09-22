@@ -16,9 +16,7 @@ import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import NotFound from './components/404';
 
 
-import NotFound from './components/404';
 
-import './App.css';
 import './styles/normalize.css'
 import './styles/globals.css'
 
