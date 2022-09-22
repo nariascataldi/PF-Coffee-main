@@ -21,7 +21,8 @@ import './styles/normalize.css'
 import './styles/globals.css'
 
 function App() {
-  return (import CrudApp from './components/Admin/CRUD/CrudAppProduct';    <div>
+  (
+    <div>
       <Routes>
         <Route exact path='/' element={<LandingPage />} />
         <Route path='/home' element={<Home />} />
@@ -29,13 +30,13 @@ function App() {
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/form' element={<Perfil />} />
         <Route exact path='/homeAdmin' element={<HomeAdmin />} />
-        <Route exact path= '/productAdmin' element={<ProductAdmin />}/>
-        <Route exact path= '/productAdminEdit' element={<ProductAdminEdit />}/>
-        <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
-        <Route exact path='/crud/product' element={<CrudApp/>}/>
-        <Route exact path= '/providers' element={<Providers />}/>
-        <Route exact path='/formusers' element={<FormularioUsuario/>}/>
-        <Route exact path= '/fillCart' element={<FillCart/>} />
+        <Route exact path='/productAdmin' element={<ProductAdmin />} />
+        <Route exact path='/productAdminEdit' element={<ProductAdminEdit />} />
+        <Route exact path='/providerCreate' element={<ProviderCreate />} />
+        <Route exact path='/crud/product' element={<CrudApp />} />
+        <Route exact path='/providers' element={<Providers />} />
+        <Route exact path='/formusers' element={<FormularioUsuario />} />
+        <Route exact path='/fillCart' element={<FillCart />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
