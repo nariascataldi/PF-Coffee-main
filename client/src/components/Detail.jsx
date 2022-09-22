@@ -16,6 +16,7 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import Loading from './Loading';
 import StarRating from './StarRating';
+import { BsArrowRight } from "react-icons/bs";
 
 import styles from '../styles/Detail.module.css'
 

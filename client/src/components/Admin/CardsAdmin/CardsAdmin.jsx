@@ -19,8 +19,6 @@ export default function Cards ({load}){
             setCurrentPage(pageNumber)
               };
 
-    
-
     if(!products.length){
         return (
             <div className='not-found'><h4>Product not found!</h4></div>

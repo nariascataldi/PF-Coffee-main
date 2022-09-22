@@ -7,7 +7,7 @@ import './FillCart.css';
 
 export default function FillCart (){
 
-    const {allProducts} = useSelector(state=>state);
+    // const {allProducts} = useSelector(state=>state);
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     console.log (localStorageCart)
 
