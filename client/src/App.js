@@ -37,7 +37,6 @@ function App() {
         <Route exact path= '/providers' element={<Providers />}/>
 
         <Route exact path='/formusers' element={<FormularioUsuario/>}/>
-        <Route exact path= '/perfil' element={<Perfil />}/>
 
         <Route exact path= '/fillCart' element={<FillCart/>} />
 
