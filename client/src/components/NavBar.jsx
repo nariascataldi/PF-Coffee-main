@@ -8,6 +8,7 @@ import { getByTitle, setFilterState } from "../redux/actions";
 import logo from "../assets/logo_coffee.png";
 import Menu from "../components/NavBar/Menu";
 
+
 import styles from '../styles/NavBar.module.css'
 
 const NavBar = ({ noFilters }) => {
