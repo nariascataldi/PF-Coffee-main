@@ -12,7 +12,7 @@ const NavBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link className="nav-link active" href="#">Home Client</Link>
+          <Link className="nav-link active" to="/home">Home Client</Link>
         </div>
       </div>
     </nav>
