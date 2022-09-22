@@ -10,10 +10,11 @@ import ProductAdmin from './components/Admin/FormProduct/ProductAdmin'
 import ProductAdminEdit from './components/Admin/FormProduct/ProductAdminEdit';
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from './components/Providers/Providers';
+import './App.css';
+import FillCart from './components/FillCart/FillCart';
 import FormularioUsuario from './components/Account/UserCreate/UserCreate';
 import NotFound from './components/404/404';
 
-import './App.css';
 
 function App() {
   return (
@@ -29,7 +30,11 @@ function App() {
         <Route exact path= '/productAdminEdit' element={<ProductAdminEdit />}/>
         <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
         <Route exact path= '/providers' element={<Providers />}/>
+
         <Route exact path='/formusers' element={<FormularioUsuario/>}/>
+
+        <Route exact path= '/fillCart' element={<FillCart/>} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

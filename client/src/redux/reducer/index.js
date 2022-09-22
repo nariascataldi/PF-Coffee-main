@@ -13,9 +13,12 @@ import {
   FILTER,
   POST_PROVIDERS,
   CLEAR_DETAIL,
+  FILL_CART,
+  RESET_FILL_CART,
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
-  POST_COMMENT
+  POST_COMMENT,
+  fillCart
 } from '../actions'
 
 const initialState = {
@@ -27,6 +30,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
+  fillCart:[],
   responseCloudinary: {},
   filterBy: {
     title: '',
@@ -146,6 +150,16 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         products: [...sort]
+      }
+    case FILL_CART :
+      return {
+        ...state,
+        fillCart: [...state.fillCart,action.payload]
+      }
+    case RESET_FILL_CART : 
+      return {
+        ...state,
+        fillCart: [] 
       }
     case POST_PROVIDERS :
       return{

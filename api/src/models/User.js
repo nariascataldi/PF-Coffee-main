@@ -22,6 +22,7 @@ module.exports = (sequelize) => {
     status: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: "client",
       },
       mail: {
         type: DataTypes.STRING,
@@ -35,9 +36,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      // avatar: {
-      //   type: DataTypes.TEXT,
-      // },
+      avatar: {
+        type: DataTypes.TEXT,
+      },
       birthday: {
         type: DataTypes.STRING,
       },
