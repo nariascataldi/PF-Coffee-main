@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import logo from './img/logo_coffee.png'
+import logo from '../../assets/logo_coffee.png'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
-import {BsSearch} from 'react-icons/bs';
+import {BsSearch, BsFillCartFill, BsFillCartPlusFill} from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getByTitle, setFilterState } from '../../redux/actions';
 import Menu from './Menu';
 
 
 const NavBar = ({ noFilters }) => {
-    const {categories,diets} = useSelector(state=>state)
+    const {categories,diets,fillCart} = useSelector(state=>state)
     const [busqueda, setBusqueda] = useState('');
     const [menu,setMenu] = useState(false);
-
+    const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
 const dispatch = useDispatch();
 
 const handleOnChange=(d)=>{
@@ -87,7 +87,7 @@ const handleOnClick=()=>{
                     </select>
                 </div>
 
-                <div className='box'>
+                <div>
                     <select name='diet' className='input-filter' onChange={handleSelect} >
                         <option value=''>Diets</option> 
                         <option value=''>None</option>
@@ -96,15 +96,17 @@ const handleOnClick=()=>{
                             })}
                     </select>
                 </div>
-                <div className='box'>
+                <div>
                     <select name='sort' className='input-filter' onChange={handleSelect}>
                         <option value=''>Sort</option>
                         <option value='A-Z'>A-Z</option> 
                         <option value='Z-A'>Z-A</option>      
                     </select>
+                    
                 </div>
                  </>
                 }
+                <Link className='link-contdor-cart' to='/fillCart'><BsFillCartFill className='carrito-nav-user'/><p className='contador-carrito'>{ localStorageCart.length>0 && localStorageCart.length}</p></Link>
                 {noFilters &&   
                  <>
                   <h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><h2></h2><p></p><p></p><p></p><p></p><p></p><p></p>

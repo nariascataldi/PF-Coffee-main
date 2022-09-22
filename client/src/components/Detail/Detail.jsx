@@ -2,25 +2,26 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getDetail, postComment } from '../../redux/actions';
+import { fillCart, fillCartLocalS, getDetail, postComment, setFillCart } from '../../redux/actions';
 import './Detail.css';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
-import { BsChevronCompactLeft } from 'react-icons/bs'; // BsChevronCompactRight,
+import { BsChevronCompactLeft,BsArrowRight } from 'react-icons/bs'; // BsChevronCompactRight,
 import Loading from '../Loading/Loading';
 import StarRating from '../StarRating/StarRating';
 
 
 export default function Detail(props){
     const dispatch= useDispatch()
+    const {fillCart} =useSelector(state=>state);
     const {id}= useParams()
     // para Loading
     const [load, setLoad] = useState(false);
     const [stars, SetStars] = useState(0);
     const [comment, setComment] = useState('');
+   
 
     const {detail}= useSelector(state=>state)
-    console.log("detail: ", detail)
 
     useEffect(()=> {
         setLoad(true);
@@ -41,12 +42,23 @@ export default function Detail(props){
     };
 
     const handleSubmit = (e) => {
-        console.log(id); console.log(stars); console.log(comment);
         e.preventDefault();
         dispatch(postComment({id, stars, comment}));
         alert('Comment create successfuly!');        
     };   
 
+    //actualizo el estado de redux 'filtCart' con la variable arrayLs
+    let arrayLs = [];
+    const handleOnClick = () => {
+        arrayLs.push(detail)
+        dispatch (setFillCart(arrayLs))
+        alert('Product successfuly added!');
+    }
+   // lleno el local storage con el estado de redux 'fillCart
+        useEffect(()=>{
+        localStorage.setItem('carrito', JSON.stringify(fillCart))
+    },[fillCart])
+   
 
     return(
         <div>
@@ -76,6 +88,7 @@ export default function Detail(props){
                                 <li className='list-group-item fondo'>Diets: {detail.diets?.map(e=>e.name)}</li>                          
                                 <li className='list-group-item fondo'>Categories: {detail.categories?.map(e=>e.name)}</li>
                             </ul>
+                        <div><button className='add-to-cart-d' onClick={handleOnClick}>Add to cart <BsArrowRight/></button></div>
                     </div>
                     <div className='box'>  
                         <form onSubmit={(e)=>handleSubmit(e)}>
