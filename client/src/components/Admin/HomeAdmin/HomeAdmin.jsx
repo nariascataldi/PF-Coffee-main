@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../../redux/actions/index.js';
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
-import ProductAdmin from '../FormProduct/ProductAdmin.jsx';
+import ProductAdmin from '../Product/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
 import { useForm } from "react-hook-form";
-
-import './HomeAdm.css'
 import CrudApp from '../CRUD/CrudAppProduct.js';
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import '../../../styles/Admin/HomeAdm.css'
 
 export default function HomeAdmin() {
   const dispatch = useDispatch();
