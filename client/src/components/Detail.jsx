@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { BsArrowRight } from "react-icons/bs";
 
 import {
   fillCart,
@@ -15,7 +16,7 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import Loading from './Loading';
 import StarRating from './StarRating';
-import { BsArrowRight } from "react-icons/bs";
+
 
 import styles from '../styles/Detail.module.css'
 

@@ -5,7 +5,7 @@ import NavBar from "../NavBar";
 import './FillCart.css';
 
 
-export default function fillCart (){
+export default function FillCart (){
 
     // const {allProducts} = useSelector(state=>state);
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
