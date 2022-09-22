@@ -13,6 +13,7 @@ import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
+import CrudApp from './components/Admin/CRUD/CrudAppProduct';
 
 
 import NotFound from './components/404';
