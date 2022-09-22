@@ -21,7 +21,7 @@ import './styles/normalize.css'
 import './styles/globals.css'
 
 function App() {
-  (
+  return (
     <div>
       <Routes>
         <Route exact path='/' element={<LandingPage />} />
