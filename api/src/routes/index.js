@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const middlewareAuth = require('../middlewareAuth');
+const middlewareAdmin = require('../middlewareAdmin');
+
 
 const { productsGet,
         prodIDget,
@@ -38,7 +40,7 @@ router.get('/comment', commentGet)   // ruta probada !!!!!! --
 
 router.get('/providers', providersGet);    // ruta probada !!!!!! --
 
-router.get('/providers/:id', providerIDget);      // ruta probada !!!!!! --
+router.get('/providers/:id', middlewareAdmin, providerIDget);      // ruta probada !!!!!! --
 
 router.get('/users', usersGet);    // ruta NO probada !!!!!! --
 
@@ -54,15 +56,15 @@ router.delete('/products/remove', prodIDremove);  // ruta probada !!!!!! --
 
 //---------------POST
 
-router.post('/products', middlewareAuth, prodPost);    // ruta probada !!!!!! --
+router.post('/products', middlewareAdmin, prodPost);    // ruta probada !!!!!! --
 
-router.post("/providers", providerPost);   // ruta probada !!!!!! --
+router.post("/providers", middlewareAdmin, providerPost);   // ruta probada !!!!!! --
 
-router.post('/comment', commentPost);     // ruta probada !!!!!! --
+router.post('/comment', middlewareAuth, commentPost);     // ruta probada !!!!!! --
 
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
-                     //----Auth
+                     //----Validation
 
 router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
 
@@ -71,7 +73,7 @@ router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
 
 //---------------PUT
 
-router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! --
+router.put('/products/:attribute', middlewareAdmin, altAttribute);  // ruta probada !!!!!! --
 
 
 
