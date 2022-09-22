@@ -1,5 +1,5 @@
 import React from 'react';
-import './Paginated.css'
+import '../../../styles/Paginated.css'
 
 export default function Paginated ({productsPerPage, allPoducts, paginated, currentPage, setCurrentPage}){
     const pageNumber= []

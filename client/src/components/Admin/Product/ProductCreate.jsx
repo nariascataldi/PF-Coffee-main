@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import style from './ProductCreate.module.css';
+import style from '../../../styles/Admin/ProductCreate.module.css';
 
 var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
@@ -39,7 +39,7 @@ function validate(post) {
   return errors;
 }
 
-export default function FormProductEdit() {
+export default function FormProduct() {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
   var provider = useSelector((state) => state.providers);

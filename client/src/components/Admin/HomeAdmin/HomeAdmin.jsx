@@ -6,7 +6,7 @@ import ProductAdmin from '../FormProduct/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
 import { useForm } from "react-hook-form";
 
-import './HomeAdm.css'
+import '../../../styles/Admin/HomeAdm.css'
 import CrudApp from '../CRUD/CrudAppProduct.js';
 
 export default function HomeAdmin() {
