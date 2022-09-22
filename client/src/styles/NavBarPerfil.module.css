@@ -1,0 +1,23 @@
+.navBarPerfil {
+  display: flex;
+  color: var(--strong);
+  position: relative;
+  padding: 32px 32px;
+  background: #eefcf3;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
+  margin: 5%;
+  margin-left: 50px;
+  text-decoration: none;
+  margin-right: 70px;
+}
+
+.navBarPerfil:hover {
+  opacity: 1;
+  cursor: pointer;
+  background-color: #e1818b;
+  color: var(--primary)
+}
