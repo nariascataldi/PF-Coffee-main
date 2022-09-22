@@ -1,0 +1,60 @@
+.LandingPage {
+  /* A Friend in Need */
+  background-image: url(../assets/logo_coffee.png); 
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-color: #eef7f3;
+  display: flex;
+  justify-content: left;
+
+}
+/*rgba(64, 64, 100, 0.9)*/
+.home {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+
+  background-color: rgba(238, 238, 244, 0);
+  border: black;
+  margin: 2vh 0 0 10vw;
+  color: rgba(250, 250, 250, 1);
+  font-weight: 900;
+  cursor: pointer;
+  font-size: 6vw;
+  font-family: 'Snell Roundhand', 'Zapfino', 'SignPainter', Arial, Helvetica, sans-serif;
+  transition: all 0.3s;
+  text-shadow: 0px 10px 10px rgb(13, 2, 86);
+}
+
+.button:hover {
+  transform: scale(1.5);
+}
+
+/* Pantallas de menos de 992px de ancho //rgba(64, 64, 100) */
+@media screen and (max-width: 992px) {
+  .LandingPage {
+    background-color: #eef7f3;
+  }
+}
+
+/* Pantallas de menos de 576px de ancho //rgba(64, 64, 100) */
+@media screen and (max-width: 576px) {
+  .LandingPage {
+    background-color: #eef7f3;
+    background-image: url(../assets/logo_coffee.png);
+    background-position: center;
+    background-size: contain;
+    height: 100vh;
+    justify-content: center;
+
+  }
+
+  .button {
+    font-size: 16vw;
+    margin: 2vw;
+  }
+}

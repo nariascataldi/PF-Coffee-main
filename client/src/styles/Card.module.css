@@ -1,0 +1,44 @@
+.link {
+          text-decoration: none;
+          color: black;
+}
+
+.card {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          background-color: var(--primary);
+          margin: 5px;
+          margin-left: 4px;
+          width: 200px;
+          cursor: pointer;
+          border-radius: 12px;
+          padding: 5px;
+          max-height: 220px;
+}
+
+.card:hover {
+          background-color: #55c5c03d;
+          width: 186px;
+          height: auto;
+          color: var(--black);
+}
+
+.card:active {
+          background-color: #55c5c065;
+          width: 182px;
+}
+
+.img {
+          height: 150px;
+          max-width: 150px;
+          border-radius: 10px;
+}
+
+.name {
+          padding: 1px;
+          margin: 1px;
+          font-size: 16px;
+}

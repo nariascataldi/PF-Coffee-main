@@ -1,0 +1,5 @@
+.parent {
+    height: 100%;
+    padding-top: 16vh;
+    background-color: var(--primary);
+}
