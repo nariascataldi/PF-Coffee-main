@@ -2,15 +2,14 @@ import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAllProducts, getByTitle, setFilterState } from '../../../redux/actions/index.js';
 
-import FormularioProducto from './ProductCreate';
-import Cards from '../CardsAdmin/CardsAdminEdit';
+import Cards from '../CardsAdmin/CardsAdmin';
 // import NavBarAdmin from '../NavBarAdmin/NavBarAdmin.jsx';
 
 import { BsSearch } from 'react-icons/bs';
-import FormProductEdit from './ProductEdit.jsx';
+import FormProduct from './ProductCreate';
+import style from '../../../styles/Admin/NavBarAdm.module.css';
 
-
-export default function ProductAdminEdit() {
+export default function ProductAdmin() {
 
   const [busqueda, setBusqueda] = useState('');
 
@@ -36,15 +35,13 @@ export default function ProductAdminEdit() {
       <div className="container my-3 py-5">
         <div className="row">
           <div id='formularioProducto' className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
-            <FormProductEdit />
+            <FormProduct />
           </div>
           <div id='ListadoProductos' className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
-          {/* <button onClick={() => window.location.reload(false)}>Click to reload!</button> */}
-            {/* Search Bar */}
 
-            <form className='searchBar' onSubmit={(e) => handleSubmit(e)}>
-              <input className='input-search' type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
-              <button className='search-button' type='submit'><BsSearch /></button>
+            <form className={style.searchBar} onSubmit={(e) => handleSubmit(e)}>
+              <input className={style.input_search} type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
+              <button className={style.search_button} type='submit'><BsSearch /></button>
             </form>
 
             <Cards />

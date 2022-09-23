@@ -58,3 +58,17 @@
           
 
 }
+.active1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: #E3EFFB;
+    border-radius: 2px;
+    font-weight: 600;
+    color:#DD6873;
+    box-shadow: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}

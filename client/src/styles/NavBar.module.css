@@ -9,6 +9,7 @@
           width: 100%;
           z-index: 10;
           padding-right: 20px;
+          height: 66px;
 }
 
 .menu_logo {
@@ -32,10 +33,6 @@
           background-color: rgba(185, 185, 185, 0.24);
 }
 
-.active {
-          background-color: rgb(185, 185, 185);
-}
-
 .logo {
           width: 14vh;
           padding-left: 14px;
@@ -44,6 +41,8 @@
 .nav_item {
           color: rgb(114, 113, 113);
           list-style: none;
+          font-size: 15px;
+
 }
 
 .links {
@@ -97,11 +96,11 @@
           margin-right: 6px;
           background-color: var(--primary);
           border-color: var(--strong);
-          color: rgb(97, 97, 97);
+          color: rgb(114, 114, 114);
           outline: none;
           cursor: pointer;
           border-radius: 5px;
-          font-size: 15px;
+          font-size: 14px;
           margin: 5px;
 }
 
@@ -149,4 +148,42 @@
           padding-right: 2px;
           border-radius: 16px;
           width: 18px;
+}
+.navMenu{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 46px;
+}
+.navMenu > span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    border-radius: 999px;
+    background-color: rgb(114, 113, 113);
+    cursor: pointer;
+}
+.navMenu > span:not(:last-child){
+    margin-bottom: 7px;
+}
+.navMenu, .navMenu > span {
+    transition: all .4s ease-in-out;
+}
+.navMenu.active{
+    transition-delay: 0.6s;
+    transform: rotate(45deg);
+}
+.navMenu.active > span:nth-child(2){
+    width: 0;
+}
+.navMenu.active >  span:nth-child(1),
+.navMenu.active >  span:nth-child(3) {
+    transition-delay: .4s;
+}
+.navMenu.active >  span:nth-child(1) {
+    transform: translateY(9px);
+}
+.navMenu.active >  span:nth-child(3) {
+    transform: translateY(-9px) rotate(90deg);
 }
