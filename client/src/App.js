@@ -5,10 +5,9 @@ import About from './components/About';
 import Home from './components/Home';
 import Detail from './components/Detail';
 import Perfil from './components/Account/Perfil';
-
+import ProductAdminEdit from './components/Admin/Product/ProductAdminEdit';
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
-import ProductAdmin from './components/Admin/FormProduct/ProductAdmin'
-import ProductAdminEdit from './components/Admin/FormProduct/ProductAdminEdit';
+import ProductAdmin from './components/Admin/Product/ProductAdmin';
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
@@ -19,6 +18,7 @@ import NotFound from './components/404';
 
 import './styles/normalize.css'
 import './styles/globals.css'
+import Modals from './components/Admin/Modals/Modals';
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
         <Route exact path='/providers' element={<Providers />} />
         <Route exact path='/formusers' element={<FormularioUsuario />} />
         <Route exact path='/fillCart' element={<FillCart />} />
-
+        <Route exact path='/modals' element={<Modals />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
