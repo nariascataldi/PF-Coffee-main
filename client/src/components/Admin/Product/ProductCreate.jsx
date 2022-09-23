@@ -54,20 +54,20 @@ export default function FormProduct() {
     dispatch(getAllCategories())
   }, [dispatch])
 
-  const [post, setPost] = useState({
-    // defaultValues: {
-    //   title: 'Café café tinto',
-    //   cost: '5',                          //*
-    //   margin: '50',                      //*
-    //   price: '',                         //*
-    //   description: 'client',              //*
-    //   image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/18/8d/1a/cafe-tinto-de-la-sierra.jpg',
-    //   // disable: false,
-    //   like: '5',
-    //   stock: '10',
-    //   diet: 'dairy free',
-    // }
-  });
+  const [post, setPost] = useState({});
+  // defaultValues: {
+  //   title: 'Café café tinto',
+  //   cost: '5',                          //*
+  //   margin: '50',                      //*
+  //   price: '',                         //*
+  //   description: 'client',              //*
+  //   image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/18/8d/1a/cafe-tinto-de-la-sierra.jpg',
+  //   // disable: false,
+  //   like: '5',
+  //   stock: '10',
+  //   diet: 'dairy free',
+  // }
+
   var suggested = (Math.round(((post?.cost) * (((post?.margin) / 100) + 1))));
   function handleInputChange(e) {
     setPost({
@@ -100,7 +100,7 @@ export default function FormProduct() {
         // disable: false,
         like: '',
         stock: '',
-        diet: '',
+        diet: [],
       })
       e.target.reset();
       window.location.reload(false);
@@ -109,12 +109,20 @@ export default function FormProduct() {
   };
   /**Diet */
   function handleSelectDiets(e) {
-    console.log('Handle ', e.target.value);
+    console.log('Handle ', (e.target.value));
+    console.log('Post: ', post.diets);
     setPost({
       ...post,
-      diets: [e.target.value]
+      // diets: [...post.diet, e.target.value] revisar
+      diets: Array.from(new Set([e.target.value,post.diets]))
     });
   };
+  function handleDelete(el) {
+    setPost({
+      ...post,
+      diets: post.diets.filter((diet) => diet !== el),
+    });
+  }
   /**Providers */
   function handleSelectProv(e) {
     console.log('HandlePro ', e.target.value);
@@ -131,7 +139,7 @@ export default function FormProduct() {
       categories: [e.target.value]
     });
   };
-  
+
   return (
     <>
       {/* <h2>Product</h2> */}
@@ -283,6 +291,7 @@ export default function FormProduct() {
           <select
             onChange={e => handleSelectDiets(e)}
             defaultValue='default'
+            name="diet"
             className={style.seleSelect}>
             <option
               value="default"
@@ -293,6 +302,7 @@ export default function FormProduct() {
                 <option
                   key={diet.name}
                   value={diet.name}
+
                   className={style.seleOption}
                 >
                   {diet.name}
@@ -304,6 +314,17 @@ export default function FormProduct() {
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
         </div>
+
+        <div>
+          <p>You have selected that:</p>
+          {post.diets?.map((el) => (
+            <div key={el} className={style.selectedItems}>
+              <p>{el}</p>
+              <button onClick={() => handleDelete(el)}>x</button>
+            </div>
+          ))}
+        </div>
+
         <div className={style.providers}>
           <select
             onChange={e => handleSelectProv(e)}
