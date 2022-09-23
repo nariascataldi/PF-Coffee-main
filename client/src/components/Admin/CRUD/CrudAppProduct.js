@@ -59,9 +59,11 @@ const CrudApp = () => {
       <h2>CRUD App</h2>
       <article className="grid-1-2">
         <Modal isOpen={isOpenModal} closeModal={closeModal}>
-          <p>¿Estás seguro de eliminar el registro con el id '{id}'?</p>
-          <button value='yes' onClick={(e) => handleYesOrNo(e)}>Si</button>
-          <button value='no' onClick={(e) => handleYesOrNo(e)}>No</button>
+          <h1 className="">¿Estás seguro de eliminar el registro con el id '{id}'?</h1>
+          <div class="d-flex justify-content-evenly">
+            <button value='yes' onClick={(e) => handleYesOrNo(e)} class='border-0'>Si</button>
+            <button value='no' onClick={(e) => handleYesOrNo(e)} class='border-0'>No</button>
+          </div>
         </Modal>
         <CrudForm
           updateData={updateData}

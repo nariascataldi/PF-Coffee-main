@@ -17,7 +17,7 @@
 
 .modalContainer {
     position: relative;
-    padding: 1rem;
+    padding: 2rem;
     min-width: 320px;
     max-width: 480px;
     min-height: 200px;
@@ -27,11 +27,21 @@
 }
 
 .children {
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .modalClose {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+    color: #aaa;
+    background-color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+}
+
+.modalClose:hover,
+.modalClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
