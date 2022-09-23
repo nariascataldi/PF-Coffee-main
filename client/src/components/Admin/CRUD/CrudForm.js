@@ -67,6 +67,7 @@ const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
         <input type="number" name="price" placeholder="Price" onChange={handleChange} value={form.price} />
         <input type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} />
         <input type="number" name="stock" placeholder="stock" onChange={handleChange} value={form.stock} />
+
         
         <input type="submit" value="Enviar" />
         <input type="reset" value="Limpiar" onClick={handleReset} />
