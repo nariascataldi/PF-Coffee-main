@@ -12,7 +12,7 @@ conn.sync({ force: true }).then(() => {
   pushProviders();
   pushCategories();
   pushDiets();
-  pushProducts();     
+  pushProducts();    
   
   server.listen(backPort, () => {
     console.log(`%s listening at ${backPort}`); 
