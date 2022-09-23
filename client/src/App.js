@@ -8,18 +8,18 @@ import Perfil from './components/Account/Perfil';
 import ProductAdminEdit from './components/Admin/Product/ProductAdminEdit';
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
 import ProductAdmin from './components/Admin/Product/ProductAdmin';
-import ProductAdminEdit from './components/Admin/Product/ProductAdminEdit';
+import CrudApp from './components/Admin/CRUD/CrudAppProduct';
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
-import CrudApp from './components/Admin/CRUD/CrudAppProduct';
-
+import Modals from './components/Admin/Modals/Modals';
 import NotFound from './components/404';
 
 import './styles/normalize.css'
 import './styles/globals.css'
-import Modals from './components/Admin/Modals/Modals';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App() {
   return (
