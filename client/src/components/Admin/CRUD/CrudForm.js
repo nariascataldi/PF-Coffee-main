@@ -3,16 +3,16 @@ import { useDispatch } from "react-redux";
 
 const initailForm = {
   id: null,
-  image:"",
+  image: "",
   title: "",
-  cost:"",
-  margin:"",
+  cost: "",
+  margin: "",
   price: "",
   description: "",
-  stock:"",
-  diets:"",
-  categories:"",
-  providers:"",
+  stock: "",
+  diets: "",
+  categories: "",
+  providers: "",
 };
 
 const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
@@ -55,22 +55,23 @@ const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
     <div>
       <h3>{dataToEdit ? "Editar" : "Agregar"}</h3>
       <form onSubmit={handleSubmit}>
-        <input
+        {/* <input className="mb-3" type="text" name="image" placeholder="image" onChange={handleChange} value={form.image} /> */}
+        <input className="mb-3"
           type="text"
           name="title"
           placeholder="Name"
           onChange={handleChange}
           value={form.title}
         />
-        <input type="number" name="cost" placeholder="Cost" onChange={handleChange} value={form.cost} />
-        <input type="number" name="margin" placeholder="margin" onChange={handleChange} value={form.margin} />
-        <input type="number" name="price" placeholder="Price" onChange={handleChange} value={form.price} />
-        <textarea type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} />
-        <input type="number" name="stock" placeholder="stock" onChange={handleChange} value={form.stock} />
+        <input className="mb-3" type="number" name="cost" placeholder="Cost" onChange={handleChange} value={form.cost} />
+        <input className="mb-3" type="number" name="margin" placeholder="margin" onChange={handleChange} value={form.margin} />
+        <input className="mb-3" type="number" name="price" placeholder="Price" onChange={handleChange} value={form.price} />
+        <textarea className="mb-3" type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} />
+        <input className="mb-3" type="number" name="stock" placeholder="stock" onChange={handleChange} value={form.stock} />
 
-        
-        <input type="submit" value="Enviar" />
-        <input type="reset" value="Limpiar" onClick={handleReset} />
+
+        <input className="mb-3" type="submit" value="Enviar" />
+        <input className="mb-3" type="reset" value="Limpiar" onClick={handleReset} />
       </form>
     </div>
   );
