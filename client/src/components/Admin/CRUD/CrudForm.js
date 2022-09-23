@@ -6,7 +6,7 @@ const initailForm = {
   id: null,
 };
 
-const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
+const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initailForm);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.title]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -28,15 +28,10 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
     e.preventDefault();
 
     if (!form.title || !form.price) {
-      alert("Datos incompletos");
+      alert("Datos incompletos");  //poner un modal
       return;
     }
-
-    if (form.id === null) {
-      createData(form);
-    } else {
-      updateData(form);
-    }
+    updateData(form);
 
     handleReset();
   };

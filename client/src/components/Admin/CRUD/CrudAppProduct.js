@@ -5,13 +5,11 @@ import axios from "axios";
 
 const baseUrl = 'http://localhost:3001/products';
 
-
-
 const CrudApp = () => {
 
   const [db, setDb] = useState([]);
-  
   const [dataToEdit, setDataToEdit] = useState(null);
+  
   const peticionGet = async () => {
     await axios.get(baseUrl)
     .then(response => {
@@ -21,13 +19,6 @@ const CrudApp = () => {
   useEffect(async () => {
     await peticionGet();
   }, [])
-
-  
-  const createData = (data) => {
-    data.id = Date.now();
-    //console.log(data);
-    setDb([...db, data]);
-  };
 
   const updateData = (data) => {
     let newData = db.map((el) => (el.id === data.id ? data : el));
@@ -52,7 +43,6 @@ const CrudApp = () => {
       <h2>CRUD App</h2>
       <article className="grid-1-2">
         <CrudForm
-          createData={createData}
           updateData={updateData}
           dataToEdit={dataToEdit}
           setDataToEdit={setDataToEdit}
