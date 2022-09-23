@@ -5,6 +5,7 @@ import Modal from "../Modals/Modal";
 import { useModal } from '../../../hooks/UseModal';
 import axios from "axios";
 
+
 const baseUrl = 'http://localhost:3001/products';
 
 const CrudApp = () => {
@@ -12,15 +13,19 @@ const CrudApp = () => {
   const [db, setDb] = useState([]);
   const [id, setId] = useState(0);
   const [option, setOption] = useState('');
-  const [dataToEdit, setDataToEdit] = useState(null);
+  const [dataToEdit, setDataToEdit] = useState(null)
   const [isOpenModal, openModal, closeModal] = useModal(false)
-  
+
+
   const peticionGet = async () => {
+
     await axios.get(baseUrl)
-    .then(response => {
-      setDb(response.data);
-    })
+      .then(response => {
+        setDb(response.data);
+      })
+
   }
+
   useEffect(async () => {
     await peticionGet();
   }, [])
