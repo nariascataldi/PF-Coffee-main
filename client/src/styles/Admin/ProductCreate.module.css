@@ -1,18 +1,21 @@
 .p_form {
   /* display: none; */
   color: orangered;
-  font-size: medium;
+  font-size: large;
 }
-#submit{
+
+#submit {
   background-color: #DD6873;
   color: white;
   border-color: #DD6873;
   border-radius: 3px;
   margin: 6px;
   box-shadow: 5px 5px 10px black;
+  font-size: 2rem;
 }
-.dietSelect {
-  background: rgba(244, 223, 121, 0.5);
+
+.seleSelect {
+  background: #fceef0;
   margin: 5px 0;
   padding: 5px 0;
   font-size: large;
@@ -21,16 +24,18 @@
   border-radius: 5px;
 }
 
-.dietOption {
+.seleOption {
   color: black;
   background-color: aliceblue;
 }
+
 .selecteddiets {
   display: contents;
   font-size: large;
   padding: 10px;
   color: blanchedalmond;
 }
+
 .selectedItems {
   display: flex;
   background-color: rgba(244, 223, 121, 0.5);
@@ -41,4 +46,20 @@
   justify-content: space-around;
   flex-wrap: nowrap;
   flex-direction: row;
- }
+}
+
+.form_control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem rem 0.75rem;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}

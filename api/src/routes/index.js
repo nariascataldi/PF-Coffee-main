@@ -4,19 +4,21 @@ const { Router } = require('express');
 
 
 const { productsGet,
-  prodIDget,
-  dietsGet,
-  categoriesGet,
-  commentGet,
-  prodIDremove,
-  prodPost,
-  providerPost,
-  providersGet,
-  providerIDget,
-  altAttribute,
-  commentPost,
-  usersGet,
-  userIDget } = require('../controllers');
+        prodIDget,
+        dietsGet,
+        categoriesGet,
+        commentGet,
+        prodIDremove,
+        prodPost,
+        providerPost,
+        providersGet,
+        providerIDget,
+        altAttribute,
+        commentPost,
+        userPost,
+        usersGet,
+        userIDget  } = require('../controllers');
+const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
 const { userRegist,
   userLogin } = require('../controllers/authControllers.js');
@@ -70,10 +72,13 @@ router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
 
 router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
 
+router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
+
 
 //---------------PUT
 
 router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! -- middlewareAdmin,
+
 
 
 

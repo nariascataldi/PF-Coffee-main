@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from 'react'
 import { useSelector } from "react-redux";
 import Card from "../CardAdmin/CardAdmin";
-import Paginated from "../../Paginated";
+import Paginated from "../PaginatedAdmin/PaginatedAdmin";
 import Loading from "../../Loading";
 
 export default function Cards({ load }) {
@@ -10,7 +10,7 @@ export default function Cards({ load }) {
   //paginado
   const [currentPage, setCurrentPage] = useState(1)
   const [productsPerPage, setProductsPerPage] = useState(8)
-  console.log("CardsAdmin: ",{setProductsPerPage});
+  // console.log("CardsAdmin: ",{setProductsPerPage});
   const indexOfLast = currentPage * productsPerPage
   const indexOfFirst = indexOfLast - productsPerPage
   const currentProducts = products.slice(indexOfFirst, indexOfLast)

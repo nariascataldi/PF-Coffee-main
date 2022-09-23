@@ -32,12 +32,12 @@ export default function ProductAdmin() {
   return (
     <Fragment>
       {/* <NavBarAdmin /> */}
-      <div className="container my-3 py-5">
+      <div className="container my-0 py-0">
         <div className="row">
-          <div id='formularioProducto' className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
+          <div id='formularioProducto' className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-1 bg-white">
             <FormProduct />
           </div>
-          <div id='ListadoProductos' className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
+          <div id='ListadoProductos' className="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-1 bg-white">
 
             <form className={style.searchBar} onSubmit={(e) => handleSubmit(e)}>
               <input className={style.input_search} type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
