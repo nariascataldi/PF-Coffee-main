@@ -30,7 +30,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
-  fillCart: JSON.parse(localStorage.getItem('carrito')),
+  fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
   filterBy: {
     title: '',
@@ -154,12 +154,16 @@ const rootReducer = (state = initialState, action) => {
     case FILL_CART :
       return {
         ...state,
-        fillCart: [...state.fillCart,action.payload]
+        fillCart: [...state.fillCart,...action.payload]
       }
     case RESET_FILL_CART : 
+    const deleteCart = state.fillCart.filter((e)=>{ 
+      return e.id != action.payload
+    })
+      
       return {
         ...state,
-        fillCart: [] 
+        fillCart: deleteCart
       }
     case POST_PROVIDERS :
       return{
