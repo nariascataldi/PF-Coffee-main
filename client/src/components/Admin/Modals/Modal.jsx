@@ -11,7 +11,9 @@ function Modal({children, isOpen, closeModal}) {
     <article className={`${styles.modal} ${isOpen && styles.isOpen}`} onClick={closeModal}>
         <div className={styles.modalContainer} onClick={handleContainerModalClick}>
             <button className={styles.modalClose} onClick={closeModal}>X</button>
-            {children}
+            <div className={styles.children}>
+              {children}
+            </div>
         </div>
     </article>
   );

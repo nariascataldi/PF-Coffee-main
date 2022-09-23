@@ -26,6 +26,10 @@
     background-color: #fff;
 }
 
+.children {
+    padding-top: 25px;
+}
+
 .modalClose {
     position: absolute;
     top: 1rem;
