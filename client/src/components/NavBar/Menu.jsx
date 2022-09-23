@@ -16,18 +16,20 @@ export default function Menu({menu}){
     //  console.log(seasonSinDuplicado)
     return  (
         <div className={`menu-container ${menu ? "open" : ""}`}> 
-        <div className='box-menu1'>
-        <p></p>
-        </div>
-        <div className='box-menu'>
-            <Link to='/productAdmin'><button className='menubutton-crate-product'>Add a new product</button></Link>
-        </div>
-        <div className='box-menu'>
+    
+        
+        <Link to='/productAdmin'><button className='menubutton-crate-product'>Add a new product</button></Link>
+        
+        
         <Link to='/providerCreate'><button className='menubutton-crate-product'>Add new Provider</button></Link>
-        </div>
-        <div className='box-menu'>
-        <Link to='/providers'><button className='menubutton-crate-product'>Log in</button></Link>
-        </div>
+        
+        <Link to='/providers'><button className='menubutton-crate-product'>Provider</button></Link>
+        
+        <Link><button className='menubutton-crate-product'>Log in</button></Link>
+
+        <Link to='/about'><button className='menubutton-crate-product'>About</button></Link>
+        
     </div>)
+
 
 }

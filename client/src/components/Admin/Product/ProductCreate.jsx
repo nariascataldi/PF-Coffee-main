@@ -13,28 +13,28 @@ var testDescription = /^[A-Za-z]+$/i;
 // var testNumber = /^\d{1,2}$/;
 
 
-function validate(post) {
+function validate(input) {
 
   let errors = {};
   /** TITLE   */
-  if (!post.title) errors.title = 'Enter product name';
-  if (!testName.test(post.title)) errors.title = 'Start the name with capital letter. Only characters "":.,_- are accepted';
-  if (100 <= [post.title].length) errors.title = 'Not exceed 100 characters';
+  if (!input.title) errors.title = 'Enter product name';
+  if (!testName.test(input.title)) errors.title = 'Start the name with capital letter. Only characters "":.,_- are accepted';
+  if (100 <= [input.title].length) errors.title = 'Not exceed 100 characters';
   /** Cost */
-  if (!post.cost) errors.cost = 'Enter a cost from provider';
+  if (!input.cost) errors.cost = 'Enter a cost from provider';
   /** Margin */
-  if (!post.margin) errors.margin = 'Enter a margin of the product';
+  if (!input.margin) errors.margin = 'Enter a margin of the product';
   /** Price */
-  if (!post.price) errors.price = 'Enter a price of the product';
+  if (!input.price) errors.price = 'Enter a price of the product';
 
   /** description */
-  if (!post.description) errors.description = 'Enter a description of the product';
+  if (!input.description) errors.description = 'Enter a description of the product';
   /** IMAGE */
-  if (!testImage.test(post.image)) errors.image = `Enter the URL of a representative image in jpg or png format`;
+  if (!testImage.test(input.image)) errors.image = `Enter the URL of a representative image in jpg or png format`;
   /** stock */
-  if (!post.stock) errors.stock = `Enter a number of product`;
+  if (!input.stock) errors.stock = `Enter a number of product`;
   /** Diet */
-  if (![post.diet].length) errors.diet = 'Choose at least one type of diet';
+  if (![input.diet].length) errors.diet = 'Choose at least one type of diet';
 
   return errors;
 }
@@ -54,28 +54,28 @@ export default function FormProduct() {
     dispatch(getAllCategories())
   }, [dispatch])
 
-  const [post, setPost] = useState({
-    // defaultValues: {
-    //   title: 'Café café tinto',
-    //   cost: '5',                          //*
-    //   margin: '50',                      //*
-    //   price: '',                         //*
-    //   description: 'client',              //*
-    //   image: 'https://media-cdn.tripadvisor.com/media/photo-s/15/18/8d/1a/cafe-tinto-de-la-sierra.jpg',
-    //   // disable: false,
-    //   like: '5',
-    //   stock: '10',
-    //   diet: 'dairy free',
-    // }
+  const [input, setInput] = useState({
+        title: '',
+        cost: '',
+        margin: '',
+        price: '',
+        description: '',
+        image: '',
+        // disable: false,
+        like: '',
+        stock: '',
+        diets: [],
+        providers: [],
+        categories: []
   });
-  var suggested = (Math.round(((post?.cost) * (((post?.margin) / 100) + 1))));
+  var suggested = (Math.round(((input?.cost) * (((input?.margin) / 100) + 1))));
   function handleInputChange(e) {
-    setPost({
-      ...post,
+    setInput({
+      ...input,
       [e.target.name]: e.target.value
     });
     setErrors(validate({
-      ...post,
+      ...input,
       [e.target.name]: e.target.value
     }));
   };
@@ -86,11 +86,11 @@ export default function FormProduct() {
       // console.log('handleSubmit ', { errors });
     }
     else {
-      console.log('handleSubmit ', { post });
-      dispatch(postProduct(post));
+      console.log('handleSubmit ', { input });
+      dispatch(postProduct(input));
       alert('Product create successfuly!');
       /**Clear */
-      setPost({
+      setInput({
         title: '',
         cost: '',
         margin: '',
@@ -106,30 +106,46 @@ export default function FormProduct() {
       window.location.reload(false);
       navigate('/productAdmin');
     }
-  };
+  }; 
   /**Diet */
   function handleSelectDiets(e) {
     console.log('Handle ', e.target.value);
-    setPost({
-      ...post,
-      diets: [e.target.value]
+    setInput({
+      ...input,
+      diets: [...input.diets, e.target.value]
     });
   };
   /**Providers */
   function handleSelectProv(e) {
     console.log('HandlePro ', e.target.value);
-    setPost({
-      ...post,
-      providers: [e.target.value]
+    setInput({
+      ...input,
+      providers: [...input.providers, e.target.value]
     });
   };
   /**Categories */
   function handleSelectCate(e) {
     console.log('HandleCat ', e.target.value);
-    setPost({
-      ...post,
-      categories: [e.target.value]
+    setInput({
+      ...input,
+      categories: [...input.categories, e.target.value]
     });
+  };
+  function handleDelete(e) {
+    e.preventDefault();   
+    let [name, value] = e.target.value.split('_');   console.log(value); console.log(name);
+    if(name === 'diets') {
+      let d = input.diets.filter( (o)=> o !== value);
+      setInput({...input, diets: d,});
+    };
+    if(name === 'providers') {
+      let dt = input.providers.filter( (o)=> o !== value);
+      setInput({...input, providers: dt,});
+    };
+    if(name === 'categories') {
+      let dt = input.categories.filter( (o)=> o !== value);
+      setInput({...input, categories: dt,});
+    };
   };
   
   return (
@@ -148,7 +164,7 @@ export default function FormProduct() {
             maxLength={50}
             autoFocus
             required={true}
-            value={post.title}
+            value={input.title}
             key='title'
             name='title'
             onChange={e => handleInputChange(e)} />
@@ -166,7 +182,7 @@ export default function FormProduct() {
               className="form-control"
               type="number"
               placeholder="5"
-              value={post.cost}
+              value={input.cost}
               key='cost'
               name='cost'
               onChange={e => handleInputChange(e)}
@@ -184,7 +200,7 @@ export default function FormProduct() {
               className="form-control"
               type="number"
               placeholder="5"
-              value={post.margin}
+              value={input.margin}
               key='margin'
               name='margin'
               onChange={e => handleInputChange(e)} />
@@ -204,7 +220,7 @@ export default function FormProduct() {
             id="price"
             className="form-control"
             type="number"
-            value={post.price}
+            value={input.price}
             key='price'
             name='price'
             onChange={e => handleInputChange(e)} />
@@ -224,7 +240,7 @@ export default function FormProduct() {
             required={true}
             maxLength={200}
             pattern={testDescription}
-            value={post.description}
+            value={input.description}
             key='description'
             name='description'
             onChange={e => handleInputChange(e)} />
@@ -242,7 +258,7 @@ export default function FormProduct() {
             type="url"
             placeholder="📷 URL"
             maxLength={200}
-            value={post.image}
+            value={input.image}
             key='image'
             name="image"
             onChange={e => handleInputChange(e)}
@@ -259,7 +275,7 @@ export default function FormProduct() {
             type="number"
             placeholder="🔢"
             required={true}
-            value={post.stock}
+            value={input.stock}
             key='stock'
             name='stock'
             onChange={e => handleInputChange(e)}
@@ -272,7 +288,7 @@ export default function FormProduct() {
             type="checkbox"
             role="switch"
             id="flexSwitchCheckDefault"
-            value={post.disable}
+            value={input.disable}
             onChange={e => handleInputChange(e)}
           />
           <label
@@ -303,6 +319,14 @@ export default function FormProduct() {
           {errors.diet && (
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
+          <div className={style.boxClose}>
+          { input.diets?.map( (el, index) =>
+            <div className={style.itemClose} key={`o${index}`}>
+              <p>{el}</p>
+              <button value={`diets_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
+            </div>)
+          }
+          </div>
         </div>
         <div className={style.providers}>
           <select
@@ -328,6 +352,14 @@ export default function FormProduct() {
           {errors.diet && (
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
+          <div className={style.boxClose}>
+          { input.providers?.map( (el, index) =>
+            <div className={style.itemClose} key={`o${index}`}>
+              <p>{el}</p>
+              <button value={`providers_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
+            </div>)
+          }
+          </div>
         </div>
         <div className={style.categories}>
           <select
@@ -353,6 +385,14 @@ export default function FormProduct() {
           {errors.diet && (
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
+          <div className={style.boxClose}>
+          { input.categories?.map( (el, index) =>
+            <div className={style.itemClose} key={`o${index}`}>
+              <p>{el}</p>
+              <button value={`categories_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
+            </div>)
+          }
+          </div>
         </div>
         <div id="Guardar" className="d-grid gap-2">
           <input
@@ -360,7 +400,7 @@ export default function FormProduct() {
             className="btn btn-success"
             type="submit"
             value="Save"
-            disabled={(!post.title || !post.price) ? true : false}
+            disabled={(!input.title || !input.price) ? true : false}
           />
         </div>
       </form>
