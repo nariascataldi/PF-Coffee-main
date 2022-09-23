@@ -55,7 +55,7 @@ const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
     <div>
       <h3>{dataToEdit ? "Editar" : "Agregar"}</h3>
       <form onSubmit={handleSubmit}>
-        {/* <input className="mb-3" type="text" name="image" placeholder="image" onChange={handleChange} value={form.image} /> */}
+
         <input className="mb-3"
           type="text"
           name="title"

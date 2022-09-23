@@ -8,7 +8,6 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
       <table>
         <thead>
           <tr>
-            {/* <th>Image</th> */}
             <th>Name</th>
             <th>Cost</th>
             <th>Margin</th>

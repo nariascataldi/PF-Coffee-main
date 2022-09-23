@@ -1,11 +1,10 @@
 import React from "react";
 
 const CrudTableRow = ({ el, setDataToEdit, deleteData }) => {
-  let { image, title, cost, margin, price, description, stock, id } = el;
+  let { title, cost, margin, price, description, stock, id } = el;
 
   return (
     <tr className="mb-3" >
-      {/* <td>{image}</td> */}
       <td>{title}</td>
       <td>{cost}</td>
       <td>{margin}</td>
