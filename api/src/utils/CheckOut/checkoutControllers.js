@@ -17,7 +17,7 @@ checkoutControllers.pago = (req, res) => {
   let items2 = itemsCheckout.map( a => {
     return {
         title: a.title,
-        unit_price: a.unit_price,
+        unit_price: a.price,
         quantity: a.quantity,
     }
   })
