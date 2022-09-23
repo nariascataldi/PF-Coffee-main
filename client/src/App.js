@@ -5,7 +5,6 @@ import About from './components/About';
 import Home from './components/Home';
 import Detail from './components/Detail';
 import Perfil from './components/Account/Perfil';
-import ProductAdminEdit from './components/Admin/Product/ProductAdminEdit';
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
 import ProductAdmin from './components/Admin/Product/ProductAdmin';
 import CrudApp from './components/Admin/CRUD/CrudAppProduct';
@@ -32,7 +31,7 @@ function App() {
         <Route path='/form' element={<Perfil />} />
         <Route exact path='/homeAdmin' element={<HomeAdmin />} />
         <Route exact path='/productAdmin' element={<ProductAdmin />} />
-        <Route exact path='/productAdminEdit' element={<ProductAdminEdit />} />
+
         <Route exact path='/providerCreate' element={<ProviderCreate />} />
         <Route exact path='/crud/product' element={<CrudApp />} />
         <Route exact path='/providers' element={<Providers />} />
