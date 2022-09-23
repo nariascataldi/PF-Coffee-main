@@ -4,7 +4,7 @@ import { getAllDiets, postProduct, getAllProviders, getAllCategories } from "../
 import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import style from '../../../styles/Admin/ProductCreate.module.css';
 
 var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
@@ -100,11 +100,11 @@ export default function FormProduct() {
         // disable: false,
         like: '',
         stock: '',
-        diet: '',
+        diet: [],
       })
       e.target.reset();
       window.location.reload(false);
-      navigate('/productAdmin');
+      // navigate('/productAdmin');
     }
   }; 
   /**Diet */
@@ -150,7 +150,7 @@ export default function FormProduct() {
   
   return (
     <>
-      <h2>Product</h2>
+      {/* <h2>Product</h2> */}
       <form onSubmit={e => handleSubmit(e)}>
         <div id="Nombre" className="mb-3">
           <label
@@ -158,7 +158,7 @@ export default function FormProduct() {
           >Name</label>
           <input
             id='title'
-            className="form-control"
+            className={style.form_control}
             type="text"
             placeholder="Product name"
             maxLength={50}
@@ -179,7 +179,7 @@ export default function FormProduct() {
             >Provider price</label>
             <input
               id="cost"
-              className="form-control"
+              className={style.form_control}
               type="number"
               placeholder="5"
               value={input.cost}
@@ -197,7 +197,7 @@ export default function FormProduct() {
             >Margin</label>
             <input
               id="margin"
-              className="form-control"
+              className={style.form_control}
               type="number"
               placeholder="5"
               value={input.margin}
@@ -218,7 +218,7 @@ export default function FormProduct() {
             <p className={style.p_form}>Suggested integer: ${suggested}</p>}
           <input
             id="price"
-            className="form-control"
+            className={style.form_control}
             type="number"
             value={input.price}
             key='price'
@@ -234,7 +234,7 @@ export default function FormProduct() {
           >Product description</label>
           <textarea
             id="description"
-            className="form-control"
+            className={style.form_control}
             type="text"
             placeholder="Choicely"
             required={true}
@@ -254,7 +254,7 @@ export default function FormProduct() {
           >Product Image</label>
           <input
             id="image"
-            className="form-control"
+            className={style.form_control}
             type="url"
             placeholder="📷 URL"
             maxLength={200}
@@ -271,7 +271,7 @@ export default function FormProduct() {
           >Amount</label>
           <input
             id="stock"
-            className="form-control"
+            className={style.form_control}
             type="number"
             placeholder="🔢"
             required={true}
@@ -299,17 +299,19 @@ export default function FormProduct() {
           <select
             onChange={e => handleSelectDiets(e)}
             defaultValue='default'
-            className={style.dietSelect}>
+            name="diet"
+            className={style.seleSelect}>
             <option
               value="default"
               disabled
-              className={style.dietOption}>Choose diet</option>
+              className={style.seleOption}>Choose diet</option>
             {diet &&
               diet.map((diet) => diet.name && (
                 <option
                   key={diet.name}
                   value={diet.name}
-                  className={style.dietOption}
+
+                  className={style.seleOption}
                 >
                   {diet.name}
                 </option>
@@ -328,21 +330,23 @@ export default function FormProduct() {
           }
           </div>
         </div>
+
+
         <div className={style.providers}>
           <select
             onChange={e => handleSelectProv(e)}
             defaultValue='default'
-            className={style.dietSelect}>
+            className={style.seleSelect}>
             <option
               value="default"
               disabled
-              className={style.dietOption}>Choose Provider</option>
+              className={style.seleOption}>Choose Provider</option>
             {provider &&
               provider.map((prov) => prov.name && (
                 <option
                   key={prov.name}
                   value={prov.name}
-                  className={style.dietOption}
+                  className={style.seleOption}
                 >
                   {prov.name}
                 </option>
@@ -365,17 +369,17 @@ export default function FormProduct() {
           <select
             onChange={e => handleSelectCate(e)}
             defaultValue='default'
-            className={style.dietSelect}>
+            className={style.seleSelect}>
             <option
               value="default"
               disabled
-              className={style.dietOption}>Choose Categorie</option>
+              className={style.seleOption}>Choose Categorie</option>
             {categories &&
               categories.map((cate) => cate.name && (
                 <option
                   key={cate.name}
                   value={cate.name}
-                  className={style.dietOption}
+                  className={style.seleOption}
                 >
                   {cate.name}
                 </option>
