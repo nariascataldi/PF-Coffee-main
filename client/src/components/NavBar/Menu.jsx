@@ -18,7 +18,7 @@ export default function Menu({menu}){
         <div className={`menu-container ${menu ? "open" : ""}`}> 
     
         
-        <Link to='/productAdmin'><button className='menubutton-crate-product'>Add a new product</button></Link>
+        <Link to='/homeAdmin'><button className='menubutton-crate-product'>Home Admin</button></Link>
         
         
         <Link to='/providerCreate'><button className='menubutton-crate-product'>Add new Provider</button></Link>
