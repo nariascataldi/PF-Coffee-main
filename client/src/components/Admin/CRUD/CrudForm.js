@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const initailForm = {
-  title: "",
-  price: "",
   id: null,
+  image:"",
+  title: "",
+  cost:"",
+  margin:"",
+  price: "",
+  description: "",
+  stock:"",
+  diets:"",
+  categories:"",
+  providers:"",
 };
 
 const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initailForm);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (dataToEdit) {
@@ -31,7 +41,7 @@ const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
       alert("Datos incompletos");  //poner un modal
       return;
     }
-    updateData(form);
+    dispatch(updateData(form));
 
     handleReset();
   };
@@ -52,13 +62,12 @@ const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
           onChange={handleChange}
           value={form.title}
         />
-        <input
-          type="number"
-          name="price"
-          placeholder="Price"
-          onChange={handleChange}
-          value={form.price}
-        />
+        <input type="number" name="cost" placeholder="Cost" onChange={handleChange} value={form.cost} />
+        <input type="number" name="margin" placeholder="margin" onChange={handleChange} value={form.margin} />
+        <input type="number" name="price" placeholder="Price" onChange={handleChange} value={form.price} />
+        <input type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} />
+        <input type="number" name="stock" placeholder="stock" onChange={handleChange} value={form.stock} />
+        
         <input type="submit" value="Enviar" />
         <input type="reset" value="Limpiar" onClick={handleReset} />
       </form>

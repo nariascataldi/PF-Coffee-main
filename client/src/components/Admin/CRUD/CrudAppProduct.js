@@ -3,19 +3,24 @@ import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
 import axios from "axios";
 
+
 const baseUrl = 'http://localhost:3001/products';
 
 const CrudApp = () => {
 
   const [db, setDb] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
-  
+
+
   const peticionGet = async () => {
+
     await axios.get(baseUrl)
-    .then(response => {
-      setDb(response.data);
-    })
+      .then(response => {
+        setDb(response.data);
+      })
+
   }
+
   useEffect(async () => {
     await peticionGet();
   }, [])
