@@ -1,6 +1,6 @@
 const { Router } = require('express');
-// const middlewareAuth = require('../middlewareAuth');
-// const middlewareAdmin = require('../middlewareAdmin');
+// const middlewareAuth = require('../middlewares/middlewareAuth');
+// const middlewareAdmin = require('../middlewares/middlewareAdmin');
 
 
 const { productsGet,
@@ -66,7 +66,7 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAu
 
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
-//----Validation
+////    Validation
 
 router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
 
