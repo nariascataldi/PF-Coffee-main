@@ -31,7 +31,6 @@ function App() {
         <Route path='/form' element={<Perfil />} />
         <Route exact path='/homeAdmin' element={<HomeAdmin />} />
         <Route exact path='/productAdmin' element={<ProductAdmin />} />
-
         <Route exact path='/providerCreate' element={<ProviderCreate />} />
         <Route exact path='/crud/product' element={<CrudApp />} />
         <Route exact path='/providers' element={<Providers />} />

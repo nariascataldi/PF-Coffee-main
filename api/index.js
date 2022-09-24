@@ -15,6 +15,7 @@ conn.sync({ force: true }).then(() => {
   pushDiets();
   pushUsers();
   pushProducts();     
+
   
   server.listen(backPort, () => {
     console.log(`%s listening at ${backPort}`); 

@@ -64,13 +64,13 @@ export default function FillCart() {
         }
     })
     async function checkOut() {
-        let mercadoPagoRes = await axios.post('http://localhost:3001/checkout', products);
+        let mercadoPagoRes = await axios.post('http://localhost:3001/checkout', reducedCart);
         console.log(mercadoPagoRes);
         window.open(mercadoPagoRes.data) 
         //window.location.href = mercadoPagoRes.data;
     }
     function handleButtonPay() {
-        checkOut(products)
+        checkOut(reducedCart)
     }
 
 
