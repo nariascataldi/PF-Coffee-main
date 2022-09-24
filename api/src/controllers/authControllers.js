@@ -8,10 +8,16 @@ const userRegist = async(req,res,next)=>{
    
     let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
 
+    const prevUser = await User.findOne({ where: {mail: mail} });
+
+    if (prevUser && prevUser.hasOwnProperty('id')) {
+        return res.status(401).json({error:'There is already a user with that email !!'})    
+    };
+
     let salt = await bcrypt.genSalt(10);
     pass = await bcrypt.hash(pass, salt);
   
-    let userCreate = await User.create({ name, lastName, status, mail, pass, avatar, birthday, });
+    let userCreate = await User.create({ name, lastName, status, mail, pass, avatar, birthday });
     
     const userForToken = {
         username: userCreate.mail,

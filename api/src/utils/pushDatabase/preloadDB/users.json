@@ -1,0 +1,92 @@
+[
+    {   
+    "name": "Carlos",
+    "lastName": "Solá",
+    "status": "Admin",
+    "mail": "carlos.sola.z.95@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"  
+    },
+    {   
+    "name": "Rodrigo",
+    "lastName": "Hernández",
+    "status": "Admin",
+    "mail": "rodri_h87@hotmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    },
+    {   
+    "name": "Luciana Soledad",
+    "lastName": "Diaz",
+    "status": "Admin",
+    "mail": "luc@gamil.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    },
+    {   
+    "name": "Néstor Arias",
+    "lastName": "Cataldi",
+    "status": "Admin",
+    "mail": "nestorariascataldi@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    },
+    {   
+    "name": "Matías",
+    "lastName": "Dentoni",
+    "status": "Admin",
+    "mail": "matiasdentoni@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    },
+    {   
+    "name": "Jonathan Daniel",
+    "lastName": "Perez",
+    "status": "Admin",
+    "mail": "jonathantj63@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    },
+    {   
+    "name": "Gasper",
+    "lastName": "Perez",
+    "status": "Admin",
+    "mail": "gasparperez171@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    },
+    {   
+    "name": "Rodri",
+    "lastName": "Hernández",
+    "status": "Client",
+    "mail": "rodrihm87@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "26-02-89"    
+    },
+    {   
+    "name": "Matute",
+    "lastName": "Dentini",
+    "status": "Client",
+    "mail": "vasudeva.worldteam@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    },
+    {   
+    "name": "Gaspar",
+    "lastName": "Perez",
+    "status": "Client",
+    "mail": "gasparp2040@gmail.com", 
+    "pass": "$2a$10$HT8yYXvDdAT8iOId3q6sZu1xt.rDpOMba71ZQ6/NfI5.1O2/TObN2", 
+    "avatar": "", 
+    "birthday": "23-02-89"    
+    }
+]
