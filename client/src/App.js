@@ -19,6 +19,8 @@ import NotFound from './components/404';
 
 import './styles/normalize.css'
 import './styles/globals.css'
+import ListProvider from './components/Admin/FormProvider/ListProvider';
+import ModifyProvider from './components/Admin/FormProvider/ModifyProvider'
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route exact path='/providers' element={<Providers />} />
         <Route exact path='/formusers' element={<FormularioUsuario />} />
         <Route exact path='/fillCart' element={<FillCart />} />
+        <Route exact path='/list' element={<ListProvider />} />
+        <Route exact path='/modProvider/:id' element={<ModifyProvider />}/>
 
         <Route path="*" element={<NotFound />} />
       </Routes>

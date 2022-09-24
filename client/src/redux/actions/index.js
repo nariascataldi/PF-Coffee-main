@@ -20,6 +20,7 @@ export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
 export const POST_COMMENT = 'POST_COMMENT'
 export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
+export const SET_PROVIDERS = 'SET_PROVIDERS'
 
 
 export function getAllProducts() {
@@ -206,3 +207,10 @@ export function loginService(user) {
     })
   }
 };
+export function putProviders(payload){
+  return async function(dispatch){
+    const info= await axios.put('http://localhost:3001/edit/:id', payload);
+    return info;
+  }
+
+}

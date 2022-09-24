@@ -18,7 +18,8 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
-  fillCart
+  fillCart,
+  SET_PROVIDERS
 } from '../actions'
 
 const initialState = {
@@ -180,6 +181,11 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state
       }
+      case SET_PROVIDERS :
+        return{
+          ...state,
+          providers: action.payload
+        }
 
     default:
       return { ...state }
