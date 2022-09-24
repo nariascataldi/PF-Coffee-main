@@ -1,9 +1,6 @@
 import React, { useEffect } from "react"
 import styles from '../../../styles/Paginated.module.css'
 
-// import styles from '../../../styles/Admin/PaginatedAdmin.model.css'
-
-
 export default function Paginated({
   productsPerPage,
   products,
