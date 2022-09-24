@@ -8,15 +8,15 @@
 }
 
 html {
-          font-size: 45%;
+          font-size: 50%;
   
 }
 
 *,
 *:before,
-*:after {
+/* *:after {
           box-sizing: inherit;
-}
+} */
 
 body {
           font-size: 2rem;

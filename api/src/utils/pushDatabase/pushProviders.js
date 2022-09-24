@@ -1,5 +1,5 @@
 const { Provider } = require('../../db.js');
-const json = require('../../../provider.json');
+const json = require('./preloadDB/provider.json');
 
 function pushProviders(){
     try {

@@ -6,7 +6,7 @@
     width: 210px;
     height: 320px;
     position: fixed;
-    top: 90px;
+    top: 66.5px;
     right: 100%;
     color: rgb(97, 97, 97);
     background-color: #E3EFFB;
@@ -29,8 +29,11 @@
     margin-bottom: 1px;
     border: 1.4px solid #E3EFFB;
     border-bottom-color: rgb(97, 97, 97);
-    width: 100%;
-    padding-left: 18px;
+    width: 95%;
+    
+}
+.box-menu:hover{
+    background-color: #c8ddf1;
 }
 .box-menu1{
     margin-bottom: 100px;
@@ -38,15 +41,16 @@
     margin-bottom: 1px;
     border: 1.4px solid #E3EFFB;
     border-bottom-color: rgb(97, 97, 97);
-    width: 100%;
-    padding-left: 18px;
+    width: 90%;
+    
 }
 .menubutton-crate-product{
-    width: 100%;
+    width: 90%;
     border: none;
     height: 46px;
     color: rgb(97, 97, 97);
     background-color: #E3EFFB ;
+    border-bottom: 1px solid rgb(97, 97, 97) ;
 }
 .menubutton-crate-product:hover{
     color:#DD6873;

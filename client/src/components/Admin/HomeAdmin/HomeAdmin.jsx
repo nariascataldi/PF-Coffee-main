@@ -1,77 +1,80 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts } from '../../../redux/actions/index.js';
-import { NavLink } from 'react-router-dom';
+import { getAllProducts, getByTitle, setFilterState } from '../../../redux/actions/index.js';
+
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
-import ProductAdmin from '../FormProduct/ProductAdmin.jsx';
+import ProductAdmin from '../Product/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
-import { useForm } from "react-hook-form";
+import CrudApp from '../CRUD/CrudAppProduct.js';
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import style from '../../../styles/Admin/HomeAdm.module.css';
+import { BsSearch } from 'react-icons/bs';
+
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
+import Tab from 'react-bootstrap/Tab';
 
 
-import './HomeAdm.css'
+
+
 
 export default function HomeAdmin() {
   const dispatch = useDispatch();
-  let allProducts = useSelector(state => state.allProducts)
+  const [busqueda, setBusqueda] = useState('');
 
   React.useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch])
 
-  const { watch, register } = useForm({
-    defaultValues: {
-      homeAdmin: true
-    }
-  })
+  const [framework, setFramework] = useState('homeAdmin');
 
-  const homeAdmin = watch('homeAdmin');
-  const product = watch('product');
-
+  const cambioRadioFramework = e => {
+    setFramework(e.target.value);
+  }
+  const handleOnChange = (d) => {
+    setBusqueda(d.target.value)
+    dispatch(getByTitle(busqueda));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(setFilterState({ title: busqueda }));
+    setBusqueda('')
+  }
 
   return (
-    <div className='home-container'>
+    <div className={style.home_container}>
       <NavBarAdmin></NavBarAdmin>
-      <div className="container my-3 py-5">
-        <div className="row">
-          <div id='NavBarIzq' className="col-sm-12 col-md-2 col-lg-2 col-xl-2 py-4 bg-white">
-            <div className="row">
-              <div className="col-12">
-                <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-
-                  <div >
-                    <label >Home</label>
-                    <input
-                      type="checkbox"
-                      {...register("homeAdmin",
-                      
-
-                      )}
-                    />
-                  </div>
-                  <div >
-                    <label >Product</label>
-                    <input
-                      type="checkbox"
-                      {...register("product")}
-                    />
-                  </div>
-
-
+      <Tab.Container id="left-tabs-example" defaultActiveKey="homeAdmin">
+        <Row>
+          <Col sm={2}>
+            <Nav variant="pills" className="flex-column">
+              <Nav.Item>
+                <Nav.Link eventKey="homeAdmin">Home Admin</Nav.Link>
+              </Nav.Item>
+              <Nav.Item> <Nav.Link eventKey="prodCreate">Create Product</Nav.Link> </Nav.Item>
+              <Nav.Item> <Nav.Link eventKey="prodEdit">Edit Product</Nav.Link> </Nav.Item>
+            </Nav>
+          </Col>
+          <Col sm={10}>
+            <Tab.Content>
+              <Tab.Pane eventKey="homeAdmin">
+                <div>
+                  <form className={style.searchBar} onSubmit={(e) => handleSubmit(e)}>
+                    <input className={style.input_search} type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
+                    <button className={style.search_button} type='submit'><BsSearch /></button>
+                  </form>
+                  <Cards />
                 </div>
-              </div>
-            </div>
-          </div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="prodCreate"> <ProductAdmin /> </Tab.Pane>
+              <Tab.Pane eventKey="prodEdit"> <CrudApp />  </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
 
-          <div id='Productos' className="col-sm-12 col-md-10 col-lg-10 col-xl-10 py-4 bg-white">
-
-            {homeAdmin &&
-              <Cards></Cards>}
-            {product &&
-              <ProductAdmin></ProductAdmin>
-            }
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
