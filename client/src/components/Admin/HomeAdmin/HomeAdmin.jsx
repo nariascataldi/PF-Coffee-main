@@ -8,8 +8,7 @@ import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
 import CrudApp from '../CRUD/CrudAppProduct.js';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../../../styles/Admin/HomeAdm.css';
-import style from '../../../styles/Admin/NavBarAdm.module.css';
+import style from '../../../styles/Admin/HomeAdm.module.css';
 import { BsSearch } from 'react-icons/bs';
 
 import Col from 'react-bootstrap/Col';
@@ -45,7 +44,7 @@ export default function HomeAdmin() {
   }
 
   return (
-    <div className='home-container'>
+    <div className={style.home_container}>
       <NavBarAdmin></NavBarAdmin>
       <Tab.Container id="left-tabs-example" defaultActiveKey="homeAdmin">
         <Row>
@@ -68,7 +67,6 @@ export default function HomeAdmin() {
                   </form>
                   <Cards />
                 </div>
-
               </Tab.Pane>
               <Tab.Pane eventKey="prodCreate"> <ProductAdmin /> </Tab.Pane>
               <Tab.Pane eventKey="prodEdit"> <CrudApp />  </Tab.Pane>

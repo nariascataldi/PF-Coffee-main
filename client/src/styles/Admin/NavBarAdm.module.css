@@ -65,6 +65,27 @@
     color: var(--strong)
 }
 
+.input_filter {
+    border-radius: 12px;
+    width: 120px;
+    padding-left: 8px;
+    margin-left: 4px;
+    margin-right: 6px;
+    background-color: var(--primary);
+    border-color: var(--strong);
+    color: rgb(97, 97, 97);
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px;
+}
+
+.input_filter:hover {
+    background-color: var(--strong);
+    border-color: var(--primary);
+    color: var(--primary);
+}
 .searchBar {
     display: flex;
     justify-content: center;
@@ -97,26 +118,4 @@
     padding-right: 14px;
     color: var(--white);
     cursor: pointer;
-}
-
-.input_filter {
-    border-radius: 12px;
-    width: 120px;
-    padding-left: 8px;
-    margin-left: 4px;
-    margin-right: 6px;
-    background-color: var(--primary);
-    border-color: var(--strong);
-    color: rgb(97, 97, 97);
-    outline: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 15px;
-    margin: 5px;
-}
-
-.input_filter:hover {
-    background-color: var(--strong);
-    border-color: var(--primary);
-    color: var(--primary);
 }
