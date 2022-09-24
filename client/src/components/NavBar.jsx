@@ -40,7 +40,7 @@ const NavBar = ({ noFilters }) => {
     <div className={styles.navbar}>
       <div className={styles.menu_logo}>
         <div className={styles.contenedor_menu}>
-          <div id="navMenu" onClick={() => handleOnClick()}>
+          <div   className={`${menu && styles.active} ${styles.navMenu}`}  onClick={() => handleOnClick()}>
             <span></span>
             <span></span>
             <span></span>
@@ -71,17 +71,7 @@ const NavBar = ({ noFilters }) => {
         </button>
       </form>
 
-      <li className={styles.nav_item}>
-        <Link to="/about" className={styles.links}>
-          About
-        </Link>
-      </li>
-
-      <li className={styles.nav_item}>
-        <Link to="/providers" className={styles.links}>
-          Providers
-        </Link>
-      </li>
+      
 
       {!noFilters && (
         <>
@@ -142,7 +132,7 @@ const NavBar = ({ noFilters }) => {
         <p 
         className={styles.contador_carrito}
         >
-          {/* {localStorageCart.length > 0 && localStorageCart.length} */}
+          {fillCart.length > 0 && fillCart.length}
         </p>
       </Link>
       {noFilters && (

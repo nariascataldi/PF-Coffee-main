@@ -15,6 +15,10 @@ const getUsers = require('../utils/User/getUsers.js');
 const { getUsersQy } = require('../utils/User/getUsersQy.js');
 const postUser = require('../utils/User/postUser');
 const addFavourite = require('../utils/addFavourite');
+const altProvider = require('../utils/Provider/altProvider');
+const altUser = require('../utils/User/altUser');
+const deleteProv = require('../utils/Provider/deleteProv');
+const deleteUser = require('../utils/User/deleteUser');
 
 
 const productsGet = async (req, res, next) => {
@@ -173,6 +177,46 @@ const usersGet = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
+const userAlt = async (req, res, next)=>{
+	try {
+		let { attribute } = req.params;
+	  let { id, value } = req.query;
+ 
+    console.log(id);  console.log(attribute); console.log(value);
+    let myAlt = await altUser(id, attribute, value) || {};
+    
+		res.send(myAlt)            
+	} catch (e) { next (e) }
+}; 
+
+const providerAlt = async (req, res, next)=>{
+	try {
+		let { attribute } = req.params;
+	  let { id, value } = req.query;
+ 
+    console.log(id);  console.log(attribute); console.log(value);
+    let myAlt = await altProvider(id, attribute, value) || {};
+    
+		res.send(myAlt)            
+	} catch (e) { next (e) }
+}; 
+
+const providerIDremove = async (req, res, next) => {
+  try {
+    let { id } = req.query;
+    let response = await deleteProv(id) || {};
+    res.send(response)            // petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
+const userIDremove = async (req, res, next) => {
+  try {
+    let { id } = req.query;
+    let response = await deleteUser(id) || {};
+    res.send(response)            // petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
 module.exports = {
   productsGet,
   prodIDget,
@@ -187,7 +231,11 @@ module.exports = {
   providersGet,
   providerIDget,
   userPost,
-  usersGet
+  usersGet,
+  userAlt,
+  providerAlt,
+  userIDremove,
+  providerIDremove
 
 }
 

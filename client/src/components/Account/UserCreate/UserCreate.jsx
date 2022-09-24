@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 import 'react-datepicker/dist/react-datepicker.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import style from './UserCreate.module.css';
+import style from '../../../styles/UserCreate.module.css';
 
 
 // https://reactdatepicker.com/

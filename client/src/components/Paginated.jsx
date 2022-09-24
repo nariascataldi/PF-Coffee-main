@@ -40,7 +40,9 @@ export default function Paginated({
             <button
               key={number}
               onClick={() => paginated(number)}
-              className={number === currentPage ? styles.active : styles.number}
+              className={`${number === currentPage && styles.active1} ${styles.number}`}
+              //{number === currentPage ? styles.active : styles.number}
+              //`${number === currentPage && styles.active1} ${styles.number}`
             >
               {number}
             </button>

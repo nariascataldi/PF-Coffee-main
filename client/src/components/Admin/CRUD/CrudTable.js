@@ -9,7 +9,11 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
         <thead>
           <tr>
             <th>Name</th>
+            <th>Cost</th>
+            <th>Margin</th>
             <th>Price</th>
+            <th>Description</th>
+            <th>Stock</th>
           </tr>
         </thead>
         <tbody>

@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     status: {
         type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: "client",
+        defaultValue: "Client",
       },
       mail: {
         type: DataTypes.STRING,

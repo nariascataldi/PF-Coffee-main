@@ -168,9 +168,10 @@ export function fillCartLocalS(payload){
     payload
   }
 }
-export function resetFillCart () {
+export function resetFillCart (payload) {
   return{
-      type:RESET_FILL_CART
+      type:RESET_FILL_CART,
+      payload
   }
 }
 export function postProviders(payload){

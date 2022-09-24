@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User } = require('./db');
+const { User } = require('../db');
 
 const  middlewareAuth = (req, res, next) => { // eslint-disable-line no-unused-vars
     try {
