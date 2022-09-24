@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { json } from 'react-router-dom';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
 export const GET_ALL_PROVIDERS = 'GET_ALL_PROVIDERS'
@@ -125,14 +126,22 @@ export const createProduct = (postData) => {
       })
   }
 };
-export function postUser(payload) {
-  return async function () {
-    console.log('actions postUser ', { payload });
-    const response = await axios.post('/users', payload);
-    console.log({ response });
-    return response;
+
+export const postUser = (payload) => 
+async (dispatch)=> {
+  try {
+    const response = await axios.post("http://localhost:3001/users/registration", payload)
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
+    return dispatch({
+      type: POST_USER,
+      payload: response.data,
+    })
+  } catch (error) {
+    console.log(error)
   }
-}
+};
+
 export function postProduct(payload) {
   return async function () {
     console.log('actions postProduct ', { payload });

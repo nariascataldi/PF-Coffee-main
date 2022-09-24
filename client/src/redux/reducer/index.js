@@ -32,6 +32,7 @@ const initialState = {
   detail: [],
   fillCart:[],
   responseCloudinary: {},
+  token: [],
   filterBy: {
     title: '',
     category: '',
@@ -100,7 +101,8 @@ const rootReducer = (state = initialState, action) => {
       }
     case POST_USER:
       return {
-        ...state
+        ...state,
+        token: action.payload,
       }
     case SET_FILTER_STATE:
       return {

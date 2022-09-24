@@ -14,29 +14,44 @@ import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import NotFound from './components/404';
 
+import AuthLayout from './components/Authentication/AuthLayout';
+import Login from "./components/Authentication/Pages/Login";
+import Register from './components/Authentication/Pages/Register';
+import ForgetPassword from "./components/Authentication/Pages/ForgetPassword";
+import NewPassword from "./components/Authentication/Pages/NewPassword";
+import ConfirmAccount from './components/Authentication/Pages/ConfirmAccount';
 
 import './styles/normalize.css'
 import './styles/globals.css'
+
 
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route exact path='/' element={<LandingPage />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/detail/:id' element={<Detail />} />
-        <Route path='/form' element={<Perfil />} />
-        <Route exact path='/homeAdmin' element={<HomeAdmin />} />
-        <Route exact path= '/productAdmin' element={<ProductAdmin />}/>
-        <Route exact path= '/productAdminEdit' element={<ProductAdminEdit />}/>
-        <Route exact path= '/providerCreate' element={<ProviderCreate />}/>
-        <Route exact path= '/providers' element={<Providers />}/>
+        <Route exact path="/landing" element={<LandingPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/form" element={<Perfil />} />
+        <Route exact path="/homeAdmin" element={<HomeAdmin />} />
+        <Route exact path="/productAdmin" element={<ProductAdmin />} />
+        <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />
+        <Route exact path="/providerCreate" element={<ProviderCreate />} />
+        <Route exact path="/providers" element={<Providers />} />
 
-        <Route exact path='/formusers' element={<FormularioUsuario/>}/>
+        <Route exact path="/formusers" element={<FormularioUsuario />} />
 
-        <Route exact path= '/fillCart' element={<FillCart/>} />
+        <Route exact path="/fillCart" element={<FillCart />} />
+
+        <Route path="/" element={<AuthLayout />}>
+          <Route index element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="forget-password" element={<ForgetPassword />} />
+          <Route path="forget-password/:token" element={<NewPassword />} />
+          <Route path="confirm/:id" element={<ConfirmAccount />} />
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
@@ -45,3 +60,6 @@ function App() {
 }
 
 export default App;
+
+
+//AEREA PUBLICA DE AUTENTICACIÓN 48 - 53

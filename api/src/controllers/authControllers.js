@@ -1,17 +1,28 @@
 const jwt = require('jsonwebtoken');
 const  bcrypt  = require('bcryptjs');
 const { User, SECRET } = require('../db.js');
-
+const emailRegister = require('../helper/emails.js');
 
 
 const userRegist = async(req,res,next)=>{
    
     let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
-
+   console.log("body", req.body);
     let salt = await bcrypt.genSalt(10);
     pass = await bcrypt.hash(pass, salt);
   
     let userCreate = await User.create({ name, lastName, status, mail, pass, avatar, birthday, });
+
+    emailRegister({
+      name: userCreate.name,
+      lastName: userCreate.lastName,
+      status: userCreate.status,
+      mail: userCreate.mail,
+      pass: userCreate.pass,
+      avatar: userCreate.avatar,
+      birthday: userCreate.birthday,
+      token: userCreate.token,
+    });
     
     const userForToken = {
         username: userCreate.mail,
