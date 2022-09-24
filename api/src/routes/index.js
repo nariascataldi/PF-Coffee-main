@@ -15,8 +15,12 @@ const { productsGet,
         providerIDget,
         altAttribute,
         commentPost,
-        userPost,
+        // userPost,
         usersGet,
+        userAlt,
+        providerAlt,
+        providerIDremove,
+        userIDremove,
         userIDget  } = require('../controllers');
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
@@ -56,6 +60,11 @@ router.get('/users', usersGet);    // ruta NO probada !!!!!! --
 
 router.delete('/products/remove', prodIDremove);  // ruta probada !!!!!! --
 
+router.delete('/users/remove', providerIDremove);  // ruta  NO probada !!!!!! --
+
+router.delete('/providers/remove', userIDremove);  // ruta NO probada !!!!!! --
+
+
 //---------------POST
 
 router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
@@ -79,8 +88,9 @@ router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
 router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! -- middlewareAdmin,
 
+router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
-
+router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
 
 
