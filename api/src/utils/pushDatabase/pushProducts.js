@@ -1,5 +1,5 @@
 const { Product, Diet, Category, Provider } = require('../../db.js');
-const json = require('../../../product.json');
+const json = require('./preloadDB/product.json');
 
 
 function pushProducts() {

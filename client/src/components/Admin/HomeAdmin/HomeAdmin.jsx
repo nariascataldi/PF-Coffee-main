@@ -8,9 +8,16 @@ import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
 import CrudApp from '../CRUD/CrudAppProduct.js';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import '../../../styles/Admin/HomeAdm.css';
-import style from '../../../styles/Admin/NavBarAdm.module.css';
+import style from '../../../styles/Admin/HomeAdm.module.css';
 import { BsSearch } from 'react-icons/bs';
+
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
+import Tab from 'react-bootstrap/Tab';
+
+
+
 
 
 export default function HomeAdmin() {
@@ -37,61 +44,37 @@ export default function HomeAdmin() {
   }
 
   return (
-    <div className='home-container'>
+    <div className={style.home_container}>
       <NavBarAdmin></NavBarAdmin>
-      <div className="container my-3 py-5">
-        <div className="row">
-          <div id='NavBarIzq' className="col-sm-12 col-md-1 col-lg-1 col-xl-1 py-4 bg-white">
-            <div className="row">
-              <div className="col-12">
-                <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                  <label for='radioHomeAdmin'>Home</label>
-                  <input
-                    id='radioHomeAdmin'
-                    value="homeAdmin"
-                    checked={framework == 'homeAdmin' ? true : false}
-                    type="radio"
-                    onChange={cambioRadioFramework}
-                  />
-                  <label for='radioProduct' >Product</label>
-                  <input
-                    id='radioProduct'
-                    value="product"
-                    checked={framework == 'product' ? true : false}
-                    type="radio"
-                    onChange={cambioRadioFramework}
-                  />
-                  <label for='radioProductEdit' >ProductEdit</label>
-                  <input
-                    id='radioProductEdit'
-                    value="productEdit"
-                    checked={framework == 'productEdit' ? true : false}
-                    type="radio"
-                    onChange={cambioRadioFramework}
-                  />
+      <Tab.Container id="left-tabs-example" defaultActiveKey="homeAdmin">
+        <Row>
+          <Col sm={2}>
+            <Nav variant="pills" className="flex-column">
+              <Nav.Item>
+                <Nav.Link eventKey="homeAdmin">Home Admin</Nav.Link>
+              </Nav.Item>
+              <Nav.Item> <Nav.Link eventKey="prodCreate">Create Product</Nav.Link> </Nav.Item>
+              <Nav.Item> <Nav.Link eventKey="prodEdit">Edit Product</Nav.Link> </Nav.Item>
+            </Nav>
+          </Col>
+          <Col sm={10}>
+            <Tab.Content>
+              <Tab.Pane eventKey="homeAdmin">
+                <div>
+                  <form className={style.searchBar} onSubmit={(e) => handleSubmit(e)}>
+                    <input className={style.input_search} type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
+                    <button className={style.search_button} type='submit'><BsSearch /></button>
+                  </form>
+                  <Cards />
                 </div>
-              </div>
-            </div>
-          </div>
-          <div id='Productos' className="col-sm-12 col-md-11 col-lg-11 col-xl-11 py-4 bg-white">
-            {framework === 'homeAdmin' &&
-              <div>
-                <form className={style.searchBar} onSubmit={(e) => handleSubmit(e)}>
-                  <input className={style.input_search} type='text' name='title' onChange={d => handleOnChange(d)} value={busqueda} placeholder='Search...' />
-                  <button className={style.search_button} type='submit'><BsSearch /></button>
-                </form>
-                <Cards />
-              </div>
-            }
-            {framework === 'product' && <ProductAdmin />}
-            {framework == 'productEdit' && <CrudApp />}
-            {/* {provider}
-            {user}
-            {finance}
-            {todo} */}
-          </div>
-        </div>
-      </div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="prodCreate"> <ProductAdmin /> </Tab.Pane>
+              <Tab.Pane eventKey="prodEdit"> <CrudApp />  </Tab.Pane>
+            </Tab.Content>
+          </Col>
+        </Row>
+      </Tab.Container>
+
     </div>
   )
 }
