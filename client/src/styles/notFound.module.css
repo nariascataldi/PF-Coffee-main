@@ -1,0 +1,30 @@
+.parent404 {
+    background-color: var(--primary);
+    height: 64.4vh;
+    left: 0;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.imgText {
+    width: 100%;
+    padding: 20px;
+}
+
+.img {
+    width: 20%;
+}
+
+.homeButton {
+    text-decoration: none;
+    padding: 4.5px;
+    background-color: var(--strong);
+    border: none;
+    color: var(--white);
+    border-radius: 10px;
+    outline: none;
+}
+
+.homeButton:hover {
+    color: var(--white);
+}
