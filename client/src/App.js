@@ -13,11 +13,11 @@ import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import Modals from './components/Admin/Modals/Modals';
-import NotFound from './components/404';
 
 import './styles/normalize.css'
 import './styles/globals.css'
 import "bootstrap/dist/css/bootstrap.min.css";
+import NotFound from './components/NotFound';
 
 
 function App() {
