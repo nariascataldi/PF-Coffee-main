@@ -1,14 +1,19 @@
-.botones {
+.container {
+    margin-top: -40px;
+    padding-top: -12px;
+  }
+  
+  .botones {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-end;
     margin-top: 40px;
     padding-top: 12px;
-
-}
-
-.next {
+  
+  }
+  
+  .next {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,17 +26,17 @@
     padding: 0.1px;
     border: none;
     cursor: pointer;
-}
-
-.next:hover {
+  }
+  
+  .next:hover {
     color: #ca2334;
-}
-
-.next:active {
+  }
+  
+  .next:active {
     color: #710e18;
-}
-
-.number {
+  }
+  
+  .number {
     background-color: var(--primary);
     color: rgb(190, 205, 218);
     margin-bottom: 12px;
@@ -39,14 +44,14 @@
     background: none;
     border: none;
     border-radius: 5px;
-}
-
-.number:hover {
+  }
+  
+  .number:hover {
     background-color: var(--strong);
     color: var(--white);
-}
-
-.active {
+  }
+  
+  .active {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +60,21 @@
     border-radius: 2px;
     font-weight: 600;
     color: var(--strong);
-    
-
-}
+  
+  
+  }
+  
+  .active1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: #E3EFFB;
+    border-radius: 2px;
+    font-weight: 600;
+    color: #DD6873;
+    box-shadow: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
