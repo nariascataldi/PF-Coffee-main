@@ -2,7 +2,7 @@ import React from "react";
 import Figure from 'react-bootstrap/Figure'
 
 export default function Card({ id, title, image, price, cost, margin, description, like, stock, disable }) {
-console.log({disable});
+
   return (
     <div>
         <table className="table table-dark table-striped">
