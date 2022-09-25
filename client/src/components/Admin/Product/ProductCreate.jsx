@@ -49,7 +49,7 @@ export default function FormProduct() {
   let responseCloudinary = useSelector(state => state.responseCloudinary)
 
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllDiets())
