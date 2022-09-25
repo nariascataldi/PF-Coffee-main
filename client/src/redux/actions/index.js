@@ -43,7 +43,6 @@ export function getDetail(id) {
     }
     catch (error) {
       console.log("el error del detalle es: ", error)
-
     }
   }
 };
