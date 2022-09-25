@@ -185,10 +185,11 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state
       }
+      
       case SET_PROVIDERS :
-        return{
-          ...state,
-          providers: action.payload
+       
+       return{  
+          ...state
         }
 
     default:

@@ -10,7 +10,6 @@ const ListProviders = () => {
                     <CardsProvider />
                 </div>
             
-       
     );
 };
 

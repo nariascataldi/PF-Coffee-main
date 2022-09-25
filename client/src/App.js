@@ -14,16 +14,11 @@ import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import Modals from './components/Admin/Modals/Modals';
 import NotFound from './components/404';
-
 import './styles/normalize.css'
 import './styles/globals.css'
-<<<<<<< HEAD
 import ListProvider from './components/Admin/FormProvider/ListProvider';
 import ModifyProvider from './components/Admin/FormProvider/ModifyProvider'
-=======
 import "bootstrap/dist/css/bootstrap.min.css";
-
->>>>>>> b00ee7dd1e3fa5104a252c896ed8e91ac13713aa
 
 function App() {
   return (
@@ -41,13 +36,9 @@ function App() {
         <Route exact path='/providers' element={<Providers />} />
         <Route exact path='/formusers' element={<FormularioUsuario />} />
         <Route exact path='/fillCart' element={<FillCart />} />
-<<<<<<< HEAD
         <Route exact path='/list' element={<ListProvider />} />
         <Route exact path='/modProvider/:id' element={<ModifyProvider />}/>
-
-=======
         <Route exact path='/modals' element={<Modals />} />
->>>>>>> b00ee7dd1e3fa5104a252c896ed8e91ac13713aa
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

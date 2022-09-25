@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const ProviderCard = ({ name, mail, logo, adress, phone, CUIT, disable, id }) => {
 
+    
     return (
       <div>
         <table className="table">

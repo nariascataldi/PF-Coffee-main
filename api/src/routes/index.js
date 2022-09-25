@@ -92,6 +92,39 @@ router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlew
 
 router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
+//////////////// yooooo
 
+
+const {Provider} = require('../db')
+
+router.put('/edit/:id', async (req,res)=>{
+  try{
+    const{id}=req.params;
+    const {
+      name,
+      mail,
+      logo,
+      adress,
+      phone,
+      CUIT,
+      disable
+    } = req.body;
+
+    const modifyProvider = await Provider.update({
+      name,
+      mail,
+      logo,
+      adress,
+      phone,
+      CUIT,
+      disable
+    },
+    {where: {id}}
+    );
+    res.send(modifyProvider);
+  }catch (err){
+    console.log("El error del put es: ", err)
+  }
+})
 
 module.exports = router;
