@@ -69,7 +69,7 @@ export default function FormProduct() {
   }, [responseCloudinary])
 
   useEffect(async () => {
-    console.log(errors)
+    // console.log(errors)
   }, [errors])
 
   const [input, setInput] = useState({
@@ -111,7 +111,7 @@ export default function FormProduct() {
       // console.log('handleSubmit ', { errors });
     }
     else {
-      console.log('handleSubmit ', { input });
+      // console.log('handleSubmit ', { input });
       await dispatch(postProduct(input));
       alert('Product create successfuly!');
       /**Clear */
@@ -122,7 +122,7 @@ export default function FormProduct() {
         price: '',
         description: '',
         image: '',
-        // disable: false,
+        disable: false,
         like: '',
         stock: '',
         diet: [],
@@ -134,7 +134,7 @@ export default function FormProduct() {
   };
   /**Diet */
   function handleSelectDiets(e) {
-    console.log('Handle ', e.target.value);
+    // console.log('Handle ', e.target.value);
     setInput({
       ...input,
       diets: Array.from(new Set([...input.diets, e.target.value]))
@@ -142,7 +142,7 @@ export default function FormProduct() {
   };
   /**Providers */
   function handleSelectProv(e) {
-    console.log('HandlePro ', e.target.value);
+    // console.log('HandlePro ', e.target.value);
     setInput({
       ...input,
       providers: Array.from(new Set([...input.providers, e.target.value]))
@@ -150,7 +150,7 @@ export default function FormProduct() {
   };
   /**Categories */
   function handleSelectCate(e) {
-    console.log('HandleCat ', e.target.value);
+    // console.log('HandleCat ', e.target.value);
     setInput({
       ...input,
       categories: Array.from(new Set([...input.categories, e.target.value]))
@@ -175,7 +175,7 @@ export default function FormProduct() {
 
   return (
     <>
-      {console.log(input)}
+      {/* {console.log(input)} */}
       {/* <h2>Product</h2> */}
       <form onSubmit={e => handleSubmit(e)}>
         <div id="Nombre" className="mb-3">
