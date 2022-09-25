@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDiets, postProduct, getAllProviders, getAllCategories } from "../../../redux/actions"; //2
+import { getAllDiets, postProduct, getAllProviders, getAllCategories, postCloudinaryPhoto } from "../../../redux/actions"; //2
 import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 import style from '../../../styles/Admin/ProductCreate.module.css';
+import { Container, FormGroup, Input } from 'reactstrap'
 
 var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
+// var testImage = /^[A-Za-z]+$/i;
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
 var testDescription = /^[A-Za-z]+$/i;
 // var testNumber = /^\d{1,2}$/;
@@ -44,6 +46,7 @@ export default function FormProduct() {
   var diet = useSelector((state) => state.diets);
   var provider = useSelector((state) => state.providers);
   var categories = useSelector((state) => state.categories);
+  let responseCloudinary = useSelector(state => state.responseCloudinary)
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -54,6 +57,21 @@ export default function FormProduct() {
     dispatch(getAllCategories())
   }, [dispatch])
 
+  useEffect(async () => {
+    await setInput({
+      ...input,
+      image: responseCloudinary.url
+    })
+    await setErrors(validate({
+      ...input,
+      image: responseCloudinary.url
+    }));
+  }, [responseCloudinary])
+
+  useEffect(async () => {
+    console.log(errors)
+  }, [errors])
+
   const [input, setInput] = useState({
     title: '',
     cost: '',
@@ -61,7 +79,7 @@ export default function FormProduct() {
     price: '',
     description: '',
     image: '',
-    // disable: false,
+    disable: false,
     like: '',
     stock: '',
     diets: [],
@@ -69,6 +87,13 @@ export default function FormProduct() {
     categories: []
   });
   var suggested = (Math.round(((input?.cost) * (((input?.margin) / 100) + 1))));
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'Provider');
+    await dispatch(postCloudinaryPhoto(data))
+  }
   function handleInputChange(e) {
     setInput({
       ...input,
@@ -87,7 +112,7 @@ export default function FormProduct() {
     }
     else {
       console.log('handleSubmit ', { input });
-      dispatch(postProduct(input));
+      await dispatch(postProduct(input));
       alert('Product create successfuly!');
       /**Clear */
       setInput({
@@ -150,6 +175,7 @@ export default function FormProduct() {
 
   return (
     <>
+      {console.log(input)}
       {/* <h2>Product</h2> */}
       <form onSubmit={e => handleSubmit(e)}>
         <div id="Nombre" className="mb-3">
@@ -252,7 +278,7 @@ export default function FormProduct() {
           <label
             className="form-label"
           >Product Image</label>
-          <input
+          {/* <input
             id="image"
             className={style.form_control}
             type="url"
@@ -262,7 +288,19 @@ export default function FormProduct() {
             key='image'
             name="image"
             onChange={e => handleInputChange(e)}
-          />
+          /> */}
+          <Container>
+            <p>Subiendo imagenes</p>
+            <FormGroup>
+              <Input
+                type="file"
+                name="image"
+                placeholder="📷 Logo"
+                onChange={(e) => uploadImage(e)}
+                className={style.upload}
+              />
+            </FormGroup>
+          </Container>
           {errors.image && <p className={style.p_form}>{errors.image}</p>}
         </div>
         <div id="Cantidad" className="mb-3">
