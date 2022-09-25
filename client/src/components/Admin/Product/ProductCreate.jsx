@@ -322,11 +322,13 @@ export default function FormProduct() {
         </div>
         <div id="Desactivo" className="form-check form-switch">
           <input
+            id="flexSwitchCheckDefault"
             className="form-check-input"
             type="checkbox"
             role="switch"
-            id="flexSwitchCheckDefault"
-            value={input.disable}
+            value={true}
+            key='disable'
+            name='disable'
             onChange={e => handleInputChange(e)}
           />
           <label
