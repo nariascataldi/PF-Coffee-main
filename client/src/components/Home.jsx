@@ -22,7 +22,7 @@ export default function Home(){
         dispatch(getAllProducts());
         setTimeout(()=>{
             setLoad(false)
-        },1000)
+        },2000)
         dispatch(clearDetail())
     },[dispatch])
     useEffect(()=>{
@@ -41,7 +41,7 @@ export default function Home(){
     return (
       <div className={styles.home_container}>
         <NavBar />
-        <Cards />
+        <Cards load={load} />
         <Footer />
       </div>
     );
