@@ -1,0 +1,18 @@
+.error {
+    color: #F90716;
+}
+
+.confirm {
+         color: #00FFC6
+}
+
+.message {
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        color: var(--white);
+        font-weight: 700;
+        font-size: small;
+        margin: 10px;
+}

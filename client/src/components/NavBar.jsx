@@ -8,7 +8,6 @@ import { getByTitle, setFilterState } from "../redux/actions";
 import logo from "../assets/logo_coffee.png";
 import Menu from "../components/NavBar/Menu";
 
-
 import styles from '../styles/NavBar.module.css'
 
 const NavBar = ({ noFilters }) => {
@@ -117,8 +116,10 @@ const NavBar = ({ noFilters }) => {
               onChange={handleSelect}
             >
               <option value="">Sort</option>
-              <option value="A-Z">A-Z</option>
-              <option value="Z-A">Z-A</option>
+              <option value="A-Z">Alphabetically: A-Z</option>
+              <option value="Z-A">Alphabetically: Z-A</option>
+              <option value="High">Price: High to Low</option>
+              <option value="Low">Price: Low to High</option>
             </select>
           </div>
         </>

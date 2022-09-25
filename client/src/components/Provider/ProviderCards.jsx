@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllProviders } from '../../redux/actions';
@@ -11,9 +11,13 @@ const ProviderCards = () => {
 
     let providers = useSelector(state => state.providers)
 
-    React.useEffect( async () => {
-        await dispatch(getAllProviders())
-    },[])
+    useEffect(() => {
+      dispatch(getAllProviders());
+    }, [dispatch]);
+
+    // React.useEffect( async () => {
+    //     await dispatch(getAllProviders())
+    // },[])
 
     return (
         <div>

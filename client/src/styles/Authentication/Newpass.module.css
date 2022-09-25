@@ -1,0 +1,74 @@
+.div {
+          background: var(--primary);
+}
+
+.login {
+          color: var(--strong);
+          text-transform: capitalize;
+          font-size: x-large;
+}
+
+.form {
+          margin: 20px;
+          background: var(--white);
+          box-shadow: (0 1px 1px rgb(0 0 0 / 0.50));
+          border-radius: 10px;
+          padding: 2px;
+          width: 500px;
+}
+
+.form_div {
+          margin: 25px 25px;
+}
+
+
+.label_pass {
+          text-transform: uppercase;
+          color: gray;
+          display: block;
+          text-align: left;
+          margin-left: 20px;
+}
+
+.input {
+          margin-top: 2px;
+          padding: 5px;
+          background: rgba(219, 217, 217, 0.409);
+          border: none;
+          border-radius: 5px;
+          width: 90%;
+}
+
+.init {
+          background: var(--strong);
+          border: none;
+          border-radius: 5px;
+          padding: 2px;
+          width: 80%;
+          margin-bottom: 10px;
+          color: var(--white);
+          text-transform: uppercase;
+          font-weight: 700
+}
+
+.init:hover {
+          cursor: pointer;
+          background: var(--smooth);
+          transition: 1s;
+}
+
+.nav {
+          justify-content: space-between;
+}
+
+.link {
+          text-align: center;
+          margin-right: 25px;
+          text-decoration: none;
+          color: gray;
+          font-size: small;
+}
+
+.link:hover {
+          color: var(--smooth)
+}
