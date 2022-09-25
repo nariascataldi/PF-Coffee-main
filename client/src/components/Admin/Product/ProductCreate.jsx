@@ -55,18 +55,18 @@ export default function FormProduct() {
   }, [dispatch])
 
   const [input, setInput] = useState({
-        title: '',
-        cost: '',
-        margin: '',
-        price: '',
-        description: '',
-        image: '',
-        // disable: false,
-        like: '',
-        stock: '',
-        diets: [],
-        providers: [],
-        categories: []
+    title: '',
+    cost: '',
+    margin: '',
+    price: '',
+    description: '',
+    image: '',
+    // disable: false,
+    like: '',
+    stock: '',
+    diets: [],
+    providers: [],
+    categories: []
   });
   var suggested = (Math.round(((input?.cost) * (((input?.margin) / 100) + 1))));
   function handleInputChange(e) {
@@ -103,10 +103,10 @@ export default function FormProduct() {
         diet: [],
       })
       e.target.reset();
-      window.location.reload(false);
+      // window.location.reload(false);
       // navigate('/productAdmin');
     }
-  }; 
+  };
   /**Diet */
   function handleSelectDiets(e) {
     console.log('Handle ', e.target.value);
@@ -132,22 +132,22 @@ export default function FormProduct() {
     });
   };
   function handleDelete(e) {
-    e.preventDefault();   
-    let [name, value] = e.target.value.split('_');   console.log(value); console.log(name);
-    if(name === 'diets') {
-      let d = input.diets.filter( (o)=> o !== value);
-      setInput({...input, diets: d,});
+    e.preventDefault();
+    let [name, value] = e.target.value.split('_'); console.log(value); console.log(name);
+    if (name === 'diets') {
+      let d = input.diets.filter((o) => o !== value);
+      setInput({ ...input, diets: d, });
     };
-    if(name === 'providers') {
-      let dt = input.providers.filter( (o)=> o !== value);
-      setInput({...input, providers: dt,});
+    if (name === 'providers') {
+      let dt = input.providers.filter((o) => o !== value);
+      setInput({ ...input, providers: dt, });
     };
-    if(name === 'categories') {
-      let dt = input.categories.filter( (o)=> o !== value);
-      setInput({...input, categories: dt,});
+    if (name === 'categories') {
+      let dt = input.categories.filter((o) => o !== value);
+      setInput({ ...input, categories: dt, });
     };
   };
-  
+
   return (
     <>
       {/* <h2>Product</h2> */}
@@ -284,11 +284,13 @@ export default function FormProduct() {
         </div>
         <div id="Desactivo" className="form-check form-switch">
           <input
+            id="flexSwitchCheckDefault"
             className="form-check-input"
             type="checkbox"
             role="switch"
-            id="flexSwitchCheckDefault"
-            value={input.disable}
+            value={true}
+            key='disable'
+            name='disable'
             onChange={e => handleInputChange(e)}
           />
           <label
@@ -322,12 +324,12 @@ export default function FormProduct() {
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
           <div className={style.boxClose}>
-          { input.diets?.map( (el, index) =>
-            <div className={style.itemClose} key={`o${index}`}>
-              <p>{el}</p>
-              <button value={`diets_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
-            </div>)
-          }
+            {input.diets?.map((el, index) =>
+              <div className={style.itemClose} key={`o${index}`}>
+                <p>{el}</p>
+                <button value={`diets_${el}`} onClick={(e) => handleDelete(e)}>X</button>
+              </div>)
+            }
           </div>
         </div>
 
@@ -357,12 +359,12 @@ export default function FormProduct() {
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
           <div className={style.boxClose}>
-          { input.providers?.map( (el, index) =>
-            <div className={style.itemClose} key={`o${index}`}>
-              <p>{el}</p>
-              <button value={`providers_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
-            </div>)
-          }
+            {input.providers?.map((el, index) =>
+              <div className={style.itemClose} key={`o${index}`}>
+                <p>{el}</p>
+                <button value={`providers_${el}`} onClick={(e) => handleDelete(e)}>X</button>
+              </div>)
+            }
           </div>
         </div>
         <div className={style.categories}>
@@ -390,12 +392,12 @@ export default function FormProduct() {
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
           <div className={style.boxClose}>
-          { input.categories?.map( (el, index) =>
-            <div className={style.itemClose} key={`o${index}`}>
-              <p>{el}</p>
-              <button value={`categories_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
-            </div>)
-          }
+            {input.categories?.map((el, index) =>
+              <div className={style.itemClose} key={`o${index}`}>
+                <p>{el}</p>
+                <button value={`categories_${el}`} onClick={(e) => handleDelete(e)}>X</button>
+              </div>)
+            }
           </div>
         </div>
         <div id="Guardar" className="d-grid gap-2">
