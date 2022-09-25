@@ -66,7 +66,7 @@ const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
         <input className="mb-3" type="number" name="cost" placeholder="Cost" onChange={handleChange} value={form.cost} />
         <input className="mb-3" type="number" name="margin" placeholder="margin" onChange={handleChange} value={form.margin} />
         <input className="mb-3" type="number" name="price" placeholder="Price" onChange={handleChange} value={form.price} />
-        <textarea className="mb-3" type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} />
+        {/* <textarea className="mb-3" type="text" name="description" placeholder="description" onChange={handleChange} value={form.description} /> */}
         <input className="mb-3" type="number" name="stock" placeholder="stock" onChange={handleChange} value={form.stock} />
 
 
