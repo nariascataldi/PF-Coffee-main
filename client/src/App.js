@@ -6,13 +6,12 @@ import Home from './components/Home';
 import Detail from './components/Detail';
 import Perfil from './components/Account/Perfil';
 import HomeAdmin from './components/Admin/HomeAdmin/HomeAdmin';
-import ProductAdmin from './components/Admin/FormProduct/ProductAdmin'
-import ProductAdminEdit from './components/Admin/FormProduct/ProductAdminEdit';
+import ProductAdmin from './components/Admin/Product/ProductAdmin';
+import CrudApp from './components/Admin/CRUD/CrudAppProduct';
 import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
-import NotFound from './components/404';
 
 import AuthLayout from './components/Authentication/AuthLayout';
 import Login from "./components/Authentication/Pages/Login";
@@ -23,6 +22,8 @@ import ConfirmAccount from './components/Authentication/Pages/ConfirmAccount';
 
 import './styles/normalize.css'
 import './styles/globals.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import NotFound from './components/NotFound';
 
 
 
@@ -30,14 +31,14 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/landing" element={<LandingPage />} />
+        {/*<Route exact path="/landing" element={<LandingPage />} />*/}
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/form" element={<Perfil />} />
         <Route exact path="/homeAdmin" element={<HomeAdmin />} />
         <Route exact path="/productAdmin" element={<ProductAdmin />} />
-        <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />
+      { /* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
         <Route exact path="/providerCreate" element={<ProviderCreate />} />
         <Route exact path="/providers" element={<Providers />} />
 

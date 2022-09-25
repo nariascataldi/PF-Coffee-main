@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { json } from 'react-router-dom';
+// import { json } from 'react-router-dom';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
 export const GET_ALL_PROVIDERS = 'GET_ALL_PROVIDERS'
@@ -9,6 +9,7 @@ export const GET_ALL_DIETS = 'GET_ALL_DIETS'
 export const GET_DETAIL = "GET_DETAIL"
 export const GET_BY_TITLE = 'GET_BY_TITLE'
 export const POST_USER = 'POST_USER'
+export const CONFIRM_ID = "CONFIRM_ID"
 export const POST_PRODUCT = 'POST_PRODUCT'
 export const SET_FILTER_STATE = 'SET_FILTER_STATE'
 export const FILTER = 'FILTER'
@@ -130,17 +131,30 @@ export const createProduct = (postData) => {
 export const postUser = (payload) => 
 async (dispatch)=> {
   try {
-    const response = await axios.post("http://localhost:3001/users/registration", payload)
-    .then(response => console.log(response))
-    .catch(error => console.log(error))
+    const { data } = await axios.post("http://localhost:3001/users/registration", payload)
+    // .then(response => console.log(response))
+    // .catch(error => console.log(error))
     return dispatch({
       type: POST_USER,
-      payload: response.data,
+      payload: data,
     })
   } catch (error) {
     console.log(error)
   }
 };
+
+export const confirmId = id => async dispatch => {
+  try {
+    const response = await axios.get(`/confirm/${id}`)
+    return dispatch ({
+      type: CONFIRM_ID,
+      payload: response.data
+    })
+  } catch (error) {
+    console.log(error)
+    
+  }
+}
 
 export function postProduct(payload) {
   return async function () {
@@ -176,9 +190,10 @@ export function fillCartLocalS(payload){
     payload
   }
 }
-export function resetFillCart () {
+export function resetFillCart (payload) {
   return{
-      type:RESET_FILL_CART
+      type:RESET_FILL_CART,
+      payload
   }
 }
 export function postProviders(payload){

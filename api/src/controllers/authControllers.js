@@ -4,14 +4,39 @@ const { User, SECRET } = require('../db.js');
 const emailRegister = require('../helper/emails.js');
 
 
-const userRegist = async(req,res,next)=>{
-   
-    let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
-   console.log("body", req.body);
-    let salt = await bcrypt.genSalt(10);
-    pass = await bcrypt.hash(pass, salt);
-  
-    let userCreate = await User.create({ name, lastName, status, mail, pass, avatar, birthday, });
+const userRegist = async (req, res) => {
+  let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
+  // console.log("body", req.body);
+
+  const prevUser = await User.findOne({ where: { mail: mail } });
+
+  if (prevUser && prevUser.hasOwnProperty("id")) {
+    return res
+      .status(401)
+      .json({ error: "There is already a user with that email !!" });
+  }
+  let salt = await bcrypt.genSalt(10);
+  pass = await bcrypt.hash(pass, salt);
+
+  let userCreate = await User.create({
+    name,
+    lastName,
+    status,
+    mail,
+    pass,
+    avatar,
+    birthday,
+  });
+
+  const userForToken = {
+    username: userCreate.mail,
+    id: userCreate.id,
+  };
+  const token = jwt.sign(
+    userForToken,
+    SECRET,
+    { expiresIn: 86400 } //---> un día // 60 * 60 * 24 * 7 ---> una semana
+  );
 
     emailRegister({
       name: userCreate.name,
@@ -23,22 +48,11 @@ const userRegist = async(req,res,next)=>{
       birthday: userCreate.birthday,
       token: userCreate.token,
     });
-    
-    const userForToken = {
-        username: userCreate.mail,
-        id: userCreate.id
-    };
-    const token = jwt.sign(
-        userForToken, 
-        SECRET,
-        { expiresIn: 86400 } //---> un día // 60 * 60 * 24 * 7 ---> una semana
-    );
-
-    res.send({  token  })
-  }
+  res.send({ token });
+};
   
 
-const userLogin = async(req,res,next)=>{
+const userLogin = async(req,res)=>{
 
     const { username, password } = req.body;
     const user = await User.findOne({ where: {mail: username} });

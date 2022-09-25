@@ -8,6 +8,7 @@ import {
   GET_DETAIL,
   GET_PROVIDER_DETAIL,
   POST_USER,
+  CONFIRM_ID,
   POST_PRODUCT,
   SET_FILTER_STATE,
   FILTER,
@@ -18,7 +19,7 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
-  fillCart
+  // fillCart
 } from '../actions'
 
 const initialState = {
@@ -30,7 +31,7 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
-  fillCart:[],
+  fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
   token: [],
   filterBy: {
@@ -104,6 +105,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         token: action.payload,
       }
+    case CONFIRM_ID:
+      return{
+        ...state,
+        token: action.payload,
+      }
     case SET_FILTER_STATE:
       return {
         ...state,
@@ -156,12 +162,16 @@ const rootReducer = (state = initialState, action) => {
     case FILL_CART :
       return {
         ...state,
-        fillCart: [...state.fillCart,action.payload]
+        fillCart: [...state.fillCart,...action.payload]
       }
     case RESET_FILL_CART : 
+    const deleteCart = state.fillCart.filter((e)=>{ 
+      return e.id !== action.payload
+    })
+      
       return {
         ...state,
-        fillCart: [] 
+        fillCart: deleteCart
       }
     case POST_PROVIDERS :
       return{

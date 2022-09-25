@@ -1,22 +1,28 @@
 const { Router } = require('express');
-// const middlewareAuth = require('../middlewareAuth');
-// const middlewareAdmin = require('../middlewareAdmin');
+// const middlewareAuth = require('../middlewares/middlewareAuth');
+// const middlewareAdmin = require('../middlewares/middlewareAdmin');
 
 
 const { productsGet,
-  prodIDget,
-  dietsGet,
-  categoriesGet,
-  commentGet,
-  prodIDremove,
-  prodPost,
-  providerPost,
-  providersGet,
-  providerIDget,
-  altAttribute,
-  commentPost,
-  usersGet,
-  userIDget } = require('../controllers');
+        prodIDget,
+        dietsGet,
+        categoriesGet,
+        commentGet,
+        prodIDremove,
+        prodPost,
+        providerPost,
+        providersGet,
+        providerIDget,
+        altAttribute,
+        commentPost,
+        // userPost,
+        usersGet,
+        userAlt,
+        providerAlt,
+        providerIDremove,
+        userIDremove,
+        userIDget  } = require('../controllers');
+const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
 const { userRegist,
   userLogin } = require('../controllers/authControllers.js');
@@ -54,6 +60,11 @@ router.get('/users', usersGet);    // ruta NO probada !!!!!! --
 
 router.delete('/products/remove', prodIDremove);  // ruta probada !!!!!! --
 
+router.delete('/users/remove', providerIDremove);  // ruta  NO probada !!!!!! --
+
+router.delete('/providers/remove', userIDremove);  // ruta NO probada !!!!!! --
+
+
 //---------------POST
 
 router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
@@ -64,18 +75,22 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAu
 
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
-//----Validation
+////    Validation
 
 router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
 
 router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
+
+router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
 
 //---------------PUT
 
 router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! -- middlewareAdmin,
 
+router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
+router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
 
 

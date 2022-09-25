@@ -11,7 +11,7 @@ para que tome todos los datos de una sola vez!!
 */
 
 const emailRegister = async (data) => {
-  const { name, lastName, status, mail, pass, avatar, birthday } = data;
+  const { name, lastName, status, mail, pass, avatar, birthday, token } = data;
 
   //integrando Nodemailer
   const transport = nodemailer.createTransport({
@@ -35,7 +35,7 @@ const emailRegister = async (data) => {
     html: `<p>Hola ${name} comprueba tu cuenta en upTask</p>
   <p>Solo debes comprobar tu cuenta en el siguiente enlace:</p>
 
-  <a href="${process.env.FRONT}/confirm/${token}" >Comprobar cuenta/a>
+  <a href="${process.env.FRONTEND_URL}/confirm/${token}" >Comprobar cuenta/a>
 
   <p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>
   

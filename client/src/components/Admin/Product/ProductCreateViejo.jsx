@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import style from './ProductCreate.module.css';
+import style from '../../../styles/Admin/ProductCreate.module.css';
 
 var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
