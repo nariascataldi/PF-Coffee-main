@@ -128,8 +128,8 @@ export default function FormProduct() {
         diet: [],
       })
       e.target.reset();
-      // window.location.reload(false);
-      // navigate('/productAdmin');
+      window.location.reload(false);
+      // navigate('/homeAdmin');
     }
   };
   /**Diet */
@@ -137,7 +137,7 @@ export default function FormProduct() {
     console.log('Handle ', e.target.value);
     setInput({
       ...input,
-      diets: [...input.diets, e.target.value]
+      diets: Array.from(new Set([...input.diets, e.target.value]))
     });
   };
   /**Providers */
@@ -145,7 +145,7 @@ export default function FormProduct() {
     console.log('HandlePro ', e.target.value);
     setInput({
       ...input,
-      providers: [...input.providers, e.target.value]
+      providers: Array.from(new Set([...input.providers, e.target.value]))
     });
   };
   /**Categories */
@@ -153,7 +153,7 @@ export default function FormProduct() {
     console.log('HandleCat ', e.target.value);
     setInput({
       ...input,
-      categories: [...input.categories, e.target.value]
+      categories: Array.from(new Set([...input.categories, e.target.value]))
     });
   };
   function handleDelete(e) {
