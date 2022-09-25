@@ -2,15 +2,18 @@ const { User } = require('../../db.js');
 
 let postUser = async(obj)=>{
    
-  let { name, lastName, status, mail, pass, avatar, birthday } = obj;
+  let { name, lastName, status, mail, pass, avatar, birthday, disable } = obj;
 
-   let userCreate = await User.create({
+  disable = JSON.parse(disable);
+
+  let userCreate = await User.create({
      name,
      lastName,
      status,
      mail,
      pass,
      birthday,
+     disable
    });
 
    return userCreate

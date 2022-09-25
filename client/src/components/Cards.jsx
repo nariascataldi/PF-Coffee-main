@@ -43,7 +43,7 @@ export default function Cards({ load }) {
       <div className={styles.cards_wraper}>
         {load ? (
           <Loading />
-        ) : (
+        ) : ( 
           currentProducts.map((p) => {
             return (
               <Card
