@@ -21,7 +21,7 @@ function Login({onLogin}) {
 
     useEffect(() => {
         if (isLogged) {
-          navigate('/home')
+          navigate('/')
           onLogin && onLogin()
         }
       }, [isLogged, navigate, onLogin])

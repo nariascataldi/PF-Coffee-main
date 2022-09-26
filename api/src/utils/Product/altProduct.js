@@ -7,6 +7,9 @@ async function altProduct(id, attribute, value) {
 			value = value.split(' ').map(p=> p.slice(0,1).toUpperCase().concat(p.slice(1).toLowerCase())).join(' ')
 		} else { value = value[0].toUpperCase().concat(value.slice(1).toLowerCase()) };
 	};
+	if (attribute === 'disable') {
+        value = JSON.parse(value)
+    };
 
 	let myProd = await Product.findByPk(id)
 		.then( (r)=>{ // console.log(r);

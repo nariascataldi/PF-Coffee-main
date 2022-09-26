@@ -42,7 +42,7 @@ export default function About() {
     <Fragment>
       {/* <NavBar/> */}
       <div className={styles.navBar}>
-      <NavLink to='/home'>Home</NavLink>
+      <NavLink to='/'>Home</NavLink>
       </div>
       <div className={styles.about} >
         <div className={styles.main}>

@@ -2,8 +2,11 @@ import React, { useEffect } from "react";
 import { useState } from 'react'
 import { useSelector } from "react-redux";
 import Card from "../CardAdmin/CardAdmin";
-import Paginated from "../PaginatedAdmin/PaginatedAdmin";
+import Paginated from "../../Paginated";
 import Loading from "../../Loading";
+
+import styles from '../../../styles/Cards.module.css'
+
 
 export default function Cards({ load }) {
   const { products } = useSelector(state => state)
@@ -19,12 +22,12 @@ export default function Cards({ load }) {
   };
   if (!products.length) {
     return (
-      <div className='not-found'><h4>Product not found!</h4></div>
+      <div className={styles.not_found}><h4>Product not found!</h4></div>
     )
   }
   return (
     <div>
-      <div className='paginado'>
+      <div className={styles.paginadoAdmin}>
         <Paginated
           productsPerPage={productsPerPage}
           products={products}
@@ -33,17 +36,22 @@ export default function Cards({ load }) {
           setCurrentPage={setCurrentPage}
         />
       </div>
-      <div className="cards-wraper">
+      <div >
         {load ? <Loading /> :
           currentProducts.map(p => {
-            return <Card
+            return (!p.disable && <Card
               key={p.id}
               id={p.id}
               name={p.name}
               image={p.image}
               title={p.title}
+              cost={p.cost}
+              margin={p.margin}
               price={p.price}
-            />
+              description={p.description}
+              disable={p.like}
+              stock={p.stock}
+            />)
           })}
       </div>
     </div>

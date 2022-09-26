@@ -17,7 +17,6 @@ import Footer from './Footer';
 import Loading from './Loading';
 import StarRating from './StarRating';
 
-
 import styles from '../styles/Detail.module.css'
 
 
@@ -81,8 +80,8 @@ export default function Detail(props){
         ) : !detail ? null : (
           <div key={detail.id} className={styles.detail}>
             <div>
-              <Link className={styles.back} to="/home">
-                <button className={styles.next}>&#171;</button>
+              <Link className={styles.back} to="/">
+                <button>&#171;</button>
               </Link>
             </div>
             <div>

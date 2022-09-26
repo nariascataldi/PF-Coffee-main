@@ -9,16 +9,19 @@
 }
 
 .section {
-      margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .button {
           border: none;
+          text-decoration: none;
+          color: black;
           border-radius: 8px;
           width: 75px;
           height: 40px;
           margin: 10px;
-          background:var(--strong) ;
+          background:#fceef0 ;
 }
 
 .button:hover {

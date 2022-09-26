@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDiets, postProduct, getAllProviders, getAllCategories } from "../../../redux/actions"; //2
+import { getAllDiets, postProduct, getAllProviders, getAllCategories, postCloudinaryPhoto } from "../../../redux/actions"; //2
 import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 import style from '../../../styles/Admin/ProductCreate.module.css';
+import { Container, FormGroup, Input } from 'reactstrap'
 
 var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
+// var testImage = /^[A-Za-z]+$/i;
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
 var testDescription = /^[A-Za-z]+$/i;
 // var testNumber = /^\d{1,2}$/;
@@ -42,11 +44,14 @@ function validate(input) {
 export default function FormProduct() {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
+  console.log({diet});
   var provider = useSelector((state) => state.providers);
+  console.log({provider})
   var categories = useSelector((state) => state.categories);
+  let responseCloudinary = useSelector(state => state.responseCloudinary)
 
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllDiets())
@@ -54,21 +59,43 @@ export default function FormProduct() {
     dispatch(getAllCategories())
   }, [dispatch])
 
+  useEffect(async () => {
+    setInput({
+      ...input,
+      image: responseCloudinary.url
+    })
+    setErrors(validate({
+      ...input,
+      image: responseCloudinary.url
+    }));
+  }, [responseCloudinary])
+
+  useEffect(async () => {
+    // console.log(errors)
+  }, [errors])
+
   const [input, setInput] = useState({
-        title: '',
-        cost: '',
-        margin: '',
-        price: '',
-        description: '',
-        image: '',
-        // disable: false,
-        like: '',
-        stock: '',
-        diets: [],
-        providers: [],
-        categories: []
+    title: '',
+    cost: '',
+    margin: '',
+    price: '',
+    description: '',
+    image: '',
+    disable: false,
+    like: '',
+    stock: '',
+    diets: [],
+    providers: [],
+    categories: []
   });
   var suggested = (Math.round(((input?.cost) * (((input?.margin) / 100) + 1))));
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'Provider');
+    dispatch(postCloudinaryPhoto(data))
+  }
   function handleInputChange(e) {
     setInput({
       ...input,
@@ -97,59 +124,60 @@ export default function FormProduct() {
         price: '',
         description: '',
         image: '',
-        // disable: false,
+        disable: false,
         like: '',
         stock: '',
         diet: [],
       })
       e.target.reset();
       window.location.reload(false);
-      // navigate('/productAdmin');
+      // navigate('/homeAdmin');
     }
-  }; 
+  };
   /**Diet */
   function handleSelectDiets(e) {
-    console.log('Handle ', e.target.value);
+    // console.log('Handle ', e.target.value);
     setInput({
       ...input,
-      diets: [...input.diets, e.target.value]
+      diets: Array.from(new Set([...input.diets, e.target.value]))
     });
   };
   /**Providers */
   function handleSelectProv(e) {
-    console.log('HandlePro ', e.target.value);
+    // console.log('HandlePro ', e.target.value);
     setInput({
       ...input,
-      providers: [...input.providers, e.target.value]
+      providers: Array.from(new Set([...input.providers, e.target.value]))
     });
   };
   /**Categories */
   function handleSelectCate(e) {
-    console.log('HandleCat ', e.target.value);
+    // console.log('HandleCat ', e.target.value);
     setInput({
       ...input,
-      categories: [...input.categories, e.target.value]
+      categories: Array.from(new Set([...input.categories, e.target.value]))
     });
   };
   function handleDelete(e) {
-    e.preventDefault();   
-    let [name, value] = e.target.value.split('_');   console.log(value); console.log(name);
-    if(name === 'diets') {
-      let d = input.diets.filter( (o)=> o !== value);
-      setInput({...input, diets: d,});
+    e.preventDefault();
+    let [name, value] = e.target.value.split('_'); console.log(value); console.log(name);
+    if (name === 'diets') {
+      let d = input.diets.filter((o) => o !== value);
+      setInput({ ...input, diets: d, });
     };
-    if(name === 'providers') {
-      let dt = input.providers.filter( (o)=> o !== value);
-      setInput({...input, providers: dt,});
+    if (name === 'providers') {
+      let dt = input.providers.filter((o) => o !== value);
+      setInput({ ...input, providers: dt, });
     };
-    if(name === 'categories') {
-      let dt = input.categories.filter( (o)=> o !== value);
-      setInput({...input, categories: dt,});
+    if (name === 'categories') {
+      let dt = input.categories.filter((o) => o !== value);
+      setInput({ ...input, categories: dt, });
     };
   };
-  
+
   return (
     <>
+      {/* {console.log(input)} */}
       {/* <h2>Product</h2> */}
       <form onSubmit={e => handleSubmit(e)}>
         <div id="Nombre" className="mb-3">
@@ -252,7 +280,7 @@ export default function FormProduct() {
           <label
             className="form-label"
           >Product Image</label>
-          <input
+          {/* <input
             id="image"
             className={style.form_control}
             type="url"
@@ -262,13 +290,25 @@ export default function FormProduct() {
             key='image'
             name="image"
             onChange={e => handleInputChange(e)}
-          />
+          /> */}
+          <Container>
+            <p>Subiendo imagenes</p>
+            <FormGroup>
+              <Input
+                type="file"
+                name="image"
+                placeholder="📷 Logo"
+                onChange={(e) => uploadImage(e)}
+                className={style.upload}
+              />
+            </FormGroup>
+          </Container>
           {errors.image && <p className={style.p_form}>{errors.image}</p>}
         </div>
         <div id="Cantidad" className="mb-3">
           <label
             className="form-label"
-          >Amount</label>
+          >Stock</label>
           <input
             id="stock"
             className={style.form_control}
@@ -282,19 +322,19 @@ export default function FormProduct() {
           />
           {errors.stock && <p className={style.p_form}>{errors.stock}</p>}
         </div>
-        <div id="Desactivo" className="form-check form-switch">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            role="switch"
-            id="flexSwitchCheckDefault"
-            value={input.disable}
+        {input.stock > 0 && <div id="Status">
+          <label>Status: </label>
+          <select
             onChange={e => handleInputChange(e)}
-          />
-          <label
-            className="form-check-label"
-          >Disable</label>
-        </div>
+            name="disable"
+          >
+            <option
+              disabled>Status: </option>
+            <option value={false} >Asset</option>
+            <option
+              value={true} >Inactive</option>
+          </select>
+        </div>}
         <div className={style.diet}>
           <select
             onChange={e => handleSelectDiets(e)}
@@ -306,14 +346,14 @@ export default function FormProduct() {
               disabled
               className={style.seleOption}>Choose diet</option>
             {diet &&
-              diet.map((diet) => diet.name && (
+              diet.map((d) => d.name && (
                 <option
-                  key={diet.name}
-                  value={diet.name}
+                  key={d.name}
+                  value={d.name}
 
                   className={style.seleOption}
                 >
-                  {diet.name}
+                  {d.name}
                 </option>
               ))
             }
@@ -322,16 +362,14 @@ export default function FormProduct() {
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
           <div className={style.boxClose}>
-          { input.diets?.map( (el, index) =>
-            <div className={style.itemClose} key={`o${index}`}>
-              <p>{el}</p>
-              <button value={`diets_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
-            </div>)
-          }
+            {input.diets?.map((el, index) =>
+              <div className={style.itemClose} key={`o${index}`}>
+                <p>{el}</p>
+                <button value={`diets_${el}`} onClick={(e) => handleDelete(e)}>X</button>
+              </div>)
+            }
           </div>
         </div>
-
-
         <div className={style.providers}>
           <select
             onChange={e => handleSelectProv(e)}
@@ -357,12 +395,12 @@ export default function FormProduct() {
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
           <div className={style.boxClose}>
-          { input.providers?.map( (el, index) =>
-            <div className={style.itemClose} key={`o${index}`}>
-              <p>{el}</p>
-              <button value={`providers_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
-            </div>)
-          }
+            {input.providers?.map((el, index) =>
+              <div className={style.itemClose} key={`o${index}`}>
+                <p>{el}</p>
+                <button value={`providers_${el}`} onClick={(e) => handleDelete(e)}>X</button>
+              </div>)
+            }
           </div>
         </div>
         <div className={style.categories}>
@@ -390,12 +428,12 @@ export default function FormProduct() {
             <p style={{ float: 'right' }}>{errors.diet}</p>
           )}
           <div className={style.boxClose}>
-          { input.categories?.map( (el, index) =>
-            <div className={style.itemClose} key={`o${index}`}>
-              <p>{el}</p>
-              <button value={`categories_${el}`} onClick={(e)=>handleDelete(e)}>X</button>
-            </div>)
-          }
+            {input.categories?.map((el, index) =>
+              <div className={style.itemClose} key={`o${index}`}>
+                <p>{el}</p>
+                <button value={`categories_${el}`} onClick={(e) => handleDelete(e)}>X</button>
+              </div>)
+            }
           </div>
         </div>
         <div id="Guardar" className="d-grid gap-2">

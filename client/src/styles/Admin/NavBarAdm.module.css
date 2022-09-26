@@ -65,10 +65,32 @@
     color: var(--strong)
 }
 
+.input_filter {
+    border-radius: 12px;
+    width: 120px;
+    padding-left: 8px;
+    margin-left: 4px;
+    margin-right: 6px;
+    background-color: var(--primary);
+    border-color: var(--strong);
+    color: rgb(97, 97, 97);
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 5px;
+}
+
+.input_filter:hover {
+    background-color: var(--strong);
+    border-color: var(--primary);
+    color: var(--primary);
+}
 .searchBar {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .input_search {
@@ -99,24 +121,34 @@
     cursor: pointer;
 }
 
-.input_filter {
-    border-radius: 12px;
-    width: 120px;
-    padding-left: 8px;
-    margin-left: 4px;
-    margin-right: 6px;
-    background-color: var(--primary);
-    border-color: var(--strong);
-    color: rgb(97, 97, 97);
-    outline: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 15px;
-    margin: 5px;
+.autoCompleteContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    width: 50px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 9999;
+    transform: translateY(100%);
 }
 
-.input_filter:hover {
+.autoComplete {
+    width: 180px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 0.5rem;
+    font-size: 1.5rem;
     background-color: var(--strong);
-    border-color: var(--primary);
-    color: var(--primary);
+    margin: 0;
+    border: 1px solid gray;
+    color: rgb(243, 241, 241);
+    /* transform: translateY(300%); */
+}
+
+.autoComplete:hover {
+    background-color: gray;
+    color: white;
 }

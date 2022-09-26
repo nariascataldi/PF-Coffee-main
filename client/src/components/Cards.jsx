@@ -43,9 +43,9 @@ export default function Cards({ load }) {
       <div className={styles.cards_wraper}>
         {load ? (
           <Loading />
-        ) : (
+        ) : ( 
           currentProducts.map((p) => {
-            return (
+            return (!p.disable &&
               <Card
                 key={p.id}
                 id={p.id}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import styles from "../../../styles/Admin/NavBarAdm.module.css";
 
+
 const NavBar = () => {
   return (
     <div className={styles.navBar}>
@@ -12,7 +13,7 @@ const NavBar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <Link className="nav-link active" to="/home">Home Client</Link>
+          <Link className="nav-link active" to="/">Home Client</Link>
         </div>
       </div>
     </nav>
