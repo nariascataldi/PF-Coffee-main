@@ -6,7 +6,7 @@ const emailRegister = require('../helper/emails.js');
 
 const userRegist = async (req, res) => {
   let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
-  // console.log("body", req.body);
+  console.log("body", req.body.mail);
 
   const prevUser = await User.findOne({ where: { mail: mail } });
 

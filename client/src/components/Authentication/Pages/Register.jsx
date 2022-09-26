@@ -40,7 +40,7 @@ const Register = () => {
     }
 
     //crear el usuario 
-    dispatch(postUser({msg: "Usuario creado correctamente"}));
+    dispatch(postUser(input));
   };
 
   return (

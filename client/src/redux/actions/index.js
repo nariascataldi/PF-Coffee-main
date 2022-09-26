@@ -131,12 +131,12 @@ export const createProduct = (postData) => {
 export const postUser = (payload) => 
 async (dispatch)=> {
   try {
-    const { data } = await axios.post("http://localhost:3001/users/registration", payload)
+    const response = await axios.post("http://localhost:3001/users/registration", payload)
     // .then(response => console.log(response))
     // .catch(error => console.log(error))
     return dispatch({
       type: POST_USER,
-      payload: data,
+      payload: response.data,
     })
   } catch (error) {
     console.log(error)

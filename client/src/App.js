@@ -46,7 +46,7 @@ function App() {
 
         <Route exact path="/fillCart" element={<FillCart />} />
 
-        <Route path="/" element={<AuthLayout />}>
+        <Route path="/login" element={<AuthLayout />}>
           <Route index element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="forget-password" element={<ForgetPassword />} />
