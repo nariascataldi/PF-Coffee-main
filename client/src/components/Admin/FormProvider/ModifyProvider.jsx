@@ -39,7 +39,7 @@ const FormModifyProvider = (props) => {
     /**/
     const onSubmit = (data,e) => {
         console.log(data);
-        dispatch(putProviders(data));
+        dispatch(putProviders(data, id));
         e.preventDefault();
         e.target.reset();
         alert('Correctly modify')
@@ -123,10 +123,12 @@ const FormModifyProvider = (props) => {
                 </div>
                 <div>
                     <label>Status: </label>
-                    <select>
+                    <select {...register('disable', {
+                    required:true
+                })}>
                         <option disabled>Status: {providerDetail.disable === true ? "Inactive":"Asset"}</option>
-                        <option defaultValue={false}>Asset</option>
-                        <option defaultValue={true}>Inactive</option>    
+                        <option value={false} >Asset</option>
+                        <option value={true} >Inactive</option>    
                     </select>
                 </div>
                 <input type="submit" value="Save"/>

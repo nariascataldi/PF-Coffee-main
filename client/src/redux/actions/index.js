@@ -211,24 +211,32 @@ export function loginService(user) {
 
 
 
-export function putProviders(id, name, logo, adress, mail, phone, CUIT, disable){
-  return async function(dispatch){
-    const info= await axios.put('http://localhost:3001/edit/' + id,{
-      params: {
-        name,
-        logo,
-        adress,
-        mail,
-        phone,
-        CUIT,
-        disable
-      }
-    });
-    return dispatch({
-      type: SET_PROVIDERS,
-      payload: info.data
-    })
-  }
+export function putProviders(data, id){
+  // return async function(dispatch){
+  //   const info= await axios.put(`http://localhost:3001/edit/${id}`,{
+  //     params: {
+  //       name,
+  //       logo,
+  //       adress,
+  //       mail,
+  //       phone,
+  //       CUIT,
+  //       disable
+  //     }
+  //   });
+  //   return dispatch({
+  //     type: SET_PROVIDERS,
+  //     payload: info.data
+  //   })
+  // }
+    return async function(dispatch){
+      axios.put(`/edit/${id}`, data).then(res =>
+        dispatch({
+          type: SET_PROVIDERS,
+          payload: res.data
+        })
+      );
+    }
 }
 /*
 export function putProduct(id, name, SKU, unitPrice, description, picture, unitsOnStock, categoriesIds) {
