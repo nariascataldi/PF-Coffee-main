@@ -5,7 +5,7 @@ import { clearCloudinaryResponse, postCloudinaryPhoto, postProviders, getProvide
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { Container, FormGroup, Input } from 'reactstrap'
-//import style from './ProviderCreate.module.css'
+
 import { Link, useParams } from "react-router-dom";
 
 
@@ -59,19 +59,21 @@ const FormModifyProvider = (props) => {
 {/* */}
     return (
         <div>
-            <h2>Provider Modify </h2>
+            <h3 className="display-5">Provider Modify </h3>
+            <hr/>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                <label>Name: </label>
-                <input type="text" defaultValue={ providerDetail.name}{...register('name',{
+                <div className="input-group input-group-lg">
+                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Name: </label>
+                <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="text" defaultValue={ providerDetail.name}{...register('name',{
                     required: true
                 })}/>
                 
                 {errors.name?.type === 'required' && <p>name is required</p>}
                 </div>
-                <div>
-                <label>E-mail: </label>
-                <input type="mail" defaultValue={ providerDetail.mail}{...register('mail',{
+                <br/>
+                <div className="input-group input-group-lg">
+                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">E-mail: </label>
+                <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="mail" defaultValue={ providerDetail.mail}{...register('mail',{
                     required:true,
                     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
                 })}/>
@@ -79,51 +81,52 @@ const FormModifyProvider = (props) => {
                  {errors.mail?.type === 'required' && <p>e-mail is required</p>}
                  {errors.mail?.type === 'pattern' && <p>formato incorrecto</p>}
                 </div>
-                <div>
-                <label>Adress: </label>
-                <input type="text" defaultValue={ providerDetail.adress}{...register('adress', {
+                <br/>
+                <div className="input-group input-group-lg">
+                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Adress: </label>
+                <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="text" defaultValue={ providerDetail.adress}{...register('adress', {
                     required:true
                 })}/>
                 
                  {errors.adress?.type === 'required' && <p>adress is required</p>}
                 </div>
-                <div>
-                <label>Logo: </label>
-                <Container>
-                    <p>Uploading images</p>
-                    <FormGroup >
+                <br/>
+                <div className="input-group input-group-lg">
+                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Logo: </label>
+            
                         <Input 
                             type="file"
                             name="file"
                             placeholder="Logo"
                             onChange={uploadImage}
-                            
-
+                            className="form-control"
+                            id="inputGroupFile01"
                         />
-                    </FormGroup>
-                    
-                </Container>
+               
                 
                 </div>
-                <div>
-                <label>Phone: </label>
-                <input type="number" defaultValue={ providerDetail.phone}{...register('phone',{
+                <br/>
+                <div className="input-group input-group-lg">
+                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Phone: </label>
+                <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="number" defaultValue={ providerDetail.phone}{...register('phone',{
                     required:true
                 })}/>
                
                  {errors.phone?.type === 'required' && <p>phone is required</p>}
                 </div>
-                <div>
-                <label>CUIT: </label>
-                <input type="number" defaultValue={ providerDetail.CUIT}{...register('CUIT',{
+                <br/>
+                <div className="input-group input-group-lg">
+                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">CUIT: </label>
+                <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="number" defaultValue={ providerDetail.CUIT}{...register('CUIT',{
                     required:true
                 })}/>
                 
                  {errors.CUIT?.type === 'required' && <p>CUIT is required</p>}
                 </div>
-                <div>
-                    <label>Status: </label>
-                    <select {...register('disable', {
+                <br/>
+                <div className="input-group input-group-lg">
+                    <label className="input-group-text btn btn-lg btn-primary"  id="inputGroup-sizing-lg">Status: </label>
+                    <select className="form-select" id="inputGroup-sizing-lg"{...register('disable', {
                     required:true
                 })}>
                         <option disabled>Status: {providerDetail.disable === true ? "Inactive":"Asset"}</option>
@@ -131,9 +134,11 @@ const FormModifyProvider = (props) => {
                         <option value={true} >Inactive</option>    
                     </select>
                 </div>
-                <input type="submit" value="Save"/>
-                <Link to="/list"><button>Cancel</button></Link>
-
+                <br/>
+                <div className="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" value="Save" className="btn btn-primary"/>
+                <Link to="/list" ><button className="btn btn-danger">Cancel</button></Link>
+                </div>
             </form>
             <div>
                 {
