@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { putProduct } from "../../../redux/actions";
 
 const initailForm = {
   id: null,
@@ -18,6 +20,7 @@ const initailForm = {
 const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initailForm);
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   useEffect(() => {
     if (dataToEdit) {
@@ -43,6 +46,10 @@ const CrudForm = ({ updateData, dataToEdit, setDataToEdit }) => {
     }
     dispatch(updateData(form));
 
+    dispatch(putProduct(id))
+    e.preventDefault();
+    e.target.reset();
+    alert('Correctly modify')
     handleReset();
   };
 

@@ -4,6 +4,7 @@ import CrudTable from "./CrudTable";
 import axios from "axios";
 
 
+
 const baseUrl = 'http://localhost:3001/products';
 
 const CrudApp = () => {
@@ -25,7 +26,7 @@ const CrudApp = () => {
     await peticionGet();
   }, [])
 
-  const updateData = (data) => {
+  const updateData = (data, e) => {
     let newData = db.map((el) => (el.id === data.id ? data : el));
     setDb(newData);
   };

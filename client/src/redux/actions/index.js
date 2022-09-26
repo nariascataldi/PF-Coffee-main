@@ -16,13 +16,14 @@ export const FILTER = 'FILTER'
 export const POST_PROVIDERS = 'POST_PROVIDERS'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 export const FILL_CART = 'FILL_CART'
-export const RESET_FILL_CART ='RESET_FILL_CART'
+export const RESET_FILL_CART = 'RESET_FILL_CART'
 export const GET_CLOUDINARY_RESPONSE = 'GET_CLOUDINARY_RESPONSE'
 export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
 export const POST_COMMENT = 'POST_COMMENT'
 export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
+export const SET_PRODUCTS = 'SET_PRODUCTS'
 
 
 export function getAllProducts() {
@@ -49,7 +50,7 @@ export function getDetail(id) {
     }
   }
 };
-export function clearDetail () {
+export function clearDetail() {
   return {
     type: CLEAR_DETAIL
   }
@@ -100,7 +101,7 @@ export function getAllCategories() {
 export function getAllDiets() {
   return async function (dispatch) {
     try {
-      var info = await axios.get('/diets', {}); 
+      var info = await axios.get('/diets', {});
       return dispatch({
         type: GET_ALL_DIETS,
         payload: info.data
@@ -128,31 +129,31 @@ export const createProduct = (postData) => {
   }
 };
 
-export const postUser = (payload) => 
-async (dispatch)=> {
-  try {
-    const response = await axios.post("http://localhost:3001/users/registration", payload)
-    // .then(response => console.log(response))
-    // .catch(error => console.log(error))
-    return dispatch({
-      type: POST_USER,
-      payload: response.data,
-    })
-  } catch (error) {
-    console.log(error)
-  }
-};
+export const postUser = (payload) =>
+  async (dispatch) => {
+    try {
+      const response = await axios.post("http://localhost:3001/users/registration", payload)
+      // .then(response => console.log(response))
+      // .catch(error => console.log(error))
+      return dispatch({
+        type: POST_USER,
+        payload: response.data,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
 export const confirmId = id => async dispatch => {
   try {
     const response = await axios.get(`/confirm/${id}`)
-    return dispatch ({
+    return dispatch({
       type: CONFIRM_ID,
       payload: response.data
     })
   } catch (error) {
     console.log(error)
-    
+
   }
 }
 
@@ -177,37 +178,37 @@ export function filter() {
     type: FILTER,
   }
 };
-export function setFillCart(payload){
+export function setFillCart(payload) {
   return {
-    type: FILL_CART ,
+    type: FILL_CART,
     payload
   }
 }
-export function fillCartLocalS(payload){
-  localStorage.setItem('productCart',JSON.stringify(payload))
+export function fillCartLocalS(payload) {
+  localStorage.setItem('productCart', JSON.stringify(payload))
   return {
-    type: FILL_CART_LOCAL_S ,
+    type: FILL_CART_LOCAL_S,
     payload
   }
 }
-export function resetFillCart (payload) {
-  return{
-      type:RESET_FILL_CART,
-      payload
+export function resetFillCart(payload) {
+  return {
+    type: RESET_FILL_CART,
+    payload
   }
 }
-export function postProviders(payload){
-  return async function(dispatch){
-    const info= await axios.post('http://localhost:3001/providers', payload);
+export function postProviders(payload) {
+  return async function (dispatch) {
+    const info = await axios.post('http://localhost:3001/providers', payload);
     return info;
   }
 
 }
 export const clearCloudinaryResponse = () => {
   return async function (dispatch) {
-      dispatch({
-          type: CLEAR_CLOUDINARY_RESPONSE
-      })
+    dispatch({
+      type: CLEAR_CLOUDINARY_RESPONSE
+    })
   };
 };
 
@@ -231,50 +232,24 @@ export function loginService(user) {
   }
 };
 
-
-
-export function putProviders(data, id){
-  // return async function(dispatch){
-  //   const info= await axios.put(`http://localhost:3001/edit/${id}`,{
-  //     params: {
-  //       name,
-  //       logo,
-  //       adress,
-  //       mail,
-  //       phone,
-  //       CUIT,
-  //       disable
-  //     }
-  //   });
-  //   return dispatch({
-  //     type: SET_PROVIDERS,
-  //     payload: info.data
-  //   })
-  // }
-    return async function(dispatch){
-      axios.put(`/edit/${id}`, data).then(res =>
-        dispatch({
-          type: SET_PROVIDERS,
-          payload: res.data
-        })
-      );
-    }
+export function putProviders(data, id) {
+  return async function (dispatch) {
+    axios.put(`/edit/${id}`, data).then(res =>
+      dispatch({
+        type: SET_PROVIDERS,
+        payload: res.data
+      })
+    );
+  }
 }
-/*
-export function putProduct(id, name, SKU, unitPrice, description, picture, unitsOnStock, categoriesIds) {
-    return async function (dispatch) {
-        var json = await axios.put("http://localhost:3001/products/" + id, {
-            params: {
-                name,
-                SKU,
-                unitPrice,
-                description,
-                picture,
-                unitsOnStock,
-                categoriesIds
-            }
-        });
-        return dispatch({ type: PUT_PRODUCTS, payload: json.data })
-    }
+
+export function putProduct(data, id) {
+  return async function (dispatch) {
+    axios.put(`/productsEdit/${id}`, data).then(res =>
+      dispatch({
+        type: SET_PRODUCTS,
+        payload: res.data
+      })
+    );
+  }
 }
-*/
