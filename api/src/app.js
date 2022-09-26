@@ -5,26 +5,26 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { FRONT } = require('./db.js');
 const frontPort = FRONT || 3030;
-const cors = require("cors");
+// const cors = require("cors");
 
 require('./db.js');
 
 const server = express();
 
 //CONFIGURACION CORS
-const whitelist = ["*"]; //DOMINIOS PERMITIDOS
+// const whitelist = ["*"]; //DOMINIOS PERMITIDOS
 
-const corsOptions = {
-  origin: function(origin, callback){
-    if(whitelist.includes(origin)){
-  callback(null, true);
-  } else {
-  callback(new Error("Error de CORS"))
-    }
-  }
-};
+// const corsOptions = {
+//   origin: function(origin, callback){
+//     if(whitelist.includes(origin)){
+//   callback(null, true);
+//   } else {
+//   callback(new Error("Error de CORS"))
+//     }
+//   }
+// };
 
-server.use(cors(corsOptions))
+// server.use(cors(corsOptions))
 
 server.name = 'API';
 
