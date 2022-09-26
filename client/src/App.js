@@ -12,6 +12,7 @@ import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
+import Modals from './components/Admin/Modals/Modals';
 
 import AuthLayout from './components/Authentication/AuthLayout';
 import Login from "./components/Authentication/Pages/Login";
@@ -22,38 +23,37 @@ import ConfirmAccount from './components/Authentication/Pages/ConfirmAccount';
 
 import './styles/normalize.css'
 import './styles/globals.css'
+import ListProvider from './components/Admin/FormProvider/ListProvider';
+import ModifyProvider from './components/Admin/FormProvider/ModifyProvider'
 import "bootstrap/dist/css/bootstrap.min.css";
 import NotFound from './components/NotFound';
-
 
 
 function App() {
   return (
     <div>
       <Routes>
-        {/*<Route exact path="/landing" element={<LandingPage />} />*/}
+        <Route exact path='/' element={<LandingPage />} />
+        <Route path="register" element={<Register />} />
         <Route path="/home" element={<Home />} />
+        <Route index element={<Login />} />
+        <Route path="/form" element={<Perfil />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/form" element={<Perfil />} />
-        <Route exact path="/homeAdmin" element={<HomeAdmin />} />
-        <Route exact path="/productAdmin" element={<ProductAdmin />} />
+        <Route path="confirm/:id" element={<ConfirmAccount />} />
+        <Route path="forget-password/:token" element={<NewPassword />} />
+        <Route path="forget-password" element={<ForgetPassword />} />
+        <Route exact path="/fillCart" element={<FillCart />} />
       { /* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
+        <Route exact path="/productAdmin" element={<ProductAdmin />} />
+        <Route exact path="/homeAdmin" element={<HomeAdmin />} />
+        <Route exact path='/modProvider/:id' element={<ModifyProvider />}/>
+        <Route exact path='/list' element={<ListProvider />} />
+        <Route exact path='/crud/product' element={<CrudApp />} />
         <Route exact path="/providerCreate" element={<ProviderCreate />} />
         <Route exact path="/providers" element={<Providers />} />
-
         <Route exact path="/formusers" element={<FormularioUsuario />} />
-
-        <Route exact path="/fillCart" element={<FillCart />} />
-
-        <Route path="/login" element={<AuthLayout />}>
-          <Route index element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="forget-password" element={<ForgetPassword />} />
-          <Route path="forget-password/:token" element={<NewPassword />} />
-          <Route path="confirm/:id" element={<ConfirmAccount />} />
-        </Route>
-
+        <Route exact path='/modals' element={<Modals />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

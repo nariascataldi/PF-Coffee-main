@@ -22,6 +22,7 @@ export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
 export const POST_COMMENT = 'POST_COMMENT'
 export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
+export const SET_PROVIDERS = 'SET_PROVIDERS'
 
 
 export function getAllProducts() {
@@ -229,3 +230,51 @@ export function loginService(user) {
     })
   }
 };
+
+
+
+export function putProviders(data, id){
+  // return async function(dispatch){
+  //   const info= await axios.put(`http://localhost:3001/edit/${id}`,{
+  //     params: {
+  //       name,
+  //       logo,
+  //       adress,
+  //       mail,
+  //       phone,
+  //       CUIT,
+  //       disable
+  //     }
+  //   });
+  //   return dispatch({
+  //     type: SET_PROVIDERS,
+  //     payload: info.data
+  //   })
+  // }
+    return async function(dispatch){
+      axios.put(`/edit/${id}`, data).then(res =>
+        dispatch({
+          type: SET_PROVIDERS,
+          payload: res.data
+        })
+      );
+    }
+}
+/*
+export function putProduct(id, name, SKU, unitPrice, description, picture, unitsOnStock, categoriesIds) {
+    return async function (dispatch) {
+        var json = await axios.put("http://localhost:3001/products/" + id, {
+            params: {
+                name,
+                SKU,
+                unitPrice,
+                description,
+                picture,
+                unitsOnStock,
+                categoriesIds
+            }
+        });
+        return dispatch({ type: PUT_PRODUCTS, payload: json.data })
+    }
+}
+*/
