@@ -1,18 +1,19 @@
 import React from "react";
 import CrudTableRow from "./CrudTableRow";
+import Table from 'react-bootstrap/Table';
 
 const CrudTable = ({ data, setDataToEdit, deleteData }) => {
   return (
     <div>
-      <h3>Tabla de Datos</h3>
-      <table>
+      {/* <h3>Tabla de Datos</h3> */}
+      <Table striped>
         <thead>
           <tr>
             <th>Name</th>
             <th>Cost</th>
             <th>Margin</th>
             <th>Price</th>
-            <th>Description</th>
+            {/* <th>Description</th> */}
             <th>Stock</th>
           </tr>
         </thead>
@@ -32,7 +33,8 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
             </tr>
           )}
         </tbody>
-      </table>
+      </Table>
+
     </div>
   );
 };
