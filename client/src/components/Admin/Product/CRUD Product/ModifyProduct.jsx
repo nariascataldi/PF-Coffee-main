@@ -26,6 +26,7 @@ const FormModifyProduct = (props) => {
 
   const { productDetail } = useSelector((state) => state);
   const onSubmit = (data, e) => {
+    console.log({data});
     dispatch(putProduct(data, id));
     e.preventDefault();
     e.target.reset();
@@ -51,16 +52,19 @@ const FormModifyProduct = (props) => {
         <div id="Title">
           <label>title: </label>
           <input type="text" defaultValue={productDetail.title}{...register('title', {
+            required: true
           })} />
         </div>
         <div id="Cost">
           <label>Cost: </label>
           <input type="number" defaultValue={productDetail.cost}{...register('cost', {
+            required: true
           })} />
         </div>
         <div id="Margin">
           <label>Margin </label>
           <input type="number" defaultValue={productDetail.margin}{...register('margin', {
+            required: true
           })} />
         </div>
         <div id="Price">
@@ -73,11 +77,13 @@ const FormModifyProduct = (props) => {
         <div id="Stock">
           <label>Stock </label>
           <input type="number" defaultValue={productDetail.stock}{...register('stock', {
+            required: true
           })} />
         </div>
         <div id='Description'>
           <label>Description: </label>
           <textarea type="text" defaultValue={productDetail.description}{...register('description', {
+            required: true
           })} />
         </div>
         <div id="Image">

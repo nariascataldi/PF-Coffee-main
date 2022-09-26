@@ -44,7 +44,9 @@ function validate(input) {
 export default function FormProduct() {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
+  console.log({diet});
   var provider = useSelector((state) => state.providers);
+  console.log({provider})
   var categories = useSelector((state) => state.categories);
   let responseCloudinary = useSelector(state => state.responseCloudinary)
 
@@ -344,14 +346,14 @@ export default function FormProduct() {
               disabled
               className={style.seleOption}>Choose diet</option>
             {diet &&
-              diet.map((diet) => diet.name && (
+              diet.map((d) => d.name && (
                 <option
-                  key={diet.name}
-                  value={diet.name}
+                  key={d.name}
+                  value={d.name}
 
                   className={style.seleOption}
                 >
-                  {diet.name}
+                  {d.name}
                 </option>
               ))
             }

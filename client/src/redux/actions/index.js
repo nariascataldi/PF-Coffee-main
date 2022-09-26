@@ -101,7 +101,7 @@ export function getAllCategories() {
 export function getAllDiets() {
   return async function (dispatch) {
     try {
-      var info = await axios.get('/diets', {});
+      var info = await axios.get('https://pfcoffee-app.herokuapp.com/diets', {});
       return dispatch({
         type: GET_ALL_DIETS,
         payload: info.data
