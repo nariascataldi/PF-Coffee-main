@@ -90,6 +90,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .input_search {
@@ -118,4 +119,36 @@
     padding-right: 14px;
     color: var(--white);
     cursor: pointer;
+}
+
+.autoCompleteContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+    width: 50px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 9999;
+    transform: translateY(100%);
+}
+
+.autoComplete {
+    width: 180px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    background-color: var(--strong);
+    margin: 0;
+    border: 1px solid gray;
+    color: rgb(243, 241, 241);
+    /* transform: translateY(300%); */
+}
+
+.autoComplete:hover {
+    background-color: gray;
+    color: white;
 }
