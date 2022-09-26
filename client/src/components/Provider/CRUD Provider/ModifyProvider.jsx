@@ -94,7 +94,7 @@ const FormModifyProvider = (props) => {
                 <div className="input-group input-group-lg">
                 <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Logo: </label>
             
-                        <Input 
+                        <input
                             type="file"
                             name="file"
                             placeholder="Logo"
@@ -137,7 +137,7 @@ const FormModifyProvider = (props) => {
                 <br/>
                 <div className="d-grid gap-2 col-6 mx-auto">
                 <input type="submit" value="Save" className="btn btn-primary"/>
-                <Link to="/list" ><button className="btn btn-danger">Cancel</button></Link>
+                <Link to="/homeAdmin" ><button className="btn btn-danger">Cancel</button></Link>
                 </div>
             </form>
             <div>

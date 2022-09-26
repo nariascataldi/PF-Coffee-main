@@ -4,14 +4,14 @@ import { clearCloudinaryResponse, postCloudinaryPhoto, postProviders } from "../
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { Container, FormGroup, Input } from 'reactstrap'
-import style from './ProviderCreate.module.css'
+// import style from './ProviderCreate.module.css'
 import axios from "axios";
 import { useEffect } from "react";
 
 
 const FormProvider = () => {
-    const dispatch= useDispatch();
-    const navigate= useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     let responseCloudinary = useSelector(state => state.responseCloudinary)
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState('');
@@ -36,31 +36,31 @@ const FormProvider = () => {
 
     React.useEffect(() => {
         console.log(input)
-    },[input])
+    }, [input])
 
     React.useEffect(async () => {
         await setInput({
             ...input,
             logo: responseCloudinary.url,
         })
-    },[errors])
+    }, [errors])
 
     let formValidate = (value) => {
         let errors = {}
-    
+
         if (!value.name) errors.name = 'Name is required'
-        else if(!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(value.name)) errors.name = 'Name is invalid'
-    
-        if(!value.mail) errors.mail = 'Mail is required'
-        else if(!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value.mail)) errors.mail = 'Mail is invalid'
-    
-        if(!value.adress) errors.adress = 'Adress is required'
-        if(!value.phone) errors.phone = 'Phone is required'
-        if(!value.CUIT) errors.CUIT = 'CUIT is required'
-    
+        else if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(value.name)) errors.name = 'Name is invalid'
+
+        if (!value.mail) errors.mail = 'Mail is required'
+        else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value.mail)) errors.mail = 'Mail is invalid'
+
+        if (!value.adress) errors.adress = 'Adress is required'
+        if (!value.phone) errors.phone = 'Phone is required'
+        if (!value.CUIT) errors.CUIT = 'CUIT is required'
+
         return errors
-    } 
-    
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(e);
@@ -77,7 +77,7 @@ const FormProvider = () => {
             ...input,
             [e.target.name]: e.target.value
         }))
-}
+    }
 
     const uploadImage = async (e) => {
         const files = e.target.files;
@@ -92,55 +92,64 @@ const FormProvider = () => {
 
     return (
         <div>
-            <h2>Provider</h2>
+            <h3 className="display-5">Provider create</h3>
+            <hr />
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                <label>Name: </label>
-                <input type="text" name='name' value={input.name} onChange={(e) => handleChange(e)}/>
+                <div className="input-group input-group-lg">
+                    <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Name: </label>
+                    <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="text" name='name' value={input.name} onChange={(e) => handleChange(e)} />
                     {errors.name?.type === 'required' && <p>name is required</p>}
                 </div>
-                <div>
-                <label>E-mail: </label>
-                <input type="mail" name='mail' value={input.mail} onChange={(e) => handleChange(e)}/>
+                <br />
+                <div className="input-group input-group-lg">
+                    <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">E-mail: </label>
+                    <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="mail" name='mail' value={input.mail} onChange={(e) => handleChange(e)} />
                     {errors.mail?.type === 'required' && <p>e-mail is required</p>}
                     {errors.mail?.type === 'pattern' && <p>formato incorrecto</p>}
                 </div>
-                <div>
-                <label>Adress: </label>
-                <input type="text" name='adress' value={input.adress} onChange={(e) => handleChange(e)}/>
+                <br />
+                <div className="input-group input-group-lg">
+                    <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Adress: </label>
+                    <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="text" name='adress' value={input.adress} onChange={(e) => handleChange(e)} />
                     {errors.adress?.type === 'required' && <p>adress is required</p>}
                 </div>
-                <div>
-                <label>Logo: </label>
-                <Container className={style.containerImg}>
-                    <p>Subiendo imagenes</p>
-                    <FormGroup className={style.formGroup}>
-                        <Input 
-                            type="file"
-                            name="file"
-                            placeholder="Logo"
-                            onChange={(e) => uploadImage(e)}
-                            className={style.inputProvider}
-                        />
-                    </FormGroup>
-                </Container>
+                <br />
+                <div className="input-group input-group-lg">
+                    <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Logo: </label>
+
+                    <input
+                        type="file"
+                        name="file"
+                        placeholder="Logo"
+                        onChange={(e) => uploadImage(e)}
+                        className="form-control"
+                        id="inputGroupFile01"
+
+                    />
+
                 </div>
-                <div>
-                <label>Phone: </label>
-                <input type="number" name='phone' value={input.phone} onChange={(e) => handleChange(e)}/>
+                <br />
+                <div className="input-group input-group-lg">
+                    <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Phone: </label>
+                    <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="number" name='phone' value={input.phone} onChange={(e) => handleChange(e)} />
                     {errors.phone?.type === 'required' && <p>phone is required</p>}
                 </div>
-                <div>
-                <label>CUIT: </label>
-                <input type="number" name='CUIT' value={input.CUIT} onChange={(e) => handleChange(e)}/>
+                <br />
+                <div className="input-group input-group-lg">
+                    <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">CUIT: </label>
+                    <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="number" name='CUIT' value={input.CUIT} onChange={(e) => handleChange(e)} />
                     {errors.CUIT?.type === 'required' && <p>CUIT is required</p>}
                 </div>
-                <input type="submit" value="Enviar"/>
+                <br />
+                <div className="d-grid gap-2 col-6 mx-auto">
+                    <input type="submit" value="Save" className="btn btn-primary" />
+                    <Link to="/homeAdmin" ><button className="btn btn-danger">Cancel</button></Link>
+                </div>
             </form>
             <div>
                 {
                     !responseCloudinary ? null : (
-                        <img src={responseCloudinary.secure_url}/>
+                        <img src={responseCloudinary.secure_url} />
                     )
                 }
             </div>
