@@ -5,7 +5,6 @@ import { clearCloudinaryResponse, postCloudinaryPhoto, getProductDetail, putProd
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { Container, FormGroup, Input } from 'reactstrap'
-//import style from './ProductCreate.module.css'
 import { Link, useParams } from "react-router-dom";
 
 
@@ -22,15 +21,11 @@ const FormModifyProduct = (props) => {
 
   useEffect(() => {
     dispatch(getProductDetail(id));
-
   }, [dispatch])
 
 
   const { productDetail } = useSelector((state) => state);
-  console.log('El detalle de product es: ', productDetail)
-  /**/
   const onSubmit = (data, e) => {
-    console.log(data);
     dispatch(putProduct(data, id));
     e.preventDefault();
     e.target.reset();
@@ -56,16 +51,34 @@ const FormModifyProduct = (props) => {
         <div id="Title">
           <label>title: </label>
           <input type="text" defaultValue={productDetail.title}{...register('title', {
-            required: false
           })} />
-          {/* {errors.title?.type === 'required' && <p>Title is required</p>} */}
+        </div>
+        <div id="Cost">
+          <label>Cost: </label>
+          <input type="number" defaultValue={productDetail.cost}{...register('cost', {
+          })} />
+        </div>
+        <div id="Margin">
+          <label>Margin </label>
+          <input type="number" defaultValue={productDetail.margin}{...register('margin', {
+          })} />
+        </div>
+        <div id="Price">
+          <label>Price </label>
+          <input type="number" defaultValue={productDetail.price}{...register('price', {
+            required: true
+          })} />
+          {errors.price?.type === 'required' && <p>price is required</p>}
+        </div>
+        <div id="Stock">
+          <label>Stock </label>
+          <input type="number" defaultValue={productDetail.stock}{...register('stock', {
+          })} />
         </div>
         <div id='Description'>
           <label>Description: </label>
           <textarea type="text" defaultValue={productDetail.description}{...register('description', {
-            required: false
           })} />
-          {/* {errors.description?.type === 'required' && <p>description is required</p>} */}
         </div>
         <div id="Image">
           <label>Image: </label>
@@ -82,24 +95,9 @@ const FormModifyProduct = (props) => {
           </Container>
 
         </div>
-        <div id="Cost">
-          <label>Cost: </label>
-          <input type="number" defaultValue={productDetail.cost}{...register('cost', {
-            required: false
-          })} />
-          {/* {errors.cost?.type === 'required' && <p>cost is required</p>} */}
-        </div>
-        <div id="Margin">
-          <label>Margin </label>
-          <input type="number" defaultValue={productDetail.margin}{...register('margin', {
-            required: false
-          })} />
-          {/* {errors.margin?.type === 'required' && <p>margin is required</p>} */}
-        </div>
         <div id="Status">
           <label>Status: </label>
           <select {...register('disable', {
-            required: false
           })}>
             <option disabled>Status: {productDetail.disable === true ? "Inactive" : "Asset"}</option>
             <option value={false} >Asset</option>

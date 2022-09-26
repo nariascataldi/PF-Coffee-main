@@ -11,7 +11,7 @@ const CardsProduct = () => {
   let dispatch = useDispatch();
 
   let products = useSelector(state => state.products)
-  console.log('los productos son: ', products)
+
   useEffect(() => {
     dispatch(getAllProducts())
   }, [])
