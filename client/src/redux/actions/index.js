@@ -198,7 +198,7 @@ export function resetFillCart(payload) {
   }
 }
 export function postProviders(payload) {
-  return async function (dispatch) {
+  return async function () {
     const info = await axios.post('https://pfcoffee-app.herokuapp.com/providers', payload);
     return info;
   }
