@@ -15,7 +15,7 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
-import ListProducts from '../CRUD/ListProduct.jsx';
+import ListProducts from '../Product/CRUD Product/ListProduct';
 import ListProviders from '../../Provider/CRUD Provider/ListProvider.jsx';
 import Providers from '../../Provider/Providers.jsx';
 

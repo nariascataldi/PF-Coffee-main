@@ -25,10 +25,10 @@ import './styles/normalize.css'
 import './styles/globals.css'
 // import ListProvider from './components/Admin/FormProvider/ListProvider';
 import FormModifyProvider from './components/Provider/CRUD Provider/ModifyProvider';
-import FormModifyProduct from './components/Admin/CRUD/ModifyProduct';
+import FormModifyProduct from './components/Admin/Product/CRUD Product/ModifyProduct';
 import "bootstrap/dist/css/bootstrap.min.css";
 import NotFound from './components/NotFound';
-import ListProducts from './components/Admin/CRUD/ListProduct';
+import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 
 
 function App() {
