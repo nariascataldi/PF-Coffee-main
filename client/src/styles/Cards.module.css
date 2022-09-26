@@ -10,8 +10,9 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 52px;
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 100vw;
 }
 
 .paginadoAdmin {
