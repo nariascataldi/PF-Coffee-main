@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import style from '../../../styles/Admin/ProductCreate.module.css';
 import { Container, FormGroup, Input } from 'reactstrap'
 
-var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
+// var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
 // var testImage = /^[A-Za-z]+$/i;
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
 var testDescription = /^[A-Za-z]+$/i;
@@ -32,7 +32,7 @@ function validate(input) {
   /** description */
   if (!input.description) errors.description = 'Enter a description of the product';
   /** IMAGE */
-  if (!testImage.test(input.image)) errors.image = `Enter the URL of a representative image in jpg or png format`;
+  // if (!testImage.test(input.image)) errors.image = `Enter the URL of a representative image in jpg or png format`;
   /** stock */
   if (!input.stock) errors.stock = `Enter a number of product`;
   /** Diet */
@@ -303,7 +303,7 @@ export default function FormProduct() {
               />
             </FormGroup>
           </Container>
-          {errors.image && <p className={style.p_form}>{errors.image}</p>}
+          {/* {errors.image && <p className={style.p_form}>{errors.image}</p>} */}
         </div>
         <div id="Cantidad" className="mb-3">
           <label
