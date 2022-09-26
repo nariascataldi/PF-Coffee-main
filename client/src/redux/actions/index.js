@@ -28,7 +28,7 @@ export const SET_PRODUCTS = 'SET_PRODUCTS'
 
 export function getAllProducts() {
   return async function (dispatch) {
-    const json = await axios.get('http://localhost:3001/products');
+    const json = await axios.get('https://pfcoffee-app.herokuapp.com/products');
     return dispatch({
       type: GET_ALL_PRODUCTS,
       payload: json.data
@@ -39,7 +39,7 @@ export function getAllProducts() {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`http://localhost:3001/products/${id}`);
+      var json = await axios.get(`https://pfcoffee-app.herokuapp.com/products/${id}`);
       return dispatch({
         type: GET_DETAIL,
         payload: json.data
@@ -64,7 +64,7 @@ export function getByTitle(payload) {
 }
 export function getProductDetail(id) {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/products/${id}`);
+    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/products/${id}`);
     return dispatch({
       type: GET_PRODUCT_DETAIL,
       payload: json.data
@@ -73,7 +73,7 @@ export function getProductDetail(id) {
 };
 export function getAllProviders() {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/providers`);
+    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/providers`);
     return dispatch({
       type: GET_ALL_PROVIDERS,
       payload: json.data
@@ -82,7 +82,7 @@ export function getAllProviders() {
 };
 export function getProviderDetail(id) {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/providers/${id}`);
+    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/providers/${id}`);
     return dispatch({
       type: GET_PROVIDER_DETAIL,
       payload: json.data
@@ -91,7 +91,7 @@ export function getProviderDetail(id) {
 };
 export function getAllCategories() {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/categories`);
+    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/categories`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
       payload: json.data
@@ -122,7 +122,7 @@ export const postCloudinaryPhoto = (postData) => {
 };
 export const createProduct = (postData) => {
   return () => {
-    axios.post('http://localhost:3001/products', postData)
+    axios.post('https://pfcoffee-app.herokuapp.com/products', postData)
       .then(response => {
         console.log(response.data)
       })
@@ -132,7 +132,7 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost:3001/users/registration", payload)
+      const response = await axios.post("https://pfcoffee-app.herokuapp.com/users/registration", payload)
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
       return dispatch({
@@ -199,7 +199,7 @@ export function resetFillCart(payload) {
 }
 export function postProviders(payload) {
   return async function (dispatch) {
-    const info = await axios.post('http://localhost:3001/providers', payload);
+    const info = await axios.post('https://pfcoffee-app.herokuapp.com/providers', payload);
     return info;
   }
 
@@ -216,7 +216,7 @@ export const clearCloudinaryResponse = () => {
 export const postComment = (postData) => {
   return () => {
     console.log('en actions: ', postData);
-    axios.post('http://localhost:3001/comment', postData)
+    axios.post('https://pfcoffee-app.herokuapp.com/comment', postData)
       .then(response => {
         console.log(response.data)
       })
@@ -224,7 +224,7 @@ export const postComment = (postData) => {
 };
 export function loginService(user) {
   return async function (dispatch) {
-    const json = await axios.post('http://localhost:3001/login', user);
+    const json = await axios.post('https://pfcoffee-app.herokuapp.com/login', user);
     return dispatch({
       type: GET_LOGIN,
       payload: json.data
