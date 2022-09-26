@@ -6,6 +6,7 @@ import { resetFillCart } from "../../redux/actions";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import './FillCart.css';
+import {BsFillCartDashFill} from "react-icons/bs";
 
 
 export default function FillCart() {
@@ -16,9 +17,10 @@ export default function FillCart() {
     const dispatch = useDispatch()
 
 
-    function onDelete(id) {
-        dispatch(resetFillCart(id))
+    function onDelete(e) {
+            dispatch(resetFillCart(e.id))
         // console.log(id)
+        
         alert('Product delete')
     }
     // reduceCart
@@ -42,7 +44,7 @@ export default function FillCart() {
         reducedCart.push({ ...found, quantity: quantities[quantitiesKeys[j]] });
     }
 
-    console.log(reducedCart)
+
 
 
 
@@ -68,6 +70,10 @@ export default function FillCart() {
         checkOut(reducedCart)
     }
 
+    let sumaTotal = 0
+    for(let i = 0; i < fillCart.length;i++){
+        sumaTotal = sumaTotal + fillCart[i].price
+    }
 
     useEffect(() => {
 
@@ -76,6 +82,7 @@ export default function FillCart() {
     }, [fillCart]);
 
 
+    
 
     return (
         <div className='fill-cart-wraper'>
@@ -88,6 +95,7 @@ export default function FillCart() {
                     <p>They are {reducedCart.length ? reducedCart.length : 0} products in your cart</p>
                     {reducedCart.length ? reducedCart.map(d => {
                         return (
+                            
                             <div className='card-detail'>
 
                                 <div>
@@ -97,7 +105,8 @@ export default function FillCart() {
                                 <div className='text-detail'>
                                     <div className='card-body'>
                                         <h1 className='card-title'>{d.title}</h1>
-                                        <button className='delete-cart-btn' value={d.id} onClick={() => onDelete(d.id)}> x </button>
+                                        <button className='delete-cart-btn' value={d} onClick={() => onDelete(d)}><BsFillCartDashFill 
+                                            className='cart-delete-icon'/> </button>
 
 
                                     </div>
@@ -121,13 +130,13 @@ export default function FillCart() {
                         <li className='list-group-item fondo'>Products:
                             {reducedCart.length && reducedCart.map((e) => {
                                 return (
-                                    <p>  -{e.title} : $ {e.price}  Unit: {e.quantity}</p>
+                                    <p>  -{e.title} : $ {e.price}  {`( x ${e.quantity} u.)`}</p>
                                 )
                             })}
                         </li>
-                        <li className='list-group-item fondo'>Total: </li>
+                        <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
-                    <button onClick={handleButtonPay}>Pay</button>
+                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button>
                 </div>
             </div>
             <Footer />

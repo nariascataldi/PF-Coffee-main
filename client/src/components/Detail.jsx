@@ -30,7 +30,7 @@ export default function Detail(props){
   const [comment, setComment] = useState("");
 
   const { detail } = useSelector((state) => state);
-  // console.log("detail: ", detail)
+   console.log("detail: ", detail.id)
 
   useEffect(() => {
     setLoad(true);
@@ -94,16 +94,16 @@ export default function Detail(props){
             <div className={styles.text}>
               <div>
                 <h1>{detail.title}</h1>
-                <h3>$ {detail.price}</h3>
+                <h2>$ {detail.price}</h2>
               </div>
-              <ul className={styles.list}>
-                <li className={styles.fondo}>{detail.description}</li>
-                <li className={styles.fondo}>Like: {detail.like}</li>
-                <li className={styles.fondo}>Stock: {detail.stock}</li>
-                <li className={styles.fondo}>
+              <ul className='list-group list-group-flush'>
+                <li className='list-group-item fondo'>{detail.description}</li>
+                <li className='list-group-item fondo'>Like: {detail.like}</li>
+                <li className='list-group-item fondo'>Stock: {detail.stock}</li>
+                <li className='list-group-item fondo'>
                   Diets: {detail.diets?.map((e) => e.name)}
                 </li>
-                <li className={styles.fondo}>
+                <li className='list-group-item fondo'>
                   Categories: {detail.categories?.map((e) => e.name)}
                 </li>
               </ul>
