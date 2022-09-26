@@ -43,7 +43,7 @@ const FormModifyProvider = (props) => {
         e.preventDefault();
         e.target.reset();
         alert('Correctly modify')
-       navigate('/list')
+       navigate('/homeAdmin')
     }
 
     const uploadImage = async (e) => {
