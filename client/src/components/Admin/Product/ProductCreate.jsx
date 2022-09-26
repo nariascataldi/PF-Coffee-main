@@ -58,11 +58,11 @@ export default function FormProduct() {
   }, [dispatch])
 
   useEffect(async () => {
-    await setInput({
+    setInput({
       ...input,
       image: responseCloudinary.url
     })
-    await setErrors(validate({
+    setErrors(validate({
       ...input,
       image: responseCloudinary.url
     }));
@@ -92,7 +92,7 @@ export default function FormProduct() {
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'Provider');
-    await dispatch(postCloudinaryPhoto(data))
+    dispatch(postCloudinaryPhoto(data))
   }
   function handleInputChange(e) {
     setInput({
@@ -112,7 +112,7 @@ export default function FormProduct() {
     }
     else {
       // console.log('handleSubmit ', { input });
-      await dispatch(postProduct(input));
+      dispatch(postProduct(input));
       alert('Product create successfuly!');
       /**Clear */
       setInput({
