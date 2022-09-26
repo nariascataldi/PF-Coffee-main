@@ -36,7 +36,7 @@ export default function Cards({ load }) {
           setCurrentPage={setCurrentPage}
         />
       </div>
-      <div className={styles.cards_wraper}>
+      <div >
         {load ? <Loading /> :
           currentProducts.map(p => {
             return (!p.disable && <Card
@@ -45,8 +45,12 @@ export default function Cards({ load }) {
               name={p.name}
               image={p.image}
               title={p.title}
+              cost={p.cost}
+              margin={p.margin}
               price={p.price}
-              disable={p.disable}
+              description={p.description}
+              disable={p.like}
+              stock={p.stock}
             />)
           })}
       </div>

@@ -92,10 +92,10 @@ router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlew
 
 router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
-//////////////// yooooo
+//////////////// yooooo y Yo también
 
 
-const {Provider} = require('../db')
+const {Provider, Product} = require('../db')
 
 router.put('/edit/:id', async (req,res)=>{
   try{
@@ -124,6 +124,47 @@ router.put('/edit/:id', async (req,res)=>{
     res.send(modifyProvider);
   }catch (err){
     console.log("El error del put es: ", err)
+  }
+})
+router.put('/productsEdit/:id', async (req,res)=>{
+  try{
+    const{id}=req.params;
+    const {
+      title,
+      price,
+      description,
+      image,
+      disable,
+      like,
+      stock,
+      sale_count,
+      cost,
+      margin,
+      diets,
+      categories,
+      providers
+    } = req.body;
+
+    const modifyProduct = await Product.update({
+      title,
+      price,
+      description,
+      image,
+      disable,
+      like,
+      stock,
+      sale_count,
+      cost,
+      margin,
+      diets,
+      categories,
+      providers
+    },
+    {where: {id}}
+    );
+    res.send(modifyProduct);
+  }catch (err){
+    console.log("El error del put es en product: ", err)
   }
 })
 

@@ -21,7 +21,7 @@ const NotFound = () => {
           <div className={styles.imgText}>
             <h3 className={styles.titleNotFound}>Parece que esta página no existe</h3>
             <Link 
-            to="/home" 
+            to="/" 
             className={styles.homeButton}>
               <span>Ir a la página principal</span>
             </Link>
