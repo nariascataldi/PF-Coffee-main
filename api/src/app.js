@@ -12,7 +12,7 @@ require('./db.js');
 const server = express();
 
 //CONFIGURACION CORS
-const whitelist = ["http://localhost:3000"]; //DOMINIOS PERMITIDOS
+const whitelist = ["*"]; //DOMINIOS PERMITIDOS
 
 const corsOptions = {
   origin: function(origin, callback){
