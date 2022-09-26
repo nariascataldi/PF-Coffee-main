@@ -4,7 +4,7 @@ import { getAllProducts } from '../../../redux/actions/index.js';
 
 import SearchBar from '../../SearchBar';
 import Cards from '../CardsAdmin/CardsAdmin';
-import FormProduct from './ProductCreate';
+import FormProduct from './ProductCreate.jsx';
 
 
 export default function ProductAdmin() {
