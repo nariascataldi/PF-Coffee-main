@@ -5,7 +5,7 @@ import { getAllProducts } from '../../../redux/actions/index.js';
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
 import ProductAdmin from '../Product/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
-import CrudApp from '../CRUD/CrudAppProduct.js';
+
 import SearchBar from '../../SearchBar';
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,6 +15,7 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
+import ListProducts from '../CRUD/ListProduct.jsx';
 
 export default function HomeAdmin() {
   //---SearchBar---
@@ -44,7 +45,7 @@ export default function HomeAdmin() {
                 <Cards />
               </Tab.Pane>
               <Tab.Pane eventKey="prodCreate"> <ProductAdmin /> </Tab.Pane>
-              <Tab.Pane eventKey="prodEdit"> <CrudApp />  </Tab.Pane>
+              <Tab.Pane eventKey="prodEdit"> <ListProducts />  </Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
