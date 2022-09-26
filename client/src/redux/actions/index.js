@@ -234,7 +234,7 @@ export function loginService(user) {
 
 export function putProviders(data, id) {
   return async function (dispatch) {
-    axios.put(`/edit/${id}`, data).then(res =>
+    axios.put(`https://pfcoffee-app.herokuapp.com/edit/${id}`, data).then(res =>
       dispatch({
         type: SET_PROVIDERS,
         payload: res.data
@@ -245,7 +245,7 @@ export function putProviders(data, id) {
 
 export function putProduct(data, id) {
   return async function (dispatch) {
-    axios.put(`/productsEdit/${id}`, data).then(res =>
+    axios.put(`https://pfcoffee-app.herokuapp.com/productsEdit/${id}`, data).then(res =>
       dispatch({
         type: SET_PRODUCTS,
         payload: res.data
