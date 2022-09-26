@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { clearCloudinaryResponse, postCloudinaryPhoto, getProductDetail, putProduct } from "../../../redux/actions/index";
+import { clearCloudinaryResponse, postCloudinaryPhoto, getProductDetail, putProduct } from '../../../../redux/actions/index'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 import { Container, FormGroup, Input } from 'reactstrap'

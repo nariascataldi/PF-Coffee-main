@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getAllProducts } from '../../../redux/actions/index';
+import { getAllProducts } from '../../../../redux/actions/index';
 import CardProduct from './CardProduct';
 
 import { useEffect } from 'react';
