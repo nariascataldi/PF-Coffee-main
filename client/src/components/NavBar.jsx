@@ -46,13 +46,13 @@ const NavBar = ({ noFilters }) => {
             <span></span>
           </div>
         </div>
-        <Link to="/home">
+        <Link to="/">
           <img src={logo} alt="img" className={styles.logo} />
         </Link>
       </div>
 
       <li className={styles.nav_item}>
-        <Link to="/home" className={styles.links}>
+        <Link to="/" className={styles.links}>
           Home
         </Link>
       </li>

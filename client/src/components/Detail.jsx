@@ -80,7 +80,7 @@ export default function Detail(props){
         ) : !detail ? null : (
           <div key={detail.id} className={styles.detail}>
             <div>
-              <Link className={styles.back} to="/home">
+              <Link className={styles.back} to="/">
                 <button>&#171;</button>
               </Link>
             </div>
