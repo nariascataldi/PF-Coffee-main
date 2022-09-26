@@ -1,5 +1,6 @@
 .home_container{
     background-color: #E3EFFB;
+    padding-top: 0vh;
 }
 .searchBar {
     display: flex;

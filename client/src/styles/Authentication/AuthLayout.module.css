@@ -1,0 +1,34 @@
+.div {
+    background: var(--primary);
+}
+
+.layout {
+          display: flex;
+          text-align: center;
+          max-width: auto;
+          margin-top: 20px;
+          padding: 20px;
+}
+
+@media (min-width:768px) {
+          .layout {
+                   margin-top: 30px;
+                   justify-content: center;
+          }
+}
+
+.lu {
+          background: var(--primary);
+}
+
+@media (max-width:768px) {
+          .lu {
+                    grid-template-columns: repeat(2, 3fr);
+          }
+}
+
+@media (max-width:1024px) {
+          .lu {
+                    grid-template-columns: repeat(1, 2fr);
+          }
+} 

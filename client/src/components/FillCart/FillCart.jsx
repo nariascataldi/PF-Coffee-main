@@ -46,23 +46,18 @@ export default function FillCart() {
 
 
 
-    // let suma = 0
-    // for (let i = 0; i < fillCart.length; i++) {
-    //     suma = suma + i.price
-    // }
-    // return suma 
 
     //Mercado pago
-    let products = [];
-    let r = reducedCart.map(a => {
-        for (let p in a) {
-            products.push({
-                title: a.title,
-                price: a.price,
-                quantity: a.quantity
+    let ids = [];
+    
+    for (let i = 0; i < reducedCart.length; i++) {   
+         ids.push({
+            id: i.id
             })
-        }
-    })
+        } 
+        
+    
+    console.log(ids)
     async function checkOut() {
         let mercadoPagoRes = await axios.post('http://localhost:3001/checkout', reducedCart);
         console.log(mercadoPagoRes);

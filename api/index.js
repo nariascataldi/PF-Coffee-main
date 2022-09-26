@@ -14,7 +14,7 @@ conn.sync({ force: true }).then(() => {
   pushCategories();
   pushDiets();
   pushUsers();
-  pushProducts();     
+  pushProducts();    
 
   
   server.listen(backPort, () => {

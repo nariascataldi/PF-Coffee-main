@@ -8,8 +8,8 @@ import { getByTitle, setFilterState } from "../redux/actions";
 import logo from "../assets/logo_coffee.png";
 import Menu from "../components/NavBar/Menu";
 
-
 import styles from '../styles/NavBar.module.css'
+import SearchBar from "./SearchBar";
 
 const NavBar = ({ noFilters }) => {
   const { categories, diets, fillCart } = useSelector((state) => state);
@@ -57,19 +57,7 @@ const NavBar = ({ noFilters }) => {
         </Link>
       </li>
 
-      <form className={styles.searchBar} onSubmit={(e) => handleSubmit(e)}>
-        <input
-          className={styles.input_search}
-          type="text"
-          name="title"
-          onChange={(d) => handleOnChange(d)}
-          value={busqueda}
-          placeholder="Search..."
-        />
-        <button className={styles.search_button} type="submit">
-          <BsSearch />
-        </button>
-      </form>
+      <SearchBar/>
 
       
 
@@ -117,8 +105,10 @@ const NavBar = ({ noFilters }) => {
               onChange={handleSelect}
             >
               <option value="">Sort</option>
-              <option value="A-Z">A-Z</option>
-              <option value="Z-A">Z-A</option>
+              <option value="A-Z">Alphabetically: A-Z</option>
+              <option value="Z-A">Alphabetically: Z-A</option>
+              <option value="High">Price: High to Low</option>
+              <option value="Low">Price: Low to High</option>
             </select>
           </div>
         </>

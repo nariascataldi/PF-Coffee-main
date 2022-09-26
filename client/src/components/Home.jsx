@@ -33,7 +33,7 @@ export default function Home(){
     },[dispatch])
     useEffect(()=>{
         dispatch(filter())
-    },[filterBy,allProducts]);
+    },[filterBy, allProducts]);
 
     useEffect(()=>{
         dispatch(getAllCategories());
