@@ -135,11 +135,11 @@ export default function FillCart() {
                         <li className='list-group-item fondo'>Products:
                             {reducedCart.length && reducedCart.map((e) => {
                                 return (
-                                    <p>  -{e.title} : $ {e.price}  {`( units: ${e.quantity})`}</p>
+                                    <p>  -{e.title} : $ {e.price}  {`( x ${e.quantity} u.)`}</p>
                                 )
                             })}
                         </li>
-                        <li className='list-group-item fondo'>Total to pay: ${sumaTotal} </li>
+                        <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
                     <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button>
                 </div>
