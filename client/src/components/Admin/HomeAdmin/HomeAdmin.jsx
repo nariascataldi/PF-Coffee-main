@@ -17,7 +17,8 @@ import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 import ListProducts from '../Product/CRUD Product/ListProduct';
 import ListProviders from '../../Provider/CRUD Provider/ListProvider.jsx';
-import Providers from '../../Provider/Providers.jsx';
+import FormProvider from '../../Provider/CRUD Provider/PrividerCreate';
+// import Providers from '../../Provider/Providers.jsx';
 
 
 export default function HomeAdmin() {
@@ -39,7 +40,8 @@ export default function HomeAdmin() {
               </Nav.Item>
               <Nav.Item> <Nav.Link eventKey="prodCreate">Create Product</Nav.Link> </Nav.Item>
               <Nav.Item> <Nav.Link eventKey="prodEdit">Edit Product</Nav.Link> </Nav.Item>
-              <Nav.Item> <Nav.Link eventKey="provList">Provider</Nav.Link> </Nav.Item>
+              {/* <Nav.Item> <Nav.Link eventKey="provList">Provider</Nav.Link> </Nav.Item> */}
+              <Nav.Item> <Nav.Link eventKey="addProvider">Crear Provider</Nav.Link> </Nav.Item>
               <Nav.Item> <Nav.Link eventKey="provEdit">Edit Provider</Nav.Link> </Nav.Item>
             </Nav>
           </Col>
@@ -51,7 +53,8 @@ export default function HomeAdmin() {
               </Tab.Pane>
               <Tab.Pane eventKey="prodCreate"> <ProductAdmin /> </Tab.Pane>
               <Tab.Pane eventKey="prodEdit"> <ListProducts />  </Tab.Pane>
-              <Tab.Pane eventKey="provList"> <Providers />  </Tab.Pane>
+              {/* <Tab.Pane eventKey="provList"> <Providers />  </Tab.Pane> */}
+              <Tab.Pane eventKey="addProvider"> <FormProvider />  </Tab.Pane>
               <Tab.Pane eventKey="provEdit"> <ListProviders />  </Tab.Pane>
             </Tab.Content>
           </Col>
