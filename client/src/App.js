@@ -23,7 +23,7 @@ import ConfirmAccount from './components/Authentication/Pages/ConfirmAccount';
 
 import './styles/normalize.css'
 import './styles/globals.css'
-import ListProvider from './components/Admin/FormProvider/ListProvider';
+// import ListProvider from './components/Admin/FormProvider/ListProvider';
 import ModifyProvider from './components/Admin/FormProvider/ModifyProvider'
 import FormModifyProduct from './components/Admin/CRUD/ModifyProduct';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -53,7 +53,7 @@ function App() {
         <Route exact path='/modProduct/:id' element={<FormModifyProduct />} />
 
         <Route exact path='/listproductedit' element={<ListProducts />} />
-        <Route exact path='/list' element={<ListProvider />} />
+        {/* <Route exact path='/list' element={<ListProvider />} /> */}
         {/* <Route exact path='/crud/product' element={<CrudApp />} /> */}
         <Route exact path="/providerCreate" element={<ProviderCreate />} />
         <Route exact path="/providers" element={<Providers />} />
