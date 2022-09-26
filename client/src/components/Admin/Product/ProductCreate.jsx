@@ -111,7 +111,7 @@ export default function FormProduct() {
       // console.log('handleSubmit ', { errors });
     }
     else {
-      // console.log('handleSubmit ', { input });
+      console.log('handleSubmit ', { input });
       dispatch(postProduct(input));
       alert('Product create successfuly!');
       /**Clear */
@@ -306,7 +306,7 @@ export default function FormProduct() {
         <div id="Cantidad" className="mb-3">
           <label
             className="form-label"
-          >Amount</label>
+          >Stock</label>
           <input
             id="stock"
             className={style.form_control}
@@ -320,19 +320,19 @@ export default function FormProduct() {
           />
           {errors.stock && <p className={style.p_form}>{errors.stock}</p>}
         </div>
-        <div id="Desactivo" className="form-check form-switch">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            role="switch"
-            id="flexSwitchCheckDefault"
-            value={input.disable}
+        {input.stock > 0 && <div id="Status">
+          <label>Status: </label>
+          <select
             onChange={e => handleInputChange(e)}
-          />
-          <label
-            className="form-check-label"
-          >Disable</label>
-        </div>
+            name="disable"
+          >
+            <option
+              disabled>Status: </option>
+            <option value={false} >Asset</option>
+            <option
+              value={true} >Inactive</option>
+          </select>
+        </div>}
         <div className={style.diet}>
           <select
             onChange={e => handleSelectDiets(e)}
@@ -368,8 +368,6 @@ export default function FormProduct() {
             }
           </div>
         </div>
-
-
         <div className={style.providers}>
           <select
             onChange={e => handleSelectProv(e)}
