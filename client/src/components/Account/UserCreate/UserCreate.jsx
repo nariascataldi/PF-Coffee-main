@@ -11,8 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import style from '../../../styles/UserCreate.module.css';
 
 
-// https://reactdatepicker.com/
-
 const FormularioUsuario = () => {
   const dispatch = useDispatch();
   const [birthday, setBirthday] = useState(null);

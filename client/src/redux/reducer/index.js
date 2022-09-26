@@ -8,6 +8,7 @@ import {
   GET_DETAIL,
   GET_PROVIDER_DETAIL,
   POST_USER,
+  CONFIRM_ID,
   POST_PRODUCT,
   SET_FILTER_STATE,
   FILTER,
@@ -18,8 +19,7 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
-  fillCart,
-  SET_PROVIDERS
+  // fillCart
 } from '../actions'
 
 const initialState = {
@@ -33,6 +33,7 @@ const initialState = {
   detail: [],
   fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
+  token: [],
   filterBy: {
     title: '',
     category: '',
@@ -101,7 +102,13 @@ const rootReducer = (state = initialState, action) => {
       }
     case POST_USER:
       return {
-        ...state
+        ...state,
+        token: action.payload,
+      }
+    case CONFIRM_ID:
+      return{
+        ...state,
+        token: action.payload,
       }
     case SET_FILTER_STATE:
       return {
@@ -123,9 +130,9 @@ const rootReducer = (state = initialState, action) => {
       const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
         return e.diets.map(d => d.name).includes(state.filterBy.diet)
       })
-      const sort = state.filterBy.sort === ''? filterDiet : state.filterBy.sort=== 'Z-A' ? filterDiet.sort((a,b)=>{
+      const sort = state.filterBy.sort === '' ? filterDiet : state.filterBy.sort=== 'Z-A' ? [...filterDiet].sort((a,b)=>{
         let A = a.title.toLowerCase();
-                let B = b.title.toLowerCase();
+        let B = b.title.toLowerCase();
                 if(A === B) {
                     return 0; 
                   }
@@ -135,7 +142,7 @@ const rootReducer = (state = initialState, action) => {
                   if(A < B) {
                     return 1;
                   }
-        }) : state.filterBy.sort==='A-Z' && filterDiet.sort((a,b)=>{
+        }) : state.filterBy.sort==='A-Z' ? [...filterDiet].sort((a,b)=>{
                 let A = a.title.toLowerCase();
                 let B = b.title.toLowerCase();
                   if(A === B) {
@@ -147,19 +154,27 @@ const rootReducer = (state = initialState, action) => {
                   if(A > B) {
                     return 1;
                   }
-              })
+        }) : state.filterBy.sort==='High' ? [...filterDiet].sort((a,b)=>{
+              let A = a.price
+              let B = b.price
+                return B - A
+        }) : state.filterBy.sort==='Low' && [...filterDiet].sort((a,b)=>{
+              let A = a.price
+              let B = b.price
+                return A - B
+        })
       return {
         ...state,
-        products: [...sort]
+        products: sort
       }
     case FILL_CART :
       return {
         ...state,
-        fillCart: [...state.fillCart,...action.payload]
+        fillCart: [...state.fillCart, ...action.payload]
       }
     case RESET_FILL_CART : 
     const deleteCart = state.fillCart.filter((e)=>{ 
-      return e.id != action.payload
+      return e.id !== action.payload
     })
       
       return {
@@ -185,12 +200,6 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state
       }
-      
-      case SET_PROVIDERS :
-       
-       return{  
-          ...state
-        }
 
     default:
       return { ...state }
