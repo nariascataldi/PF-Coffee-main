@@ -59,7 +59,7 @@ export default function FillCart() {
     
     console.log(ids)
     async function checkOut() {
-        let mercadoPagoRes = await axios.post('http://localhost:3001/checkout', reducedCart);
+        let mercadoPagoRes = await axios.post('/checkout', reducedCart);
         console.log(mercadoPagoRes);
         window.open(mercadoPagoRes.data) 
         //window.location.href = mercadoPagoRes.data;
