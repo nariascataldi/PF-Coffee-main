@@ -146,7 +146,7 @@ export const postUser = (payload) =>
 
 export const confirmId = id => async dispatch => {
   try {
-    const response = await axios.get(`/confirm/${id}`)
+    const response = await axios.get(`https://pfcoffee-app.herokuapp.com/confirm/${id}`)
     return dispatch({
       type: CONFIRM_ID,
       payload: response.data
@@ -160,7 +160,7 @@ export const confirmId = id => async dispatch => {
 export function postProduct(payload) {
   return async function () {
     console.log('actions postProduct ', { payload });
-    const response = await axios.post('/products', payload);
+    const response = await axios.post('https://pfcoffee-app.herokuapp.com/products', payload);
     console.log({ response });
     return response;
   }
