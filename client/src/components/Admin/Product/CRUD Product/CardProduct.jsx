@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Figure from 'react-bootstrap/Figure'
 
 
-
 const CardProduct = ({
   id,
   title,
@@ -65,7 +64,9 @@ const CardProduct = ({
                 <td><p>Asset</p></td> :
                 <td><p>Inactive</p></td>
             }
-            <td><Link to={`/modProduct/${id}`}><button type="button" className="btn btn-outline-primary">modify</button></Link></td>
+            <td className="centrado"><Link to={`/modProduct/${id}`}>
+              <button type="button" className="btn btn-outline-primary" >modify</button>
+            </Link></td>
           </tr>
 
         </tbody>
