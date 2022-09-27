@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import styles from '../../../styles/Authentication/Login.module.css'
+import styles from "../../styles/Authentication/Login.module.css";
 
 const Login = () => {
   return (
@@ -8,7 +8,7 @@ const Login = () => {
       <h1 className={styles.login}>
         <b>Inicia sesion </b>
       </h1>
-
+z
       <form className={styles.form}>
         <div className={styles.form_div}>
           <label className={styles.label} htmlFor="email">
@@ -38,11 +38,11 @@ const Login = () => {
       </form>
 
       <nav className={styles.nav}>
-        <Link className={styles.link} to="register">
+        <Link className={styles.link} to="/register">
           ¿Aún no tienes cuenta? Regístrate
         </Link>
 
-        <Link className={styles.link} to="forget-password">
+        <Link className={styles.link} to="/forget-password">
           ¿Olvidaste tu password?
         </Link>
       </nav>
