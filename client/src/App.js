@@ -36,7 +36,7 @@ function App() {
     <div>
       <Routes>
         {/* <Route exact path='/' element={<LandingPage />} /> */}
-        <Route path="register" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />
         {/* <Route index element={<Login />} /> */}
         <Route path="/form" element={<Perfil />} />
