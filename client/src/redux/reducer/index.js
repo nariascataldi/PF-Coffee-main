@@ -173,13 +173,13 @@ const rootReducer = (state = initialState, action) => {
         fillCart: [...state.fillCart, ...action.payload]
       }
     case RESET_FILL_CART : 
-    const deleteCart = state.fillCart.filter((e)=>{ 
-      return e.id !== action.payload
-    })
-      
+    const indexCart = state.fillCart.findIndex( (element) => element.id === action.payload);
+    let copyCart = [...state.fillCart];
+    copyCart.splice(indexCart,1)
+  
       return {
         ...state,
-        fillCart: deleteCart
+        fillCart: copyCart
       }
     case POST_PROVIDERS :
       return{

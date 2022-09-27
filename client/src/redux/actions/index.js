@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { URL } from '../../config/Const';
 // import { json } from 'react-router-dom';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
@@ -16,17 +17,19 @@ export const FILTER = 'FILTER'
 export const POST_PROVIDERS = 'POST_PROVIDERS'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 export const FILL_CART = 'FILL_CART'
-export const RESET_FILL_CART ='RESET_FILL_CART'
+export const RESET_FILL_CART = 'RESET_FILL_CART'
 export const GET_CLOUDINARY_RESPONSE = 'GET_CLOUDINARY_RESPONSE'
 export const CLEAR_CLOUDINARY_RESPONSE = 'CLEAR_CLOUDINARY_RESPONSE'
 export const POST_COMMENT = 'POST_COMMENT'
 export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
+export const SET_PROVIDERS = 'SET_PROVIDERS'
+export const SET_PRODUCTS = 'SET_PRODUCTS'
 
 
 export function getAllProducts() {
   return async function (dispatch) {
-    const json = await axios.get('http://localhost:3001/products');
+    const json = await axios.get(URL + '/products');
     return dispatch({
       type: GET_ALL_PRODUCTS,
       payload: json.data
@@ -37,7 +40,7 @@ export function getAllProducts() {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`http://localhost:3001/products/${id}`);
+      var json = await axios.get(URL + `/products/${id}`);
       return dispatch({
         type: GET_DETAIL,
         payload: json.data
@@ -48,7 +51,7 @@ export function getDetail(id) {
     }
   }
 };
-export function clearDetail () {
+export function clearDetail() {
   return {
     type: CLEAR_DETAIL
   }
@@ -62,7 +65,7 @@ export function getByTitle(payload) {
 }
 export function getProductDetail(id) {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/products/${id}`);
+    const json = await axios.get(URL + `/products/${id}`);
     return dispatch({
       type: GET_PRODUCT_DETAIL,
       payload: json.data
@@ -71,7 +74,7 @@ export function getProductDetail(id) {
 };
 export function getAllProviders() {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/providers`);
+    const json = await axios.get(URL + `/providers`);
     return dispatch({
       type: GET_ALL_PROVIDERS,
       payload: json.data
@@ -80,7 +83,7 @@ export function getAllProviders() {
 };
 export function getProviderDetail(id) {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/providers/${id}`);
+    const json = await axios.get(URL + `/providers/${id}`);
     return dispatch({
       type: GET_PROVIDER_DETAIL,
       payload: json.data
@@ -89,7 +92,7 @@ export function getProviderDetail(id) {
 };
 export function getAllCategories() {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/categories`);
+    const json = await axios.get(URL + `/categories`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
       payload: json.data
@@ -99,7 +102,7 @@ export function getAllCategories() {
 export function getAllDiets() {
   return async function (dispatch) {
     try {
-      var info = await axios.get('/diets', {}); 
+      var info = await axios.get(URL + '/diets', {});
       return dispatch({
         type: GET_ALL_DIETS,
         payload: info.data
@@ -120,45 +123,45 @@ export const postCloudinaryPhoto = (postData) => {
 };
 export const createProduct = (postData) => {
   return () => {
-    axios.post('http://localhost:3001/products', postData)
+    axios.post(URL + '/products', postData)
       .then(response => {
         console.log(response.data)
       })
   }
 };
 
-export const postUser = (payload) => 
-async (dispatch)=> {
-  try {
-    const response = await axios.post("http://localhost:3001/users/registration", payload)
-    // .then(response => console.log(response))
-    // .catch(error => console.log(error))
-    return dispatch({
-      type: POST_USER,
-      payload: response.data,
-    })
-  } catch (error) {
-    console.log(error)
-  }
-};
+export const postUser = (payload) =>
+  async (dispatch) => {
+    try {
+      const response = await axios.post("https://pfcoffee-app.herokuapp.com/users/registration", payload)
+      // .then(response => console.log(response))
+      // .catch(error => console.log(error))
+      return dispatch({
+        type: POST_USER,
+        payload: response.data,
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
 export const confirmId = id => async dispatch => {
   try {
-    const response = await axios.get(`/confirm/${id}`)
-    return dispatch ({
+    const response = await axios.get(URL + `/confirm/${id}`)
+    return dispatch({
       type: CONFIRM_ID,
       payload: response.data
     })
   } catch (error) {
     console.log(error)
-    
+
   }
 }
 
 export function postProduct(payload) {
   return async function () {
     console.log('actions postProduct ', { payload });
-    const response = await axios.post('/products', payload);
+    const response = await axios.post(URL + '/products', payload);
     console.log({ response });
     return response;
   }
@@ -176,37 +179,37 @@ export function filter() {
     type: FILTER,
   }
 };
-export function setFillCart(payload){
+export function setFillCart(payload) {
   return {
-    type: FILL_CART ,
+    type: FILL_CART,
     payload
   }
 }
-export function fillCartLocalS(payload){
-  localStorage.setItem('productCart',JSON.stringify(payload))
+export function fillCartLocalS(payload) {
+  localStorage.setItem('productCart', JSON.stringify(payload))
   return {
-    type: FILL_CART_LOCAL_S ,
+    type: FILL_CART_LOCAL_S,
     payload
   }
 }
-export function resetFillCart (payload) {
-  return{
-      type:RESET_FILL_CART,
-      payload
+export function resetFillCart(payload) {
+  return {
+    type: RESET_FILL_CART,
+    payload
   }
 }
-export function postProviders(payload){
-  return async function(dispatch){
-    const info= await axios.post('http://localhost:3001/providers', payload);
+export function postProviders(payload) {
+  return async function () {
+    const info = await axios.post(URL + '/providers', payload);
     return info;
   }
 
 }
 export const clearCloudinaryResponse = () => {
   return async function (dispatch) {
-      dispatch({
-          type: CLEAR_CLOUDINARY_RESPONSE
-      })
+    dispatch({
+      type: CLEAR_CLOUDINARY_RESPONSE
+    })
   };
 };
 
@@ -214,7 +217,7 @@ export const clearCloudinaryResponse = () => {
 export const postComment = (postData) => {
   return () => {
     console.log('en actions: ', postData);
-    axios.post('http://localhost:3001/comment', postData)
+    axios.post(URL + '/comment', postData)
       .then(response => {
         console.log(response.data)
       })
@@ -222,10 +225,32 @@ export const postComment = (postData) => {
 };
 export function loginService(user) {
   return async function (dispatch) {
-    const json = await axios.post('http://localhost:3001/login', user);
+    const json = await axios.post(URL + '/login', user);
     return dispatch({
       type: GET_LOGIN,
       payload: json.data
     })
   }
 };
+
+export function putProviders(data, id) {
+  return async function (dispatch) {
+    axios.put(URL + `/edit/${id}`, data).then(res =>
+      dispatch({
+        type: SET_PROVIDERS,
+        payload: res.data
+      })
+    );
+  }
+}
+
+export function putProduct(data, id) {
+  return async function (dispatch) {
+    axios.put(URL + `/productsEdit/${id}`, data).then(res =>
+      dispatch({
+        type: SET_PRODUCTS,
+        payload: res.data
+      })
+    );
+  }
+}

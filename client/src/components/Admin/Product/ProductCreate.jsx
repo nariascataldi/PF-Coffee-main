@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import style from '../../../styles/Admin/ProductCreate.module.css';
 import { Container, FormGroup, Input } from 'reactstrap'
 
-var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
+// var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
 // var testImage = /^[A-Za-z]+$/i;
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
 var testDescription = /^[A-Za-z]+$/i;
@@ -32,7 +32,7 @@ function validate(input) {
   /** description */
   if (!input.description) errors.description = 'Enter a description of the product';
   /** IMAGE */
-  if (!testImage.test(input.image)) errors.image = `Enter the URL of a representative image in jpg or png format`;
+  // if (!testImage.test(input.image)) errors.image = `Enter the URL of a representative image in jpg or png format`;
   /** stock */
   if (!input.stock) errors.stock = `Enter a number of product`;
   /** Diet */
@@ -44,7 +44,9 @@ function validate(input) {
 export default function FormProduct() {
   const dispatch = useDispatch();
   var diet = useSelector((state) => state.diets);
+  console.log({diet});
   var provider = useSelector((state) => state.providers);
+  console.log({provider})
   var categories = useSelector((state) => state.categories);
   let responseCloudinary = useSelector(state => state.responseCloudinary)
 
@@ -58,11 +60,11 @@ export default function FormProduct() {
   }, [dispatch])
 
   useEffect(async () => {
-    await setInput({
+    setInput({
       ...input,
       image: responseCloudinary.url
     })
-    await setErrors(validate({
+    setErrors(validate({
       ...input,
       image: responseCloudinary.url
     }));
@@ -92,7 +94,7 @@ export default function FormProduct() {
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'Provider');
-    await dispatch(postCloudinaryPhoto(data))
+    dispatch(postCloudinaryPhoto(data))
   }
   function handleInputChange(e) {
     setInput({
@@ -111,8 +113,8 @@ export default function FormProduct() {
       // console.log('handleSubmit ', { errors });
     }
     else {
-      // console.log('handleSubmit ', { input });
-      await dispatch(postProduct(input));
+      console.log('handleSubmit ', { input });
+      dispatch(postProduct(input));
       alert('Product create successfuly!');
       /**Clear */
       setInput({
@@ -301,12 +303,12 @@ export default function FormProduct() {
               />
             </FormGroup>
           </Container>
-          {errors.image && <p className={style.p_form}>{errors.image}</p>}
+          {/* {errors.image && <p className={style.p_form}>{errors.image}</p>} */}
         </div>
         <div id="Cantidad" className="mb-3">
           <label
             className="form-label"
-          >Amount</label>
+          >Stock</label>
           <input
             id="stock"
             className={style.form_control}
@@ -320,19 +322,19 @@ export default function FormProduct() {
           />
           {errors.stock && <p className={style.p_form}>{errors.stock}</p>}
         </div>
-        <div id="Desactivo" className="form-check form-switch">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            role="switch"
-            id="flexSwitchCheckDefault"
-            value={input.disable}
+        {input.stock > 0 && <div id="Status">
+          <label>Status: </label>
+          <select
             onChange={e => handleInputChange(e)}
-          />
-          <label
-            className="form-check-label"
-          >Disable</label>
-        </div>
+            name="disable"
+          >
+            <option
+              disabled>Status: </option>
+            <option value={false} >Asset</option>
+            <option
+              value={true} >Inactive</option>
+          </select>
+        </div>}
         <div className={style.diet}>
           <select
             onChange={e => handleSelectDiets(e)}
@@ -344,14 +346,14 @@ export default function FormProduct() {
               disabled
               className={style.seleOption}>Choose diet</option>
             {diet &&
-              diet.map((diet) => diet.name && (
+              diet.map((d) => d.name && (
                 <option
-                  key={diet.name}
-                  value={diet.name}
+                  key={d.name}
+                  value={d.name}
 
                   className={style.seleOption}
                 >
-                  {diet.name}
+                  {d.name}
                 </option>
               ))
             }
@@ -368,8 +370,6 @@ export default function FormProduct() {
             }
           </div>
         </div>
-
-
         <div className={style.providers}>
           <select
             onChange={e => handleSelectProv(e)}
