@@ -25,10 +25,16 @@ export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 
-
+//--------Comentar por el puerto a no usar------------------------
+//DB
+const URL = 'http://localhost:3001';
+//HEROKU
+// const URL = 'https://pfcoffee-app.herokuapp.com';
+console.log(URL === 'http://localhost:3001' ? "DB" : "HEROKU");
+//----------------------------------------------------------------
 export function getAllProducts() {
   return async function (dispatch) {
-    const json = await axios.get('https://pfcoffee-app.herokuapp.com/products');
+    const json = await axios.get(URL + '/products');
     return dispatch({
       type: GET_ALL_PRODUCTS,
       payload: json.data
@@ -39,7 +45,7 @@ export function getAllProducts() {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`https://pfcoffee-app.herokuapp.com/products/${id}`);
+      var json = await axios.get(URL + `/products/${id}`);
       return dispatch({
         type: GET_DETAIL,
         payload: json.data
@@ -64,7 +70,7 @@ export function getByTitle(payload) {
 }
 export function getProductDetail(id) {
   return async function (dispatch) {
-    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/products/${id}`);
+    const json = await axios.get(URL + `/products/${id}`);
     return dispatch({
       type: GET_PRODUCT_DETAIL,
       payload: json.data
@@ -73,7 +79,7 @@ export function getProductDetail(id) {
 };
 export function getAllProviders() {
   return async function (dispatch) {
-    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/providers`);
+    const json = await axios.get(URL + `/providers`);
     return dispatch({
       type: GET_ALL_PROVIDERS,
       payload: json.data
@@ -82,7 +88,7 @@ export function getAllProviders() {
 };
 export function getProviderDetail(id) {
   return async function (dispatch) {
-    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/providers/${id}`);
+    const json = await axios.get(URL + `/providers/${id}`);
     return dispatch({
       type: GET_PROVIDER_DETAIL,
       payload: json.data
@@ -91,7 +97,7 @@ export function getProviderDetail(id) {
 };
 export function getAllCategories() {
   return async function (dispatch) {
-    const json = await axios.get(`https://pfcoffee-app.herokuapp.com/categories`);
+    const json = await axios.get(URL + `/categories`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
       payload: json.data
@@ -101,7 +107,7 @@ export function getAllCategories() {
 export function getAllDiets() {
   return async function (dispatch) {
     try {
-      var info = await axios.get('https://pfcoffee-app.herokuapp.com/diets', {});
+      var info = await axios.get(URL + '/diets', {});
       return dispatch({
         type: GET_ALL_DIETS,
         payload: info.data
@@ -122,7 +128,7 @@ export const postCloudinaryPhoto = (postData) => {
 };
 export const createProduct = (postData) => {
   return () => {
-    axios.post('https://pfcoffee-app.herokuapp.com/products', postData)
+    axios.post(URL + '/products', postData)
       .then(response => {
         console.log(response.data)
       })
@@ -146,7 +152,7 @@ export const postUser = (payload) =>
 
 export const confirmId = id => async dispatch => {
   try {
-    const response = await axios.get(`https://pfcoffee-app.herokuapp.com/confirm/${id}`)
+    const response = await axios.get(URL + `/confirm/${id}`)
     return dispatch({
       type: CONFIRM_ID,
       payload: response.data
@@ -160,7 +166,7 @@ export const confirmId = id => async dispatch => {
 export function postProduct(payload) {
   return async function () {
     console.log('actions postProduct ', { payload });
-    const response = await axios.post('https://pfcoffee-app.herokuapp.com/products', payload);
+    const response = await axios.post(URL + '/products', payload);
     console.log({ response });
     return response;
   }
@@ -199,7 +205,7 @@ export function resetFillCart(payload) {
 }
 export function postProviders(payload) {
   return async function () {
-    const info = await axios.post('https://pfcoffee-app.herokuapp.com/providers', payload);
+    const info = await axios.post(URL + '/providers', payload);
     return info;
   }
 
@@ -216,7 +222,7 @@ export const clearCloudinaryResponse = () => {
 export const postComment = (postData) => {
   return () => {
     console.log('en actions: ', postData);
-    axios.post('https://pfcoffee-app.herokuapp.com/comment', postData)
+    axios.post(URL + '/comment', postData)
       .then(response => {
         console.log(response.data)
       })
@@ -224,7 +230,7 @@ export const postComment = (postData) => {
 };
 export function loginService(user) {
   return async function (dispatch) {
-    const json = await axios.post('https://pfcoffee-app.herokuapp.com/login', user);
+    const json = await axios.post(URL + '/login', user);
     return dispatch({
       type: GET_LOGIN,
       payload: json.data
@@ -234,7 +240,7 @@ export function loginService(user) {
 
 export function putProviders(data, id) {
   return async function (dispatch) {
-    axios.put(`https://pfcoffee-app.herokuapp.com/edit/${id}`, data).then(res =>
+    axios.put(URL + `/edit/${id}`, data).then(res =>
       dispatch({
         type: SET_PROVIDERS,
         payload: res.data
@@ -245,7 +251,7 @@ export function putProviders(data, id) {
 
 export function putProduct(data, id) {
   return async function (dispatch) {
-    axios.put(`https://pfcoffee-app.herokuapp.com/productsEdit/${id}`, data).then(res =>
+    axios.put(URL + `/productsEdit/${id}`, data).then(res =>
       dispatch({
         type: SET_PRODUCTS,
         payload: res.data
