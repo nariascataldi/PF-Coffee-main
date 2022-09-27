@@ -6,7 +6,7 @@ const emailRegister = require('../helper/emails.js');
 
 const userRegist = async (req, res) => {
   let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
-  console.log("body", req.body.mail);
+  console.log("body", req.body);
 
   const prevUser = await User.findOne({ where: { mail: mail } });
 
@@ -71,20 +71,11 @@ const userLogin = async(req,res)=>{
     if (!(user && passwordContext)) {
        return res.status(401).json({error:'invalid user or password'})
     };
-    const userForToken = {
-        username: user.mail,
-        id: user.id
-    };
-    const token = jwt.sign(
-        userForToken, 
-        SECRET,
-        {expiresIn: 60 * 60 * 24 * 7}
-    );
-
+    
     res.send({
         username: user.mail,
         name: user.name,
-        token
+        token: user.token
     })
 };
 
