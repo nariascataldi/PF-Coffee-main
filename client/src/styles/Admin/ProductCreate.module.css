@@ -1,0 +1,71 @@
+.p_form {
+  /* display: none; */
+  color: orangered;
+  font-size: large;
+}
+
+#submit {
+  background-color: #DD6873;
+  color: white;
+  border-color: #DD6873;
+  border-radius: 3px;
+  margin: 6px;
+  box-shadow: 5px 5px 10px black;
+  font-size: 2rem;
+}
+
+.seleSelect {
+  background: #fceef0;
+  margin: 5px 0;
+  padding: 5px 0;
+  font-size: large;
+  color: rgb(14, 3, 61);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.seleOption {
+  color: black;
+  background-color: aliceblue;
+}
+
+.selecteddiets {
+  display: contents;
+  font-size: large;
+  padding: 10px;
+  color: blanchedalmond;
+}
+
+.selectedItems {
+  display: flex;
+  background-color: rgba(244, 223, 121, 0.5);
+  border-radius: 10px;
+  width: 20vw;
+  margin: 2px;
+  padding: 2px;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.form_control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem rem 0.75rem;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.upload {
+  background-color: #fceef0;
+  font-size: 1.5rem;
+  width: 100%;
+}

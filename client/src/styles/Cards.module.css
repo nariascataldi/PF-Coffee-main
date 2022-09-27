@@ -1,0 +1,21 @@
+.not_found {
+  padding-top: 120px;
+  padding-left: 260px;
+  padding-bottom: 250px;
+}
+
+.cards_wraper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 52px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 100vw;
+}
+
+.paginadoAdmin {
+  margin-top: 0;
+  padding-top: 0px;
+}

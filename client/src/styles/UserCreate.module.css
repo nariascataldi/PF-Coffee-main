@@ -1,0 +1,106 @@
+.container {
+  padding-top: 5px;
+  border: 1px solid white;
+  border-radius: 50px;
+  width: 90vh;
+  margin-left: 3px;
+  overflow: hidden;
+}
+
+.created{
+  
+   height: auto;
+    margin: 50px 50px 50px 50px;
+    color: #0c0c0c; padding: 30px;
+    margin-top: 2rem;
+}
+
+.title{
+   display: flex;
+   justify-content: center;
+   margin-top: -40px;
+ 
+}
+
+.label{
+  font-weight: bold;
+}
+
+.input_form{
+  border: 2px solid #ccc;
+  background: rgba(244, 224, 121, 0.268); padding: .8em;
+  border-radius: 10px;
+  border: none;
+  filter: drop-shadow(0 10px 10px rgb(0 0 0 / 0.15)); 
+  border-bottom: 1.5px solid #7c7b7b;
+  margin: 5px; 
+  margin-left: 20px;
+}
+
+.p_form {
+  /* display: none; */
+  color: orangered;
+  font-size: large;
+}
+
+.tempSelect {
+  background: rgba(244, 223, 121, 0.5);
+  margin: 5px 0;
+  padding: 5px 0;
+  font-size: large;
+  color: rgb(14, 3, 61);
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.tempOption {
+  color: black;
+}
+
+.selectedItems {
+ display: flex;
+ background-color: rgba(244, 223, 121, 0.5);
+ border-radius: 10px;
+ width: 20vw;
+ margin: 2px;
+ padding: 2px;
+ justify-content: space-around;
+ flex-wrap: nowrap;
+ flex-direction: row;
+}
+
+.divtemps {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.selectedtemps {
+  display: contents;
+  font-size: large;
+  padding: 10px;
+  color: blanchedalmond;
+}
+
+.createButton {
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  font-size: large;
+  border-radius: 5px;
+  border: 2px solid rgb(212, 79, 79);
+  background-color: white;
+  color: rgb(212, 79, 79);
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.createButton:hover {
+  opacity: 1;
+  cursor: pointer;
+  background-color: #e1818b;
+  color: #E3EFFB
+}
