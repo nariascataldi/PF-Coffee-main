@@ -31,21 +31,22 @@ export default function Cards({ load }) {
 
   return (
     <div>
-        <Paginated
-          productsPerPage={productsPerPage}
-          products={products}
-          paginated={paginated}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-     
+      <Paginated
+        productsPerPage={productsPerPage}
+        products={products}
+        paginated={paginated}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+
 
       <div className={styles.cards_wraper}>
         {load ? (
           <Loading />
-        ) : ( 
+        ) : (
           currentProducts.map((p) => {
-            return (!p.disable &&
+            console.log('48 Cards ', p.stock)
+            return (!p.disable && p.stock > 0 &&
               <Card
                 key={p.id}
                 id={p.id}
