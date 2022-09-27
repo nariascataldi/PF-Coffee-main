@@ -1,5 +1,5 @@
 const { Router } = require('express');
-// const middlewareAuth = require('../middlewares/middlewareAuth');
+const middlewareAuth = require('../middlewares/middlewareAuth');
 // const middlewareAdmin = require('../middlewares/middlewareAdmin');
 
 
@@ -24,8 +24,14 @@ const { productsGet,
         userIDget  } = require('../controllers');
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
-const { userRegist,
-  userLogin } = require('../controllers/authControllers.js');
+const { 
+        userRegist,
+        userLogin,
+        confirm,
+        forgetPassword,
+        checkToken,
+        newPass,
+        profile  } = require('../controllers/authControllers.js');
 
 // import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
 
@@ -49,6 +55,14 @@ router.get('/providers', providersGet);    // ruta probada !!!!!! --
 router.get('/providers/:id', providerIDget);      // ruta probada !!!!!! -- middlewareAdmin,
 
 router.get('/users', usersGet);    // ruta NO probada !!!!!! --
+
+router.get("/users/confirm/:token", confirm);    // ruta probada !!!!!! --
+
+//COMPUEBA QUE EL NVO TOKEN SEA VALIDO Y QUE EL USUARIO EXISTA
+router.get("/users/forget/password/:token", checkToken);    // ruta probada !!!!!! --
+
+//entra al endpoind, ejecuta el middeware y dsp ejecuta el perfil
+router.get("/profile", middlewareAuth, profile);
 
 // router.get('/users/:id', userIDget);      // ruta NO probada !!!!!! --
 
@@ -80,6 +94,11 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAu
 router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
 
 router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
+
+//Es de tipo post porque el usuario va a enviar su email y comprobamos que ese email exista, en caso de que sea asi le enviamos un nuevo token  BORRAR COMENTARIO!!
+router.post('/forget/password', forgetPassword);    // ruta probada !!!!!! --
+
+router.post("/users/forget/password/:token", newPass);        // ruta probada !!!!!! --
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
