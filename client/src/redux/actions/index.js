@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { URL } from '../../config/Const';
 // import { json } from 'react-router-dom';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
@@ -25,13 +26,7 @@ export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 
-//--------Comentar por el puerto a no usar------------------------
-//DB
-const URL = 'http://localhost:3001';
-//HEROKU
-// const URL = 'https://pfcoffee-app.herokuapp.com';
-console.log(URL === 'http://localhost:3001' ? "DB" : "HEROKU");
-//----------------------------------------------------------------
+
 export function getAllProducts() {
   return async function (dispatch) {
     const json = await axios.get(URL + '/products');
