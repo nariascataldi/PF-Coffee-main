@@ -19,10 +19,15 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
+  TRUE_LOGIN,
+  ERROR_LOGIN
   // fillCart
-} from '../actions'
-
+} from '../actions' 
+  
 const initialState = {
+  username: '',
+  name: '',
+  errorLogin: '',
   allProducts: [],
   products: [],
   productDetail: {},
@@ -33,7 +38,7 @@ const initialState = {
   detail: [],
   fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
-  token: [],
+  token: [], // ???????
   filterBy: {
     title: '',
     category: '',
@@ -200,6 +205,21 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state
       }
+    case TRUE_LOGIN :
+      return{
+        ...state,
+        name: action.payload.name,
+        username: action.payload.username
+      }
+    case ERROR_LOGIN :  
+      let error = (action.payload.name) ? 'username invalid' : action.payload.msg;
+      return{
+        ...state,
+        name: 'error',
+        username: 'error',
+        errorLogin: error
+      }
+  
 
     default:
       return { ...state }

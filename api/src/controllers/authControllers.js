@@ -48,7 +48,11 @@ const userRegist = async (req, res) => {
       birthday: userCreate.birthday,
       token: userCreate.token,
     });
-  res.send({ token });
+  res.send({
+    username: mail,
+    name: userCreate.name,
+    token
+  });
 };
   
 
@@ -71,10 +75,10 @@ const userLogin = async(req,res)=>{
         userForToken, 
         SECRET,
         {expiresIn: 60 * 60 * 24 * 7}
-    );
+    );  
 
     res.send({
-        username: user.username,
+        username: user.mail,
         name: user.name,
         token
     })

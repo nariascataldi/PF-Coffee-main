@@ -1,12 +1,12 @@
 import {useCallback, useContext, useState} from 'react'
 import Context from 'context/UserContext'
 import loginService from '../redux/actions'
-import addFavService from 'services/addFav'
+
 
 export default function useUser () {
-  const {favs, jwt, setFavs, setJWT} = useContext(Context)
+  const {jwt, setJWT} = useContext(Context)
   const [state, setState] = useState({ loading: false, error: false })
-
+    
   const login = useCallback(({username, password}) => {
     setState({loading: true, error: false })
     loginService({username, password})
@@ -22,22 +22,14 @@ export default function useUser () {
       })
   }, [setJWT])
 
-  const addFav = useCallback(({id}) => {
-    addFavService({id, jwt})
-      .then(setFavs)
-      .catch(err => {
-        console.error(err)
-      })
-  }, [jwt, setFavs]) 
-
+ 
   const logout = useCallback(() => {
     window.sessionStorage.removeItem('jwt')
     setJWT(null)
   }, [setJWT])
 
   return {
-    addFav,
-    favs,
+    
     isLogged: Boolean(jwt),
     isLoginLoading: state.loading,
     hasLoginError: state.error,

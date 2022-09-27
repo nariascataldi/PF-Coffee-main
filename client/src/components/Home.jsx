@@ -38,7 +38,7 @@ export default function Home(){
     useEffect(()=>{
         dispatch(getAllCategories());
     },[dispatch])
-
+  
     useEffect(()=>{
         dispatch(getAllDiets());
     },[dispatch])
@@ -46,15 +46,13 @@ export default function Home(){
     useEffect(()=>{
         let ls = localStorage.getItem('token');
              console.log(ls);
-        // async function loadUser() {
-            
+        // async function loadUser() {            
         //     if (!getToken()) {
         //         setSession(false);
         //         return;
         //     }
         //     try {
         //         // const user = await useUser();
-
         //         // setUser(user);
         //         setSession(false);
         //     } catch (error) { console.log(error) }

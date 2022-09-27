@@ -4,7 +4,7 @@ const { Provider, Product } = require("../../db.js");
 const postProvider = async (obj) => {
   let { name, mail, logo, adress, phone, CUIT, products, disable } = obj;
 
-  disable = JSON.parse(disable);
+  if (disable) { disable = JSON.parse(disable) };
 
   let providerCreate = await Provider.create({
     name,

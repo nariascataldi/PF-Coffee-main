@@ -1,6 +1,6 @@
 const { Router } = require('express');
-// const middlewareAuth = require('../middlewares/middlewareAuth');
-// const middlewareAdmin = require('../middlewares/middlewareAdmin');
+const middlewareAuth = require('../middlewares/middlewareAuth');
+const middlewareAdmin = require('../middlewares/middlewareAdmin');
 
 
 const { productsGet,
@@ -67,7 +67,7 @@ router.delete('/providers/remove', userIDremove);  // ruta NO probada !!!!!! --
 
 //---------------POST
 
-router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
+router.post('/products', middlewareAdmin, prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
 
 router.post("/providers", providerPost);   // ruta probada !!!!!! -- middlewareAdmin,
 

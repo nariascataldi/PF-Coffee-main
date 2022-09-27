@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 // import { json } from 'react-router-dom';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
@@ -23,6 +24,10 @@ export const POST_COMMENT = 'POST_COMMENT'
 export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
+export const TRUE_LOGIN = 'TRUE_LOGIN'
+export const ERROR_LOGIN = 'ERROR_LOGIN'
+
+
 
 
 export function getAllProducts() {
@@ -119,19 +124,31 @@ export const postCloudinaryPhoto = (postData) => {
     })
   }
 };
-export const createProduct = (postData) => {
+export const createProduct = (postData, your_token) => {
   return () => {
-    axios.post('http://localhost:3001/products', postData)
+    axios.post('http://localhost:3001/products', postData, {
+      headers: {
+          'authorization': your_token,
+          'Accept' : 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
       .then(response => {
         console.log(response.data)
       })
   }
 };
 
-export const postUser = (payload) => 
+export const postUser = (body, your_token) => 
 async (dispatch)=> {
   try {
-    const response = await axios.post("http://localhost:3001/users/registration", payload)
+    const response = await axios.post("http://localhost:3001/users/registration", body, {
+      headers: {
+          'authorization': your_token,
+          'Accept' : 'application/json',
+          'Content-Type': 'application/json'
+      }
+      })
     // .then(response => console.log(response))
     // .catch(error => console.log(error))
     return dispatch({
@@ -156,10 +173,17 @@ export const confirmId = id => async dispatch => {
   }
 }
 
-export function postProduct(payload) {
+export function postProduct(body, your_token) {
   return async function () {
-    console.log('actions postProduct ', { payload });
-    const response = await axios.post('/products', payload);
+    console.log('actions postProduct ', { body });
+    const response = await axios.post('/products', body,
+    {
+      headers: {
+          'authorization': your_token,
+          'Accept' : 'application/json',
+          'Content-Type': 'application/json'
+      }
+      });
     console.log({ response });
     return response;
   }
@@ -196,9 +220,15 @@ export function resetFillCart (payload) {
       payload
   }
 }
-export function postProviders(payload){
+export function postProviders(body, your_token){
   return async function(dispatch){
-    const info= await axios.post('http://localhost:3001/providers', payload);
+    const info= await axios.post('http://localhost:3001/providers', body, {
+      headers: {
+          'authorization': your_token,
+          'Accept' : 'application/json',
+          'Content-Type': 'application/json'
+      }
+      });
     return info;
   }
 
@@ -210,71 +240,120 @@ export const clearCloudinaryResponse = () => {
       })
   };
 };
-
-
-export const postComment = (postData) => {
+export const postComment = (body, your_token) => {
   return () => {
-    console.log('en actions: ', postData);
-    axios.post('http://localhost:3001/comment', postData)
+    console.log('en actions: ', body);
+    axios.post('http://localhost:3001/comment', body, {
+      headers: {
+          'authorization': your_token,
+          'Accept' : 'application/json',
+          'Content-Type': 'application/json'
+      }
+      })
       .then(response => {
         console.log(response.data)
       })
   }
-};
-export function loginService(user) {
+};  
+export function login(user) {
   return async function (dispatch) {
-    const json = await axios.post('http://localhost:3001/login', user);
+    const json = await axios.post('http://localhost:3001/users/login', user);
     return dispatch({
       type: GET_LOGIN,
       payload: json.data
     })
   }
 };
-
-
-
-export function putProviders(data, id){
-  // return async function(dispatch){
-  //   const info= await axios.put(`http://localhost:3001/edit/${id}`,{
-  //     params: {
-  //       name,
-  //       logo,
-  //       adress,
-  //       mail,
-  //       phone,
-  //       CUIT,
-  //       disable
-  //     }
-  //   });
-  //   return dispatch({
-  //     type: SET_PROVIDERS,
-  //     payload: info.data
-  //   })
-  // }
-    return async function(dispatch){
-      axios.put(`/edit/${id}`, data).then(res =>
-        dispatch({
-          type: SET_PROVIDERS,
-          payload: res.data
-        })
-      );
-    }
-}
-/*
-export function putProduct(id, name, SKU, unitPrice, description, picture, unitsOnStock, categoriesIds) {
+export function loginService(username, password) {
+  
+  return function(dispatch) {
+    axios
+    .post('http://localhost:3001/users/login', { username, password })
+    .then(res => {
+      // const dispatch = useDispatch()
+      dispatch(loginSuccess(res.data, username));
+      const token = res.data.token;
+      axios.defaults.headers.common["authorization"] = `bearer ${token}`;
+      localStorage.setItem("COFFEE_TOKEN", token);
+      // history.push("/");
+    }) 
+    .catch(err => {
+      // const dispatch = useDispatch()
+      if (err.response.status === 401) {
+        dispatch(loginFailure(err));
+      }
+    });
+   };
+  };
+  export function loginSuccess (response, mail) {
     return async function (dispatch) {
-        var json = await axios.put("http://localhost:3001/products/" + id, {
-            params: {
-                name,
-                SKU,
-                unitPrice,
-                description,
-                picture,
-                unitsOnStock,
-                categoriesIds
-            }
-        });
-        return dispatch({ type: PUT_PRODUCTS, payload: json.data })
+      if (response.username === mail) {
+        return dispatch({
+          type: TRUE_LOGIN,
+          payload: response
+        })
+      };
+      return dispatch({
+        type: ERROR_LOGIN,
+        payload: response
+      })
     }
-}
-*/
+    
+  };
+  export function loginFailure (error) {
+
+    return async function (dispatch) {
+      return dispatch({
+        type: ERROR_LOGIN,
+        payload: response
+      })
+    }   
+    
+  };
+
+
+  export function putProviders(data, id){
+    // return async function(dispatch){
+    //   const info= await axios.put(`http://localhost:3001/edit/${id}`,{
+    //     params: {
+    //       name,
+    //       logo,
+    //       adress,
+    //       mail,
+    //       phone,
+    //       CUIT,
+    //       disable
+    //     }
+    //   });
+    //   return dispatch({
+    //     type: SET_PROVIDERS,
+    //     payload: info.data
+    //   })
+    // }
+      return async function(dispatch){
+        axios.put(`/edit/${id}`, data).then(res =>
+          dispatch({
+            type: SET_PROVIDERS,
+            payload: res.data
+          })
+        );
+      }
+  }
+  /*
+  export function putProduct(id, name, SKU, unitPrice, description, picture, unitsOnStock, categoriesIds) {
+      return async function (dispatch) {
+          var json = await axios.put("http://localhost:3001/products/" + id, {
+              params: {
+                  name,
+                  SKU,
+                  unitPrice,
+                  description,
+                  picture,
+                  unitsOnStock,
+                  categoriesIds
+              }
+          });
+          return dispatch({ type: PUT_PRODUCTS, payload: json.data })
+      }
+  }
+  */

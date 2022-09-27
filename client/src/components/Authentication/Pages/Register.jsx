@@ -26,7 +26,7 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(input)
+    // console.log(input)
     if (
       [ input.name, input.lastName, input.mail, input.pass, input.repeatPass].includes("")
     ) {

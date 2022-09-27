@@ -6,7 +6,8 @@ let postProduct = async(obj)=>{
     console.log('input en utils postProduct API: ', obj);
 
     let { title, disable, price, description, image, stock, cost, margin, diets, categories, providers  } = obj;
-    disable = JSON.parse(disable);
+    
+    if (disable) { disable = JSON.parse(disable) };
 
     // capitalize
     if (title.includes(' ')) {

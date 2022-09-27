@@ -4,7 +4,7 @@ let postUser = async(obj)=>{
    
   let { name, lastName, status, mail, pass, avatar, birthday, disable } = obj;
 
-  disable = JSON.parse(disable);
+  if (disable) { disable = JSON.parse(disable) };
 
   let userCreate = await User.create({
      name,
@@ -15,6 +15,7 @@ let postUser = async(obj)=>{
      birthday,
      disable
    });
+   console.log(userCreate);
 
    return userCreate
 }

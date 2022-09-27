@@ -153,9 +153,9 @@ const commentPost = async (req, res, next) => {
 
 const userPost = async (req, res, next) => {
   try {
-    // console.log("input en controllers API: ", req.body);
+    console.log("input en controllers API: ", req.body);
   let response = await postUser(req.body) || {};
-  
+    console.log(response);
     res.send(response); 
   } catch (error) {
     next(error);
@@ -165,7 +165,7 @@ const userPost = async (req, res, next) => {
 
 const usersGet = async (req, res, next) => {
   try {
-    let { data } = req.query; console.log(data);
+    let { data } = req.query; // console.log(data);
     if (!data) {
       let rdts = await getUsers() || [];
       console.log(rdts.length);
