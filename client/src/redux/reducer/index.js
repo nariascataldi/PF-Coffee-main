@@ -8,11 +8,18 @@ import {
   GET_DETAIL,
   GET_PROVIDER_DETAIL,
   POST_USER,
+  CONFIRM_ID,
   POST_PRODUCT,
   SET_FILTER_STATE,
   FILTER,
   POST_PROVIDERS,
-  CLEAR_DETAIL
+  CLEAR_DETAIL,
+  FILL_CART,
+  RESET_FILL_CART,
+  GET_CLOUDINARY_RESPONSE,
+  CLEAR_CLOUDINARY_RESPONSE,
+  POST_COMMENT,
+  // fillCart
 } from '../actions'
 
 const initialState = {
@@ -24,6 +31,9 @@ const initialState = {
   categories: [],
   diets: [],
   detail: [],
+  fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
+  responseCloudinary: {},
+  token: [],
   filterBy: {
     title: '',
     category: '',
@@ -86,17 +96,19 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         detail: action.payload
       }
-    case POST_USER:
-      return {
-        ...state
-      }
     case POST_PRODUCT:
       return {
         ...state
       }
     case POST_USER:
       return {
-        ...state
+        ...state,
+        token: action.payload,
+      }
+    case CONFIRM_ID:
+      return{
+        ...state,
+        token: action.payload,
       }
     case SET_FILTER_STATE:
       return {
@@ -118,10 +130,10 @@ const rootReducer = (state = initialState, action) => {
       const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
         return e.diets.map(d => d.name).includes(state.filterBy.diet)
       })
-      const sort = state.filterBy.sort === ''? filterDiet : state.filterBy.sort=== 'Z-A' ? filterDiet.sort((a,b)=>{
+      const sort = state.filterBy.sort === '' ? filterDiet : state.filterBy.sort=== 'Z-A' ? [...filterDiet].sort((a,b)=>{
         let A = a.title.toLowerCase();
-                let B = b.title.toLowerCase();
-                if(A == B) {
+        let B = b.title.toLowerCase();
+                if(A === B) {
                     return 0; 
                   }
                 if(A > B) {
@@ -130,10 +142,10 @@ const rootReducer = (state = initialState, action) => {
                   if(A < B) {
                     return 1;
                   }
-        }) : state.filterBy.sort==='A-Z' && filterDiet.sort((a,b)=>{
+        }) : state.filterBy.sort==='A-Z' ? [...filterDiet].sort((a,b)=>{
                 let A = a.title.toLowerCase();
                 let B = b.title.toLowerCase();
-                  if(A == B) {
+                  if(A === B) {
                     return 0; 
                   }
                   if(A < B) {
@@ -142,15 +154,51 @@ const rootReducer = (state = initialState, action) => {
                   if(A > B) {
                     return 1;
                   }
-              })
+        }) : state.filterBy.sort==='High' ? [...filterDiet].sort((a,b)=>{
+              let A = a.price
+              let B = b.price
+                return B - A
+        }) : state.filterBy.sort==='Low' && [...filterDiet].sort((a,b)=>{
+              let A = a.price
+              let B = b.price
+                return A - B
+        })
       return {
         ...state,
-        products: [...sort]
+        products: sort
+      }
+    case FILL_CART :
+      return {
+        ...state,
+        fillCart: [...state.fillCart, ...action.payload]
+      }
+    case RESET_FILL_CART : 
+    const indexCart = state.fillCart.findIndex( (element) => element.id === action.payload);
+    let copyCart = [...state.fillCart];
+    copyCart.splice(indexCart,1)
+  
+      return {
+        ...state,
+        fillCart: copyCart
       }
     case POST_PROVIDERS :
       return{
         ...state,
         providers: action.payload
+      }
+    case GET_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: action.payload
+      }
+    case CLEAR_CLOUDINARY_RESPONSE:
+      return{
+        ...state,
+        responseCloudinary: {}
+      }
+    case POST_COMMENT :
+      return{
+        ...state
       }
 
     default:

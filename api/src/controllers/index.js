@@ -1,20 +1,24 @@
 const { getDiets } = require('../utils/getDiets.js');
 const { getCategories } = require('../utils/getCategories.js');
-const { getComment } = require("../utils/getComment");
-const getProducts = require('../utils/getProducts.js');
-const postProduct = require('../utils/postProduct.js');
-const postProvider = require('../utils/postProvider.js');
-const { getProductsQy } = require('../utils/getProductsQy.js');
-const getIDproduct = require('../utils/getIDproduct');
-const altProduct = require('../utils/altProduct');
-const deleteProduct = require('../utils/deleteProduct.js');
-const postComment = require('../utils/postComment.js');
-const getProviders = require('../utils/getProviders.js');
-const getIdProvider = require('../utils/getIDprovider.js');
-const getUsers = require('../utils/getUsers.js');
-const { getUsersQy } = require('../utils/getUsersQy.js');
-const postUser = require('../utils/postUser');
+const { getComment } = require("../utils/Comment/getComment");
+const getProducts = require('../utils/Product/getProducts.js');
+const postProduct = require('../utils/Product/postProduct.js');
+const postProvider = require('../utils/Provider/postProvider.js');
+const { getProductsQy } = require('../utils/Product/getProductsQy.js');
+const getIDproduct = require('../utils/Product/getIDproduct');
+const altProduct = require('../utils/Product/altProduct');
+const deleteProduct = require('../utils/Product/deleteProduct.js');
+const postComment = require('../utils/Comment/postComment.js');
+const getProviders = require('../utils/Provider/getProviders.js');
+const getIdProvider = require('../utils/Provider/getIDprovider.js');
+const getUsers = require('../utils/User/getUsers.js');
+const { getUsersQy } = require('../utils/User/getUsersQy.js');
+const postUser = require('../utils/User/postUser');
 const addFavourite = require('../utils/addFavourite');
+const altProvider = require('../utils/Provider/altProvider');
+const altUser = require('../utils/User/altUser');
+const deleteProv = require('../utils/Provider/deleteProv');
+const deleteUser = require('../utils/User/deleteUser');
 
 
 const productsGet = async (req, res, next) => {
@@ -137,8 +141,9 @@ const providerPost = async(req, res, next) => {
 
 const commentPost = async (req, res, next) => {
   try {
-    // console.log("input en controllers API: ", req.body);
-  let response = await postComment(req.body) || {};
+    // let {id_prod, stars, coment} = req.body;
+    console.log("input en controllers API: ", req.body);
+    let response = await postComment(req.body) || {};
   
     res.send(response); 
   } catch (error) {
@@ -172,6 +177,46 @@ const usersGet = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
+const userAlt = async (req, res, next)=>{
+	try {
+		let { attribute } = req.params;
+	  let { id, value } = req.query;
+ 
+    console.log(id);  console.log(attribute); console.log(value);
+    let myAlt = await altUser(id, attribute, value) || {};
+    
+		res.send(myAlt)            
+	} catch (e) { next (e) }
+}; 
+
+const providerAlt = async (req, res, next)=>{
+	try {
+		let { attribute } = req.params;
+	  let { id, value } = req.query;
+ 
+    console.log(id);  console.log(attribute); console.log(value);
+    let myAlt = await altProvider(id, attribute, value) || {};
+    
+		res.send(myAlt)            
+	} catch (e) { next (e) }
+}; 
+
+const providerIDremove = async (req, res, next) => {
+  try {
+    let { id } = req.query;
+    let response = await deleteProv(id) || {};
+    res.send(response)            // petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
+const userIDremove = async (req, res, next) => {
+  try {
+    let { id } = req.query;
+    let response = await deleteUser(id) || {};
+    res.send(response)            // petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
 module.exports = {
   productsGet,
   prodIDget,
@@ -186,7 +231,11 @@ module.exports = {
   providersGet,
   providerIDget,
   userPost,
-  usersGet
+  usersGet,
+  userAlt,
+  providerAlt,
+  userIDremove,
+  providerIDremove
 
 }
 
