@@ -28,9 +28,9 @@ checkoutControllers.pago = (req, res) => {
   
   
     back_urls: {
-      success: "http://localhost:3000/home",
-      failure: "http://localhost:3000/fillCart",
-      pending: "http://localhost:3000/fillCart",
+      success: "http://localhost:3000/checkout/congrats",
+      failure: "http://localhost:3000/checkout/congrats",
+      pending: "http://localhost:3000/checkout/congrats",
     },
     auto_return: "approved",
     
