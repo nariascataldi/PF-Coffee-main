@@ -29,6 +29,7 @@ import FormModifyProduct from './components/Admin/Product/CRUD Product/ModifyPro
 import "bootstrap/dist/css/bootstrap.min.css";
 import NotFound from './components/NotFound';
 import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
+import Loading from './components/Loading';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route exact path="/homeAdmin" element={<HomeAdmin />} />
         <Route exact path='/modProvider/:id' element={<FormModifyProvider />} />
         <Route exact path='/modProduct/:id' element={<FormModifyProduct />} />
+        <Route path='/loading' element={<Loading />} />
 
         <Route exact path='/listproductedit' element={<ListProducts />} />
         <Route exact path='/list' element={<ListProvider />} />
