@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDiets, postProduct, getAllProviders, getAllCategories, postCloudinaryPhoto } from "../../../redux/actions"; //2
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 import style from '../../../styles/Admin/ProductCreate.module.css';
-import { Container, FormGroup, Input } from 'reactstrap'
+import { Container, FormGroup, Input, Modal } from 'reactstrap'
+import { useModal } from "../../../hooks/UseModal";
 
 // var testImage = /(https?:\/\/.*\.(?:png|jpg))/;
 // var testImage = /^[A-Za-z]+$/i;
@@ -43,10 +44,11 @@ function validate(input) {
 
 export default function FormProduct() {
   const dispatch = useDispatch();
+  const [isOpenModal, openModal, closeModal] = useModal(false)
   var diet = useSelector((state) => state.diets);
-  console.log({diet});
+  console.log({ diet });
   var provider = useSelector((state) => state.providers);
-  console.log({provider})
+  console.log({ provider })
   var categories = useSelector((state) => state.categories);
   let responseCloudinary = useSelector(state => state.responseCloudinary)
 
@@ -108,32 +110,66 @@ export default function FormProduct() {
   };
   async function handleSubmit(e) {
     e.preventDefault();
-    if (Object.values(errors).length > 0) {
-      alert("Please fill in all the fields")
-      // console.log('handleSubmit ', { errors });
-    }
-    else {
-      console.log('handleSubmit ', { input });
-      dispatch(postProduct(input));
-      alert('Product create successfuly!');
-      /**Clear */
-      setInput({
-        title: '',
-        cost: '',
-        margin: '',
-        price: '',
-        description: '',
-        image: '',
-        disable: false,
-        like: '',
-        stock: '',
-        diet: [],
-      })
-      e.target.reset();
-      window.location.reload(false);
-      // navigate('/homeAdmin');
-    }
+    await openModal()
+
+    // if (Object.values(errors).length > 0) {
+    //   alert("Please fill in all the fields")
+    //   // console.log('handleSubmit ', { errors });
+    // }
+    // else {
+    //   console.log('handleSubmit ', { input });
+    //   dispatch(postProduct(input));
+    //   alert('Product create successfuly!');
+    //   /**Clear */
+    //   setInput({
+    //     title: '',
+    //     cost: '',
+    //     margin: '',
+    //     price: '',
+    //     description: '',
+    //     image: '',
+    //     disable: false,
+    //     like: '',
+    //     stock: '',
+    //     diet: [],
+    //   })
+    //   e.target.reset();
+    //   window.location.reload(false);
+    // navigate('/homeAdmin');
+    // }
   };
+  const handleClickYesNo = (e) => {
+    if (e.target.value === 'yes') {
+      if (Object.values(errors).length > 0) {
+        alert("Please fill in all the fields")
+        // console.log('handleSubmit ', { errors });
+      }
+      else {
+        console.log('handleSubmit ', { input });
+        dispatch(postProduct(input));
+        // alert('Product create successfuly!');
+        /**Clear */
+        setInput({
+          title: '',
+          cost: '',
+          margin: '',
+          price: '',
+          description: '',
+          image: '',
+          disable: false,
+          like: '',
+          stock: '',
+          diet: [],
+          categories: [],
+          providers: [],
+        })
+        // e.target.reset();
+        window.location.reload(false);
+        // navigate('/homeAdmin');
+      }
+    }
+    closeModal()
+  }
   /**Diet */
   function handleSelectDiets(e) {
     // console.log('Handle ', e.target.value);
@@ -179,6 +215,13 @@ export default function FormProduct() {
     <>
       {/* {console.log(input)} */}
       {/* <h2>Product</h2> */}
+      <Modal isOpen={isOpenModal} closeModal={closeModal}>
+        <h1 className="">Create product: {input.title}</h1>
+        <div class="d-flex justify-content-evenly">
+          <button value='yes' onClick={(e) => handleClickYesNo(e)} class='border-0'>Yes</button>
+          <button value='no' onClick={(e) => handleClickYesNo(e)} class='border-0'>No</button>
+        </div>
+      </Modal>
       <form onSubmit={e => handleSubmit(e)}>
         <div id="Nombre" className="mb-3">
           <label

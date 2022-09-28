@@ -31,6 +31,7 @@ import FormModifyProduct from './components/Admin/Product/CRUD Product/ModifyPro
 import "bootstrap/dist/css/bootstrap.min.css";
 import NotFound from './components/NotFound';
 import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
+import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 
 
 function App() {
@@ -41,11 +42,10 @@ function App() {
         <title>Coffee Orders</title>
       </Helmet>
 
-
       <div>
         <Routes>
           {/* <Route exact path='/' element={<LandingPage />} /> */}
-          <Route path="register" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
           {/* <Route index element={<Login />} /> */}
           <Route path="/form" element={<Perfil />} />
@@ -72,16 +72,12 @@ function App() {
           <Route exact path="/providers" element={<Providers />} />
           <Route exact path="/formusers" element={<FormularioUsuario />} />
           <Route exact path="/modals" element={<Modals />} />
-
-          {/* -------------- Auth ---------------------*/}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forget-password/:token" element={<NewPassword />} />
-          <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/confirm/:id" element={<ConfirmAccount />} />
-          {/* -------------- Auth ---------------------*/}
-
           <Route path="*" element={<NotFound />} />
+          <Route
+            exact
+            path="/checkout/congrats"
+            element={<CheckoutConfirm />}
+          />
         </Routes>
       </div>
     </>

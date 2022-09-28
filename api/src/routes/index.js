@@ -16,6 +16,12 @@ const { productsGet,
         providerIDget,
         altAttribute,
         commentPost,
+<<<<<<< HEAD
+=======
+        orderPost,
+        ordersGet,
+        // userPost,
+>>>>>>> 1cca3623956201153c73c4084bc813b1261454ad
         usersGet,
         userAlt,
         providerAlt,
@@ -56,6 +62,8 @@ router.get('/providers/:id', providerIDget);      // ruta probada !!!!!! -- midd
 
 router.get('/users', usersGet);    // ruta NO probada !!!!!! --
 
+router.get('/orders', ordersGet);
+
 // router.get('/users/:id', userIDget);      // ruta NO probada !!!!!! --
 
 // router.get('/orders', ordersGet);    // ruta NO probada !!!!!! --
@@ -78,6 +86,8 @@ router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin
 router.post("/providers", providerPost);   // ruta probada !!!!!! -- middlewareAdmin,
 
 router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAuth,
+
+router.post('/orders', orderPost);
 
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 

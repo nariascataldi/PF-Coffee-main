@@ -4,6 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
 
+<<<<<<< HEAD
   sequelize.define(
     "user",
     {
@@ -23,6 +24,23 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       status: {
+=======
+  sequelize.define("user", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,  
+      allowNull: false,  
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    status: {
+>>>>>>> 1cca3623956201153c73c4084bc813b1261454ad
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "Client",
@@ -35,6 +53,7 @@ module.exports = (sequelize) => {
         allowNull: false,
         trim: true,
         unique: true,
+        primaryKey: true,
       },
       pass: {
         type: DataTypes.STRING,
