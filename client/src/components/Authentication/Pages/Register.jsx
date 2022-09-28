@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import { postUser } from '../../redux/actions'
-import styles from "../../styles/Authentication/Register.module.css";
+import { postUser } from '../../../redux/actions'
+import styles from "../../../styles/Authentication/Register.module.css";
 
 const Register = () => {
 
