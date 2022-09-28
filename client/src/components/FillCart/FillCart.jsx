@@ -45,7 +45,7 @@ export default function FillCart() {
     }
 
 
-
+console.log(reducedCart)
 
 
 

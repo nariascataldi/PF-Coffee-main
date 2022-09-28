@@ -8,8 +8,7 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,  
-      allowNull: false,
-      primaryKey: true,
+      allowNull: false,  
     },
     name: {
       type: DataTypes.STRING,
@@ -31,6 +30,7 @@ module.exports = (sequelize) => {
         },
         allowNull: false,
         unique: true,
+        primaryKey: true,
       },
       pass: {
         type: DataTypes.STRING,
