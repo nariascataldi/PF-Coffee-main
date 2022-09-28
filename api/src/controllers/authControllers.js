@@ -6,7 +6,7 @@ const emailRegister = require('../helper/emails.js');
 
 const userRegist = async (req, res) => {
   let { name, lastName, status, mail, pass, avatar, birthday } = req.body;
-  console.log("body", req.body);
+  // console.log("body", req.body);
 
   const prevUser = await User.findOne({ where: { mail: mail } });
 
@@ -14,11 +14,7 @@ const userRegist = async (req, res) => {
     const error = new Error("There is already a user with that email !!");
     return res.status(400).json({ msg: error.message})
   }
-  // if (prevUser && prevUser.hasOwnProperty("id")) {
-  //   return res
-  //     .status(401)
-  //     .json({ error: "There is already a user with that email !!" });
-  // }
+ 
   let salt = await bcrypt.genSalt(10);
   pass = await bcrypt.hash(pass, salt);
 
@@ -127,8 +123,9 @@ try {
 
     //generar un nuevo token si lo olvida
     user.token = generaToken;
-    await user.save();
+     await user.save();
      res.json({ msg: "Email sent with instructions" });
+   
 
 } catch (error) {
   console.log(error)
@@ -143,9 +140,10 @@ const checkToken = async (req, res) => {
   //validar que el token exista en alguno de los usuarios de nuestra BD
   const tokenValid = await User.findOne({ where: { token: token } });
 
-  //validaddo el token cuando el usuario quiere cambiar su password
+  //le mostramos un formulario para que puedan definir un nuevo password.
   if(tokenValid){
     res.json({ msg: "Valid token and user exists" });
+
   } else {
    const error = new Error("Invalid token");
    return res.status(404).json({ msg: error.message });
@@ -157,23 +155,25 @@ const newPass = async (req, res) => {
 
   const { token } = req.params;
   const { pass } = req.body;
+  
 
   //verifico el token
-  const user = await User.findOne({ where: { token: token } });
+  const user = await User.findOne({ where: { token: token } })
 
   if(user){
-   user.pass = pass; //pass hasheada??
+    let salt = await bcrypt.genSalt(10);
+    //Nueva pass hasheada
+    user.pass = await bcrypt.hash(pass, salt);
 
-   //reseteamos en token
-   user.token = ""
-  
-   try {
-     await user.save();
-     res.json({ msg: "Changed password" });
-   } catch (error) {
-    console.log(error)
-  }
+    //reseteamos el token
+    user.token = "";
 
+    try {
+      await user.save();
+      res.json({ msg: "Changed password" });
+    } catch (error) {
+      console.log(error);
+    }
   } else {
    const error = new Error("Invalid token");
    return res.status(404).json({ msg: error.message });
@@ -181,7 +181,9 @@ const newPass = async (req, res) => {
 };
 
 const profile = async (req, res) => {
-console.log('desde perfil..')
+ const { user } = req;
+
+ res.json(user)
 }
  
 
