@@ -5,7 +5,7 @@ import useAuthContext from '../../contexts/authContext'
 
 function Login() {
   const { login } = useAuthContext();
-  const [magicWord, setMagicWord] = useState('');
+  const [magicWord, setMagicWord] = useState();
 
   function handleInputChange(event) {
     setMagicWord(event.target.value);
@@ -14,6 +14,7 @@ function Login() {
   function handleSubmit(event) {
     event.preventDefault();
     if (magicWord === MAGIC_WORD) {
+      console.log('Funciona')
       login();
     }
   }

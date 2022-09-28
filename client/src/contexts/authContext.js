@@ -36,6 +36,7 @@ AuthContextProvider.propTypes = {
   children: PropTypes.object,
 };
 
+
 export function useAuthContext() {
   return useContext(AuthContext);
 }
