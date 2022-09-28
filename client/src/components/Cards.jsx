@@ -53,6 +53,7 @@ export default function Cards({ load }) {
                 image={p.image}
                 title={p.title}
                 price={p.price}
+                likes={p.like}
               />
             );
           })

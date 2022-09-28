@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import { postUser } from '../../../redux/actions'
-import styles from "../../../styles/Authentication/Register.module.css";
+import { postUser } from '../../redux/actions'
+import styles from "../../styles/Authentication/Register.module.css";
 
 const Register = () => {
 
   const dispatch = useDispatch();
+
+  const msjPost = useSelector(state=> state.msj);
 
   const [input, setInput] = useState({
     name: "",
@@ -16,31 +18,45 @@ const Register = () => {
     pass: "",
     repeatPass: "",
   });
+  const [error, setError] = useState('');
+  const [submit, setSubmit] = useState(false);
 
   const handleChange = e => {
+    console.log(e.target.value)
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     })
+    validator(input);
+  };
+
+  const validator = (obj)=>{
+    setSubmit(false);
+    setError("");
+    if (obj.name.length<1 || obj.mail.length<1 || obj.pass.length<1 || obj.lastName.length<1 || obj.repeatPass<1) {
+      setError("Todos loobjs campos son obligatorios"); console.log(error);
+    }
+    if (obj.pass !== obj.repeatPass) {
+      setError("Las contraseñas deben ser iguales"); console.log(error);
+    }
+    if (obj.pass.length < 6) {
+      setError("La contraseña debe ser mayor de 6 caracteres"); console.log(error);
+    }
+    if (error.length<1) setSubmit(true);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(input)
-    if (
-      [ input.name, input.lastName, input.mail, input.pass, input.repeatPass].includes("")
-    ) {
-      alert("Todos los campos son obligatorios");
-    }
-    if (input.pass !== input.repeatPass) {
-      alert("Las contraseñas deben ser iguales");
-    }
-    if (input.pass.length < 6) {
-      alert("La contraseña debe ser mayor de 6 caracteres");
-    }
 
+    validator(input);
+
+    console.log(input)    
+    
     //crear el usuario 
-    dispatch(postUser(input));
+    if (error.length < 1) {
+      dispatch(postUser(input));
+    } else {alert('revise los datos ingresados')}
+    // dispatch(postUser(input));
   };
 
   return (
@@ -48,8 +64,13 @@ const Register = () => {
       <h1 className={styles.login}>
         <b>Crear cuenta</b>
       </h1>
-
-      <form className={styles.form} onSubmit={handleSubmit}>
+      { (!error) ? null :
+      <h4 className={styles.login}>{error}</h4>
+      }
+      { (!msjPost) ? null :
+      <h4 className={styles.login}>{msjPost}</h4>
+      }
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div className={styles.form_div}>
           <label className={styles.label} htmlFor="name">
             <b>Nombre</b>
@@ -121,22 +142,43 @@ const Register = () => {
             name="repeatPass"
             onChange={(e) => handleChange(e)}
           />
-        </div>
-
-        <input type="submit" value="Crear cuenta" className={styles.init} />
+          <br/> <br/>
+          <input
+            id="check"
+            type="checkbox"
+            className={styles.input}
+            onChange={(e) => handleChange(e)}
+          />
+          <h5>*si esta seguro con sus datos marque aqui</h5>
+        </div>        
+        {
+          (!submit) ? null : 
+          <input type="submit" value="Crear cuenta" className={styles.init} />
+        }
       </form>
 
+        {
+          (input.name.length<1 || input.mail.length<1 || input.pass.length<5 || input.lastName.length<1 || input.repeatPass<1) ?
+          <h1 className={styles.login}>
+            COMPLETE LOS DATOS PARA ENVIAR
+          </h1>
+          :
+          null
+        }
+      {/* <button className={styles.init} onChange={(e)=>handleError(e)}>Pre-Check Errors</button> */}
       <nav className={styles.nav}>
-        <Link className={styles.link} to="/">
+        <Link className={styles.link} to="/login">
           ¿Ya tienes cuenta? Inicia sesión
         </Link>
 
-        <Link className={styles.link} to="forget-pass">
+        <Link className={styles.link} to="/forget-pass">
           ¿Olvidaste tu contraseña?
         </Link>
       </nav>
     </>
   );
 };
+
+
 
 export default Register;

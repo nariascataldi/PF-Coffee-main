@@ -15,11 +15,11 @@ import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import Modals from './components/Admin/Modals/Modals';
 
 import AuthLayout from './components/Authentication/AuthLayout';
-import Login from "./components/Authentication/Pages/Login";
-import Register from './components/Authentication/Pages/Register';
-import ForgetPassword from "./components/Authentication/Pages/ForgetPassword";
-import NewPassword from "./components/Authentication/Pages/NewPassword";
-import ConfirmAccount from './components/Authentication/Pages/ConfirmAccount';
+import Login from "./components/Authentication/Login";
+import Register from './components/Authentication/Register';
+import ForgetPassword from "./components/Authentication/ForgetPassword";
+import NewPassword from "./components/Authentication/NewPassword";
+import ConfirmAccount from './components/Authentication/ConfirmAccount';
 
 import './styles/normalize.css'
 import './styles/globals.css'
@@ -33,16 +33,18 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route exact path='/' element={<LandingPage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
-        <Route index element={<Login />} />
+        <Route exact path='/' element={<LandingPage />} />       
+        <Route path="/home" element={<Home />} />       
         <Route path="/form" element={<Perfil />} />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="confirm/:id" element={<ConfirmAccount />} />
-        <Route path="forget-password/:token" element={<NewPassword />} />
-        <Route path="forget-password" element={<ForgetPassword />} />
+        {/* -------------- Auth ---------------------*/}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forget-password/:token" element={<NewPassword />} />
+        <Route path="/forget-password" element={<ForgetPassword />} />
+        <Route path="/confirm/:id" element={<ConfirmAccount />} />        
+        {/* -------------- Auth ---------------------*/}
         <Route exact path="/fillCart" element={<FillCart />} />
       { /* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
         <Route exact path="/productAdmin" element={<ProductAdmin />} />

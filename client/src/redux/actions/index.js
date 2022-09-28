@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // import { json } from 'react-router-dom';
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
 export const GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL'
@@ -26,6 +26,7 @@ export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const TRUE_LOGIN = 'TRUE_LOGIN'
 export const ERROR_LOGIN = 'ERROR_LOGIN'
+export const CHG_ATTRIBUTE = 'CHG_ATTRIBUTE'
 
 
 
@@ -124,68 +125,24 @@ export const postCloudinaryPhoto = (postData) => {
     })
   }
 };
-export const createProduct = (postData, your_token) => {
+export const createProduct = (postData) => {
   return () => {
-    axios.post('http://localhost:3001/products', postData, {
-      headers: {
-          'authorization': your_token,
-          'Accept' : 'application/json',
-          'Content-Type': 'application/json'
-        }
-      })
+    axios.post('http://localhost:3001/products', postData)
       .then(response => {
         console.log(response.data)
       })
   }
 };
 
-export const postUser = (body, your_token) => 
-async (dispatch)=> {
-  try {
-    const response = await axios.post("http://localhost:3001/users/registration", body, {
-      headers: {
-          'authorization': your_token,
-          'Accept' : 'application/json',
-          'Content-Type': 'application/json'
-      }
-      })
-    // .then(response => console.log(response))
-    // .catch(error => console.log(error))
-    return dispatch({
-      type: POST_USER,
-      payload: response.data,
-    })
-  } catch (error) {
-    console.log(error)
-  }
-};
-
-export const confirmId = id => async dispatch => {
-  try {
-    const response = await axios.get(`/confirm/${id}`)
-    return dispatch ({
-      type: CONFIRM_ID,
-      payload: response.data
-    })
-  } catch (error) {
-    console.log(error)
-    
-  }
-}
-
-export function postProduct(body, your_token) {
-  return async function () {
+export function postProduct(body) {
+  return async function (payload) {
     console.log('actions postProduct ', { body });
-    const response = await axios.post('/products', body,
-    {
-      headers: {
-          'authorization': your_token,
-          'Accept' : 'application/json',
-          'Content-Type': 'application/json'
-      }
-      });
+    const response = await axios.post('/products', body);
     console.log({ response });
-    return response;
+    return {
+      type: POST_PRODUCT,
+      payload
+    }
   }
 }
 
@@ -220,15 +177,9 @@ export function resetFillCart (payload) {
       payload
   }
 }
-export function postProviders(body, your_token){
+export function postProviders(body){
   return async function(dispatch){
-    const info= await axios.post('http://localhost:3001/providers', body, {
-      headers: {
-          'authorization': your_token,
-          'Accept' : 'application/json',
-          'Content-Type': 'application/json'
-      }
-      });
+    const info= await axios.post('http://localhost:3001/providers', body);
     return info;
   }
 
@@ -240,16 +191,10 @@ export const clearCloudinaryResponse = () => {
       })
   };
 };
-export const postComment = (body, your_token) => {
+export const postComment = (body) => {
   return () => {
     console.log('en actions: ', body);
-    axios.post('http://localhost:3001/comment', body, {
-      headers: {
-          'authorization': your_token,
-          'Accept' : 'application/json',
-          'Content-Type': 'application/json'
-      }
-      })
+    axios.post('http://localhost:3001/comment', body)
       .then(response => {
         console.log(response.data)
       })
@@ -305,12 +250,49 @@ export function loginService(username, password) {
     return async function (dispatch) {
       return dispatch({
         type: ERROR_LOGIN,
-        payload: response
+        payload: error
       })
     }   
     
   };
 
+  export const postUser = (body) => 
+    async (dispatch)=> {
+      const response = await axios.post("http://localhost:3001/users/registration", body)
+        .then(response =>{
+          if (response.data.error) return response.data.error;
+          return 'Usuario registrado. Vaya a su mail a hacer la confirmación'
+        })
+        .catch(error => console.log(error));
+      return dispatch({
+          type: POST_USER,
+          payload: response
+        })
+};
+
+export const confirmId = id => async dispatch => {
+  try {
+    const response = await axios.get(`/confirm/${id}`)
+    return dispatch ({
+      type: CONFIRM_ID,
+      payload: response.data
+    })
+  } catch (error) {
+    console.log(error)
+    
+  }
+}
+export function changeAtrib(attribute, id_Product, new_value) {
+  async (dispatch)=> {
+    const response = await axios.put(`http://localhost:3001/products/${attribute}?id=${id_Product}&value=${new_value}`)
+      .then(resp => resp.data) 
+      .catch(error => console.log(error))
+      return dispatch({
+        type: CHG_ATTRIBUTE,
+        payload: response
+      })
+  }
+}
 
   export function putProviders(data, id){
     // return async function(dispatch){

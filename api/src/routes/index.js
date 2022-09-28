@@ -1,7 +1,8 @@
 const { Router } = require('express');
-const middlewareAuth = require('../middlewares/middlewareAuth');
-const middlewareAdmin = require('../middlewares/middlewareAdmin');
+// const middlewareAuth = require('../middlewares/middlewareAuth');
+// const middlewareAdmin = require('../middlewares/middlewareAdmin');
 
+const checkAuth = require("../middlewares/checkAuth");
 
 const { productsGet,
         prodIDget,
@@ -15,7 +16,6 @@ const { productsGet,
         providerIDget,
         altAttribute,
         commentPost,
-        // userPost,
         usersGet,
         userAlt,
         providerAlt,
@@ -24,8 +24,14 @@ const { productsGet,
         userIDget  } = require('../controllers');
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
-const { userRegist,
-  userLogin } = require('../controllers/authControllers.js');
+const { 
+        userRegist,
+        userLogin,
+        confirm,
+        forgetPassword,
+        checkToken,
+        newPass,
+        profile  } = require('../controllers/authControllers.js');
 
 // import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
 
@@ -67,19 +73,13 @@ router.delete('/providers/remove', userIDremove);  // ruta NO probada !!!!!! --
 
 //---------------POST
 
-router.post('/products', middlewareAdmin, prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
+router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
 
 router.post("/providers", providerPost);   // ruta probada !!!!!! -- middlewareAdmin,
 
 router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAuth,
 
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
-
-////    Validation
-
-router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
-
-router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
@@ -92,10 +92,36 @@ router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlew
 
 router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
-//////////////// yooooo
 
 
-const {Provider} = require('../db')
+/* -------------- Auth ---------------------*/
+router.post('/users/registration', userRegist);               // ruta probada !!!!!! --
+
+router.post('/users/login', userLogin);                       // ruta probada !!!!!! --
+
+router.get("/users/confirm/:token", confirm);                // ruta probada !!!!!! --
+
+//Es de tipo post porque el usuario va a enviar su email y comprobamos que ese email exista, en caso de que sea asi le enviamos un nuevo token
+router.post("/users/forget-password", forgetPassword);       // ruta probada !!!!!! -- Olvide Password
+
+//COMPUEBA QUE EL NVO TOKEN SEA VALIDO Y QUE EL USUARIO EXISTA
+router.get("/users/forget-password/:token", checkToken);     // ruta probada !!!!!! --
+
+router.post("/users/forget-password/:token", newPass);       // ruta probada !!!!!! --
+
+//entra al endpoind, ejecuta el middeware y dsp ejecuta el perfil
+router.get("/users/profile", checkAuth, profile);
+
+//checkAuth => VERIFICA QUE EL JWT QUE SEA VALIDO, QUE EXISTA, QUE ESTE ENVIADO POR HEADER,
+//SI TODO ESTA BIEN SE VA HACIA PROFILE
+  
+/* -------------- Auth ---------------------*/
+
+
+
+
+
+const {Provider, Product} = require('../db')
 
 router.put('/edit/:id', async (req,res)=>{
   try{
@@ -124,6 +150,47 @@ router.put('/edit/:id', async (req,res)=>{
     res.send(modifyProvider);
   }catch (err){
     console.log("El error del put es: ", err)
+  }
+})
+router.put('/productsEdit/:id', async (req,res)=>{
+  try{
+    const{id}=req.params;
+    const {
+      title,
+      price,
+      description,
+      image,
+      disable,
+      like,
+      stock,
+      sale_count,
+      cost,
+      margin,
+      diets,
+      categories,
+      providers
+    } = req.body;
+
+    const modifyProduct = await Product.update({
+      title,
+      price,
+      description,
+      image,
+      disable,
+      like,
+      stock,
+      sale_count,
+      cost,
+      margin,
+      diets,
+      categories,
+      providers
+    },
+    {where: {id}}
+    );
+    res.send(modifyProduct);
+  }catch (err){
+    console.log("El error del put es en product: ", err)
   }
 })
 

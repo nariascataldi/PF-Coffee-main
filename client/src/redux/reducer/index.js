@@ -27,7 +27,8 @@ import {
 const initialState = {
   username: '',
   name: '',
-  errorLogin: '',
+  status: '',
+  msj: '',
   allProducts: [],
   products: [],
   productDetail: {},
@@ -105,10 +106,10 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
-    case POST_USER:
+    case POST_USER:      
       return {
         ...state,
-        token: action.payload,
+        msj: action.payload
       }
     case CONFIRM_ID:
       return{
@@ -209,15 +210,17 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         name: action.payload.name,
-        username: action.payload.username
+        username: action.payload.username,
+        status: action.payload.status,
       }
     case ERROR_LOGIN :  
       let error = (action.payload.name) ? 'username invalid' : action.payload.msg;
+      let name = (!action.payload.name) ? 'error in fetchAPI' : action.payload.name;
       return{
         ...state,
-        name: 'error',
+        name: name,
         username: 'error',
-        errorLogin: error
+        msj: error
       }
   
 

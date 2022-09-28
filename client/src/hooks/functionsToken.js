@@ -9,10 +9,10 @@ export function getToken () {
     let ls = localStorage.getItem('token');
     console.log(ls);
 
-};
+};  
 export function deleteToken () {
     localStorage.removeItem(TOKEN_KEY)
-};
+}; 
 
 export function initAxiosInterceptor (){
     Axios.interceptors.request.use(function (config){
