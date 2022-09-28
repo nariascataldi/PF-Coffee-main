@@ -5,7 +5,8 @@ const MY_AUTH_APP = 'MY_AUTH_APP';
 
 export const AuthContext = createContext();
 
-export default function AuthContextProvider({ children }) {
+export default function AuthContextProvider({children}) {
+  console.log({children});
   const [isAuthenticated, setIsAuthenticated] = useState(window.localStorage.getItem(MY_AUTH_APP));
 
   const login = useCallback(() => {
