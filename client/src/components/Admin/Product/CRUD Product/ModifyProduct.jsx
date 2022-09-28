@@ -27,27 +27,28 @@ const FormModifyProduct = (props) => {
 
 
   const { productDetail } = useSelector((state) => state);
-  const onSubmit = (data, e) => {
-    console.log({data});
-    dispatch(putProduct(data, id));
-    e.preventDefault();
-    e.target.reset();
-    alert('Correctly modify')
-    navigate('/homeAdmin')
+  const onSubmit = async (e) => {
+    await openModal()
+    // console.log({data});
+    // dispatch(putProduct(data, id));
+    // e.preventDefault();
+    // e.target.reset();
+    // alert('Correctly modify')
+    // navigate('/homeAdmin')
   }
 
-  const handleClickYesNo = (e) => {
-    // if(e.target.value === 'yes') {
-    //   dispatch(putProduct(data, id));
-    //   e.preventDefault();
-    //   e.target.reset();
-    //   alert('Correctly modify')
-    //   navigate('/homeAdmin')
-    //   closeModal()
-    // }
-    // else {
-    //   closeModal()
-    // }
+  const handleClickYesNo = (data, e) => {
+    if(e.target.value === 'yes') {
+      dispatch(putProduct(data, id));
+      // e.preventDefault();
+      // e.target.reset();
+      alert('Correctly modify')
+      navigate('/homeAdmin')
+      closeModal()
+    }
+    else {
+      closeModal()
+    }
   }
 
   const uploadImage = async (e) => {
@@ -66,8 +67,8 @@ const FormModifyProduct = (props) => {
       <Modal isOpen={isOpenModal} closeModal={closeModal}>
         <h1>Modify Product</h1>
         <div class="d-flex justify-content-evenly">
-          <button value='yes' onClick={(e) => handleClickYesNo(e)} class='border-0'>Yes</button>
-          <button value='no' onClick={(e) => handleClickYesNo(e)} class='border-0'>No</button>
+          <button value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
+          <button value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
         </div>
       </Modal>
       <h2>Product Modify </h2>
