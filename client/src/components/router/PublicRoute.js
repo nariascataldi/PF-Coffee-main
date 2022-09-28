@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/authContext';
 
-import { PRIVATE } from '../../config/router/paths';
+import { ADMIN_HOME, PRIVATE } from '../../config/router/paths';
 
 
 const PublicRoute = (props) => {

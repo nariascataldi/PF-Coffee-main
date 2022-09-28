@@ -67,6 +67,7 @@ function App() {
 
             <Route path="*" element={<NotFound />} />
           </Route>
+          
           {/* Rutas privadas */}
           <Route path={PRIVATE} element={<PrivateRoute />}>
             <Route index element={<Private />} />

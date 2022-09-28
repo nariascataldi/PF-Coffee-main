@@ -7,6 +7,8 @@ function Private() {
     <div>
       Mi ruta privada
       <Link to={LOGOUT}>Cerrar sesión</Link>
+      <br></br>
+      <Link to={HOME}>HOME</Link>
     </div>
   );
 }
