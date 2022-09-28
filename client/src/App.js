@@ -51,7 +51,7 @@ function App() {
         <Route path='/' element={<PublicRoute />}>
           <Route index element={<Home />} />
           <Route path={LOGIN} element={<Login />} />
-          {/* <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/form" element={<Perfil />} />
           <Route path="/about" element={<About />} />
           <Route path="/detail/:id" element={<Detail />} />
@@ -59,23 +59,23 @@ function App() {
           <Route path="forget-password/:token" element={<NewPassword />} />
           <Route path="forget-password" element={<ForgetPassword />} />
           <Route path='/loading' element={<Loading />} />
-          <Route exact path='/modals' element={<Modals />} /> */}
+          <Route exact path='/modals' element={<Modals />} />
 
-        <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* Rutas privadas */}
         <Route path={PRIVATE} element={<PrivateRoute />}>
           <Route index element={<Private />} />
           <Route path={LOGOUT} element={<Logout />} />
-          {/* <Route exact path="/fillCart" element={<FillCart />} />
-          <Route exact path="/productAdmin" element={<ProductAdmin />} />
-          <Route exact path="/homeAdmin" element={<HomeAdmin />} />
-          <Route exact path='/modProvider/:id' element={<FormModifyProvider />} />
-          <Route exact path='/modProduct/:id' element={<FormModifyProduct />} />
-          <Route exact path='/listproductedit' element={<ListProducts />} />
-          <Route exact path='/list' element={<ListProvider />} />
-          <Route exact path="/providers" element={<Providers />} />
-          <Route exact path="/formusers" element={<FormularioUsuario />} /> */}
+          <Route path="/fillCart" element={<FillCart />} />
+          <Route path="/productAdmin" element={<ProductAdmin />} />
+          <Route path="/homeAdmin" element={<HomeAdmin />} />
+          <Route path='/modProvider/:id' element={<FormModifyProvider />} />
+          <Route path='/modProduct/:id' element={<FormModifyProduct />} />
+          <Route path='/listproductedit' element={<ListProducts />} />
+          <Route path='/list' element={<ListProvider />} />
+          <Route path="/providers" element={<Providers />} />
+          <Route path="/formusers" element={<FormularioUsuario />} />
 
         </Route>
 
