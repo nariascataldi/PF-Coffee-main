@@ -61,6 +61,7 @@ function App() {
           <Route path='/loading' element={<Loading />} />
           <Route exact path='/modals' element={<Modals />} /> */}
 
+        <Route path="*" element={<NotFound />} />
         </Route>
         {/* Rutas privadas */}
         <Route path={PRIVATE} element={<PrivateRoute />}>
@@ -78,11 +79,10 @@ function App() {
 
         </Route>
 
-        <Route path="*" element={<NotFound />} />
 
         {/* <Route exact path='/' element={<LandingPage />} /> */}
-        {/* <Route path="/" element={<Home />} /> */}
-        {/* <Route index element={<Login />} /> */}
+
+
         { /* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
 
         {/* <Route exact path='/crud/product' element={<CrudApp />} /> */}
