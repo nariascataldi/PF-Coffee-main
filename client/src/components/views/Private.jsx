@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {LOGOUT} from '../../config/router/paths';
+import {HOME, LOGOUT} from '../../config/router/paths';
 
 function Private() {
   return (
