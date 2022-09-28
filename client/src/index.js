@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store/index';
 import axios from 'axios';
+import AuthContextProvider from './contexts/authContext';
 
 axios.defaults.baseURL = 'http://localhost:3001';
 
@@ -13,9 +14,11 @@ axios.defaults.baseURL = 'http://localhost:3001';
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
+    <AuthContextProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
+      </AuthContextProvider>
     </React.StrictMode>
   </Provider>,
   document.getElementById('root')

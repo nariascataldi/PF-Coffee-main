@@ -12,15 +12,16 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
     "dotenv": "^16.0.1",
-    "react": "^17.0.2",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-datepicker": "^4.8.0",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.35.0",
     "react-icons": "^4.4.0",
     "react-pdf": "^5.7.2",
     "react-redux": "^7.2.8",
-    "react-scripts": "4.0.3",
+    "react-router": "^6.4.1",
+    "react-scripts": "^5.0.1",
     "reactstrap": "^9.1.4",
     "redirect": "^0.2.0",
     "redux": "^4.2.0",
@@ -55,6 +56,6 @@
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.4",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.4.1"
   }
 }
