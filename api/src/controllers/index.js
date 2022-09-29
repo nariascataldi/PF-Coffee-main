@@ -21,6 +21,8 @@ const deleteProv = require('../utils/Provider/deleteProv');
 const deleteUser = require('../utils/User/deleteUser');
 const postOrder = require('../utils/Order/postOrder');
 const getOrders = require('../utils/Order/getOrders.js');
+const postMail = require('../utils/postMail')
+const getMail = require('../utils/getMail')
 
 
 const productsGet = async (req, res, next) => {
@@ -237,6 +239,26 @@ const userIDremove = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
+const mailPost = async (req, res, next) => {
+    try {
+      let response = await postMail(req.body) || {};
+
+      res.send(response);
+    } catch (error) {
+      next(error);
+    }
+};
+
+const mailGet = async (req, res, next) => {
+  try {
+    let mail = await getMail() || [];
+    console.log(mail.length);
+    return res.send(mail);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   productsGet,
   prodIDget,
@@ -257,9 +279,10 @@ module.exports = {
   userAlt,
   providerAlt,
   userIDremove,
-  providerIDremove
-
-}
+  providerIDremove,
+  mailPost,
+  mailGet,
+};
 
   
 
