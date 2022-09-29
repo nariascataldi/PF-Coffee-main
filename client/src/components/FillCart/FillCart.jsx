@@ -122,7 +122,7 @@ console.log(reducedCart)
                                 </div>
                             </div>
                         )
-                    }) : <p> Clear</p>
+                    }) : <p> </p>
                     }
                 </div>
                 <div className='detail-cart-shop-total'>
@@ -137,7 +137,10 @@ console.log(reducedCart)
                         </li>
                         <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
-                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button>
+                    {fillCart.length ? 
+                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
+                    <button className='pay-btn-cart-empty'>Pay</button>
+                    }
                 </div>
             </div>
             <Footer />

@@ -8,7 +8,7 @@
           top: 0;
           width: 100%;
           z-index: 10;
-          padding-right: 20px;
+          padding-right: 2vh;
           height: 66px;
 }
 
@@ -22,7 +22,7 @@
 .contenedor_menu {
           border-radius: 23px;
           height: 46px;
-          margin-left: 6px;
+          margin-left: 0.5vh;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -34,8 +34,8 @@
 }
 
 .logo {
-          width: 14vh;
-          padding-left: 14px;
+          width: 120px;
+          padding-left: 2vh;
 }
 
 .nav_item {
@@ -61,15 +61,15 @@
 }
 
 .input_search {
-          height: 20px;
+          height: 24px;
           background-color: var(--strong);
           border: none;
           color: var(--white);
           border-top-left-radius: 15px;
           border-bottom-left-radius: 15px;
-          padding-left: 10px;
+          padding-left: 2vh;
           outline: none;
-          width: 280px;
+          width: 20vh;
           cursor: pointer;
 }
 
@@ -90,10 +90,10 @@
 
 .input_filter {
           border-radius: 12px;
-          width: 120px;
-          padding-left: 8px;
-          margin-left: 4px;
-          margin-right: 6px;
+          width: 20vh;
+          padding-left: 1vh;
+          margin-left: 1vh;
+          margin-right: 1vh;
           background-color: var(--primary);
           border-color: var(--strong);
           color: rgb(114, 114, 114);
@@ -101,7 +101,7 @@
           cursor: pointer;
           border-radius: 5px;
           font-size: 14px;
-          margin: 5px;
+          margin: 1vh;
 }
 
 .input_filter:hover {
@@ -112,8 +112,8 @@
 
 .carrito_nav {
           color: #DD6873;
-          width: 34px;
-          height: 26px;
+          width: 4.5vh;
+          height: 4.5vh;
           padding-bottom: 0px;
           cursor: pointer;
 }
