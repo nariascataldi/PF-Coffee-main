@@ -10,6 +10,7 @@ export const GET_ALL_DIETS = 'GET_ALL_DIETS'
 export const GET_DETAIL = "GET_DETAIL"
 export const GET_BY_TITLE = 'GET_BY_TITLE'
 export const POST_USER = 'POST_USER'
+export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const CONFIRM_ID = "CONFIRM_ID"
 export const POST_PRODUCT = 'POST_PRODUCT'
 export const SET_FILTER_STATE = 'SET_FILTER_STATE'
@@ -33,6 +34,16 @@ export function getAllProducts() {
     const json = await axios.get(URL + '/products');
     return dispatch({
       type: GET_ALL_PRODUCTS,
+      payload: json.data
+    })
+  }
+};
+
+export function getAllUsers() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + '/users');
+    return dispatch({
+      type: GET_ALL_USERS,
       payload: json.data
     })
   }

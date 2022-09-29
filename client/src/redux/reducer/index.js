@@ -20,12 +20,14 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
+  GET_ALL_USERS
   // fillCart
 } from '../actions'
 
 const initialState = {
   allProducts: [],
   products: [],
+  users: [],
   productDetail: {},
   providers: [],
   providerDetail: {},
@@ -214,6 +216,11 @@ const rootReducer = (state = initialState, action) => {
     case POST_COMMENT :
       return{
         ...state
+      }
+    case GET_ALL_USERS :
+      return{
+        ...state,
+        users: action.payload
       }
 
     default:
