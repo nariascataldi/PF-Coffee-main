@@ -73,10 +73,7 @@ function App() {
           <Route exact path="/formusers" element={<FormularioUsuario />} />
           <Route exact path="/modals" element={<Modals />} />
           <Route path="*" element={<NotFound />} />
-          <Route
-            exact
-            path="/checkout/congrats"
-            element={<CheckoutConfirm />}
+          <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}
           />
         </Routes>
       </div>
