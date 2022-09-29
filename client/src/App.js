@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import favicon from "./assets/logo_coffee.png";
@@ -32,9 +32,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NotFound from './components/NotFound';
 import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
+import ProtectedRoute from './ProtectedRoute';
 
 
 function App() {
+/////////////
+const [user, setUser]= useState({
+  id:1,
+  name: "jon",
+  state: "cli"
+})
+console.log("el status es: ", user)
+/*const login =()=>{
+  setUser({
+    id:1,
+    name: "jon"
+  })
+}*/
+const logout = ()=>setUser(null);
+
   return (
     <>
       <Helmet>
@@ -45,32 +61,48 @@ function App() {
       <div>
         <Routes>
           {/* <Route exact path='/' element={<LandingPage />} /> */}
-          <Route path="/register" element={<Register />} />
+          
           <Route path="/" element={<Home />} />
           {/* <Route index element={<Login />} /> */}
           <Route path="/form" element={<Perfil />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/detail/:id" element={<Detail />} />
+          
+          
           <Route path="confirm/:id" element={<ConfirmAccount />} />
           <Route path="forget-password/:token" element={<NewPassword />} />
           <Route path="forget-password" element={<ForgetPassword />} />
-          <Route exact path="/fillCart" element={<FillCart />} />
+          {/* rutas client */}
+        <Route element={<ProtectedRoute user={user.state==="cli"}/>}>
+         
+          <Route path="/about" element={<About />} />
+          <Route path="/register" element={<Register />} />
+
+
+        </Route>
           {/* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
-          <Route exact path="/productAdmin" element={<ProductAdmin />} />
+
+          {/* rutas admin*/}
+          
+        <Route element={<ProtectedRoute user={user.state==="admin"}/>}>
           <Route exact path="/homeAdmin" element={<HomeAdmin />} />
+          <Route exact path="/productAdmin" element={<ProductAdmin />} />
           <Route
             exact
             path="/modProvider/:id"
             element={<FormModifyProvider />}
           />
           <Route exact path="/modProduct/:id" element={<FormModifyProduct />} />
-
           <Route exact path="/listproductedit" element={<ListProducts />} />
           <Route exact path="/list" element={<ListProvider />} />
-          {/* <Route exact path='/crud/product' element={<CrudApp />} /> */}
-          {/* <Route exact path="/providerCreate" element={<ProviderCreate />} /> */}
           <Route exact path="/providers" element={<Providers />} />
           <Route exact path="/formusers" element={<FormularioUsuario />} />
+          <Route path="/detail/:id" element={<Detail />} />
+           <Route exact path="/fillCart" element={<FillCart />} />
+        </Route>
+          
+
+          {/* <Route exact path='/crud/product' element={<CrudApp />} /> */}
+          {/* <Route exact path="/providerCreate" element={<ProviderCreate />} /> */}
+
           <Route exact path="/modals" element={<Modals />} />
           <Route path="*" element={<NotFound />} />
           <Route

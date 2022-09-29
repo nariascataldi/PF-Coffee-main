@@ -16,12 +16,6 @@ const { productsGet,
         providerIDget,
         altAttribute,
         commentPost,
-<<<<<<< HEAD
-=======
-        orderPost,
-        ordersGet,
-        // userPost,
->>>>>>> 1cca3623956201153c73c4084bc813b1261454ad
         usersGet,
         userAlt,
         providerAlt,
