@@ -1,6 +1,6 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllProducts } from '../../../redux/actions/index.js';
+import { getAllProducts, postNewsletter } from '../../../redux/actions/index.js';
 
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
 import ProductAdmin from '../Product/ProductAdmin.jsx';
@@ -20,7 +20,6 @@ import ListProviders from '../../Provider/CRUD Provider/ListProvider.jsx';
 import FormProvider from '../../Provider/CRUD Provider/PrividerCreate';
 // import Providers from '../../Provider/Providers.jsx';
 
-
 export default function HomeAdmin() {
   //---SearchBar---
   const dispatch = useDispatch();
@@ -28,8 +27,42 @@ export default function HomeAdmin() {
     dispatch(getAllProducts());
   }, [dispatch])
 
+
+  //prueba
+ 
+  const [input, setInput] = useState({
+    mail: ''
+  })
+
+  function handleChange2(e)  {
+    setInput ({
+      ...input,
+      [e.target.name] : e.target.value
+    })
+    //console.log(e.target.value)
+    console.log(input)
+  }
+  function handleSubmit2(e) {
+   e.prevent.default()
+  
+      dispatch(postNewsletter(input))
+      alert("suscrito")
+      setInput({mail: ''})
+    
+  }
+
   return (
     <div className={style.home_container}>
+      <form onSubmit={(e) => handleSubmit2(e)}>
+              <input
+              type="email"
+              id="form5Example2"
+              className="form-control"
+              name="mail"
+              onChange={(e) => handleChange2(e)}>
+              </input>
+              <button type="submit" className="btn btn-primary mb-4" >OK</button>
+            </form>
       <NavBarAdmin/>
       <Tab.Container id="left-tabs-example" defaultActiveKey="homeAdmin">
         <Row>

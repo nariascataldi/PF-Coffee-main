@@ -19,6 +19,7 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
+  POST_NEWSLETTER
   // fillCart
 } from '../actions'
 
@@ -38,7 +39,7 @@ const initialState = {
     title: '',
     category: '',
     diet: '',
-    sort:''
+    sort: ''
   }
 }
 
@@ -100,13 +101,17 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
+    case POST_NEWSLETTER:
+      return {
+        ...state
+      }
     case POST_USER:
       return {
         ...state,
         token: action.payload,
       }
     case CONFIRM_ID:
-      return{
+      return {
         ...state,
         token: action.payload,
       }
@@ -130,74 +135,74 @@ const rootReducer = (state = initialState, action) => {
       const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
         return e.diets.map(d => d.name).includes(state.filterBy.diet)
       })
-      const sort = state.filterBy.sort === '' ? filterDiet : state.filterBy.sort=== 'Z-A' ? [...filterDiet].sort((a,b)=>{
+      const sort = state.filterBy.sort === '' ? filterDiet : state.filterBy.sort === 'Z-A' ? [...filterDiet].sort((a, b) => {
         let A = a.title.toLowerCase();
         let B = b.title.toLowerCase();
-                if(A === B) {
-                    return 0; 
-                  }
-                if(A > B) {
-                    return -1;
-                  }
-                  if(A < B) {
-                    return 1;
-                  }
-        }) : state.filterBy.sort==='A-Z' ? [...filterDiet].sort((a,b)=>{
-                let A = a.title.toLowerCase();
-                let B = b.title.toLowerCase();
-                  if(A === B) {
-                    return 0; 
-                  }
-                  if(A < B) {
-                    return -1;
-                  }
-                  if(A > B) {
-                    return 1;
-                  }
-        }) : state.filterBy.sort==='High' ? [...filterDiet].sort((a,b)=>{
-              let A = a.price
-              let B = b.price
-                return B - A
-        }) : state.filterBy.sort==='Low' && [...filterDiet].sort((a,b)=>{
-              let A = a.price
-              let B = b.price
-                return A - B
-        })
+        if (A === B) {
+          return 0;
+        }
+        if (A > B) {
+          return -1;
+        }
+        if (A < B) {
+          return 1;
+        }
+      }) : state.filterBy.sort === 'A-Z' ? [...filterDiet].sort((a, b) => {
+        let A = a.title.toLowerCase();
+        let B = b.title.toLowerCase();
+        if (A === B) {
+          return 0;
+        }
+        if (A < B) {
+          return -1;
+        }
+        if (A > B) {
+          return 1;
+        }
+      }) : state.filterBy.sort === 'High' ? [...filterDiet].sort((a, b) => {
+        let A = a.price
+        let B = b.price
+        return B - A
+      }) : state.filterBy.sort === 'Low' && [...filterDiet].sort((a, b) => {
+        let A = a.price
+        let B = b.price
+        return A - B
+      })
       return {
         ...state,
         products: sort
       }
-    case FILL_CART :
+    case FILL_CART:
       return {
         ...state,
         fillCart: [...state.fillCart, ...action.payload]
       }
-    case RESET_FILL_CART : 
-    const indexCart = state.fillCart.findIndex( (element) => element.id === action.payload);
-    let copyCart = [...state.fillCart];
-    copyCart.splice(indexCart,1)
-  
+    case RESET_FILL_CART:
+      const indexCart = state.fillCart.findIndex((element) => element.id === action.payload);
+      let copyCart = [...state.fillCart];
+      copyCart.splice(indexCart, 1)
+
       return {
         ...state,
         fillCart: copyCart
       }
-    case POST_PROVIDERS :
-      return{
+    case POST_PROVIDERS:
+      return {
         ...state,
         providers: action.payload
       }
     case GET_CLOUDINARY_RESPONSE:
-      return{
+      return {
         ...state,
         responseCloudinary: action.payload
       }
     case CLEAR_CLOUDINARY_RESPONSE:
-      return{
+      return {
         ...state,
         responseCloudinary: {}
       }
-    case POST_COMMENT :
-      return{
+    case POST_COMMENT:
+      return {
         ...state
       }
 

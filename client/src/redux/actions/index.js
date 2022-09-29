@@ -25,7 +25,7 @@ export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
-
+export const POST_NEWSLETTER = 'POST_NEWSLETTER'
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -167,6 +167,13 @@ export function postProduct(payload) {
   }
 }
 
+export function postNewsletter(payload) {
+  return async function () {
+    const json = await axios.post(URL + '/nwsletter', payload);
+    return json
+    
+  }
+}
 
 export function setFilterState(payload) {
   return {
