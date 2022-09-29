@@ -22,7 +22,7 @@ export default function Home(){
         dispatch(getAllProducts());
         setTimeout(()=>{
             setLoad(false)
-        },2000)
+        },3000)
         dispatch(clearDetail())
     },[dispatch])
     useEffect(()=>{

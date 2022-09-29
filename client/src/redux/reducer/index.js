@@ -16,6 +16,7 @@ import {
   CLEAR_DETAIL,
   FILL_CART,
   RESET_FILL_CART,
+  CART_EMPTYING,
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
@@ -175,6 +176,8 @@ const rootReducer = (state = initialState, action) => {
         products: sort
       }
     case FILL_CART :
+      // const findIdStock = action.payload[0].id
+      // console.log('el action payload es ',action.payload[0].title)
       return {
         ...state,
         fillCart: [...state.fillCart, ...action.payload]
@@ -187,6 +190,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         fillCart: copyCart
+      }
+    case CART_EMPTYING :
+      return {
+        ...state,
+        fillCart: []
       }
     case POST_PROVIDERS :
       return{
