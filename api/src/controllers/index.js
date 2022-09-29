@@ -21,6 +21,7 @@ const deleteProv = require('../utils/Provider/deleteProv');
 const deleteUser = require('../utils/User/deleteUser');
 const postOrder = require('../utils/Order/postOrder');
 const getOrders = require('../utils/Order/getOrders.js');
+const editStock = require('../utils/Stock/editStock');
 
 
 const productsGet = async (req, res, next) => {
@@ -97,6 +98,13 @@ const orderPost = async (req, res, next) => {
     console.log('input en controllers API: ', req.body);
     let response = await postOrder(req.body) || {};
     res.send(response)   //    petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
+const stockPut = async (req, res, next) => {
+  try {
+    let response = await editStock(req.body) || {};
+    res.send(response)
   } catch (e) { next(e) }
 };
 
@@ -257,7 +265,8 @@ module.exports = {
   userAlt,
   providerAlt,
   userIDremove,
-  providerIDremove
+  providerIDremove,
+  stockPut
 
 }
 

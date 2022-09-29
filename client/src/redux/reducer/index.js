@@ -19,6 +19,7 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
+  SET_STOCK
   // fillCart
 } from '../actions'
 

@@ -25,6 +25,7 @@ export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
+export const SET_STOCK = 'SET_STOCK'
 
 
 export function getAllProducts() {
@@ -252,5 +253,16 @@ export function putProduct(data, id) {
         payload: res.data
       })
     );
+  }
+}
+
+export function putStock(data) {
+  return async function (dispatch) {
+    axios.put(URL + '/editStock', data).then(res =>
+      dispatch({
+        type: SET_STOCK,
+        payload: res.data
+      })
+      )
   }
 }
