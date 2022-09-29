@@ -20,3 +20,12 @@
 .btn-statuspay-tohome:active{
     background-color: #9c0922;
 }
+.logo-approved{
+    width: 7vh;
+    border-radius: 6vh;
+}
+.detalle-compra-appr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
