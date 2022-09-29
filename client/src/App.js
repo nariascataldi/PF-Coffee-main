@@ -31,6 +31,7 @@ import FormModifyProduct from './components/Admin/Product/CRUD Product/ModifyPro
 import "bootstrap/dist/css/bootstrap.min.css";
 import NotFound from './components/NotFound';
 import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
+import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 
 
@@ -44,6 +45,8 @@ function App() {
 
       <div>
         <Routes>
+          <Route path='/loading' element={<Loading />} />
+
           {/* <Route exact path='/' element={<LandingPage />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
