@@ -4,27 +4,6 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
 
-<<<<<<< HEAD
-  sequelize.define(
-    "user",
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true,
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        trim: true,
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      status: {
-=======
   sequelize.define("user", {
     id: {
       type: DataTypes.INTEGER,
@@ -40,7 +19,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     status: {
->>>>>>> 1cca3623956201153c73c4084bc813b1261454ad
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "Client",

@@ -18,6 +18,7 @@ import Loading from './Loading';
 import StarRating from './StarRating';
 
 import styles from '../styles/Detail.module.css'
+import { reduceCart } from '../utils/reduceCart';
 
 
 export default function Detail(props){
@@ -61,11 +62,19 @@ export default function Detail(props){
 
   //actualizo el estado de redux 'filtCart' con la variable arrayLs
   let arrayLs = [];
+  let quantityProductCart = reduceCart(fillCart)
+  let productToAddCart = quantityProductCart.filter(e=>e.id===detail.id)
+  console.log('Cantidad agragada',productToAddCart[0]?.quantity)
   const handleOnClick = () => {
+    if(productToAddCart[0]?.quantity === detail.stock){
+      return alert('The chosen quantity exceeds our stock')
+    }
     arrayLs.push(detail);
     dispatch(setFillCart(arrayLs));
     alert("Product successfuly added!");
   };
+  console.log('Cantidad agragada',productToAddCart[0]?.quantity)
+  console.log('El stock en detail es', detail.stock)
   // lleno el local storage con el estado de redux 'fillCart
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(fillCart));
@@ -81,7 +90,7 @@ export default function Detail(props){
           <div key={detail.id} className={styles.detail}>
             <div>
               <Link className={styles.back} to="/">
-                <button>&#171;</button>
+                <button className={styles.next}>&#171;</button>
               </Link>
             </div>
             <div>
@@ -107,14 +116,21 @@ export default function Detail(props){
                   Categories: {detail.categories?.map((e) => e.name)}
                 </li>
               </ul>
-              <div>
+              {(detail?.stock<1) &&
+                <div className={styles.ad_cart_out_stock}><h3>Out of stock</h3></div>
+              }
+              { (detail?.stock>0) &&
+                <div>
                 <button 
                 className={styles.ad_cart}
                 onClick={handleOnClick}>
                   Add to cart <BsArrowRight />
                 </button>
               </div>
+              }
             </div>
+            
+              
 
             <div className={styles.box}>
               <form onSubmit={(e) => handleSubmit(e)}>
