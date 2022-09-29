@@ -11,8 +11,11 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     id_user: {
-      type: DataTypes.UUID,
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    prod_title: {
+      type: DataTypes.STRING
     },
     date: {
         type: DataTypes.DATE,
@@ -37,7 +40,7 @@ module.exports = (sequelize) => {
     },
     total: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     }
   },{
     timestamps: false

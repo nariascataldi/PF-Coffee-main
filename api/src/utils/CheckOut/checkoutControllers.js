@@ -21,20 +21,20 @@ checkoutControllers.pago = (req, res) => {
         unit_price: a.price,
         quantity: a.quantity,
     }
-  })
-  console.log(items2)
+  });
+  //console.log(items2)
   let preference = {
-    items:items2
-  };
+    items:items2,
   
-    // back_urls: {
-    //   success: "http://localhost:3000/home",
-    //   failure: "http://localhost:3000/home",
-    //   pending: "http://localhost:3000/home",
-    // },
-    // auto_return: "approved",
-    // external_reference: idOrden.toString(),
   
+    back_urls: {
+      success: "http://localhost:3000/checkout/congrats",
+      failure: "http://localhost:3000/checkout/congrats",
+      pending: "http://localhost:3000/checkout/congrats",
+    },
+    auto_return: "approved",
+    
+  }
   mercadopago.preferences
     .create(preference)
     .then(function (respuesta) {
