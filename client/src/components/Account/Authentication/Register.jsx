@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 
-import { postUser } from '../../../redux/actions'
+import { postUser } from '../../redux/actions'
 import styles from "../../../styles/Authentication/Register.module.css";
 
 const Register = () => {
@@ -127,7 +127,7 @@ const Register = () => {
       </form>
 
       <nav className={styles.nav}>
-        <Link className={styles.link} to="/">
+        <Link className={styles.link} to="/register">
           ¿Ya tienes cuenta? Inicia sesión
         </Link>
 

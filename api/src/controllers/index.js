@@ -19,6 +19,8 @@ const altProvider = require('../utils/Provider/altProvider');
 const altUser = require('../utils/User/altUser');
 const deleteProv = require('../utils/Provider/deleteProv');
 const deleteUser = require('../utils/User/deleteUser');
+const postOrder = require('../utils/Order/postOrder');
+const getOrders = require('../utils/Order/getOrders.js');
 
 
 const productsGet = async (req, res, next) => {
@@ -34,6 +36,16 @@ const productsGet = async (req, res, next) => {
     res.send(response)              //    petición   probada !!!!!! --
   } catch (e) { next(e) }
 };
+
+const ordersGet = async (req, res, next) => {
+  try {
+    let ords = await getOrders() || [];
+    console.log(ords.length);
+    return res. send(ords)
+  } catch (error) {
+    next(error)
+  }
+}
 
 const providersGet = async (req, res, next) => {
   try {
@@ -76,6 +88,14 @@ const prodPost = async (req, res, next) => {
   try {
     console.log('input en controllers API: ', req.body);
     let response = await postProduct(req.body) || {};
+    res.send(response)   //    petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
+const orderPost = async (req, res, next) => {
+  try {
+    console.log('input en controllers API: ', req.body);
+    let response = await postOrder(req.body) || {};
     res.send(response)   //    petición   probada !!!!!! --
   } catch (e) { next(e) }
 };
@@ -221,6 +241,8 @@ module.exports = {
   productsGet,
   prodIDget,
   prodPost,
+  orderPost,
+  ordersGet,
   dietsGet,
   categoriesGet,
   commentGet,
