@@ -38,7 +38,9 @@ const initialState = {
     title: '',
     category: '',
     diet: '',
-    sort:''
+    sort:'',
+    minPrice: '',
+    maxPrice: ''
   }
 }
 
@@ -130,7 +132,12 @@ const rootReducer = (state = initialState, action) => {
       const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
         return e.diets.map(d => d.name).includes(state.filterBy.diet)
       })
-      const sort = state.filterBy.sort === '' ? filterDiet : state.filterBy.sort=== 'Z-A' ? [...filterDiet].sort((a,b)=>{
+      const filterPrice = state.filterBy.minPrice === '' && state.filterBy.maxPrice === '' ? filterDiet : filterDiet.filter(e => {
+        if (!state.filterBy.minPrice) return e.price >= 0 && e.price <= state.filterBy.maxPrice
+        if (!state.filterBy.maxPrice) return e.price >= state.filterBy.minPrice && e.price <= Infinity
+        return e.price >= state.filterBy.minPrice && e.price <= state.filterBy.maxPrice
+      })
+      const sort = state.filterBy.sort === '' ? filterPrice : state.filterBy.sort=== 'Z-A' ? [...filterPrice].sort((a,b)=>{
         let A = a.title.toLowerCase();
         let B = b.title.toLowerCase();
                 if(A === B) {
@@ -142,7 +149,7 @@ const rootReducer = (state = initialState, action) => {
                   if(A < B) {
                     return 1;
                   }
-        }) : state.filterBy.sort==='A-Z' ? [...filterDiet].sort((a,b)=>{
+        }) : state.filterBy.sort==='A-Z' ? [...filterPrice].sort((a,b)=>{
                 let A = a.title.toLowerCase();
                 let B = b.title.toLowerCase();
                   if(A === B) {
@@ -154,11 +161,11 @@ const rootReducer = (state = initialState, action) => {
                   if(A > B) {
                     return 1;
                   }
-        }) : state.filterBy.sort==='High' ? [...filterDiet].sort((a,b)=>{
+        }) : state.filterBy.sort==='High' ? [...filterPrice].sort((a,b)=>{
               let A = a.price
               let B = b.price
                 return B - A
-        }) : state.filterBy.sort==='Low' && [...filterDiet].sort((a,b)=>{
+        }) : state.filterBy.sort==='Low' && [...filterPrice].sort((a,b)=>{
               let A = a.price
               let B = b.price
                 return A - B
