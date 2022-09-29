@@ -25,6 +25,7 @@ export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
+export const CART_EMPTYING = 'CART_EMPTYING'
 
 
 export function getAllProducts() {
@@ -196,6 +197,11 @@ export function resetFillCart(payload) {
   return {
     type: RESET_FILL_CART,
     payload
+  }
+}
+export function cartEmptying (){
+  return {
+    type:CART_EMPTYING
   }
 }
 export function postProviders(payload) {
