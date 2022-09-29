@@ -26,6 +26,7 @@ export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 export const SET_STOCK = 'SET_STOCK'
+export const CART_EMPTYING = 'CART_EMPTYING'
 
 
 export function getAllProducts() {
@@ -199,6 +200,11 @@ export function resetFillCart(payload) {
     payload
   }
 }
+export function cartEmptying (){
+  return {
+    type:CART_EMPTYING
+  }
+}
 export function postProviders(payload) {
   return async function () {
     const info = await axios.post(URL + '/providers', payload);
@@ -266,3 +272,4 @@ export function putStock(data) {
       )
   }
 }
+

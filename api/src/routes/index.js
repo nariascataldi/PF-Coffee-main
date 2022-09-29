@@ -2,6 +2,7 @@ const { Router } = require('express');
 // const middlewareAuth = require('../middlewares/middlewareAuth');
 // const middlewareAdmin = require('../middlewares/middlewareAdmin');
 
+const checkAuth = require("../middlewares/checkAuth");
 
 const { productsGet,
         prodIDget,
@@ -27,8 +28,14 @@ const { productsGet,
         stockPut} = require('../controllers');
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
-const { userRegist,
-  userLogin } = require('../controllers/authControllers.js');
+const { 
+        userRegist,
+        userLogin,
+        confirm,
+        forgetPassword,
+        checkToken,
+        newPass,
+        profile  } = require('../controllers/authControllers.js');
 
 // import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
 
@@ -83,12 +90,6 @@ router.post('/orders', orderPost);
 
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
-////    Validation
-
-router.post('/users/registration', userRegist);     // ruta NO probada !!!!!! --
-
-router.post('/users/login', userLogin);     // ruta NO probada !!!!!! --
-
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
 
@@ -103,6 +104,33 @@ router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! --
 router.put('/editStock', stockPut);
 
 //////////////// yooooo y Yo también
+
+
+/* -------------- Auth ---------------------*/
+router.post('/users/registration', userRegist);               // ruta probada !!!!!! --
+
+router.post('/users/login', userLogin);                       // ruta probada !!!!!! --
+
+router.get("/users/confirm/:token", confirm);                // ruta probada !!!!!! --
+
+//Es de tipo post porque el usuario va a enviar su email y comprobamos que ese email exista, en caso de que sea asi le enviamos un nuevo token
+router.post("/users/forget-password", forgetPassword);       // ruta probada !!!!!! -- Olvide Password
+
+//COMPUEBA QUE EL NVO TOKEN SEA VALIDO Y QUE EL USUARIO EXISTA
+router.get("/users/forget-password/:token", checkToken);     // ruta probada !!!!!! --
+
+router.post("/users/forget-password/:token", newPass);       // ruta probada !!!!!! --
+
+//entra al endpoind, ejecuta el middeware y dsp ejecuta el perfil
+router.get("/users/profile", checkAuth, profile);
+
+//checkAuth => VERIFICA QUE EL JWT QUE SEA VALIDO, QUE EXISTA, QUE ESTE ENVIADO POR HEADER,
+//SI TODO ESTA BIEN SE VA HACIA PROFILE
+  
+/* -------------- Auth ---------------------*/
+
+
+
 
 
 const {Provider, Product} = require('../db')

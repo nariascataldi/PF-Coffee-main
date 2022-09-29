@@ -29,12 +29,14 @@ module.exports = (sequelize) => {
           isEmail: true,
         },
         allowNull: false,
+        trim: true,
         unique: true,
         primaryKey: true,
       },
       pass: {
         type: DataTypes.STRING,
         allowNull: false,
+        trim: true,
       },
       avatar: {
         type: DataTypes.TEXT,
@@ -42,11 +44,18 @@ module.exports = (sequelize) => {
       birthday: {
         type: DataTypes.STRING,
       },
+      confirm: {
+        type: DataTypes.BOOLEAN,
+        default: false
+      },
       disable: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
       basket: {
+        type: DataTypes.STRING,
+      },
+      token: {
         type: DataTypes.STRING,
       },
     },

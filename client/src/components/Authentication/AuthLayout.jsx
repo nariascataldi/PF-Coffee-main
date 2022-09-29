@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
 
-import styles from '../../styles/Authentication/AuthLayout.module.css'
+import styles from "../../styles/Authentication/AuthLayout.module.css";
 
 const AuthLayout = () => {
   return (
@@ -14,6 +14,6 @@ const AuthLayout = () => {
       </div>
     </>
   );
-}
+};
 
-export default AuthLayout
+export default AuthLayout;

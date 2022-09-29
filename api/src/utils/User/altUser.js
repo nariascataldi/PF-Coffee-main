@@ -14,7 +14,7 @@ async function altUser(id, attribute, value) {
 
 	let myProd = await User.findByPk(id)
 		.then( (r)=>{ // console.log(r);
-			r.update({[attribute]: value})     // 'actulizamos el atributo de la actividad'
+			r.update({[attribute]: value})     // 'actualizamos el atributo de la actividad'
 			return r;
 		})
 		.catch( (e)=> console.log('falló en el cambio de atributo en altUser: ', e.message) );
