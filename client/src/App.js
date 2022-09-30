@@ -51,7 +51,8 @@ function App() {
           {/* <Route exact path='/' element={<LandingPage />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
-          {/* <Route index element={<Login />} /> */}
+          {/*  */}
+          <Route exact path='/login' element={<Login />} />
           <Route path="/form" element={<Perfil />} />
           <Route path="/about" element={<About />} />
           <Route path="/detail/:id" element={<Detail />} />
