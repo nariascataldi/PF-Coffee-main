@@ -141,3 +141,15 @@ align-items: center;
 .cart-delete-icon:active{
     color:#6d1221
 }
+.pay-btn-cart-empty{
+    background-color: #c0bfbfe1;
+    color: rgb(134, 131, 131);
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    height: 46px;
+    width: 130px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+

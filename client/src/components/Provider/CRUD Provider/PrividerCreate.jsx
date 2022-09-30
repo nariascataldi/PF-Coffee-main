@@ -4,14 +4,16 @@ import { useForm } from "react-hook-form";
 import { clearCloudinaryResponse, postCloudinaryPhoto, postProviders  } from "../../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-import { Container, FormGroup, Input } from 'reactstrap'
+import { Container, FormGroup, Input, Modal } from 'reactstrap'
 
 import { Link, useParams } from "react-router-dom";
+import { useModal } from "../../../hooks/UseModal";
 
 
 const FormProviderCreate = (props) => {
     const dispatch= useDispatch();
     const navigate= useNavigate();
+    const [isOpenModal, openModal, closeModal] = useModal(false)
     let responseCloudinary = useSelector(state => state.responseCloudinary)
     const [loading, setLoading] = useState(false);
     const [image, setImage] = useState('');
@@ -26,13 +28,26 @@ const FormProviderCreate = (props) => {
         }*/
     });
 
-    const onSubmit = (data,e) => {
-        console.log(data);
-        dispatch(postProviders(data));
-        e.preventDefault();
-        e.target.reset();
-        alert('Correctly modify')
-       navigate('/homeAdmin')
+    const handleClickYesNo = (data, e) => {
+        if(e.target.value === 'yes') {
+            console.log(data);
+            dispatch(postProviders(data));
+            // e.preventDefault();
+            // e.target.reset();
+            alert('Provider Created')
+            navigate('/homeAdmin')
+        } 
+        closeModal()
+    }
+
+    const onSubmit = async (data,e) => {
+    //     console.log(data);
+    //     dispatch(postProviders(data));
+    //     e.preventDefault();
+    //     e.target.reset();
+    //     alert('Correctly modify')
+    //    navigate('/homeAdmin')
+        await openModal()
     }
 
     const uploadImage = async (e) => {
@@ -48,6 +63,13 @@ const FormProviderCreate = (props) => {
 {/* */}
     return (
         <div>
+            <Modal  isOpen={isOpenModal} closeModal={closeModal}>
+                <h1 className="">Create provider</h1>
+                <div class="d-flex justify-content-evenly">
+                    <button value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
+                    <button value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
+                </div>
+            </Modal>
             <h3 className="display-5">Provider Create</h3>
             <hr/>
             <form onSubmit={handleSubmit(onSubmit)}>

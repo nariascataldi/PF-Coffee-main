@@ -20,7 +20,7 @@ export default function Footer () {
     console.log(input)
   }
   function handleSubmit(e) {
-   e.prevent.default()
+   e.preventDefault()
   
       dispatch(postNewsletter(input))
       alert("suscrito")
@@ -30,18 +30,6 @@ export default function Footer () {
 
     return (
       <footer className={styles.container}>
-         <div>
-            <form onSubmit={(e) => handleSubmit(e)}>
-              <input
-              type="email"
-              id="form5Example2"
-              className="form-control"
-              name="mail"
-              onChange={(e) => handleChange(e)}>
-              </input>
-              <button type="submit" className="btn btn-primary mb-4" onSubmit={(e) => handleSubmit(e)}>OK</button>
-            </form>
-          </div>
         <div>
           <section className={styles.section}>
           <a 
