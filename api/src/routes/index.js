@@ -94,7 +94,7 @@ router.post('/orders', orderPost);
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
-router.post('/newsletter', mailPost);
+router.post('/nwsletter', mailPost);
 
 
 //---------------PUT

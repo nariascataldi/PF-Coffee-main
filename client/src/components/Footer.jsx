@@ -20,7 +20,7 @@ export default function Footer () {
     console.log(input)
   }
   function handleSubmit(e) {
-   e.prevent.default()
+   e.preventDefault()
   
       dispatch(postNewsletter(input))
       alert("suscrito")

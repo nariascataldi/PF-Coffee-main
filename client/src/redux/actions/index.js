@@ -133,7 +133,7 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-      const response = await axios.post("https://pfcoffee-app.herokuapp.com/users/registration", payload)
+      const response = await axios.post(URL + '/users/registration', payload)
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
       return dispatch({
