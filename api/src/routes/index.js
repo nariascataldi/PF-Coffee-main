@@ -23,12 +23,14 @@ const { productsGet,
         userAlt,
         providerAlt,
         providerIDremove,
-        userIDremove,
+        userIDremove,  
+        stockPut,
         userIDget,
         mailPost,
         mailGet,
         ofertPost,
         ofertsGet  } = require('../controllers');
+
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
 const { 
@@ -94,6 +96,7 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAu
 
 router.post('/orders', orderPost);
 
+
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
@@ -111,6 +114,9 @@ router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlew
 
 router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
+router.put('/editStock', stockPut);
+
+//////////////// yooooo y Yo también
 
 
 /* -------------- Auth ---------------------*/

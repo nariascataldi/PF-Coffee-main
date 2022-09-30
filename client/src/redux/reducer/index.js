@@ -47,7 +47,8 @@ const initialState = {
     sort:'',
     minPrice: '',
     maxPrice: ''
-  }
+  },
+  setReducedCart:[]
 }
 
 
@@ -131,6 +132,7 @@ const rootReducer = (state = initialState, action) => {
         }
 
       }
+   
     case FILTER:
       const allProd = state.allProducts;
       const titleFilter = state.filterBy.title === '' ? allProd : allProd.filter(e => {

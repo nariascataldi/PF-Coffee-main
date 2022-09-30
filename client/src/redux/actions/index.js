@@ -26,6 +26,7 @@ export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
+export const SET_STOCK = 'SET_STOCK'
 export const POST_NEWSLETTER = 'POST_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
@@ -285,3 +286,15 @@ export function putProduct(data, id) {
     );
   }
 }
+
+export function putStock(data) {
+  return async function (dispatch) {
+    axios.put(URL + '/editStock', data).then(res =>
+      dispatch({
+        type: SET_STOCK,
+        payload: res.data
+      })
+      )
+  }
+}
+
