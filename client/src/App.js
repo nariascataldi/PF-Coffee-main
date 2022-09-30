@@ -33,6 +33,7 @@ import NotFound from './components/NotFound';
 import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
+import SignIn from './components/SignIn/SignIn';
 
 
 function App() {
@@ -76,8 +77,8 @@ function App() {
           <Route exact path="/formusers" element={<FormularioUsuario />} />
           <Route exact path="/modals" element={<Modals />} />
           <Route path="*" element={<NotFound />} />
-          <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}
-          />
+          <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}/>
+          <Route exact path='/signin' element={<SignIn/>}/>
         </Routes>
       </div>
     </>

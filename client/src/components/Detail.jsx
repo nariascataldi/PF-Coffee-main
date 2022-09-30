@@ -38,7 +38,7 @@ export default function Detail(props){
     dispatch(getDetail(id)); //
     setTimeout(() => {
       setLoad(false);
-    }, 500);
+    }, 1000);
   }, [dispatch]);
 
   const handleStar = (e) => {

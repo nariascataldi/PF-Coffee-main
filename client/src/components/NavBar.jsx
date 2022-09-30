@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BsSearch, BsFillCartFill, BsFillCartPlusFill } from "react-icons/bs";
+import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
@@ -56,6 +56,11 @@ const NavBar = ({ noFilters }) => {
   const handleOnClick = () => {
     setMenu(!menu);
   };
+  
+  
+  const user= JSON.parse(localStorage.getItem('Sign In'))
+  console.log("el usuario es ",user) 
+  
 
   return (
     <div className={styles.navbar}>
@@ -72,11 +77,11 @@ const NavBar = ({ noFilters }) => {
         </Link>
       </div>
 
-      <li className={styles.nav_item}>
+      {/* <li className={styles.nav_item}>
         <Link to="/" className={styles.links}>
           Home
         </Link>
-      </li>
+      </li> */}
 
       <SearchBar/>
 
@@ -132,7 +137,7 @@ const NavBar = ({ noFilters }) => {
               <option value="Low">Price: Low to High</option>
             </select>
           </div>
-          <div>
+          {/* <div>
             <span>Price: </span>
             <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
             <span> - </span>
@@ -140,7 +145,7 @@ const NavBar = ({ noFilters }) => {
             <button onClick={(e) => handleSubmitPrice(e)}>
               Search
             </button>
-          </div>
+          </div> */}
         </>
       )}
       <Link 
@@ -155,6 +160,10 @@ const NavBar = ({ noFilters }) => {
           {fillCart.length > 0 && fillCart.length}
         </p>
       </Link>
+      { user?.photoURL? 
+        <img src={ user.photoURL} className='signin-img-user'/> :
+        <BsPersonCircle className={styles.non_sesion_init_icon}/>
+      }
       {noFilters && (
         <>
           <h2></h2>
