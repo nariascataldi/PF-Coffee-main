@@ -26,7 +26,9 @@ const { productsGet,
         userIDremove,
         userIDget,
         mailPost,
-        mailGet  } = require('../controllers');
+        mailGet,
+        ofertPost,
+        ofertsGet  } = require('../controllers');
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
 const { 
@@ -65,6 +67,8 @@ router.get('/orders', ordersGet);
 
 router.get('/newsletter', mailGet);
 
+router.get('/oferts', ofertsGet);
+
 // router.get('/users/:id', userIDget);      // ruta NO probada !!!!!! --
 
 // router.get('/orders', ordersGet);    // ruta NO probada !!!!!! --
@@ -95,6 +99,11 @@ router.post('/orders', orderPost);
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
 router.post('/nwsletter', mailPost);
+<<<<<<< HEAD
+=======
+
+router.post('/oferts', ofertPost)
+>>>>>>> 86231ba474dce453771cdbf6b6028a854e1a0393
 
 
 //---------------PUT
