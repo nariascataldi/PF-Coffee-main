@@ -12,13 +12,23 @@ import styles from '../styles/NavBar.module.css'
 import SearchBar from "./SearchBar";
 
 const NavBar = ({ noFilters }) => {
-  const { categories, diets, fillCart } = useSelector((state) => state);
+  const { categories, diets, fillCart, filterBy } = useSelector((state) => state);
   const [busqueda, setBusqueda] = useState("");
   const [menu, setMenu] = useState(false);
+  const [price, setPrice] = useState({
+    minPrice: '',
+    maxPrice: ''
+  })
+  // const [minPrice, setMinPrice] = useState('');
+  // const [maxPrice, setMaxPrice] = useState('');
   const localStorageCart = JSON.parse(localStorage.getItem("carrito"));
 
   const dispatch = useDispatch();
 
+  React.useEffect(()=>{
+    
+  },[filterBy]);
+  
   const handleOnChange = (d) => {
     setBusqueda(d.target.value);
     dispatch(getByTitle(busqueda));
@@ -30,6 +40,17 @@ const NavBar = ({ noFilters }) => {
   };
   function handleSelect(e) {
     dispatch(setFilterState({ [e.target.name]: e.target.value }));
+  }
+
+  const handlePriceChange = (e) => {
+      setPrice({
+        ...price,
+        [e.target.name]: e.target.value
+      })
+  }
+
+  const handleSubmitPrice = () => {
+    dispatch(setFilterState({ minPrice: price.minPrice, maxPrice: price.maxPrice }));
   }
 
   const handleOnClick = () => {
@@ -111,6 +132,15 @@ const NavBar = ({ noFilters }) => {
               <option value="Low">Price: Low to High</option>
             </select>
           </div>
+          <div>
+            <span>Price: </span>
+            <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
+            <span> - </span>
+            <input type="text" placeholder="Max." name="maxPrice" value={price.maxPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
+            <button onClick={(e) => handleSubmitPrice(e)}>
+              Search
+            </button>
+          </div>
         </>
       )}
       <Link 
@@ -141,7 +171,6 @@ const NavBar = ({ noFilters }) => {
           <p></p>
         </>
       )}
-
       <Menu menu={menu} />
     </div>
   );

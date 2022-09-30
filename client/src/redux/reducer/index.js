@@ -15,17 +15,21 @@ import {
   POST_PROVIDERS,
   CLEAR_DETAIL,
   FILL_CART,
+  CHANGE_MAIL,
   RESET_FILL_CART,
   CART_EMPTYING,
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
+  POST_NEWSLETTER
+  GET_ALL_USERS
   // fillCart
 } from '../actions'
 
 const initialState = {
   allProducts: [],
   products: [],
+  users: [],
   productDetail: {},
   providers: [],
   providerDetail: {},
@@ -35,11 +39,14 @@ const initialState = {
   fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
   token: [],
+  checkedMails: [],
   filterBy: {
     title: '',
     category: '',
     diet: '',
-    sort:''
+    sort:'',
+    minPrice: '',
+    maxPrice: ''
   },
   setReducedCart:[]
 }
@@ -102,13 +109,17 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
+    case POST_NEWSLETTER:
+      return {
+        ...state
+      }
     case POST_USER:
       return {
         ...state,
         token: action.payload,
       }
     case CONFIRM_ID:
-      return{
+      return {
         ...state,
         token: action.payload,
       }
@@ -133,7 +144,12 @@ const rootReducer = (state = initialState, action) => {
       const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
         return e.diets.map(d => d.name).includes(state.filterBy.diet)
       })
-      const sort = state.filterBy.sort === '' ? filterDiet : state.filterBy.sort=== 'Z-A' ? [...filterDiet].sort((a,b)=>{
+      const filterPrice = state.filterBy.minPrice === '' && state.filterBy.maxPrice === '' ? filterDiet : filterDiet.filter(e => {
+        if (!state.filterBy.minPrice) return e.price >= 0 && e.price <= state.filterBy.maxPrice
+        if (!state.filterBy.maxPrice) return e.price >= state.filterBy.minPrice && e.price <= Infinity
+        return e.price >= state.filterBy.minPrice && e.price <= state.filterBy.maxPrice
+      })
+      const sort = state.filterBy.sort === '' ? filterPrice : state.filterBy.sort=== 'Z-A' ? [...filterPrice].sort((a,b)=>{
         let A = a.title.toLowerCase();
         let B = b.title.toLowerCase();
                 if(A === B) {
@@ -145,7 +161,7 @@ const rootReducer = (state = initialState, action) => {
                   if(A < B) {
                     return 1;
                   }
-        }) : state.filterBy.sort==='A-Z' ? [...filterDiet].sort((a,b)=>{
+        }) : state.filterBy.sort==='A-Z' ? [...filterPrice].sort((a,b)=>{
                 let A = a.title.toLowerCase();
                 let B = b.title.toLowerCase();
                   if(A === B) {
@@ -157,11 +173,11 @@ const rootReducer = (state = initialState, action) => {
                   if(A > B) {
                     return 1;
                   }
-        }) : state.filterBy.sort==='High' ? [...filterDiet].sort((a,b)=>{
+        }) : state.filterBy.sort==='High' ? [...filterPrice].sort((a,b)=>{
               let A = a.price
               let B = b.price
                 return B - A
-        }) : state.filterBy.sort==='Low' && [...filterDiet].sort((a,b)=>{
+        }) : state.filterBy.sort==='Low' && [...filterPrice].sort((a,b)=>{
               let A = a.price
               let B = b.price
                 return A - B
@@ -177,11 +193,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         fillCart: [...state.fillCart, ...action.payload]
       }
-    case RESET_FILL_CART : 
-    const indexCart = state.fillCart.findIndex( (element) => element.id === action.payload);
-    let copyCart = [...state.fillCart];
-    copyCart.splice(indexCart,1)
-  
+    case RESET_FILL_CART:
+      const indexCart = state.fillCart.findIndex((element) => element.id === action.payload);
+      let copyCart = [...state.fillCart];
+      copyCart.splice(indexCart, 1)
+
       return {
         ...state,
         fillCart: copyCart
@@ -197,20 +213,35 @@ const rootReducer = (state = initialState, action) => {
         providers: action.payload
       }
     case GET_CLOUDINARY_RESPONSE:
-      return{
+      return {
         ...state,
         responseCloudinary: action.payload
       }
     case CLEAR_CLOUDINARY_RESPONSE:
-      return{
+      return {
         ...state,
         responseCloudinary: {}
       }
-    case POST_COMMENT :
-      return{
+    case POST_COMMENT:
+      return {
         ...state
       }
-
+    case GET_ALL_USERS :
+      return{
+        ...state,
+        users: action.payload
+      }
+    case CHANGE_MAIL: 
+      if(state.checkedMails.includes(action.payload)) {
+        return {
+          ...state,
+          checkedMails: [...state.checkedMails].filter(f => f !== action.payload)
+        }
+      }
+      return {
+        ...state,
+        checkedMails: [...state.checkedMails, action.payload]
+      }
     default:
       return { ...state }
   }
