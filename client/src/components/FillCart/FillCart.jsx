@@ -8,6 +8,7 @@ import NavBar from "../NavBar";
 import './FillCart.css';
 import {BsFillCartDashFill} from "react-icons/bs";
 import { URL } from "../../config/Const";
+import { reduceCart } from "../../utils/reduceCart";
 
 export default function FillCart() {
 
@@ -23,28 +24,28 @@ export default function FillCart() {
         
         alert('Product delete')
     }
-    // reduceCart
-    let quantities = {};
+    // // reduceCart
+    // let quantities = {};
 
-    for (let i = 0; i < fillCart.length; i++) {
-        if (!quantities[fillCart[i].title]) quantities[fillCart[i].title] = 1;
-        else quantities[fillCart[i].title]++;
-    }
+    // for (let i = 0; i < fillCart.length; i++) {
+    //     if (!quantities[fillCart[i].title]) quantities[fillCart[i].title] = 1;
+    //     else quantities[fillCart[i].title]++;
+    // }
 
-    //console.log(quantities); // { coffe: 2, yogurt: 1, sandwich: 2 }
+    // //console.log(quantities); // { coffe: 2, yogurt: 1, sandwich: 2 }
 
-    // luego armamos nuestro reducedCart
+    // // luego armamos nuestro reducedCart
 
-    let reducedCart = [];
-    let quantitiesKeys = Object.keys(quantities);
-    let found;
+    // let reducedCart = [];
+    // let quantitiesKeys = Object.keys(quantities);
+    // let found;
 
-    for (let j = 0; j < quantitiesKeys.length; j++) {
-        found = fillCart.find((product) => product.title === quantitiesKeys[j]);
-        reducedCart.push({ ...found, quantity: quantities[quantitiesKeys[j]] });
-    }
+    // for (let j = 0; j < quantitiesKeys.length; j++) {
+    //     found = fillCart.find((product) => product.title === quantitiesKeys[j]);
+    //     reducedCart.push({ ...found, quantity: quantities[quantitiesKeys[j]] });
+    // }
 
-
+ const reducedCart =reduceCart(fillCart)
 console.log(reducedCart)
 
 
@@ -121,7 +122,7 @@ console.log(reducedCart)
                                 </div>
                             </div>
                         )
-                    }) : <p> Clear</p>
+                    }) : <p> </p>
                     }
                 </div>
                 <div className='detail-cart-shop-total'>
@@ -136,7 +137,10 @@ console.log(reducedCart)
                         </li>
                         <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
-                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button>
+                    {fillCart.length ? 
+                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
+                    <button className='pay-btn-cart-empty'>Pay</button>
+                    }
                 </div>
             </div>
             <Footer />

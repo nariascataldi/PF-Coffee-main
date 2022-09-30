@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 import { clearCloudinaryResponse, postCloudinaryPhoto, getProductDetail, putProduct } from '../../../../redux/actions/index'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-import { Container, FormGroup, Input } from 'reactstrap'
+import { Container, FormGroup, Input, Modal } from 'reactstrap'
 import { Link, useParams } from "react-router-dom";
+import { useModal } from "../../../../hooks/UseModal";
 
 
 const FormModifyProduct = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isOpenModal, openModal, closeModal] = useModal(false)
   let responseCloudinary = useSelector(state => state.responseCloudinary)
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState('');
@@ -25,13 +27,28 @@ const FormModifyProduct = (props) => {
 
 
   const { productDetail } = useSelector((state) => state);
-  const onSubmit = (data, e) => {
-    console.log({data});
-    dispatch(putProduct(data, id));
-    e.preventDefault();
-    e.target.reset();
-    alert('Correctly modify')
-    navigate('/homeAdmin')
+  const onSubmit = async (e) => {
+    await openModal()
+    // console.log({data});
+    // dispatch(putProduct(data, id));
+    // e.preventDefault();
+    // e.target.reset();
+    // alert('Correctly modify')
+    // navigate('/homeAdmin')
+  }
+
+  const handleClickYesNo = (data, e) => {
+    if(e.target.value === 'yes') {
+      dispatch(putProduct(data, id));
+      // e.preventDefault();
+      // e.target.reset();
+      alert('Correctly modify')
+      navigate('/homeAdmin')
+      closeModal()
+    }
+    else {
+      closeModal()
+    }
   }
 
   const uploadImage = async (e) => {
@@ -47,6 +64,13 @@ const FormModifyProduct = (props) => {
   {/* */ }
   return (
     <div>
+      <Modal isOpen={isOpenModal} closeModal={closeModal}>
+        <h1>Modify Product</h1>
+        <div class="d-flex justify-content-evenly">
+          <button value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
+          <button value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
+        </div>
+      </Modal>
       <h2>Product Modify </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div id="Title">

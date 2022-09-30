@@ -15,17 +15,21 @@ import {
   POST_PROVIDERS,
   CLEAR_DETAIL,
   FILL_CART,
+  CHANGE_MAIL,
   RESET_FILL_CART,
+  CART_EMPTYING,
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
   POST_NEWSLETTER
+  GET_ALL_USERS
   // fillCart
 } from '../actions'
 
 const initialState = {
   allProducts: [],
   products: [],
+  users: [],
   productDetail: {},
   providers: [],
   providerDetail: {},
@@ -35,11 +39,14 @@ const initialState = {
   fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
   token: [],
+  checkedMails: [],
   filterBy: {
     title: '',
     category: '',
     diet: '',
-    sort: ''
+    sort:'',
+    minPrice: '',
+    maxPrice: ''
   }
 }
 
@@ -135,44 +142,51 @@ const rootReducer = (state = initialState, action) => {
       const filterDiet = state.filterBy.diet === "" ? filterCategory : filterCategory.filter(e => {
         return e.diets.map(d => d.name).includes(state.filterBy.diet)
       })
-      const sort = state.filterBy.sort === '' ? filterDiet : state.filterBy.sort === 'Z-A' ? [...filterDiet].sort((a, b) => {
-        let A = a.title.toLowerCase();
-        let B = b.title.toLowerCase();
-        if (A === B) {
-          return 0;
-        }
-        if (A > B) {
-          return -1;
-        }
-        if (A < B) {
-          return 1;
-        }
-      }) : state.filterBy.sort === 'A-Z' ? [...filterDiet].sort((a, b) => {
-        let A = a.title.toLowerCase();
-        let B = b.title.toLowerCase();
-        if (A === B) {
-          return 0;
-        }
-        if (A < B) {
-          return -1;
-        }
-        if (A > B) {
-          return 1;
-        }
-      }) : state.filterBy.sort === 'High' ? [...filterDiet].sort((a, b) => {
-        let A = a.price
-        let B = b.price
-        return B - A
-      }) : state.filterBy.sort === 'Low' && [...filterDiet].sort((a, b) => {
-        let A = a.price
-        let B = b.price
-        return A - B
+      const filterPrice = state.filterBy.minPrice === '' && state.filterBy.maxPrice === '' ? filterDiet : filterDiet.filter(e => {
+        if (!state.filterBy.minPrice) return e.price >= 0 && e.price <= state.filterBy.maxPrice
+        if (!state.filterBy.maxPrice) return e.price >= state.filterBy.minPrice && e.price <= Infinity
+        return e.price >= state.filterBy.minPrice && e.price <= state.filterBy.maxPrice
       })
+      const sort = state.filterBy.sort === '' ? filterPrice : state.filterBy.sort=== 'Z-A' ? [...filterPrice].sort((a,b)=>{
+        let A = a.title.toLowerCase();
+        let B = b.title.toLowerCase();
+                if(A === B) {
+                    return 0; 
+                  }
+                if(A > B) {
+                    return -1;
+                  }
+                  if(A < B) {
+                    return 1;
+                  }
+        }) : state.filterBy.sort==='A-Z' ? [...filterPrice].sort((a,b)=>{
+                let A = a.title.toLowerCase();
+                let B = b.title.toLowerCase();
+                  if(A === B) {
+                    return 0; 
+                  }
+                  if(A < B) {
+                    return -1;
+                  }
+                  if(A > B) {
+                    return 1;
+                  }
+        }) : state.filterBy.sort==='High' ? [...filterPrice].sort((a,b)=>{
+              let A = a.price
+              let B = b.price
+                return B - A
+        }) : state.filterBy.sort==='Low' && [...filterPrice].sort((a,b)=>{
+              let A = a.price
+              let B = b.price
+                return A - B
+        })
       return {
         ...state,
         products: sort
       }
-    case FILL_CART:
+    case FILL_CART :
+      // const findIdStock = action.payload[0].id
+      // console.log('el action payload es ',action.payload[0].title)
       return {
         ...state,
         fillCart: [...state.fillCart, ...action.payload]
@@ -186,8 +200,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         fillCart: copyCart
       }
-    case POST_PROVIDERS:
+    case CART_EMPTYING :
       return {
+        ...state,
+        fillCart: []
+      }
+    case POST_PROVIDERS :
+      return{
         ...state,
         providers: action.payload
       }
@@ -205,7 +224,22 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
-
+    case GET_ALL_USERS :
+      return{
+        ...state,
+        users: action.payload
+      }
+    case CHANGE_MAIL: 
+      if(state.checkedMails.includes(action.payload)) {
+        return {
+          ...state,
+          checkedMails: [...state.checkedMails].filter(f => f !== action.payload)
+        }
+      }
+      return {
+        ...state,
+        checkedMails: [...state.checkedMails, action.payload]
+      }
     default:
       return { ...state }
   }

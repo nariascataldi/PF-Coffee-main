@@ -1,0 +1,14 @@
+.parentTable {
+}
+
+.columnTop {
+    display: flex;
+    width: 70vw;
+    justify-content: space-between;
+}
+
+.columnBottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
