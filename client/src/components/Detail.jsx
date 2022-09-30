@@ -10,6 +10,7 @@ import {
   getDetail,
   postComment,
   setFillCart,
+  putStock
 } from "../redux/actions";
 
 import NavBar from './NavBar';
@@ -31,7 +32,7 @@ export default function Detail(props){
   const [comment, setComment] = useState("");
 
   const { detail } = useSelector((state) => state);
-   console.log("detail: ", detail.id)
+   //console.log("detail: ", detail.id)
 
   useEffect(() => {
     setLoad(true);
@@ -62,6 +63,7 @@ export default function Detail(props){
 
   //actualizo el estado de redux 'filtCart' con la variable arrayLs
   let arrayLs = [];
+
   let quantityProductCart = reduceCart(fillCart)
   let productToAddCart = quantityProductCart.filter(e=>e.id===detail.id)
   console.log('Cantidad agragada',productToAddCart[0]?.quantity)
@@ -69,7 +71,11 @@ export default function Detail(props){
     if(productToAddCart[0]?.quantity === detail.stock){
       return alert('The chosen quantity exceeds our stock')
     }
+    detail.stock = detail.stock - 1; 
+    console.log(detail)
+    //dispatch(putStock(detail))
     arrayLs.push(detail);
+    //console.log(arrayLs)
     dispatch(setFillCart(arrayLs));
     alert("Product successfuly added!");
   };

@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { postNewsletter }from '../redux/actions/index';
 
 import styles from "../styles/Footer.module.css";
 
 export default function Footer () {
+  const dispatch = useDispatch()
+  const [input, setInput] = useState({
+    mail: ''
+  })
+
+  function handleChange(e)  {
+    setInput ({
+      ...input,
+      [e.target.name] : e.target.value
+    })
+    //console.log(e.target.value)
+    console.log(input)
+  }
+  function handleSubmit(e) {
+   e.prevent.default()
+  
+      dispatch(postNewsletter(input))
+      alert("suscrito")
+      setInput({mail: ''})
+    
+  }
 
     return (
       <footer className={styles.container}>
@@ -94,7 +117,7 @@ export default function Footer () {
           </section>
 
           <section className="">
-            <form action="">
+            <form  onSubmit={(e) => handleSubmit(e)}>
               <div className={styles.sing}>
                 <div className={styles.singII}>
                   <p className={styles.singI}>
@@ -108,6 +131,8 @@ export default function Footer () {
                       type="email"
                       id="form5Example2"
                       className="form-control"
+                      name="mail"
+                      onChange={(e) => handleChange(e)}
                     />
                     <label className="form-label" for="form5Example2">
                       Email address
@@ -117,7 +142,7 @@ export default function Footer () {
 
                 <div className="col-auto">
                   <button 
-                  type="submit" className="btn btn-primary mb-4">
+                  type="submit" className="btn btn-primary mb-4" >
                     Subscribe
                   </button>
                 </div>

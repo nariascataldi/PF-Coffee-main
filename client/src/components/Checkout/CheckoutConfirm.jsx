@@ -13,6 +13,7 @@ import '../Checkout/Checkout.css'
 
 export default function CheckoutConfirm (){
     const { fillCart } = useSelector((state) => state);
+   
     const dispatch = useDispatch()
     const location = useLocation();
     const datosPago = location.search.split("&");

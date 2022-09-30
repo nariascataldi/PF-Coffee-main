@@ -1,6 +1,6 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllProducts } from '../../../redux/actions/index.js';
+import { getAllProducts, postNewsletter } from '../../../redux/actions/index.js';
 
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
 import ProductAdmin from '../Product/ProductAdmin.jsx';
@@ -21,13 +21,13 @@ import FormProvider from '../../Provider/CRUD Provider/PrividerCreate';
 import CardsNews from '../Newsletter/CardsNews.jsx';
 // import Providers from '../../Provider/Providers.jsx';
 
-
 export default function HomeAdmin() {
   //---SearchBar---
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch])
+
 
   return (
     <div className={style.home_container}>
