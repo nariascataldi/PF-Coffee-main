@@ -1,36 +1,26 @@
-import React from "react";
-import styles from './CardMail.module.css'
+import React, { useState } from "react";
 
-export default function CardMails ({mail, name, disable, id}){
+export default function CardMails ({mail, handle}){
+
+    // let [checkedMails, setCheckedMails] = useState([])
+
+    // React.useEffect(() => {
+    //     console.log(checkedMails)
+    // },[checkedMails])
+
+    // const handleClickCheck = async (e) => {
+    //     if (e.target.checked) {
+    //         setCheckedMails([...checkedMails, e.target.value])
+    //     }
+    //     else if (!e.target.checked) {
+    //         setCheckedMails(checkedMails.filter(f => f !== e.target.value))
+    //     }
+    // }
 
     return (
         <div>
-          <table className="table">
-              <thead className="table-primary">
-              <tr className="">
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Mail</th>
-                <th scope="col">State</th>
-                <th scope="col">Send Newsletter</th>
-                <th></th>
-              </tr>
-              </thead>
-              
-              <tbody>
-                  <tr>
-                    <th scope="row"> <p>{id}</p></th>
-                    <td><p>{name}</p></td>
-                    <td><p>{mail}</p></td>
-                    {
-                        disable === false ?
-                        <td><p>Asset</p></td> :
-                        <td><p>Inactive</p></td>
-                    }
-                    <td><input type="checkbox" /></td>
-                   </tr>
-              </tbody>
-          </table>
+            mail: {mail}
+            <input type="checkbox" value={mail} onClick={handle}/>
         </div>
       );
 }
