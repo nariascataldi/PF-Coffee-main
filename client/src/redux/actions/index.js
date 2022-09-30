@@ -27,7 +27,7 @@ export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 export const CART_EMPTYING = 'CART_EMPTYING'
-
+export const CHANGE_MAIL = 'CHANGE_MAIL'
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -189,6 +189,12 @@ export function setFilterState(payload) {
 export function filter() {
   return {
     type: FILTER,
+  }
+};
+export function changeMailArray(payload) {
+  return {
+    type: CHANGE_MAIL,
+    payload
   }
 };
 export function setFillCart(payload) {

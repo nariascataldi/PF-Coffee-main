@@ -15,6 +15,7 @@ import {
   POST_PROVIDERS,
   CLEAR_DETAIL,
   FILL_CART,
+  CHANGE_MAIL,
   RESET_FILL_CART,
   CART_EMPTYING,
   GET_CLOUDINARY_RESPONSE,
@@ -37,6 +38,7 @@ const initialState = {
   fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
   token: [],
+  checkedMails: [],
   filterBy: {
     title: '',
     category: '',
@@ -222,7 +224,17 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         users: action.payload
       }
-
+    case CHANGE_MAIL: 
+      if(state.checkedMails.includes(action.payload)) {
+        return {
+          ...state,
+          checkedMails: [...state.checkedMails].filter(f => f !== action.payload)
+        }
+      }
+      return {
+        ...state,
+        checkedMails: [...state.checkedMails, action.payload]
+      }
     default:
       return { ...state }
   }
