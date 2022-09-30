@@ -10,6 +10,7 @@ export const GET_ALL_DIETS = 'GET_ALL_DIETS'
 export const GET_DETAIL = "GET_DETAIL"
 export const GET_BY_TITLE = 'GET_BY_TITLE'
 export const POST_USER = 'POST_USER'
+export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const CONFIRM_ID = "CONFIRM_ID"
 export const POST_PRODUCT = 'POST_PRODUCT'
 export const SET_FILTER_STATE = 'SET_FILTER_STATE'
@@ -26,13 +27,23 @@ export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 export const CART_EMPTYING = 'CART_EMPTYING'
-
+export const CHANGE_MAIL = 'CHANGE_MAIL'
 
 export function getAllProducts() {
   return async function (dispatch) {
     const json = await axios.get(URL + '/products');
     return dispatch({
       type: GET_ALL_PRODUCTS,
+      payload: json.data
+    })
+  }
+};
+
+export function getAllUsers() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + '/users');
+    return dispatch({
+      type: GET_ALL_USERS,
       payload: json.data
     })
   }
@@ -178,6 +189,12 @@ export function setFilterState(payload) {
 export function filter() {
   return {
     type: FILTER,
+  }
+};
+export function changeMailArray(payload) {
+  return {
+    type: CHANGE_MAIL,
+    payload
   }
 };
 export function setFillCart(payload) {
