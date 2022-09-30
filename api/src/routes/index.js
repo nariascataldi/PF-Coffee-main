@@ -1,27 +1,5 @@
 const { Router } = require('express');
-
-
-const users = [
-  { id: 1, name: 'Franco', email: 'Franco@mail.com', password: '1234' },
-  { id: 2, name: 'Toni', email: 'Toni@mail.com', password: '1234' }
-]
-//--middleware propios Authenticated-------
-const redirectLogin = (req, res, next) => {
-  if (!req.session.userId) {
-    res.redirect('/auth/login');
-  } else {
-    next();
-  }
-}
-
-const redirectHome = (req, res, next) => {
-  if (req.session.userId) {
-    res.redirect('/auth/home');
-  } else {
-    next();
-  }
-}
-//----------------------------------------
+const session = require('express-session');
 
 // const middlewareAuth = require('../middlewares/middlewareAuth');
 // const middlewareAdmin = require('../middlewares/middlewareAdmin');
@@ -64,6 +42,51 @@ const {
 
 const router = Router();
 
+const users = [
+  { id: 1, name: 'Franco', email: 'Franco@mail.com', password: '1234' },
+  { id: 2, name: 'Toni', email: 'Toni@mail.com', password: '1234' }
+]
+//--middleware propios Authenticated-------
+const redirectLogin = (req, res, next) => {
+  if (!req.session.userId) {
+    res.redirect('/auth/login');
+  } else {
+    next();
+  }
+}
+
+const redirectHome = (req, res, next) => {
+  if (req.session.userId) {
+    res.redirect('/auth/home');
+  } else {
+    next();
+  }
+}
+//----------------------------------------
+
+//---Auth----------------------------------------------------------------
+
+//Para poder parsear el middleware
+router.use(express.urlencoded({ extended: true }));
+
+router.use(session(
+  {
+    name: 'sid',
+    secret: 'secret', // Debería estar en un archivo de environment
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 2 // Está en milisegundos --> 2hs
+    }
+  }
+));
+
+router.use((req, res, next) => {
+  console.log(req.session);
+  next();
+});
+
+//------------------------
 
 //---------------GET
 

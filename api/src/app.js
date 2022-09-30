@@ -7,26 +7,9 @@ const { FRONT } = require('./db.js');
 const frontPort = FRONT || 3030;
 const session = require('express-session');
 
-// const cors = require("cors");
-
 require('./db.js');
 
 const server = express();
-
-//CONFIGURACION CORS
-// const whitelist = ["*"]; //DOMINIOS PERMITIDOS
-
-// const corsOptions = {
-//   origin: function(origin, callback){
-//     if(whitelist.includes(origin)){
-//   callback(null, true);
-//   } else {
-//   callback(new Error("Error de CORS"))
-//     }
-//   }
-// };
-
-// server.use(cors(corsOptions))
 
 server.name = 'API';
 
@@ -45,29 +28,27 @@ server.use((req, res, next) => {
 
 server.use('/', routes);
 
-
 //---Auth----------------------------------------------------------------
 
-
 //Para poder parsear el middleware
-server.use(express.urlencoded({ extended: true }));
+// server.use(express.urlencoded({ extended: true }));
 
-server.use(session(
-  {
-    name: 'sid',
-    secret: 'secret', // Debería estar en un archivo de environment
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 2 // Está en milisegundos --> 2hs
-    }
-  }
-));
+// server.use(session(
+//   {
+//     name: 'sid',
+//     secret: 'secret', // Debería estar en un archivo de environment
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       maxAge: 1000 * 60 * 60 * 2 // Está en milisegundos --> 2hs
+//     }
+//   }
+// ));
 
-server.use((req, res, next) => {
-  console.log(req.session);
-  next();
-});
+// server.use((req, res, next) => {
+//   console.log(req.session);
+//   next();
+// });
 
 //------------------------
 
