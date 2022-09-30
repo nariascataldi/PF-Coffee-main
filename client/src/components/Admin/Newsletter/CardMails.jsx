@@ -1,23 +1,26 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeMailArray } from "../../../redux/actions";
 
-export default function CardMails ({mail}){
-    let dispatch = useDispatch();
-    let checkedMails = useSelector(state => state.checkedMails)
+export default function CardMails ({mail, handle}){
 
-    React.useEffect(() => {
-        console.log(checkedMails)
-    },[checkedMails])
+    // let [checkedMails, setCheckedMails] = useState([])
 
-    const handleClickCheck = async (e) => {
-        dispatch(changeMailArray(e.target.value))
-    }
+    // React.useEffect(() => {
+    //     console.log(checkedMails)
+    // },[checkedMails])
+
+    // const handleClickCheck = async (e) => {
+    //     if (e.target.checked) {
+    //         setCheckedMails([...checkedMails, e.target.value])
+    //     }
+    //     else if (!e.target.checked) {
+    //         setCheckedMails(checkedMails.filter(f => f !== e.target.value))
+    //     }
+    // }
 
     return (
         <div>
             mail: {mail}
-            <input type="checkbox" value={mail} onClick={(e) => handleClickCheck(e)}/>
+            <input type="checkbox" value={mail} onClick={handle}/>
         </div>
       );
 }
