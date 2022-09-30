@@ -15,17 +15,20 @@ import {
   POST_PROVIDERS,
   CLEAR_DETAIL,
   FILL_CART,
+  CHANGE_MAIL,
   RESET_FILL_CART,
   CART_EMPTYING,
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
+  GET_ALL_USERS
   // fillCart
 } from '../actions'
 
 const initialState = {
   allProducts: [],
   products: [],
+  users: [],
   productDetail: {},
   providers: [],
   providerDetail: {},
@@ -35,6 +38,7 @@ const initialState = {
   fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
   token: [],
+  checkedMails: [],
   filterBy: {
     title: '',
     category: '',
@@ -215,7 +219,22 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state
       }
-
+    case GET_ALL_USERS :
+      return{
+        ...state,
+        users: action.payload
+      }
+    case CHANGE_MAIL: 
+      if(state.checkedMails.includes(action.payload)) {
+        return {
+          ...state,
+          checkedMails: [...state.checkedMails].filter(f => f !== action.payload)
+        }
+      }
+      return {
+        ...state,
+        checkedMails: [...state.checkedMails, action.payload]
+      }
     default:
       return { ...state }
   }
