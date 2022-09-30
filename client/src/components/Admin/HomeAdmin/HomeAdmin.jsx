@@ -28,41 +28,8 @@ export default function HomeAdmin() {
   }, [dispatch])
 
 
-  //prueba
- 
-  const [input, setInput] = useState({
-    mail: ''
-  })
-
-  function handleChange2(e)  {
-    setInput ({
-      ...input,
-      [e.target.name] : e.target.value
-    })
-    //console.log(e.target.value)
-    console.log(input)
-  }
-  function handleSubmit2(e) {
-   e.prevent.default()
-  
-      dispatch(postNewsletter(input))
-      alert("suscrito")
-      setInput({mail: ''})
-    
-  }
-
   return (
     <div className={style.home_container}>
-      <form onSubmit={(e) => handleSubmit2(e)}>
-              <input
-              type="email"
-              id="form5Example2"
-              className="form-control"
-              name="mail"
-              onChange={(e) => handleChange2(e)}>
-              </input>
-              <button type="submit" className="btn btn-primary mb-4" >OK</button>
-            </form>
       <NavBarAdmin/>
       <Tab.Container id="left-tabs-example" defaultActiveKey="homeAdmin">
         <Row>
