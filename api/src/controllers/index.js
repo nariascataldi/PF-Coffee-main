@@ -22,7 +22,6 @@ const deleteUser = require('../utils/User/deleteUser');
 const postOrder = require('../utils/Order/postOrder');
 const getOrders = require('../utils/Order/getOrders.js');
 
-
 const productsGet = async (req, res, next) => {
   try {
     let { data } = req.query; console.log(data);
@@ -41,7 +40,7 @@ const ordersGet = async (req, res, next) => {
   try {
     let ords = await getOrders() || [];
     console.log(ords.length);
-    return res. send(ords)
+    return res.send(ords)
   } catch (error) {
     next(error)
   }
@@ -114,7 +113,7 @@ const categoriesGet = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
-const commentGet = async (req, res, next) =>{
+const commentGet = async (req, res, next) => {
   try {
     let comm = await getComment() || [];
     res.send(comm)
@@ -123,22 +122,22 @@ const commentGet = async (req, res, next) =>{
   }
 };
 
-const altAttribute = async (req, res, next)=>{
-	try {
-		let { attribute } = req.params;
-	  let { id, value } = req.query;
+const altAttribute = async (req, res, next) => {
+  try {
+    let { attribute } = req.params;
+    let { id, value } = req.query;
     let myAlt = {};
-    console.log(id);  console.log(attribute); console.log(value);
+    console.log(id); console.log(attribute); console.log(value);
 
     if (attribute === 'addFavourite') {
       myAlt = await addFavourite(id, attribute, value) || {};
-		  res.send(myAlt)            // petición   probada !!!!!! --
+      res.send(myAlt)            // petición   probada !!!!!! --
     } else {
       myAlt = await altProduct(id, attribute, value) || {};
     };		                      // petición   probada !!!!!! --
-		res.send(myAlt)            
-	} catch (e) { next (e) }
-}; 
+    res.send(myAlt)
+  } catch (e) { next(e) }
+};
 
 const prodIDremove = async (req, res, next) => {
   try {
@@ -148,7 +147,7 @@ const prodIDremove = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
-const providerPost = async(req, res, next) => {
+const providerPost = async (req, res, next) => {
   try {
     // console.log("input en controllers API: ", req.body);
     let response = await postProvider(req.body) || {};
@@ -164,8 +163,8 @@ const commentPost = async (req, res, next) => {
     // let {id_prod, stars, coment} = req.body;
     console.log("input en controllers API: ", req.body);
     let response = await postComment(req.body) || {};
-  
-    res.send(response); 
+
+    res.send(response);
   } catch (error) {
     next(error);
   }
@@ -174,14 +173,13 @@ const commentPost = async (req, res, next) => {
 const userPost = async (req, res, next) => {
   try {
     // console.log("input en controllers API: ", req.body);
-  let response = await postUser(req.body) || {};
-  
-    res.send(response); 
+    let response = await postUser(req.body) || {};
+
+    res.send(response);
   } catch (error) {
     next(error);
   }
 };
-
 
 const usersGet = async (req, res, next) => {
   try {
@@ -197,29 +195,29 @@ const usersGet = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
-const userAlt = async (req, res, next)=>{
-	try {
-		let { attribute } = req.params;
-	  let { id, value } = req.query;
- 
-    console.log(id);  console.log(attribute); console.log(value);
-    let myAlt = await altUser(id, attribute, value) || {};
-    
-		res.send(myAlt)            
-	} catch (e) { next (e) }
-}; 
+const userAlt = async (req, res, next) => {
+  try {
+    let { attribute } = req.params;
+    let { id, value } = req.query;
 
-const providerAlt = async (req, res, next)=>{
-	try {
-		let { attribute } = req.params;
-	  let { id, value } = req.query;
- 
-    console.log(id);  console.log(attribute); console.log(value);
+    console.log(id); console.log(attribute); console.log(value);
+    let myAlt = await altUser(id, attribute, value) || {};
+
+    res.send(myAlt)
+  } catch (e) { next(e) }
+};
+
+const providerAlt = async (req, res, next) => {
+  try {
+    let { attribute } = req.params;
+    let { id, value } = req.query;
+
+    console.log(id); console.log(attribute); console.log(value);
     let myAlt = await altProvider(id, attribute, value) || {};
-    
-		res.send(myAlt)            
-	} catch (e) { next (e) }
-}; 
+
+    res.send(myAlt)
+  } catch (e) { next(e) }
+};
 
 const providerIDremove = async (req, res, next) => {
   try {
@@ -261,5 +259,5 @@ module.exports = {
 
 }
 
-  
+
 

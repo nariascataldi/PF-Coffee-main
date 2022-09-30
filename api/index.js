@@ -18,6 +18,6 @@ conn.sync({ force: true }).then(() => {
 
   
   server.listen(backPort, () => {
-    console.log(`%s listening at ${backPort}`); 
+    console.log(`Back is listening at ${backPort}`); 
   });
 });

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const  bcrypt  = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const { User, SECRET } = require('../db.js');
 const emailRegister = require('../helper/emails.js');
 
@@ -10,11 +10,11 @@ const userRegist = async (req, res) => {
 
   const prevUser = await User.findOne({ where: { mail: mail } });
 
-  if(prevUser){
+  if (prevUser) {
     const error = new Error("There is already a user with that email !!");
-    return res.status(400).json({ msg: error.message})
+    return res.status(400).json({ msg: error.message })
   }
- 
+
   let salt = await bcrypt.genSalt(10);
   pass = await bcrypt.hash(pass, salt);
 
@@ -28,7 +28,7 @@ const userRegist = async (req, res) => {
     birthday
   });
 
-    const userForToken = {
+  const userForToken = {
     username: userCreate.mail,
     id: userCreate.id,
   };
@@ -54,25 +54,25 @@ const userRegist = async (req, res) => {
   //   });
   // res.send({ token });
 };
-  
 
-const userLogin = async(req,res)=>{
 
-    const { username, password } = req.body;
-    const user = await User.findOne({ where: { mail: username } });
+const userLogin = async (req, res) => {
 
-    const passwordContext = (user === null) ? 
-        false : await bcrypt.compare(password, user.pass);
-    
-    if (!(user && passwordContext)) {
-       return res.status(401).json({error:'invalid user or password'})
-    };
-    
-    res.send({
-        username: user.mail,
-        name: user.name,
-        token: user.token
-    })
+  const { username, password } = req.body;
+  const user = await User.findOne({ where: { mail: username } });
+
+  const passwordContext = (user === null) ?
+    false : await bcrypt.compare(password, user.pass);
+
+  if (!(user && passwordContext)) {
+    return res.status(401).json({ error: 'invalid user or password' })
+  };
+
+  res.send({
+    username: user.mail,
+    name: user.name,
+    token: user.token
+  })
 };
 
 const confirm = async (req, res) => {
@@ -82,20 +82,20 @@ const confirm = async (req, res) => {
   const userConfirm = await User.findOne({ where: { token: token } });
 
   //si no existe token
-  if(!userConfirm) {
-  const error = new Error("Token no valido")
-  return res.status(403).json({msg: error.message}) 
+  if (!userConfirm) {
+    const error = new Error("Token no valido")
+    return res.status(403).json({ msg: error.message })
   }
 
   try {
-  //si existe confirmamos al usuario
-  userConfirm.confirm = true
-  
-  //se elimina xq el Token es de un solo uso se elimina despues
-  userConfirm.token = "";
-  //almacena los datos actualizados del usuario
-  await userConfirm.save();
-  res.json({ msg: "User confirmed successfully" });
+    //si existe confirmamos al usuario
+    userConfirm.confirm = true
+
+    //se elimina xq el Token es de un solo uso se elimina despues
+    userConfirm.token = "";
+    //almacena los datos actualizados del usuario
+    await userConfirm.save();
+    res.json({ msg: "User confirmed successfully" });
 
   } catch (error) {
     console.log(error)
@@ -110,7 +110,7 @@ const forgetPassword = async (req, res) => {
     return res.status(404).json({ msg: error.message });
   }
 
-try {
+  try {
     const userForToken = {
       username: user.mail,
       id: user.id,
@@ -123,14 +123,14 @@ try {
 
     //generar un nuevo token si lo olvida
     user.token = generaToken;
-     await user.save();
-     res.json({ msg: "Email sent with instructions" });
-   
+    await user.save();
+    res.json({ msg: "Email sent with instructions" });
 
-} catch (error) {
-  console.log(error)
-  
-}
+
+  } catch (error) {
+    console.log(error)
+
+  }
 };
 
 const checkToken = async (req, res) => {
@@ -141,12 +141,12 @@ const checkToken = async (req, res) => {
   const tokenValid = await User.findOne({ where: { token: token } });
 
   //le mostramos un formulario para que puedan definir un nuevo password.
-  if(tokenValid){
+  if (tokenValid) {
     res.json({ msg: "Valid token and user exists" });
 
   } else {
-   const error = new Error("Invalid token");
-   return res.status(404).json({ msg: error.message });
+    const error = new Error("Invalid token");
+    return res.status(404).json({ msg: error.message });
   }
 };
 
@@ -155,12 +155,12 @@ const newPass = async (req, res) => {
 
   const { token } = req.params;
   const { pass } = req.body;
-  
+
 
   //verifico el token
   const user = await User.findOne({ where: { token: token } })
 
-  if(user){
+  if (user) {
     let salt = await bcrypt.genSalt(10);
     //Nueva pass hasheada
     user.pass = await bcrypt.hash(pass, salt);
@@ -175,17 +175,17 @@ const newPass = async (req, res) => {
       console.log(error);
     }
   } else {
-   const error = new Error("Invalid token");
-   return res.status(404).json({ msg: error.message });
+    const error = new Error("Invalid token");
+    return res.status(404).json({ msg: error.message });
   }
 };
 
 const profile = async (req, res) => {
- const { user } = req;
+  const { user } = req;
 
- res.json(user)
+  res.json(user)
 }
- 
+
 
 module.exports = {
   userRegist,
@@ -193,6 +193,6 @@ module.exports = {
   confirm,
   forgetPassword,
   checkToken,
-  newPass, 
+  newPass,
   profile
 };
