@@ -21,6 +21,12 @@ const deleteProv = require('../utils/Provider/deleteProv');
 const deleteUser = require('../utils/User/deleteUser');
 const postOrder = require('../utils/Order/postOrder');
 const getOrders = require('../utils/Order/getOrders.js');
+const editStock = require('../utils/Stock/editStock');
+const postMail = require('../utils/postMail')
+const getMail = require('../utils/getMail')
+const postOfert = require('../utils/Ofert/postOfert')
+const getOferts = require('../utils/Ofert/getOfert')
+
 
 
 const productsGet = async (req, res, next) => {
@@ -42,6 +48,15 @@ const ordersGet = async (req, res, next) => {
     let ords = await getOrders() || [];
     console.log(ords.length);
     return res. send(ords)
+  } catch (error) {
+    next(error)
+  }
+};
+
+const ofertsGet = async (req, res, next) => {
+  try {
+    let ofs = await getOferts() || [];
+    return res. send(ofs)
   } catch (error) {
     next(error)
   }
@@ -92,11 +107,26 @@ const prodPost = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
+const ofertPost = async (req, res, next) => {
+  try {
+    console.log('input en controllers API: ', req.body);
+    let response = await postOfert(req.body) || {};
+    res.send(response)   //    petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
 const orderPost = async (req, res, next) => {
   try {
     console.log('input en controllers API: ', req.body);
     let response = await postOrder(req.body) || {};
     res.send(response)   //    petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
+const stockPut = async (req, res, next) => {
+  try {
+    let response = await editStock(req.body) || {};
+    res.send(response)
   } catch (e) { next(e) }
 };
 
@@ -237,6 +267,26 @@ const userIDremove = async (req, res, next) => {
   } catch (e) { next(e) }
 };
 
+const mailPost = async (req, res, next) => {
+    try {
+      let response = await postMail(req.body) || {};
+
+      res.send(response);
+    } catch (error) {
+      next(error);
+    }
+};
+
+const mailGet = async (req, res, next) => {
+  try {
+    let mail = await getMail() || [];
+    console.log(mail.length);
+    return res.send(mail);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   productsGet,
   prodIDget,
@@ -257,9 +307,14 @@ module.exports = {
   userAlt,
   providerAlt,
   userIDremove,
-  providerIDremove
+  providerIDremove,
+  stockPut,
+  mailPost,
+  mailGet,
+  ofertPost,
+  ofertsGet
+};
 
-}
 
   
 
