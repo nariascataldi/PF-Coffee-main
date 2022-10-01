@@ -101,7 +101,7 @@ router.post('/orders', orderPost);
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
-router.post('/nwsletter', mailPost);
+router.post('/newsletter', mailPost);
 
 router.post('/oferts', ofertPost)
 

@@ -197,9 +197,16 @@ export function postProduct(payload) {
 
 export function postNewsletter(payload) {
   return async function () {
-    const json = await axios.post(URL + '/nwsletter', payload);
+    const json = await axios.post(URL + '/newsletter', payload);
     return json
     
+  }
+}
+
+export function postOferts(payload) {
+  return async function () {
+    const json = await axios.post(URL + '/oferts', payload);
+    return json
   }
 }
 
