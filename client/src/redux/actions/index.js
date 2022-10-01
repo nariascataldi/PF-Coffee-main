@@ -126,7 +126,7 @@ export function getAllDiets() {
     }
   }
 };
-export function getOrder() {
+export function getAllOrders() {
   return async function (dispatch) {
     try {
       var info = await axios.get(URL + '/orders');

@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllProducts, getOrder, postNewsletter } from '../../../redux/actions/index.js';
+import { getAllProducts, postNewsletter } from '../../../redux/actions/index.js';
 
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
 import ProductAdmin from '../Product/ProductAdmin.jsx';
@@ -27,7 +27,6 @@ export default function HomeAdmin() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getAllProducts());
-    dispatch(getOrder());
   }, [dispatch])
 
 

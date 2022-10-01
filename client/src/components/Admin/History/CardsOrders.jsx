@@ -1,20 +1,20 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getOrder } from '../../../redux/actions/index';
+import { getAllOrders } from '../../../redux/actions/index';
 import Table from 'react-bootstrap/Table';
 
 import CardOrder from './CardOrder';
 
 
 const CardsOrders = () => {
-
   let dispatch = useDispatch();
-  let orders = useSelector(state => state.order)
-  useEffect(() => {
-    dispatch(getOrder())
-  }, [])
+  let orders = useSelector(state => state.allOrders)
   console.log('CardsOrders orders: ',orders);
+  
+  useEffect(() => {
+    dispatch(getAllOrders())
+  }, [])
 
   return (
     <Table striped bordered hover size="sm">
@@ -44,7 +44,6 @@ const CardsOrders = () => {
             ></CardOrder>
           ))
         }
-          {console.log({orders})}
       </tbody>
     </Table>
   );

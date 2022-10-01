@@ -15,9 +15,9 @@ const CardOrder = ({
       <td>{user}</td>
       <td>{date}</td>
       <td>{detail}</td>
-      <td>$ {payment}</td>
-      <td>{paid}</td>
-      <td>{delivered}</td>
+      <td>{payment}</td>
+      <td>{paid ? 'Yes':`Not yeat, see ${payment}`}</td>
+      <td>{delivered ? 'Yes': 'In process'}</td>
       <td>{total}</td>
     </tr>
   );
