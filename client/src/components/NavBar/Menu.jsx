@@ -24,7 +24,7 @@ export default function Menu({ menu }) {
 
             <Link to='/providers'><button className='menubutton-crate-product'>Provider</button></Link>
 
-            <Link><button className='menubutton-crate-product'>Log in</button></Link>
+            <Link to='/signin'><button className='menubutton-crate-product'>Log in</button></Link>
 
             <Link to='/about'><button className='menubutton-crate-product'>About</button></Link>
 

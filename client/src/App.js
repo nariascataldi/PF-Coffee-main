@@ -33,7 +33,11 @@ import NotFound from './components/NotFound';
 import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
+<<<<<<< HEAD
 import Newsletter from './components/Admin/Newsletter/Newsletter';
+=======
+import SignIn from './components/SignIn/SignIn';
+>>>>>>> fireBase-Authentication
 
 
 function App() {
@@ -78,6 +82,11 @@ function App() {
           <Route exact path="/modals" element={<Modals />} />
           <Route exact path="/checkout/congrats" element={<CheckoutConfirm />} />
           <Route path="*" element={<NotFound />} />
+<<<<<<< HEAD
+=======
+          <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}/>
+          <Route exact path='/signin' element={<SignIn/>}/>
+>>>>>>> fireBase-Authentication
         </Routes>
       </div>
     </>

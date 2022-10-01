@@ -148,7 +148,11 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
+<<<<<<< HEAD
       const response = await axios.post( URL + "/users/registration", payload)
+=======
+      const response = await axios.post(URL + '/users/registration', payload);
+>>>>>>> fireBase-Authentication
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
       return dispatch({
