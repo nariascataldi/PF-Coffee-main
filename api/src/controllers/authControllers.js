@@ -15,30 +15,30 @@ const userRegist = async (req, res) => {
     return res.status(400).json({ msg: error.message})
   }
  
-  let salt = await bcrypt.genSalt(10);
-  pass = await bcrypt.hash(pass, salt);
+  // let salt = await bcrypt.genSalt(10);
+  // pass = await bcrypt.hash(pass, salt);
 
   let userCreate = await User.create({
     name,
     lastName,
     status,
     mail,
-    pass,
+    // pass,
     avatar,
     birthday
   });
 
-    const userForToken = {
-    username: userCreate.mail,
-    id: userCreate.id,
-  };
-  const generaToken = jwt.sign(
-    userForToken,
-    SECRET,
-    { expiresIn: 86400 } //---> un día // 60 * 60 * 24 * 7 ---> una semana
-  );
+  //   const userForToken = {
+  //   username: userCreate.mail,
+  //   id: userCreate.id,
+  // };
+  // const generaToken = jwt.sign(
+  //   userForToken,
+  //   SECRET,
+  //   { expiresIn: 86400 } //---> un día // 60 * 60 * 24 * 7 ---> una semana
+  // );
 
-  userCreate.token = generaToken;
+  // userCreate.token = generaToken;
   const userStored = await userCreate.save();
   res.json(userStored)
 

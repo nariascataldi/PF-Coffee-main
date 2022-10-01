@@ -8,8 +8,7 @@ module.exports = (sequelize) => {
     "user",
     {
       id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true,
       },
@@ -36,11 +35,7 @@ module.exports = (sequelize) => {
         trim: true,
         unique: true,
       },
-      pass: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        trim: true,
-      },
+    
       avatar: {
         type: DataTypes.TEXT,
       },
@@ -58,9 +53,7 @@ module.exports = (sequelize) => {
       basket: {
         type: DataTypes.STRING,
       },
-      token: {
-        type: DataTypes.STRING,
-      },
+      
     },
     {
       timestamps: false,
