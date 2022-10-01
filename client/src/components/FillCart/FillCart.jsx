@@ -48,7 +48,7 @@ export default function FillCart() {
 
     reducedCart.forEach(o => {
         total = total + (o.price * o.quantity)
-        detail.push(["Product: " + o.title], ["Price: $" + o.price], ["Units: " + o.quantity])
+        detail.push(["Product: " + o.title], ["Price: $" + o.price], ["Units: " + o.quantity], ['SubTotal: ' + (o.quantity * o.price)])
     })
     //console.log(total1,detail1)
 
