@@ -1,0 +1,22 @@
+.divScrollProducts {
+    width: 400px;
+    background-color: #e197a1;
+    height: 250px;
+    margin: 10px 10px 10px 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.parentScrolls {
+    display: flex;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+}
+
+.inputDes {
+    height: 10vh;
+}

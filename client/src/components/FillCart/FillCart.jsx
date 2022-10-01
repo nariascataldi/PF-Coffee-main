@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+
 import { resetFillCart, putStock } from "../../redux/actions";
+
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import './FillCart.css';
@@ -20,6 +22,7 @@ export default function FillCart() {
 
     const reducedCart = reduceCart(fillCart)
     console.log(reducedCart)
+
 
     function onDelete(e) {
         dispatch(resetFillCart(e.id))
@@ -45,8 +48,8 @@ export default function FillCart() {
     }
     function handleButtonPay() {
         reducedCart.forEach(elem =>
-            dispatch(putStock(elem))
-        )
+            dispatch(putStock(elem)))
+      
         checkOut(reducedCart)
     }
 
@@ -118,9 +121,9 @@ export default function FillCart() {
                         </li>
                         <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
-                    {fillCart.length ? 
-                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
-                    <button className='pay-btn-cart-empty'>Pay</button>
+                    {fillCart.length ?
+                        <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
+                        <button className='pay-btn-cart-empty'>Pay</button>
                     }
                 </div>
             </div>
