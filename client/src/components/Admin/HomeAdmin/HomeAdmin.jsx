@@ -18,7 +18,7 @@ import Tab from 'react-bootstrap/Tab';
 import ListProducts from '../Product/CRUD Product/ListProduct';
 import ListProviders from '../../Provider/CRUD Provider/ListProvider.jsx';
 import FormProvider from '../../Provider/CRUD Provider/PrividerCreate';
-import CardsNews from '../Newsletter/CardsNews.jsx';
+import Newsletter from '../Newsletter/Newsletter.jsx';
 // import Providers from '../../Provider/Providers.jsx';
 
 export default function HomeAdmin() {
@@ -58,7 +58,7 @@ export default function HomeAdmin() {
               {/* <Tab.Pane eventKey="provList"> <Providers />  </Tab.Pane> */}
               <Tab.Pane eventKey="addProvider"> <FormProvider />  </Tab.Pane>
               <Tab.Pane eventKey="provEdit"> <ListProviders />  </Tab.Pane>
-              <Tab.Pane eventKey="mailNews"> <CardsNews />  </Tab.Pane>
+              <Tab.Pane eventKey="mailNews"> <Newsletter />  </Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
