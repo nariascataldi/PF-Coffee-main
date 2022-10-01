@@ -43,7 +43,8 @@ export default function CheckoutConfirm() {
       Aquí me gustaría que :
       1ero haga un find del detalle
         a- un condicional...de haber coincidencia cambiar el estado del pago Paid por true 
-       */
+      */
+
       console.log('status pago = ', statusPago)
       setTimeout(() => {
         return dispatch(cartEmptying())

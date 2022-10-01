@@ -43,17 +43,17 @@ export default function FillCart() {
     const reducedCart = reduceCart(fillCart)
     console.log(reducedCart)
 
-    let total= 0
-    let detail= []
+    let total = 0
+    let detail = []
 
     reducedCart.forEach(o => {
-       total = total + (o.price * o.quantity)
-       detail.push(["Product: " + o.title],["Price: $" + o.price ], ["Units: " + o.quantity])
+        total = total + (o.price * o.quantity)
+        detail.push(["Product: " + o.title], ["Price: $" + o.price], ["Units: " + o.quantity])
     })
     //console.log(total1,detail1)
 
-    let carrito = {total, detail}
-console.log(carrito)
+    let carrito = { total, detail }
+    console.log('Carrito {total, detail} : ', carrito)
 
     function onDelete(e) {
         dispatch(resetFillCart(e.id))
@@ -74,7 +74,7 @@ console.log(carrito)
         dispatch(postOrder(carrito))
         reducedCart.forEach(elem =>
             dispatch(putStock(elem)))
-      
+
         checkOut(reducedCart)
     }
 
