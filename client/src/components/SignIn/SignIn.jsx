@@ -1,21 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { auth, signWithGoogle } from "../../firebase";
 import { postUser } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+
 import './SignIn.css'
 
 // import CardInfomativaFormulario from "../../Components/Organisms/CardInformativaFormulario/CardInformativaFormulario";
 
 
 const SignIn = () => {
-    const [user, setUser] = useState([])
+    const dispatch = useDispatch();
+    const [usuario, setUsuario] = useState([])
     const googleRegister = async () => {
         await signWithGoogle().then((response) => {
-            setUser(response.user);
+            setUsuario(response && response);
             console.log('response Name', response.user.displayName);
             console.log('response ', response);
-            localStorage.setItem("Sign In", JSON.stringify(user));
-            // console.log('usuario ',user)
+            console.log('response Token ', response._tokenResponse.firstName);
+            var newUser = {
+                id: response.user.uid,
+                name: response._tokenResponse.firstName,
+                lastName: response._tokenResponse.lastName,
+                mail: response.user.email,
+                avatar: response.user.photoURL,
+            }
+            dispatch(postUser(newUser))
+            localStorage.setItem("Sign In", JSON.stringify(usuario));
         })
+
         // var newUser ={
         //     mail: response.user.email,
         //     name: response.user.displayName,
@@ -34,10 +46,10 @@ const SignIn = () => {
             <div className='signin-card-wrapper'>
                 <h1>Inicio de sesión</h1>
                 <button className='pay-btn-cart' onClick={googleRegister}>Iniciar con Google</button>
-                {user?.displayName &&
+                {usuario?.user?.displayName &&
                     <div className='signin-info-user'>
-                        <img src={user?.photoURL ? user.photoURL : 'imagen'} className='signin-img-user' />
-                        <p>{user.displayName}</p>
+                        <img src={usuario?.user?.photoURL ? usuario?.user.photoURL : 'imagen'} className='signin-img-user' />
+                        <p>{usuario?.user.displayName}</p>
                     </div>
 
                 }
