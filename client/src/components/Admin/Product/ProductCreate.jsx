@@ -46,9 +46,9 @@ export default function FormProduct() {
   const dispatch = useDispatch();
   const [isOpenModal, openModal, closeModal] = useModal(false)
   var diet = useSelector((state) => state.diets);
-  console.log({ diet });
+  // console.log({ diet });
   var provider = useSelector((state) => state.providers);
-  console.log({ provider })
+  // console.log({ provider })
   var categories = useSelector((state) => state.categories);
   let responseCloudinary = useSelector(state => state.responseCloudinary)
 

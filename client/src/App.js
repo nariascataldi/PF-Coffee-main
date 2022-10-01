@@ -34,6 +34,7 @@ import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 import Newsletter from './components/Admin/Newsletter/Newsletter';
+import History from './components/Admin/History/History';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
       <div>
         <Routes>
           <Route path='/loading' element={<Loading />} />
-
+          <Route path='/history' element={<History />} />
           {/* <Route exact path='/' element={<LandingPage />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
