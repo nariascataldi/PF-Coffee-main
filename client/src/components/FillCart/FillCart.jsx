@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFillCart, setReducedCart, putStock } from "../../redux/actions";
+import { resetFillCart, setReducedCart, putStock, postOrder } from "../../redux/actions";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import './FillCart.css';
@@ -16,7 +16,7 @@ export default function FillCart() {
     // const {allProducts} = useSelector(state=>state);
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
-
+    console.log("fillcart", fillCart)
 
 
     // // reduceCart
@@ -43,6 +43,18 @@ export default function FillCart() {
     const reducedCart = reduceCart(fillCart)
     console.log(reducedCart)
 
+    let total= 0
+    let detail= []
+
+    reducedCart.forEach(o => {
+       total = total + (o.price * o.quantity)
+       detail.push(["Product: " + o.title],["Price: $" + o.price ], ["Units: " + o.quantity])
+    })
+    //console.log(total1,detail1)
+
+    let carrito = {total, detail}
+console.log(carrito)
+
     function onDelete(e) {
         dispatch(resetFillCart(e.id))
         // console.log(id)
@@ -59,9 +71,10 @@ export default function FillCart() {
         //window.location.href = mercadoPagoRes.data;
     }
     function handleButtonPay() {
+        dispatch(postOrder(carrito))
         reducedCart.forEach(elem =>
-            dispatch(putStock(elem))
-        )
+            dispatch(putStock(elem)))
+      
         checkOut(reducedCart)
     }
 
@@ -130,9 +143,9 @@ export default function FillCart() {
                         </li>
                         <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
-                    {fillCart.length ? 
-                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
-                    <button className='pay-btn-cart-empty'>Pay</button>
+                    {fillCart.length ?
+                        <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
+                        <button className='pay-btn-cart-empty'>Pay</button>
                     }
                 </div>
             </div>

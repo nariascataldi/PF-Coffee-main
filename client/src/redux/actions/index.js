@@ -30,6 +30,7 @@ export const SET_STOCK = 'SET_STOCK'
 export const POST_NEWSLETTER = 'POST_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
+export const POST_ORDER = "POST_ORDER"
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -147,7 +148,7 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-      const response = await axios.post("https://pfcoffee-app.herokuapp.com/users/registration", payload)
+      const response = await axios.post( URL + "/users/registration", payload)
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
       return dispatch({
@@ -158,6 +159,19 @@ export const postUser = (payload) =>
       console.log(error)
     }
   };
+
+export const postOrder = (payload) =>
+async (dispatch) => {
+  try {
+    const response = await axios.post( URL + "/orders", payload)
+    return dispatch({
+      type: POST_ORDER,
+      payload: response.data,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 export const confirmId = id => async dispatch => {
   try {
