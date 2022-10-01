@@ -137,11 +137,7 @@ const NavBar = ({ noFilters }) => {
               <option value="Low">Price: Low to High</option>
             </select>
           </div>
-<<<<<<< HEAD
-          <div className={styles.divPrice}>
-=======
           {/* <div>
->>>>>>> fireBase-Authentication
             <span>Price: </span>
             <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
             <span> - </span>

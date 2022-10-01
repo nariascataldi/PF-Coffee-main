@@ -194,7 +194,6 @@
 .inputPrice {
     background-color: var(--primary);
     width: 4vw;
-<<<<<<< HEAD
     border-radius: 5px;
     border: 1px solid var(--strong);
 }
@@ -204,7 +203,6 @@
     margin-left: 5px;
     border: none;
     background-color: var(--strong);
-=======
     border-radius: 6px;
     border: 1px solid black;
 }
@@ -212,5 +210,4 @@
     color: rgb(114, 114, 114);
     width: 26px;
     height: 26px;
->>>>>>> fireBase-Authentication
 }
