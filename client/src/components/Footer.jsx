@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from "react-toastify";
+
 import { postNewsletter }from '../redux/actions/index';
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/Footer.module.css";
 
 export default function Footer () {
@@ -23,9 +25,16 @@ export default function Footer () {
    e.prevent.default()
   
       dispatch(postNewsletter(input))
-      alert("suscrito")
-      setInput({mail: ''})
-    
+       toast("🍩 Suscrito!", {
+         position: "top-right",
+         autoClose: 5000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: true,
+         draggable: true,
+         progress: undefined,
+       })
+      setInput({mail: ''}) 
   }
 
     return (
@@ -145,6 +154,7 @@ export default function Footer () {
                   type="submit" className="btn btn-primary mb-4" >
                     Subscribe
                   </button>
+                  <ToastContainer/>
                 </div>
               </div>
             </form>

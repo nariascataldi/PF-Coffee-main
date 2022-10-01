@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
 
 import logo from "../assets/logo_coffee.png";
-import Menu from "../components/NavBar/Menu";
+import Menu from "../components/Menu/Menu";
 
 import styles from '../styles/NavBar.module.css'
 import SearchBar from "./SearchBar";
@@ -132,7 +132,8 @@ const NavBar = ({ noFilters }) => {
               <option value="Low">Price: Low to High</option>
             </select>
           </div>
-          <div>
+
+          {/*<div>
             <span>Price: </span>
             <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
             <span> - </span>
@@ -140,7 +141,7 @@ const NavBar = ({ noFilters }) => {
             <button onClick={(e) => handleSubmitPrice(e)}>
               Search
             </button>
-          </div>
+            </div>*/}
         </>
       )}
       <Link 

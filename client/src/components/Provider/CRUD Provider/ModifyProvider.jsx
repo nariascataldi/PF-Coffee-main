@@ -8,6 +8,7 @@ import { Container, FormGroup, Input, Modal } from 'reactstrap'
 
 import { Link, useParams } from "react-router-dom";
 import { useModal } from "../../../hooks/UseModal";
+import { ToastContainer, toast } from "react-toastify";
 
 
 const FormModifyProvider = (props) => {
@@ -41,20 +42,22 @@ const FormModifyProvider = (props) => {
     /**/
     const onSubmit = async (data,e) => {
         await openModal()
-    //     console.log(data);
-    //     dispatch(putProviders(data, id));
-    //     e.preventDefault();
-    //     e.target.reset();
-    //     alert('Correctly modify')
-    //    navigate('/homeAdmin')
     }
 
     const handleClickYesNo = (data, e) => {
         if(e.target.value) {
             dispatch(putProviders(data, id));
-            // e.preventDefault();
-            // e.target.reset();
-            alert('Correctly modify')
+          
+            toast("Correctly modify", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+
             navigate('/homeAdmin')
             closeModal()
         }else {closeModal()}
