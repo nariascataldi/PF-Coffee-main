@@ -23,6 +23,7 @@ const SignIn = () => {
                 lastName: response._tokenResponse.lastName,
                 mail: response.user.email,
                 avatar: response.user.photoURL,
+                
             }
             dispatch(postUser(newUser))
             localStorage.setItem("Sign In", JSON.stringify(usuario));
