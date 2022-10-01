@@ -117,6 +117,7 @@ const Register = () => {
             type="password"
             placeholder="Repetir tu contraseña"
             className={styles.input}
+
             value={input.repeatPass}
             name="repeatPass"
             onChange={(e) => handleChange(e)}
@@ -140,3 +141,13 @@ const Register = () => {
 };
 
 export default Register;
+//response.user.email
+//response.user.displayName
+//response.user.uid
+//response.user.photoURL
+//response.user.accesToken
+//response._tokenResponse.fullName
+//response._tokenResponse.lastName
+//response._tokenResponse.firstName
+//response._tokenResponse.idToken
+//response._tokenResponse.emailVerified: true
