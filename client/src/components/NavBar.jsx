@@ -132,12 +132,12 @@ const NavBar = ({ noFilters }) => {
               <option value="Low">Price: Low to High</option>
             </select>
           </div>
-          <div>
+          <div className={styles.divPrice}>
             <span>Price: </span>
             <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
             <span> - </span>
             <input type="text" placeholder="Max." name="maxPrice" value={price.maxPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
-            <button onClick={(e) => handleSubmitPrice(e)}>
+            <button onClick={(e) => handleSubmitPrice(e)} className={styles.buttonPrice}>
               Search
             </button>
           </div>
