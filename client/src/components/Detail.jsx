@@ -10,7 +10,8 @@ import {
   getDetail,
   postComment,
   setFillCart,
-  putStock
+  putStock,
+  getComment
 } from "../redux/actions";
 
 import NavBar from './NavBar';
@@ -41,6 +42,16 @@ export default function Detail(props){
       setLoad(false);
     }, 500);
   }, [dispatch]);
+
+  //////////
+  /*let comments = useSelector(state => state.comments)
+  console.log('los comments id son: ', comments.map(e=>e.productId))
+  console.log('los detail id son: ', detail.id)
+
+  useEffect(() => {
+    dispatch(getComment(id)); //
+  }, [dispatch]);*/
+  ///////////
 
   const handleStar = (e) => {
     e.preventDefault();
@@ -159,7 +170,10 @@ export default function Detail(props){
                 <br />
                 <input type="submit" value="qualify" />
               </form>
+            
+
             </div>
+
           </div>
         )}
       </div>
@@ -167,3 +181,22 @@ export default function Detail(props){
     </div>
   );
 }
+{/*
+              <div className={styles.box}>
+              <label>coments: </label>
+              <ul>
+                {
+                comments.map((e)=>e.productId) === detail.id ?
+                comments.map((e)=>(
+                  <li>
+                    {e.comment}
+                  </li>
+                ))
+                : 
+                "..."
+                }
+              </ul>
+              <br></br>
+              <label>stars: </label>
+              </div>
+*/}

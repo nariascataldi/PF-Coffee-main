@@ -31,12 +31,23 @@ export const POST_NEWSLETTER = 'POST_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
 export const POST_ORDER = "POST_ORDER"
+export const GET_COMMENT= "GET_COMMENT"
 
 export function getAllProducts() {
   return async function (dispatch) {
     const json = await axios.get(URL + '/products');
     return dispatch({
       type: GET_ALL_PRODUCTS,
+      payload: json.data
+    })
+  }
+};
+
+export function getComment() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + '/comment');
+    return dispatch({
+      type: GET_COMMENT,
       payload: json.data
     })
   }

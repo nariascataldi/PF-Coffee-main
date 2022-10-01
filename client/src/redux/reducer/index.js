@@ -22,7 +22,8 @@ import {
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
   POST_NEWSLETTER,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  GET_COMMENT
   // fillCart
 } from '../actions'
 
@@ -48,7 +49,8 @@ const initialState = {
     minPrice: '',
     maxPrice: ''
   },
-  setReducedCart:[]
+  setReducedCart:[],
+  comments:[]
 }
 
 
@@ -60,6 +62,11 @@ const rootReducer = (state = initialState, action) => {
         allProducts: action.payload,
         products: action.payload
       }
+      case GET_COMMENT:
+        return {
+          ...state,
+          comments: action.payload
+        }
     case GET_BY_TITLE:
       const allP = state.allProducts;
       const dataTilte = allP.filter((p) => {
