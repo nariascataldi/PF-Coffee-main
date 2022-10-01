@@ -15,17 +15,21 @@ import {
   POST_PROVIDERS,
   CLEAR_DETAIL,
   FILL_CART,
+  CHANGE_MAIL,
   RESET_FILL_CART,
   CART_EMPTYING,
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
+  POST_NEWSLETTER,
+  GET_ALL_USERS
   // fillCart
 } from '../actions'
 
 const initialState = {
   allProducts: [],
   products: [],
+  users: [],
   productDetail: {},
   providers: [],
   providerDetail: {},
@@ -35,6 +39,7 @@ const initialState = {
   fillCart: JSON.parse(localStorage.getItem('carrito')) || [],
   responseCloudinary: {},
   token: [],
+  checkedMails: [],
   filterBy: {
     title: '',
     category: '',
@@ -42,7 +47,8 @@ const initialState = {
     sort:'',
     minPrice: '',
     maxPrice: ''
-  }
+  },
+  setReducedCart:[]
 }
 
 
@@ -103,13 +109,17 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
+    case POST_NEWSLETTER:
+      return {
+        ...state
+      }
     case POST_USER:
       return {
         ...state,
         token: action.payload,
       }
     case CONFIRM_ID:
-      return{
+      return {
         ...state,
         token: action.payload,
       }
@@ -122,6 +132,7 @@ const rootReducer = (state = initialState, action) => {
         }
 
       }
+   
     case FILTER:
       const allProd = state.allProducts;
       const titleFilter = state.filterBy.title === '' ? allProd : allProd.filter(e => {
@@ -182,11 +193,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         fillCart: [...state.fillCart, ...action.payload]
       }
-    case RESET_FILL_CART : 
-    const indexCart = state.fillCart.findIndex( (element) => element.id === action.payload);
-    let copyCart = [...state.fillCart];
-    copyCart.splice(indexCart,1)
-  
+    case RESET_FILL_CART:
+      const indexCart = state.fillCart.findIndex((element) => element.id === action.payload);
+      let copyCart = [...state.fillCart];
+      copyCart.splice(indexCart, 1)
+
       return {
         ...state,
         fillCart: copyCart
@@ -202,20 +213,35 @@ const rootReducer = (state = initialState, action) => {
         providers: action.payload
       }
     case GET_CLOUDINARY_RESPONSE:
-      return{
+      return {
         ...state,
         responseCloudinary: action.payload
       }
     case CLEAR_CLOUDINARY_RESPONSE:
-      return{
+      return {
         ...state,
         responseCloudinary: {}
       }
-    case POST_COMMENT :
-      return{
+    case POST_COMMENT:
+      return {
         ...state
       }
-
+    case GET_ALL_USERS :
+      return{
+        ...state,
+        users: action.payload
+      }
+    case CHANGE_MAIL: 
+      if(state.checkedMails.includes(action.payload)) {
+        return {
+          ...state,
+          checkedMails: [...state.checkedMails].filter(f => f !== action.payload)
+        }
+      }
+      return {
+        ...state,
+        checkedMails: [...state.checkedMails, action.payload]
+      }
     default:
       return { ...state }
   }

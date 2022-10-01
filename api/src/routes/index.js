@@ -23,8 +23,14 @@ const { productsGet,
         userAlt,
         providerAlt,
         providerIDremove,
-        userIDremove,
-        userIDget  } = require('../controllers');
+        userIDremove,  
+        stockPut,
+        userIDget,
+        mailPost,
+        mailGet,
+        ofertPost,
+        ofertsGet  } = require('../controllers');
+
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
 const { 
@@ -61,6 +67,10 @@ router.get('/users', usersGet);    // ruta NO probada !!!!!! --
 
 router.get('/orders', ordersGet);
 
+router.get('/newsletter', mailGet);
+
+router.get('/oferts', ofertsGet);
+
 // router.get('/users/:id', userIDget);      // ruta NO probada !!!!!! --
 
 // router.get('/orders', ordersGet);    // ruta NO probada !!!!!! --
@@ -86,9 +96,14 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAu
 
 router.post('/orders', orderPost);
 
+
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
+
+router.post('/newsletter', mailPost);
+
+router.post('/oferts', ofertPost)
 
 
 //---------------PUT
@@ -99,6 +114,9 @@ router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlew
 
 router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
+router.put('/editStock', stockPut);
+
+//////////////// yooooo y Yo también
 
 
 /* -------------- Auth ---------------------*/

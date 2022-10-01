@@ -10,6 +10,7 @@ export const GET_ALL_DIETS = 'GET_ALL_DIETS'
 export const GET_DETAIL = "GET_DETAIL"
 export const GET_BY_TITLE = 'GET_BY_TITLE'
 export const POST_USER = 'POST_USER'
+export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const CONFIRM_ID = "CONFIRM_ID"
 export const POST_PRODUCT = 'POST_PRODUCT'
 export const SET_FILTER_STATE = 'SET_FILTER_STATE'
@@ -25,14 +26,27 @@ export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
+export const SET_STOCK = 'SET_STOCK'
+export const POST_NEWSLETTER = 'POST_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
-
+export const CHANGE_MAIL = 'CHANGE_MAIL'
+export const POST_ORDER = "POST_ORDER"
 
 export function getAllProducts() {
   return async function (dispatch) {
     const json = await axios.get(URL + '/products');
     return dispatch({
       type: GET_ALL_PRODUCTS,
+      payload: json.data
+    })
+  }
+};
+
+export function getAllUsers() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + '/users');
+    return dispatch({
+      type: GET_ALL_USERS,
       payload: json.data
     })
   }
@@ -134,7 +148,7 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-      const response = await axios.post("https://pfcoffee-app.herokuapp.com/users/registration", payload)
+      const response = await axios.post( URL + "/users/registration", payload)
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
       return dispatch({
@@ -145,6 +159,19 @@ export const postUser = (payload) =>
       console.log(error)
     }
   };
+
+export const postOrder = (payload) =>
+async (dispatch) => {
+  try {
+    const response = await axios.post( URL + "/orders", payload)
+    return dispatch({
+      type: POST_ORDER,
+      payload: response.data,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 export const confirmId = id => async dispatch => {
   try {
@@ -168,6 +195,20 @@ export function postProduct(payload) {
   }
 }
 
+export function postNewsletter(payload) {
+  return async function () {
+    const json = await axios.post(URL + '/newsletter', payload);
+    return json
+    
+  }
+}
+
+export function postOferts(payload) {
+  return async function () {
+    const json = await axios.post(URL + '/oferts', payload);
+    return json
+  }
+}
 
 export function setFilterState(payload) {
   return {
@@ -178,6 +219,12 @@ export function setFilterState(payload) {
 export function filter() {
   return {
     type: FILTER,
+  }
+};
+export function changeMailArray(payload) {
+  return {
+    type: CHANGE_MAIL,
+    payload
   }
 };
 export function setFillCart(payload) {
@@ -260,3 +307,15 @@ export function putProduct(data, id) {
     );
   }
 }
+
+export function putStock(data) {
+  return async function (dispatch) {
+    axios.put(URL + '/editStock', data).then(res =>
+      dispatch({
+        type: SET_STOCK,
+        payload: res.data
+      })
+      )
+  }
+}
+

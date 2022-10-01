@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFillCart } from "../../redux/actions";
+import { resetFillCart, setReducedCart, putStock, postOrder } from "../../redux/actions";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import './FillCart.css';
-import {BsFillCartDashFill} from "react-icons/bs";
+import { BsFillCartDashFill } from "react-icons/bs";
 import { URL } from "../../config/Const";
 import { reduceCart } from "../../utils/reduceCart";
 
@@ -16,14 +16,9 @@ export default function FillCart() {
     // const {allProducts} = useSelector(state=>state);
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
+    console.log("fillcart", fillCart)
 
 
-    function onDelete(e) {
-            dispatch(resetFillCart(e.id))
-        // console.log(id)
-        
-        alert('Product delete')
-    }
     // // reduceCart
     // let quantities = {};
 
@@ -45,34 +40,34 @@ export default function FillCart() {
     //     reducedCart.push({ ...found, quantity: quantities[quantitiesKeys[j]] });
     // }
 
- const reducedCart =reduceCart(fillCart)
-console.log(reducedCart)
+    const reducedCart = reduceCart(fillCart)
+    console.log(reducedCart)
 
 
+    function onDelete(e) {
+        dispatch(resetFillCart(e.id))
+        // console.log(id)
+
+        alert('Product delete')
+    }
 
     //Mercado pago
-    let ids = [];
-    
-    for (let i = 0; i < reducedCart.length; i++) {   
-         ids.push({
-            id: i.id
-            })
-        } 
-        
-    
-    console.log(ids)
+
     async function checkOut() {
         let mercadoPagoRes = await axios.post(URL + '/checkout', reducedCart);
         console.log(mercadoPagoRes);
-        window.open(mercadoPagoRes.data) 
+        window.open(mercadoPagoRes.data)
         //window.location.href = mercadoPagoRes.data;
     }
     function handleButtonPay() {
+        reducedCart.forEach(elem =>
+            dispatch(putStock(elem)))
+      
         checkOut(reducedCart)
     }
 
     let sumaTotal = 0
-    for(let i = 0; i < fillCart.length;i++){
+    for (let i = 0; i < fillCart.length; i++) {
         sumaTotal = sumaTotal + fillCart[i].price
     }
 
@@ -83,7 +78,7 @@ console.log(reducedCart)
     }, [fillCart]);
 
 
-    
+
 
     return (
         <div className='fill-cart-wraper'>
@@ -96,7 +91,7 @@ console.log(reducedCart)
                     <p>They are {reducedCart.length ? reducedCart.length : 0} products in your cart</p>
                     {reducedCart.length ? reducedCart.map(d => {
                         return (
-                            
+
                             <div className='card-detail'>
 
                                 <div>
@@ -106,8 +101,8 @@ console.log(reducedCart)
                                 <div className='text-detail'>
                                     <div className='card-body'>
                                         <h1 className='card-title'>{d.title}</h1>
-                                        <button className='delete-cart-btn' value={d} onClick={() => onDelete(d)}><BsFillCartDashFill 
-                                            className='cart-delete-icon'/> </button>
+                                        <button className='delete-cart-btn' value={d} onClick={() => onDelete(d)}><BsFillCartDashFill
+                                            className='cart-delete-icon' /> </button>
 
 
                                     </div>
@@ -115,7 +110,6 @@ console.log(reducedCart)
 
                                     <ul className='list-group list-group-flush'>
                                         <li className='list-group-item fondo'>Units: {d.quantity}</li>
-                                        <li className='list-group-item fondo'>Stock: {d.stock}</li>
                                         <li className='list-group-item fondo'>Diets: {d.diets?.map(e => e.name)}</li>
                                         <li className='list-group-item fondo'>Categories: {d.categories?.map(e => e.name)}</li>
                                     </ul>
@@ -137,9 +131,9 @@ console.log(reducedCart)
                         </li>
                         <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
-                    {fillCart.length ? 
-                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
-                    <button className='pay-btn-cart-empty'>Pay</button>
+                    {fillCart.length ?
+                        <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
+                        <button className='pay-btn-cart-empty'>Pay</button>
                     }
                 </div>
             </div>

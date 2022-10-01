@@ -33,6 +33,7 @@ import NotFound from './components/NotFound';
 import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
+import Newsletter from './components/Admin/Newsletter/Newsletter';
 
 
 function App() {
@@ -75,9 +76,8 @@ function App() {
           <Route exact path="/providers" element={<Providers />} />
           <Route exact path="/formusers" element={<FormularioUsuario />} />
           <Route exact path="/modals" element={<Modals />} />
+          <Route exact path="/checkout/congrats" element={<CheckoutConfirm />} />
           <Route path="*" element={<NotFound />} />
-          <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}
-          />
         </Routes>
       </div>
     </>

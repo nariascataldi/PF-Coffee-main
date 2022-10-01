@@ -1,6 +1,6 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllProducts } from '../../../redux/actions/index.js';
+import { getAllProducts, postNewsletter } from '../../../redux/actions/index.js';
 
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
 import ProductAdmin from '../Product/ProductAdmin.jsx';
@@ -18,8 +18,8 @@ import Tab from 'react-bootstrap/Tab';
 import ListProducts from '../Product/CRUD Product/ListProduct';
 import ListProviders from '../../Provider/CRUD Provider/ListProvider.jsx';
 import FormProvider from '../../Provider/CRUD Provider/PrividerCreate';
+import Newsletter from '../Newsletter/Newsletter.jsx';
 // import Providers from '../../Provider/Providers.jsx';
-
 
 export default function HomeAdmin() {
   //---SearchBar---
@@ -27,6 +27,7 @@ export default function HomeAdmin() {
   React.useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch])
+
 
   return (
     <div className={style.home_container}>
@@ -43,6 +44,7 @@ export default function HomeAdmin() {
               {/* <Nav.Item> <Nav.Link eventKey="provList">Provider</Nav.Link> </Nav.Item> */}
               <Nav.Item> <Nav.Link eventKey="addProvider">Crear Provider</Nav.Link> </Nav.Item>
               <Nav.Item> <Nav.Link eventKey="provEdit">Edit Provider</Nav.Link> </Nav.Item>
+              <Nav.Item> <Nav.Link eventKey="mailNews">Send Newsletter</Nav.Link> </Nav.Item>
             </Nav>
           </Col>
           <Col sm={10}>
@@ -56,6 +58,7 @@ export default function HomeAdmin() {
               {/* <Tab.Pane eventKey="provList"> <Providers />  </Tab.Pane> */}
               <Tab.Pane eventKey="addProvider"> <FormProvider />  </Tab.Pane>
               <Tab.Pane eventKey="provEdit"> <ListProviders />  </Tab.Pane>
+              <Tab.Pane eventKey="mailNews"> <Newsletter />  </Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
