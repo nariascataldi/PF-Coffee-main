@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import favicon from "./assets/logo_coffee.png";
-
+//prueba
 // import LandingPage from './components/LandingPage';
 import About from './components/About';
 import Home from './components/Home';
