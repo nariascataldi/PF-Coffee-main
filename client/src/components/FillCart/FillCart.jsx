@@ -43,12 +43,10 @@ export default function FillCart() {
     async function checkOut() {
         let mercadoPagoRes = await axios.post(URL + '/checkout', reducedCart);
         console.log(mercadoPagoRes);
-        window.open(mercadoPagoRes.data)
-        //window.location.href = mercadoPagoRes.data;
+        //window.open(mercadoPagoRes.data)
+        window.location.href = mercadoPagoRes.data;
     }
     function handleButtonPay() {
-        reducedCart.forEach(elem =>
-            dispatch(putStock(elem)))
       
         checkOut(reducedCart)
     }
