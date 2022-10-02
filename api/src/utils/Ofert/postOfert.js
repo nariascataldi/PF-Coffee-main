@@ -1,10 +1,10 @@
-const { Ofert, Diet, Category, User } = require('../../db.js');
+const { Ofert, Diet, Category, User, Product, Newsletter } = require('../../db.js');
 
 let postOfert = async(obj)=>{
   try {
     console.log('input en utils postProduct API: ', obj);
 
-    let { title, disable, price, description, image, sale, diets, categories, users  } = obj;
+    let { title, disable, price, description, image, sale, diets, categories, users, products, newsletters  } = obj;
     
     // capitalize
     // if (title.includes(' ')) {
@@ -34,10 +34,22 @@ let postOfert = async(obj)=>{
         .then(r=> r.map( async(p)=> await ofertCread.addUser(p.id) ) )   // dt.dataValues.id
         .catch(e=> console.log(e))
     };
+    if (products && products.length > 0 ){
+      Product.findAll() 
+        .then(r=> r.filter(o=> products.includes(o.name)) )
+        .then(r=> r.map( async(d)=> await ofertCread.addProduct(d.id) ) )   // d.dataValues.id
+        .catch(e=> console.log(e))   
+    }; 
+    if (newsletters && newsletters.length > 0 ){
+      Newsletter.findAll() 
+        .then(r=> r.filter(o=> newsletters.includes(o.name)) )
+        .then(r=> r.map( async(d)=> await ofertCread.addNewsletter(d.id) ) )   // d.dataValues.id
+        .catch(e=> console.log(e))   
+    }; 
       
     let ofertCreated = await Ofert.findOne({
       where: { id: ofertCread.id },
-      include: [ Diet, Category, User ] 
+      include: [ Diet, Category, User, Product, Newsletter ] 
     });
 
     return ofertCreated;
