@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getAllCategories, getAllDiets, getAllProducts, getAllUsers, postOferts } from "../../../redux/actions";
+import { getAllCategories, getAllDiets, getAllNewsletter, getAllProducts, postOferts } from "../../../redux/actions";
 import styles from './CardsNews.module.css'
 
 
 export default function Newsletter (){
     let dispatch = useDispatch();
-    let users = useSelector(state => state.users)
+    let newsletter = useSelector(state => state.newsletter)
     let products = useSelector(state => state.products)
     let categories = useSelector(state => state.categories)
     let diets = useSelector(state => state.diets)
@@ -32,11 +32,7 @@ export default function Newsletter (){
     },[productOption])
 
     React.useEffect(() => {
-        console.log('dispatch')
-    },[dispatch])
-
-    React.useEffect(() => {
-        dispatch(getAllUsers())
+        dispatch(getAllNewsletter())
         dispatch(getAllProducts())
         dispatch(getAllCategories())
         dispatch(getAllDiets())
@@ -137,7 +133,7 @@ export default function Newsletter (){
                     <label>Title:</label>
                     <input type="text" name="title" value={input.title} onChange={(e) => handleChangeInput(e)}/>
                     <label htmlFor="">Description:</label>
-                    <input type="text" name="description" value={input.description} className={styles.inputDes} onChange={(e) => handleChangeInput(e)}/>
+                    <textarea name="description" value={input.description} className={styles.inputDes} onChange={(e) => handleChangeInput(e)}/>
                     <label htmlFor="">Sale:</label>
                     <input type="text" name="sale" placeholder="% of discount" value={input.sale} onChange={(e) => handleChangeInput(e)}/>
                     <label htmlFor="">Image:</label>
@@ -154,9 +150,9 @@ export default function Newsletter (){
                 {/* <h2>Select mails to send Newsletter</h2> */}
                 <div className={styles.divScrollProducts}>
                     <label>select all</label>
-                    <input type="checkbox" value={JSON.stringify(users)} name='all' onClick={(e) => handleClickMails(e)} checked={users && input.checkedMails.length === users.length?true:false}/>
+                    <input type="checkbox" value={JSON.stringify(newsletter)} name='all' onClick={(e) => handleClickMails(e)} checked={newsletter && input.checkedMails.length === newsletter.length?true:false}/>
                     {
-                        users && users.map(p => (
+                        newsletter && newsletter.map(p => (
                             <div>
                                 mail: {p.mail}
                                 <input type="checkbox" value={p.mail} onClick={(e) => handleClickMails(e)} checked={input.checkedMails.includes(p.mail)?true:false}/>
