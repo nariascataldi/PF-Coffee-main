@@ -19,6 +19,7 @@ import ListProducts from '../Product/CRUD Product/ListProduct';
 import ListProviders from '../../Provider/CRUD Provider/ListProvider.jsx';
 import FormProvider from '../../Provider/CRUD Provider/PrividerCreate';
 import Newsletter from '../Newsletter/Newsletter.jsx';
+import OrdersHistory from '../Orders/OrdersHistory.jsx'
 // import Providers from '../../Provider/Providers.jsx';
 
 export default function HomeAdmin() {
@@ -45,6 +46,7 @@ export default function HomeAdmin() {
               <Nav.Item> <Nav.Link eventKey="addProvider">Crear Provider</Nav.Link> </Nav.Item>
               <Nav.Item> <Nav.Link eventKey="provEdit">Edit Provider</Nav.Link> </Nav.Item>
               <Nav.Item> <Nav.Link eventKey="mailNews">Send Newsletter</Nav.Link> </Nav.Item>
+              <Nav.Item> <Nav.Link eventKey="orders">Order's History</Nav.Link> </Nav.Item>
             </Nav>
           </Col>
           <Col sm={10}>
@@ -59,6 +61,7 @@ export default function HomeAdmin() {
               <Tab.Pane eventKey="addProvider"> <FormProvider />  </Tab.Pane>
               <Tab.Pane eventKey="provEdit"> <ListProviders />  </Tab.Pane>
               <Tab.Pane eventKey="mailNews"> <Newsletter />  </Tab.Pane>
+              <Tab.Pane eventKey="orders"> <OrdersHistory />  </Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
