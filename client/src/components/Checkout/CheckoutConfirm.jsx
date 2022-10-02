@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useHistory, useParams, Link } from "react-router-dom";
-import { cartEmptying, postOrder } from "../../redux/actions";
+import { cartEmptying, postOrder, putStock } from "../../redux/actions";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
-import { BsFillPatchCheckFill } from "react-icons/bs";
+import { BsFillPatchCheckFill, BsFillPatchExclamationFill, BsFillPatchQuestionFill } from "react-icons/bs";
 import { reduceCart } from "../../utils/reduceCart";
 import logo from '../../assets/logo_coffee.png'
 import '../Checkout/Checkout.css'
@@ -27,11 +27,11 @@ export default function CheckoutConfirm() {
   const order = datosPago[4].split("=");
   const idOrder = order[1];
 
-  console.log('order ', order)
-  console.log('id order ', idOrder)
+  //console.log('order ', order)
+  //console.log('id order ', idOrder)
   //Detalle de la compra
   const reducedCart = reduceCart(fillCart)
-  console.log('reduce.cart ', reducedCart)
+  //console.log('reduce.cart ', reducedCart)
 
   let total = 0
   let detail = []
@@ -43,9 +43,7 @@ export default function CheckoutConfirm() {
   //console.log(total1,detail1)
 
   let carrito = { total, detail, paid: statusPago }
-  console.log(carrito)
-
-
+  //console.log(carrito)
 
 
   let sumaTotal = 0
@@ -54,8 +52,10 @@ export default function CheckoutConfirm() {
   }
 
   useEffect(() => {
-    dispatch(postOrder(carrito))
     if (statusPago === 'approved') {
+      dispatch(postOrder(carrito))
+      reducedCart.forEach(elem =>
+        dispatch(putStock(elem)))
       console.log('status pago = ', statusPago)
       setTimeout(() => {
         return dispatch(cartEmptying())
@@ -73,7 +73,7 @@ export default function CheckoutConfirm() {
     <div className='fill-cart-wraper'>
 
       <NavBar noFilters />
-      {statusPago === 'approved' &&
+      {(statusPago === 'approved') ?
         <div >
           <div className='cart-container'>
             <h1> Payment status:  " {statusPago} "  <BsFillPatchCheckFill className='icon-pay-approved' /></h1>
@@ -96,6 +96,26 @@ export default function CheckoutConfirm() {
             </Link>
           </div>
         </div>
+        :
+        (statusPago === 'pending') ?
+          <div >
+            <div className='cart-container'>
+              <h1> Payment status:  " {statusPago} "  <BsFillPatchQuestionFill className='icon-pay-pending' /></h1>
+
+              <Link to='/'>
+                <button className='btn-statuspay-tohome'>Back to home</button>
+              </Link>
+            </div>
+          </div>
+          :
+            <div >
+              <div className='cart-container'>
+                <h1> Payment status:  " {statusPago} "  <BsFillPatchExclamationFill className='icon-pay-failure' /></h1>
+                <Link to='/'>
+                  <button className='btn-statuspay-tohome'>Back to home</button>
+                </Link>
+              </div>
+            </div>
       }
       <Footer />
     </div>

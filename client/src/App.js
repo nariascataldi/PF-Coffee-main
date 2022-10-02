@@ -25,6 +25,8 @@ import ConfirmAccount from "../src/components/Authentication/Pages/ConfirmAccoun
 
 import './styles/normalize.css'
 import './styles/globals.css'
+import "react-toastify/dist/ReactToastify.css";
+
 import ListProvider from './components/Provider/CRUD Provider/ListProvider';
 import FormModifyProvider from './components/Provider/CRUD Provider/ModifyProvider';
 import FormModifyProduct from './components/Admin/Product/CRUD Product/ModifyProduct';

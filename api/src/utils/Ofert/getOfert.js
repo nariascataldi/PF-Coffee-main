@@ -1,9 +1,9 @@
 const { Ofert } = require('../../db.js');
-const { Diet, Category, User } = require('../../db.js');
+const { Diet, Category, User, Newsletter } = require('../../db.js');
 
 async function getOferts () {
 
-  let oferts = await Ofert.findAll({include: [ Diet, Category, User ]})  // {include: [ Diet, Category ]}
+  let oferts = await Ofert.findAll({include: [ Diet, Category, User, Newsletter ]})  // {include: [ Diet, Category ]}
       .then( response=> response)
       .catch( e=> console.log(e) );
 

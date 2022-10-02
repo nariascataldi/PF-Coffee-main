@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
 
 import logo from "../assets/logo_coffee.png";
-import Menu from "../components/NavBar/Menu";
+import Menu from "../components/Menu/Menu";
 
-import styles from '../styles/NavBar.module.css'
+import styles from '../styles/NavBar.module.css';
 import SearchBar from "./SearchBar";
 
 const NavBar = ({ noFilters }) => {
@@ -132,15 +132,17 @@ const NavBar = ({ noFilters }) => {
               <option value="Low">Price: Low to High</option>
             </select>
           </div>
-          <div className={styles.divPrice}>
+          <div>
             <span>Price: </span>
             <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
             <span> - </span>
             <input type="text" placeholder="Max." name="maxPrice" value={price.maxPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
-            <button onClick={(e) => handleSubmitPrice(e)} className={styles.buttonPrice}>
+            <button onClick={(e) => handleSubmitPrice(e)}>
               Search
             </button>
           </div>
+
+
         </>
       )}
       <Link 
