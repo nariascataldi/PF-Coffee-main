@@ -47,6 +47,10 @@ module.exports = (sequelize) => {
     },
     margin: {
       type: DataTypes.INTEGER
+    },
+    discount: {
+      type:DataTypes.INTEGER,
+      defaultValue: 0
     }
 
   },{
