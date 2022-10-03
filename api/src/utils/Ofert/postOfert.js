@@ -30,16 +30,16 @@ let postOfert = async(obj)=>{
     };  
     if (users && users.length > 0 ){
       User.findAll()
-        .then(r=> r.filter(o=> users.includes(o.name)) )
+        .then(r=> r.filter(o=> users.includes(o.mail)) )
         .then(r=> r.map( async(p)=> await ofertCread.addUser(p.id) ) )   // dt.dataValues.id
         .catch(e=> console.log(e))
     };
     if (products && products.length > 0 ){
-      Product.findAll() 
-        .then(r=> r.filter(o=> products.includes(o.name)) )
-        .then(r=> r.map( async(d)=> await ofertCread.addProduct(d.id) ) )   // d.dataValues.id
-        .catch(e=> console.log(e))   
-    }; 
+      Product.findAll()
+        .then(r=> r.filter(o=> products.includes(o.title)) )
+        .then(r=> r.map( async(h)=> await ofertCread.addProduct(h.id) ) )   // dt.dataValues.id
+        .catch(e=> console.log(e))
+    };
     if (newsletters && newsletters.length > 0 ){
       Newsletter.findAll() 
         .then(r=> r.filter(o=> newsletters.includes(o.name)) )
