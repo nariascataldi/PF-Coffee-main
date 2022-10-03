@@ -54,7 +54,7 @@ export default function Home() {
             <Cards load={load} />
             <button className={styles.btn} onClick={(e)=>handleClick(e)}><BsChat/></button>
             <div className={styles.container}>
-                {isOpen === true &&
+                {isOpen === true && 
                 <Chat className={styles.chat}/>            
                 }
             </div>
