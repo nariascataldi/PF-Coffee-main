@@ -15,6 +15,7 @@ function Product() {
       activeKey={key}
       onSelect={(k) => setKey(k)}
       className="mb-3"
+      defaultActiveKey='prodCreate'
     >
       <Tab eventKey="prodCreate" title="Create">
       <ProductAdmin />

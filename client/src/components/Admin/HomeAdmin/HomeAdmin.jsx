@@ -16,7 +16,7 @@ import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
 
-import FormProvider from '../../Provider/CRUD Provider/PrividerCreate';
+
 import Newsletter from '../Newsletter/Newsletter.jsx';
 import OrdersHistory from '../Orders/OrdersHistory.jsx'
 import Product from '../Product/Product.jsx';

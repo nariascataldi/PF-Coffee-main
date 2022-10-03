@@ -13,6 +13,7 @@ function Provider() {
       activeKey={key}
       onSelect={(k) => setKey(k)}
       className="mb-3"
+      defaultActiveKey='addProvider'
     >
       <Tab eventKey="addProvider" title="Create">
       <FormProvider />
