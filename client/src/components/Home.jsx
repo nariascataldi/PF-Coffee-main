@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsChat } from "react-icons/bs";
 
-import { filter, getAllDiets, getAllProducts } from '../redux/actions';
+import { filter, getAllDiets, getAllProducts, getAllUsers  } from '../redux/actions';
 import { getAllCategories, clearDetail } from "../redux/actions";
 
 import NavBar from "./NavBar";
@@ -26,7 +26,7 @@ export default function Home() {
         dispatch(getAllProducts());
         setTimeout(() => {
             setLoad(false)
-        }, 1000)
+        },1500)
         dispatch(clearDetail())
     }, [dispatch])
     useEffect(() => {
@@ -35,11 +35,11 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getAllCategories());
-    }, [])
-
-    useEffect(() => {
+        dispatch(getAllUsers());
         dispatch(getAllDiets());
-    }, [])
+    },[])
+
+    
 
 
     function handleClick (e) {

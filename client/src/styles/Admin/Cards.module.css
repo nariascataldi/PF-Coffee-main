@@ -12,10 +12,22 @@
   padding-bottom: 52px;
   padding-left: 150px;
   padding-right: 150px;
-  width: 100%;
+  width: 100vw;
 }
 
 .paginadoAdmin {
   margin-top: 0;
   padding-top: 0px;
+}
+
+.conte {
+
+  background-color: #eefcff;
+  height: 70vh;
+  border-radius: 20px;
+  /* margin: 10px 10px 10px 0px; */
+  margin: 0vh 5vh 5vh 5vh;
+  overflow: hidden;
+  overflow-y: scroll;
+
 }

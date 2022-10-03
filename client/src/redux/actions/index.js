@@ -32,6 +32,7 @@ export const GET_ALL_NEWSLETTER = 'GET_ALL_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
 export const POST_ORDER = "POST_ORDER"
+export const SET_USER_INIT = 'SET_USER_INIT'
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 
 export function getAllProducts() {
@@ -168,9 +169,11 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-      const response = await axios.post( URL + "/users/registration", payload)
+      const response = await axios.post(URL + '/users/registration', payload);
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
+      console.log(response.data)
+      localStorage.setItem('usuario-creado',JSON.stringify(response.data))
       return dispatch({
         type: POST_USER,
         payload: response.data,
@@ -271,6 +274,14 @@ export function cartEmptying (){
     type:CART_EMPTYING
   }
 }
+// Usuario registrado
+export function setUserInit(payload) {
+  return {
+    type: SET_USER_INIT,
+    payload
+  }
+}
+
 export function postProviders(payload) {
   return async function () {
     const info = await axios.post(URL + '/providers', payload);
