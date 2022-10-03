@@ -7,7 +7,7 @@ export default function Card({ id, title, image, price, cost, margin, descriptio
 
     <tbody>
       <tr>
-        <td className="centrado"> <p>{id}</p> </td>
+        {/* <td className="centrado"> <p>{id}</p> </td> */}
         <td className="centrado">
           <Figure>
             <Figure.Image
@@ -21,10 +21,10 @@ export default function Card({ id, title, image, price, cost, margin, descriptio
         </td>
         <td className="centrado"> {title} </td>
         <td className="centrado"> $ {price} </td>
-        <td className="centrado"> $ {cost} </td>
-        <td className="centrado"> {margin} </td>
-        <td className="centrado">  {description} </td>
-        <td className="centrado">  {like} </td>
+        {/* <td className="centrado"> $ {cost} </td>
+        <td className="centrado"> {margin} </td> */}
+        {/* <td className="centrado">  {description} </td> */}
+        {/* <td className="centrado">  {like} </td> */}
         <td className="centrado">  {stock} </td>
         {/* <td className="centrado">  {disable} </td> */}
       </tr>

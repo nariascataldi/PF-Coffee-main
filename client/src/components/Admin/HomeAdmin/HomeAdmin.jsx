@@ -4,7 +4,6 @@ import { getAllProducts, postNewsletter } from '../../../redux/actions/index.js'
 import logo from '../../../assets/logo_coffee.png'
 
 import Cards from '../CardsAdmin/CardsAdmin.jsx';
-import ProductAdmin from '../Product/ProductAdmin.jsx';
 import NavBarAdmin from '../NavBarAdmin/NavBarAdmin';
 
 import SearchBar from '../../SearchBar';
@@ -53,7 +52,8 @@ export default function HomeAdmin() {
                 <Nav.Item className={style.bonton}> <Nav.Link eventKey="orders">Order's History</Nav.Link> </Nav.Item>
               </Nav>
             </Col>
-            <Col sm={10} className={style.colum10}>
+            <Col sm={1} ></Col>
+            <Col sm={9} className={style.colum10}>
               <Tab.Content>
                 <Tab.Pane eventKey="homeAdmin"> <SearchBar /> <Cards /> </Tab.Pane>
                 <Tab.Pane eventKey="prod"> <Product />  </Tab.Pane>

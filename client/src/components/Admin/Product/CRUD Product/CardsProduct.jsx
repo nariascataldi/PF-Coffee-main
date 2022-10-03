@@ -30,6 +30,7 @@ const CardsProduct = () => {
             <th className="centrado">Like</th>
             <th className="centrado">Stock</th>
             <th className="centrado">Disable</th>
+            <th className="centrado">Edit</th>
           </tr>
         </thead>
       {
