@@ -17,12 +17,8 @@ function Product() {
       className="mb-3"
       defaultActiveKey='prodCreate'
     >
-      <Tab eventKey="prodCreate" title="Create">
-      <ProductAdmin />
-      </Tab>
-      <Tab eventKey="prodEdit" title="Edit">
-      <ListProducts />
-      </Tab>
+      <Tab eventKey="prodCreate" title="Create"> <ProductAdmin /> </Tab>
+      <Tab eventKey="prodEdit" title="Edit"> <ListProducts /> </Tab>
     </Tabs>
   );
 }
