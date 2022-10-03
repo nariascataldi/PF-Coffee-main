@@ -25,12 +25,14 @@ export const POST_COMMENT = 'POST_COMMENT'
 export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
+export const SET_USER = 'SET_USER'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 export const SET_STOCK = 'SET_STOCK'
 export const POST_NEWSLETTER = 'POST_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
 export const POST_ORDER = "POST_ORDER"
+export const GET_USER_DETAIL = "GET_USER_DETAIL"
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -101,6 +103,15 @@ export function getProviderDetail(id) {
     const json = await axios.get(URL + `/providers/${id}`);
     return dispatch({
       type: GET_PROVIDER_DETAIL,
+      payload: json.data
+    })
+  }
+};
+export function getUserDetail(id) {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/user/${id}`);
+    return dispatch({
+      type: GET_USER_DETAIL,
       payload: json.data
     })
   }
@@ -291,6 +302,18 @@ export function putProviders(data, id) {
     axios.put(URL + `/edit/${id}`, data).then(res =>
       dispatch({
         type: SET_PROVIDERS,
+        payload: res.data
+      })
+    );
+  }
+}
+
+
+export function putUser(data, id) {
+  return async function (dispatch) {
+    axios.put(URL + `/editUser/${id}`, data).then(res =>
+      dispatch({
+        type: SET_USER,
         payload: res.data
       })
     );

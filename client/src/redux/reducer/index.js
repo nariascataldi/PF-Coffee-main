@@ -22,7 +22,8 @@ import {
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
   POST_NEWSLETTER,
-  GET_ALL_USERS
+  GET_ALL_USERS,
+  GET_USER_DETAIL,
   // fillCart
 } from '../actions'
 
@@ -31,6 +32,7 @@ const initialState = {
   products: [],
   users: [],
   productDetail: {},
+  userDetail: {},
   providers: [],
   providerDetail: {},
   categories: [],
@@ -231,6 +233,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         users: action.payload
       }
+    case GET_USER_DETAIL:
+        return {
+          ...state,
+          userDetail: action.payload
+        }
     case CHANGE_MAIL: 
       if(state.checkedMails.includes(action.payload)) {
         return {

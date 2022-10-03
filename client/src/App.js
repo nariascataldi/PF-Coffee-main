@@ -36,6 +36,8 @@ import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 import Newsletter from './components/Admin/Newsletter/Newsletter';
+import UpdateProfile from './components/my profile/UpdateProfile';
+import ProfileUser from './components/my profile/ProfileUser';
 
 
 function App() {
@@ -80,6 +82,8 @@ function App() {
           <Route exact path="/modals" element={<Modals />} />
           <Route exact path="/checkout/congrats" element={<CheckoutConfirm />} />
           <Route path="*" element={<NotFound />} />
+          <Route exact path= "/profileClient" element={<ProfileUser />}/>
+          <Route exact path='/updateProfile/:id' element={<UpdateProfile />}/>
         </Routes>
       </div>
     </>

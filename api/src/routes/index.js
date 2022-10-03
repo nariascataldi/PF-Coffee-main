@@ -146,7 +146,7 @@ router.get("/users/profile", checkAuth, profile);
 
 
 
-const {Provider, Product} = require('../db')
+const {Provider, Product, User} = require('../db')
 
 router.put('/edit/:id', async (req,res)=>{
   try{
@@ -177,6 +177,33 @@ router.put('/edit/:id', async (req,res)=>{
     console.log("El error del put es: ", err)
   }
 })
+
+router.put('/editUser/:id', async (req,res)=>{
+  try{
+    const{id}=req.params;
+    const {
+      name,
+      lastName,
+      mail,
+      avatar,
+      birthday
+    } = req.body;
+
+    const modifyUser = await User.update({
+      name,
+      lastName,
+      mail,
+      avatar,
+      birthday
+    },
+    {where: {id}}
+    );
+    res.send(modifyUser);
+  }catch (err){
+    console.log("El error del put es: ", err)
+  }
+})
+
 router.put('/productsEdit/:id', async (req,res)=>{
   try{
     const{id}=req.params;
@@ -217,6 +244,33 @@ router.put('/productsEdit/:id', async (req,res)=>{
   }catch (err){
     console.log("El error del put es en product: ", err)
   }
+})
+
+const getUserById =async (id)=>{
+  try{
+      if(id){
+          const db = await User.findByPk(id)
+          return{
+              id: db.id,
+              name: db.name,
+              lastName: db.lastName,
+              avatar: db.avatar,
+              birthday: db.birthday
+          }
+      }
+ 
+  }catch (error){console.log( 'el error del id es: ', error)}
+}
+router.get('/user/:id', async(req,res)=>{
+  const {id} = req.params;
+  try{
+      if(id){
+          let userId = await getUserById(id)
+          userId ?
+          res.status(200).send(userId) : 
+          res.status(404).send('user not found')
+      }
+  }catch (error){console.log('El error del id es: ', error)}
 })
 
 module.exports = router;
