@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
 
+import { ToastContainer, toast } from "react-toastify";
+
 import {
   fillCart,
   fillCartLocalS,
@@ -39,7 +41,7 @@ export default function Detail(props){
     dispatch(getDetail(id)); //
     setTimeout(() => {
       setLoad(false);
-    }, 500);
+    }, 1000);
   }, [dispatch]);
 
   const handleStar = (e) => {
@@ -58,7 +60,15 @@ export default function Detail(props){
     console.log(comment);
     e.preventDefault();
     dispatch(postComment({ id, stars, comment }));
-    alert("Comment create successfuly!");
+    toast("🧁 Comment create successfuly!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
   };
 
   //actualizo el estado de redux 'filtCart' con la variable arrayLs
@@ -67,17 +77,35 @@ export default function Detail(props){
   let quantityProductCart = reduceCart(fillCart)
   let productToAddCart = quantityProductCart.filter(e=>e.id===detail.id)
   console.log('Cantidad agragada',productToAddCart[0]?.quantity)
+
   const handleOnClick = () => {
     if(productToAddCart[0]?.quantity === detail.stock){
-      return alert('The chosen quantity exceeds our stock')
+      return toast("❗The chosen quantity exceeds our stock", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
     }
+
     detail.stock = detail.stock - 1; 
     console.log(detail)
     //dispatch(putStock(detail))
     arrayLs.push(detail);
     //console.log(arrayLs)
     dispatch(setFillCart(arrayLs));
-    alert("Product successfuly added!");
+      toast("✅Product successfuly added!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
   };
   console.log('Cantidad agragada',productToAddCart[0]?.quantity)
   console.log('El stock en detail es', detail.stock)
@@ -111,32 +139,31 @@ export default function Detail(props){
                 <h1>{detail.title}</h1>
                 <h2>$ {detail.price}</h2>
               </div>
-              <ul className='list-group list-group-flush'>
-                <li className='list-group-item fondo'>{detail.description}</li>
-                <li className='list-group-item fondo'>Like: {detail.like}</li>
-                <li className='list-group-item fondo'>Stock: {detail.stock}</li>
-                <li className='list-group-item fondo'>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item fondo">{detail.description}</li>
+                <li className="list-group-item fondo">Like: {detail.like}</li>
+                <li className="list-group-item fondo">Stock: {detail.stock}</li>
+                <li className="list-group-item fondo">
                   Diets: {detail.diets?.map((e) => e.name)}
                 </li>
-                <li className='list-group-item fondo'>
+                <li className="list-group-item fondo">
                   Categories: {detail.categories?.map((e) => e.name)}
                 </li>
               </ul>
-              {(detail?.stock<1) &&
-                <div className={styles.ad_cart_out_stock}><h3>Out of stock</h3></div>
-              }
-              { (detail?.stock>0) &&
+              {detail?.stock < 1 && (
+                <div className={styles.ad_cart_out_stock}>
+                  <h3>Out of stock</h3>
+                </div>
+              )}
+              {detail?.stock > 0 && (
                 <div>
-                <button 
-                className={styles.ad_cart}
-                onClick={handleOnClick}>
-                  Add to cart <BsArrowRight />
-                </button>
-              </div>
-              }
+                  <button className={styles.ad_cart} onClick={handleOnClick}>
+                    Add to cart <BsArrowRight />
+                  </button>
+                  <ToastContainer />
+                </div>
+              )}
             </div>
-            
-              
 
             <div className={styles.box}>
               <form onSubmit={(e) => handleSubmit(e)}>
@@ -144,6 +171,7 @@ export default function Detail(props){
                 <input
                   type="text"
                   onChange={(e) => handleChange(e)}
+                  className={styles.input}
                   placeholder="complete..."
                 />
                 <h4>Starts</h4>
@@ -151,13 +179,18 @@ export default function Detail(props){
                   type="number"
                   onChange={(e) => handleStar(e)}
                   placeholder="1->5"
+                  className={styles.input}
                   min="1"
                   max="5"
                 />
                 <StarRating stars={stars} />
                 <br />
                 <br />
-                <input type="submit" value="qualify" />
+                <input
+                  type="submit"
+                  className={styles.ad_commet}
+                  value="QUALIFY"
+                />
               </form>
             </div>
           </div>

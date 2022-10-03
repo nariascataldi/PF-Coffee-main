@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BsSearch, BsFillCartFill, BsFillCartPlusFill } from "react-icons/bs";
+import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
 
 import logo from "../assets/logo_coffee.png";
-import Menu from "../components/NavBar/Menu";
+import Menu from "../components/Menu/Menu";
 
-import styles from '../styles/NavBar.module.css'
+import styles from '../styles/NavBar.module.css';
 import SearchBar from "./SearchBar";
 
 const NavBar = ({ noFilters }) => {
@@ -56,6 +56,11 @@ const NavBar = ({ noFilters }) => {
   const handleOnClick = () => {
     setMenu(!menu);
   };
+  
+  
+  const user= JSON.parse(localStorage.getItem('Sign In'))
+  
+  
 
   return (
     <div className={styles.navbar}>
@@ -72,11 +77,11 @@ const NavBar = ({ noFilters }) => {
         </Link>
       </div>
 
-      <li className={styles.nav_item}>
+      {/* <li className={styles.nav_item}>
         <Link to="/" className={styles.links}>
           Home
         </Link>
-      </li>
+      </li> */}
 
       <SearchBar/>
 
@@ -141,6 +146,8 @@ const NavBar = ({ noFilters }) => {
               Search
             </button>
           </div>
+
+
         </>
       )}
       <Link 
@@ -155,6 +162,10 @@ const NavBar = ({ noFilters }) => {
           {fillCart.length > 0 && fillCart.length}
         </p>
       </Link>
+      { user?.user?.photoURL? 
+        <img src={ user.user.photoURL} className='signin-img-user'/> :
+        <BsPersonCircle className={styles.non_sesion_init_icon}/>
+      }
       {noFilters && (
         <>
           <h2></h2>

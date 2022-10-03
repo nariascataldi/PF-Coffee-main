@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFillCart, setReducedCart, putStock } from "../../redux/actions";
+
+import { resetFillCart, putStock } from "../../redux/actions";
+
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import './FillCart.css';
 import { BsFillCartDashFill } from "react-icons/bs";
 import { URL } from "../../config/Const";
 import { reduceCart } from "../../utils/reduceCart";
+
+import { ToastContainer, toast } from "react-toastify";
 
 export default function FillCart() {
 
@@ -17,52 +20,45 @@ export default function FillCart() {
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
 
-
-
-    // // reduceCart
-    // let quantities = {};
-
-    // for (let i = 0; i < fillCart.length; i++) {
-    //     if (!quantities[fillCart[i].title]) quantities[fillCart[i].title] = 1;
-    //     else quantities[fillCart[i].title]++;
-    // }
-
-    // //console.log(quantities); // { coffe: 2, yogurt: 1, sandwich: 2 }
-
-    // // luego armamos nuestro reducedCart
-
-    // let reducedCart = [];
-    // let quantitiesKeys = Object.keys(quantities);
-    // let found;
-
-    // for (let j = 0; j < quantitiesKeys.length; j++) {
-    //     found = fillCart.find((product) => product.title === quantitiesKeys[j]);
-    //     reducedCart.push({ ...found, quantity: quantities[quantitiesKeys[j]] });
-    // }
-
     const reducedCart = reduceCart(fillCart)
     console.log(reducedCart)
 
+
     function onDelete(e) {
         dispatch(resetFillCart(e.id))
-        // console.log(id)
 
-        alert('Product delete')
-    }
+        toast("❗Product delete", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+    };
 
     //Mercado pago
 
     async function checkOut() {
         let mercadoPagoRes = await axios.post(URL + '/checkout', reducedCart);
         console.log(mercadoPagoRes);
-        window.open(mercadoPagoRes.data)
-        //window.location.href = mercadoPagoRes.data;
+        //window.open(mercadoPagoRes.data)
+        window.location.href = mercadoPagoRes.data;
     }
+    //verifico que este registrado para efectuar el pago
+    const infoUser= JSON.parse(localStorage.getItem('Sign In'));
+    const userInitInf = infoUser && infoUser.user.emailVerified
+
     function handleButtonPay() {
-        reducedCart.forEach(elem =>
-            dispatch(putStock(elem))
-        )
+        if(userInitInf && userInitInf===true){
+             reducedCart.forEach(elem =>
+            dispatch(putStock(elem)))
         checkOut(reducedCart)
+        } else {
+            alert('You must log-in to buy')
+        }
+       
     }
 
     let sumaTotal = 0
@@ -73,6 +69,7 @@ export default function FillCart() {
     useEffect(() => {
         localStorage.setItem("carrito", JSON.stringify(fillCart));
     }, [fillCart]);
+    
 
 
     return (
@@ -97,7 +94,10 @@ export default function FillCart() {
                                     <div className='card-body'>
                                         <h1 className='card-title'>{d.title}</h1>
                                         <button className='delete-cart-btn' value={d} onClick={() => onDelete(d)}><BsFillCartDashFill
-                                            className='cart-delete-icon' /> </button>
+                                            className='cart-delete-icon' /> 
+                                        </button>
+                                        <ToastContainer />
+
 
 
                                     </div>
@@ -127,8 +127,8 @@ export default function FillCart() {
                         <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
                     {fillCart.length ? 
-                    <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
-                    <button className='pay-btn-cart-empty'>Pay</button>
+                        <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
+                        <button className='pay-btn-cart-empty'>Pay</button>
                     }
                 </div>
             </div>

@@ -28,8 +28,12 @@ export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 export const SET_STOCK = 'SET_STOCK'
 export const POST_NEWSLETTER = 'POST_NEWSLETTER'
+export const GET_ALL_NEWSLETTER = 'GET_ALL_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
+export const POST_ORDER = "POST_ORDER"
+export const SET_USER_INIT = 'SET_USER_INIT'
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -113,6 +117,24 @@ export function getAllCategories() {
     })
   }
 };
+export function getAllOrders() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/orders`);
+    return dispatch({
+      type: GET_ALL_ORDERS,
+      payload: json.data
+    })
+  }
+};
+export function getAllNewsletter() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/newsletter`);
+    return dispatch({
+      type: GET_ALL_NEWSLETTER,
+      payload: json.data
+    })
+  }
+};
 export function getAllDiets() {
   return async function (dispatch) {
     try {
@@ -147,9 +169,11 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-      const response = await axios.post("https://pfcoffee-app.herokuapp.com/users/registration", payload)
+      const response = await axios.post(URL + '/users/registration', payload);
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
+      console.log(response.data)
+      localStorage.setItem('usuario-creado',JSON.stringify(response.data))
       return dispatch({
         type: POST_USER,
         payload: response.data,
@@ -158,6 +182,19 @@ export const postUser = (payload) =>
       console.log(error)
     }
   };
+
+export const postOrder = (payload) =>
+async (dispatch) => {
+  try {
+    const response = await axios.post( URL + "/orders", payload)
+    return dispatch({
+      type: POST_ORDER,
+      payload: response.data,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 export const confirmId = id => async dispatch => {
   try {
@@ -183,9 +220,16 @@ export function postProduct(payload) {
 
 export function postNewsletter(payload) {
   return async function () {
-    const json = await axios.post(URL + '/nwsletter', payload);
+    const json = await axios.post(URL + '/newsletter', payload);
     return json
     
+  }
+}
+
+export function postOferts(payload) {
+  return async function () {
+    const json = await axios.post(URL + '/oferts', payload);
+    return json
   }
 }
 
@@ -230,6 +274,14 @@ export function cartEmptying (){
     type:CART_EMPTYING
   }
 }
+// Usuario registrado
+export function setUserInit(payload) {
+  return {
+    type: SET_USER_INIT,
+    payload
+  }
+}
+
 export function postProviders(payload) {
   return async function () {
     const info = await axios.post(URL + '/providers', payload);

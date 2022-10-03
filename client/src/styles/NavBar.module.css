@@ -21,7 +21,7 @@
 
 .contenedor_menu {
           border-radius: 23px;
-          height: 46px;
+          height: 36px;
           margin-left: 0.5vh;
           display: flex;
           justify-content: center;
@@ -34,8 +34,8 @@
 }
 
 .logo {
-          width: 120px;
-          padding-left: 2vh;
+          width: 100px;
+          padding-left: 1vh;
 }
 
 .nav_item {
@@ -187,8 +187,27 @@
 .navMenu.active >  span:nth-child(3) {
     transform: translateY(-9px) rotate(90deg);
 }
+.divPrice {
+    font-size: 14px;
+    color: rgb(114, 114, 114);
+}
 .inputPrice {
+    background-color: var(--primary);
     width: 4vw;
+    border-radius: 5px;
+    border: 1px solid var(--strong);
+}
+.buttonPrice {
+    color: white;
+    border-radius: 5px;
+    margin-left: 5px;
+    border: none;
+    background-color: var(--strong);
     border-radius: 6px;
     border: 1px solid black;
+}
+.non_sesion_init_icon{
+    color: rgb(114, 114, 114);
+    width: 26px;
+    height: 26px;
 }

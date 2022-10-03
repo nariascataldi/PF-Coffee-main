@@ -17,7 +17,22 @@ const CardsProduct = () => {
   }, [])
 
   return (
-    <div>
+    <table className="table">
+        <thead className="table-primary">
+          <tr>
+            <th className="centrado">id</th>
+            <th className="centrado">Image</th>
+            <th className="centrado">Products</th>
+            <th className="centrado">Price</th>
+            <th className="centrado">Cost</th>
+            <th className="centrado">Margin</th>
+            <th className="centrado">Description</th>
+            <th className="centrado">Like</th>
+            <th className="centrado">Stock</th>
+            <th className="centrado">Disable</th>
+            <th className="centrado">Edit</th>
+          </tr>
+        </thead>
       {
         products && products.map(p => (
           <CardProduct
@@ -39,7 +54,7 @@ const CardsProduct = () => {
           ></CardProduct>
         ))
       }
-    </div>
+      </table>
   );
 };
 

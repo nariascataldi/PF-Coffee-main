@@ -1,0 +1,30 @@
+.signin-page{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    background-color: #E3EFFB;
+}
+.signin-card-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #EEF7FC ;
+    width: 60%;
+    height: 40%;
+    border-radius: 32px;
+}
+.signin-info-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin-img-user{
+    width: 40px;
+    border-radius:40px;
+}
+

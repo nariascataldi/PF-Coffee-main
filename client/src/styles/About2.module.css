@@ -1,0 +1,12 @@
+.navBar{
+  background-color: #eefcf3;
+}
+.about{
+  padding-top: 3vh;
+  display: flex;
+  justify-content: center;
+  background-color: slategrey;
+}
+.document{
+  box-shadow: 10px 10px 20px #eefcf3;
+}

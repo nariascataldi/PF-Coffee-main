@@ -2,3 +2,18 @@
     background-color: var(--primary);
     overflow-x: hidden;
 }
+.container{
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+}
+.btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: rgb(31, 160, 31);
+    font-size: 30px;
+    width: 50px;
+    border-radius: 10px;
+    background-color: rgb(75, 207, 207);
+}
