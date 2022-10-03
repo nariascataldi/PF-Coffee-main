@@ -33,8 +33,8 @@ checkoutControllers.pago = (req, res) => {
       pending: "http://localhost:3000/checkout/congrats",
     },
     auto_return: "approved",
-    auto_return: "failure",
-    auto_return: "pending",
+    // auto_return: "failure",
+    // auto_return: "pending",
     
   }
   mercadopago.preferences

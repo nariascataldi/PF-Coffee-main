@@ -21,7 +21,7 @@ export default function FillCart() {
     const dispatch = useDispatch()
 
     const reducedCart = reduceCart(fillCart)
-    console.log(reducedCart)
+    //jconsole.log(reducedCart)
 
 
     function onDelete(e) {
@@ -41,6 +41,7 @@ export default function FillCart() {
     //Mercado pago
 
     async function checkOut() {
+        console.log("entro")
         let mercadoPagoRes = await axios.post(URL + '/checkout', reducedCart);
         console.log(mercadoPagoRes);
         //window.open(mercadoPagoRes.data)
