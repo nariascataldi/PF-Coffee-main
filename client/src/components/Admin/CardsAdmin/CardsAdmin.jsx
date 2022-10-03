@@ -37,7 +37,7 @@ export default function Cards({ load }) {
           setCurrentPage={setCurrentPage}
         />
       </div>
-      <div >
+      <div className={styles.conte} >
       <Table striped bordered hover>
           <thead>
             <tr>
