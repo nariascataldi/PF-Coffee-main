@@ -161,10 +161,11 @@ export default function Footer () {
           </section>
           <section className={styles.select}>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+              {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
               distinctio earum repellat quaerat voluptatibus placeat nam,
               commodi optio pariatur est quia magnam eum harum corrupti dicta,
-              aliquam sequi voluptate quas.
+              aliquam sequi voluptate quas. */}
+              The photo may differ from the actual product. Donna is fat free, right in the middle.
             </p>
           </section>
           <section>
