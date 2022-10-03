@@ -17,8 +17,10 @@ export default function Newsletter (){
         image: '',
         disable: false,
         sale: '',
-        checkedMails: [],
-        products: []
+        newsletters: [],
+        products: [],
+        categories: [],
+        diets: [],
     })
 
     let [productOption, setProductOption] = useState('')
@@ -58,25 +60,25 @@ export default function Newsletter (){
             console.log(e.target.name)
             setInput({
                 ...input,
-                checkedMails: JSON.parse(e.target.value).map(j => j.mail)
+                newsletters: JSON.parse(e.target.value).map(j => j.mail)
             })
         }
         else if (e.target.name === 'all' && !e.target.checked) {
             setInput({
                 ...input,
-                checkedMails: []
+                newsletters: []
             })
         }
         else if (e.target.checked) {
             setInput({
                 ...input,
-                checkedMails: [...input.checkedMails, e.target.value]
+                newsletters: [...input.newsletters, e.target.value]
             })
         }
         else if (!e.target.checked) {
             setInput({
                 ...input,
-                checkedMails: input.checkedMails.filter(f => f !== e.target.value)
+                newsletters: input.newsletters.filter(f => f !== e.target.value)
             })
         }
     }
@@ -111,7 +113,14 @@ export default function Newsletter (){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(postOferts(input))
+        if (productOption !== 'products') {
+            dispatch(postOferts({
+                ...input,
+                products: [],
+                [productOption]: input.products
+            }))
+        }
+        else dispatch(postOferts(input))
         alert('oferta creada correctamente')
         setInput({
             title: '',
@@ -119,7 +128,7 @@ export default function Newsletter (){
             image: '',
             disable: false,
             sale: '',
-            checkedMails: [],
+            newsletters: [],
             products: []
         })
     }
@@ -142,27 +151,27 @@ export default function Newsletter (){
             </div>
             <select onChange={(e) => handleChangeProductOrCategory(e)}>
                         <option value="">Select by Category, Product or Diet</option>
-                        <option value="product">Products</option>
-                        <option value="category">Categories</option>
-                        <option value="diet">Diets</option>
+                        <option value="products">Products</option>
+                        <option value="categories">Categories</option>
+                        <option value="diets">Diets</option>
             </select>
             <div className={styles.parentScrolls}>
                 {/* <h2>Select mails to send Newsletter</h2> */}
                 <div className={styles.divScrollProducts}>
                     <label>select all</label>
-                    <input type="checkbox" value={JSON.stringify(newsletter)} name='all' onClick={(e) => handleClickMails(e)} checked={newsletter && input.checkedMails.length === newsletter.length?true:false}/>
+                    <input type="checkbox" value={JSON.stringify(newsletter)} name='all' onClick={(e) => handleClickMails(e)} checked={newsletter && input.newsletters.length === newsletter.length?true:false}/>
                     {
                         newsletter && newsletter.map(p => (
                             <div>
                                 mail: {p.mail}
-                                <input type="checkbox" value={p.mail} onClick={(e) => handleClickMails(e)} checked={input.checkedMails.includes(p.mail)?true:false}/>
+                                <input type="checkbox" value={p.mail} onClick={(e) => handleClickMails(e)} checked={input.newsletters.includes(p.mail)?true:false}/>
                             </div>
                         ))
                     }
                 </div>
                 <div>
                         {
-                            productOption === 'product' ?
+                            productOption === 'products' ?
                             products && 
                             (
                                 <div className={styles.divScrollProducts}>
@@ -178,7 +187,7 @@ export default function Newsletter (){
                                 }
                             </div>
                             )
-                            :productOption === 'category' ?
+                            :productOption === 'categories' ?
                             categories && 
                             (
                                 <div className={styles.divScrollProducts}>
@@ -194,7 +203,7 @@ export default function Newsletter (){
                                     }
                                 </div>
                             )
-                            :productOption === 'diet' ?
+                            :productOption === 'diets' ?
                             diets && 
                             (
                                 <div className={styles.divScrollProducts}>

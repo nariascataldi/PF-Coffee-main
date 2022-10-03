@@ -42,9 +42,9 @@ let postOfert = async(obj)=>{
     };
     if (newsletters && newsletters.length > 0 ){
       Newsletter.findAll() 
-        .then(r=> r.filter(o=> newsletters.includes(o.name)) )
-        .then(r=> r.map( async(d)=> await ofertCread.addNewsletter(d.id) ) )   // d.dataValues.id
-        .catch(e=> console.log(e))   
+        .then(r=> r.filter(o=> newsletters.includes(o.mail)) )
+        .then(r=> r.map( async(d)=> await ofertCread.addNewsletter(d.mail) ) )   // d.dataValues.id
+        .catch(e=> console.log(e))
     }; 
       
     let ofertCreated = await Ofert.findOne({

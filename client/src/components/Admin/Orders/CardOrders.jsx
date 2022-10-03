@@ -21,20 +21,20 @@ export default function CardOrders({id, date, detail, payment, paid, delivered, 
 
     const handleClick = async (e) => {
         setOpenDetail(!openDetail)
-        if(openDetail) {
-            for (let z=0; z<detail.length; z++) {
-                // console.log(detail[z][0][0])
-                for (let i=0; i<products.length; i++) {
-                    // console.log(products[i].title)
-                    if(detail[z][0][0].split(': ')[1] === products[i].title) {
-                        setIdProduct([...idProduct, products[i].id])
-                    }
-                }
-            }
-        }
-        else {
-         setIdProduct([])
-        }
+        // if(openDetail) {
+        //     for (let z=0; z<detail.length; z++) {
+        //         // console.log(detail[z][0][0])
+        //         for (let i=0; i<products.length; i++) {
+        //             // console.log(products[i].title)
+        //             if(detail[z][0][0].split(': ')[1] === products[i].title) {
+        //                 setIdProduct([...idProduct, products[i].id])
+        //             }
+        //         }
+        //     }
+        // }
+        // else {
+        //  setIdProduct([])
+        // }
     } 
 
     return (
@@ -61,7 +61,7 @@ export default function CardOrders({id, date, detail, payment, paid, delivered, 
                     detail.map(d => (
                         <div>
                             <p>
-                            {d[0]}, {d[1]}, {d[2]}   
+                            {d}  
                             </p>
                         </div>
                     ))
