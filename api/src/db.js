@@ -71,6 +71,11 @@ User.hasMany(Order, {
 });
 Order.belongsTo(User);
 
+User.hasMany(Comment, {
+  //foreignKey: "id_user"
+});
+Comment.belongsTo(User);
+
 Provider.hasMany(Order, {
   //foreignKey: "id_provider"
 });

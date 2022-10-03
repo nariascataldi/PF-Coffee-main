@@ -5,7 +5,7 @@ let postProduct = async(obj)=>{
   try {
     console.log('input en utils postProduct API: ', obj);
 
-    let { title, disable, price, description, image, stock, cost, margin, diets, categories, providers  } = obj;
+    let { title, disable, price, description, image, stock, cost, margin, discount, diets, categories, providers  } = obj;
     disable = JSON.parse(disable);
 
     // capitalize
@@ -13,7 +13,7 @@ let postProduct = async(obj)=>{
        title = title.split(' ').map(p=> p.slice(0,1).toUpperCase().concat(p.slice(1).toLowerCase())).join(' ')
     } else { title = title[0].toUpperCase().concat(title.slice(1).toLowerCase()) };
 
-    let prod = await Product.create({ title, disable, price, description, image, stock, cost, margin });  
+    let prod = await Product.create({ title, disable, price, description, image, stock, cost, margin, discount });  
 
 
     let prodCread = await Product.findOne({ where: { title: title } }); //  console.log(prodCread); console.log(title);
