@@ -35,6 +35,7 @@ import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 import Newsletter from './components/Admin/Newsletter/Newsletter';
 import SignIn from './components/SignIn/SignIn';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
@@ -62,7 +63,9 @@ function App() {
           <Route exact path="/fillCart" element={<FillCart />} />
           {/* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
           <Route exact path="/productAdmin" element={<ProductAdmin />} />
-          <Route exact path="/homeAdmin" element={<HomeAdmin />} />
+          <Route exact path="/homeAdmin" element={<PrivateRoute>
+            <HomeAdmin/>
+          </PrivateRoute>} />
           <Route
             exact
             path="/modProvider/:id"
@@ -74,7 +77,9 @@ function App() {
           <Route exact path="/list" element={<ListProvider />} />
           {/* <Route exact path='/crud/product' element={<CrudApp />} /> */}
           {/* <Route exact path="/providerCreate" element={<ProviderCreate />} /> */}
-          <Route exact path="/providers" element={<Providers />} />
+          <Route exact path="/providers" element={ <PrivateRoute>
+            <Providers />
+          </PrivateRoute>} />
           <Route exact path="/formusers" element={<FormularioUsuario />} />
           <Route exact path="/modals" element={<Modals />} />
           <Route exact path="/checkout/congrats" element={<CheckoutConfirm />} />

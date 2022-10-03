@@ -22,7 +22,8 @@ import {
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
   POST_NEWSLETTER,
-  GET_ALL_USERS
+  SET_USER_INIT,
+  GET_ALL_USERS,
   // fillCart
 } from '../actions'
 
@@ -40,6 +41,7 @@ const initialState = {
   responseCloudinary: {},
   token: [],
   checkedMails: [],
+  userInit: JSON.parse(localStorage.getItem('usuario-creado')) || {},
   filterBy: {
     title: '',
     category: '',
@@ -116,7 +118,7 @@ const rootReducer = (state = initialState, action) => {
     case POST_USER:
       return {
         ...state,
-        token: action.payload,
+        userInit: action.payload,
       }
     case CONFIRM_ID:
       return {
@@ -131,6 +133,20 @@ const rootReducer = (state = initialState, action) => {
           ...action.payload
         }
 
+      }
+      // usuario con sesion iniciada
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        users: action.payload
+      }
+    case SET_USER_INIT :
+    //   const localSUserInit = JSON.parse(localStorage.getItem('Sign in'))
+    const usuarioiniciado = [];
+     
+      return {
+        ...state,
+        userInit: usuarioiniciado
       }
    
     case FILTER:

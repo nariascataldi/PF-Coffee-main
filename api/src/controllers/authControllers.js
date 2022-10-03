@@ -18,8 +18,8 @@ const userRegist = async (req, res) => {
   const prevUser = await User.findOne({ where: { mail: mail } });
 
   if (prevUser) {
-    const error = new Error("There is already a user with that email !!");
-    return res.status(400).json({ msg: error.message })
+    const userStored =  prevUser;
+    return res.status(200).json(userStored)
   }
 
   // let salt = await bcrypt.genSalt(10);

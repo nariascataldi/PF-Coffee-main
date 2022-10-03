@@ -59,7 +59,7 @@ const NavBar = ({ noFilters }) => {
   
   
   const user= JSON.parse(localStorage.getItem('Sign In'))
-  console.log("el usuario es ",user) 
+  
   
 
   return (
@@ -160,8 +160,8 @@ const NavBar = ({ noFilters }) => {
           {fillCart.length > 0 && fillCart.length}
         </p>
       </Link>
-      { user?.photoURL? 
-        <img src={ user.photoURL} className='signin-img-user'/> :
+      { user?.user?.photoURL? 
+        <img src={ user.user.photoURL} className='signin-img-user'/> :
         <BsPersonCircle className={styles.non_sesion_init_icon}/>
       }
       {noFilters && (

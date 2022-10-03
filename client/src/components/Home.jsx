@@ -1,7 +1,7 @@
 import React ,{useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { filter, getAllDiets, getAllProducts  } from '../redux/actions';
+import { filter, getAllDiets, getAllProducts, getAllUsers  } from '../redux/actions';
 import { getAllCategories, clearDetail } from "../redux/actions";
 
 import NavBar from "./NavBar";
@@ -31,6 +31,7 @@ export default function Home(){
 
     useEffect(()=>{
         dispatch(getAllCategories());
+        dispatch(getAllUsers())
     },[])
 
     useEffect(()=>{
