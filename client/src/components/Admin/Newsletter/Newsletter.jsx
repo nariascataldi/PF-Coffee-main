@@ -109,9 +109,9 @@ export default function Newsletter (){
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(postOferts(input))
+        await dispatch(postOferts(input))
         alert('oferta creada correctamente')
         setInput({
             title: '',
