@@ -1,85 +1,101 @@
-import { NavLink } from 'react-router-dom';
-import React, { Fragment, useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
+import React from 'react';
+import Nestor from '../assets/Nestor.jpeg';
+import Carlos from '../assets/Carlos.jpeg';
+import Lu from '../assets/Nestor.jpeg';
+import Jona from '../assets/Nestor.jpeg';
+import Gaspar from '../assets/Nestor.jpeg';
+import Rodri from '../assets/Rodri.jpeg';
+import about from '../styles/About.module.css'
+import {AiFillGithub} from 'react-icons/ai';
+import {AiFillLinkedin} from 'react-icons/ai';
+import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
-import pdf from "../assets/PDF - Coffee`s Orders.pdf";
 
-import styles from "../styles/About.module.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+const developers = [{
+  name: 'Néstor Arias Cataldi',
+  role: 'Full Stack Developer',
+  linkedIn: 'https://www.linkedin.com/in/n%C3%A9stor-arias-cataldi-895b067a',
+  gitHub: 'https://github.com/nariascataldi',
+  profilePicture: Nestor,
+},
+
+{
+  name: 'Carlos Solá Zambrano',
+  role: 'Full Stack Developer',
+  linkedIn: 'https://www.linkedin.com/in/carlos-sol%C3%A1-zambrano-228093224',
+  gitHub: 'https://github.com/carlos-sola',
+  profilePicture: Carlos,
+},
 
 
+{
+  name: 'Luciana Soledad Diaz',
+  role: 'Full Stack Developer',
+  linkedIn: 'https://www.linkedin.com/in/',
+  gitHub: 'https://github.com/LucianaSoledad86',
+  profilePicture: Lu,
+},
 
-const url = pdf;
-export default function About() {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+{
+  name: 'Jonathan Daniel Pérez',
+  role: 'Full Stack Developer',
+  linkedIn: 'https://www.linkedin.com/in/jonathanperezfrontenddeveloper',
+  gitHub: 'https://github.com/Jonathandanielperez',
+  profilePicture: Jona,
+},
 
-  /*To Prevent right click on screen*/
-  document.addEventListener("contextmenu", (event) => {
-    event.preventDefault();
-  });
+{
+ name: 'Gaspar Pérez',
+ role: 'Full Stack Developer',
+ linkedIn: 'https://www.linkedin.com/in/',
+ gitHub: 'https://github.com/gasparperez2',
+ profilePicture: Gaspar,
+},
 
-  /*When document gets loaded successfully*/
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-    setPageNumber(1);
-  }
+{
+  name: 'Luis Rodrigo Hernández',
+  role: 'Full Stack Developer',
+  linkedIn: 'https://www.linkedin.com/in/rodrigo-hernandez-4a8b5523b',
+  gitHub: 'https://github.com/RodriZach',
+  profilePicture: Rodri,
+},
 
-  function changePage(offset) {
-    setPageNumber(prevPageNumber => prevPageNumber + offset);
-  }
+];
+console.log(developers);
 
-  function previousPage() {
-    changePage(-1);
-  }
-
-  function nextPage() {
-    changePage(1);
-  }
-
+function About() {
   return (
-    <Fragment>
-      {/* <NavBar/> */}
-      <div className={styles.navBar}>
-      <NavLink to='/'>Home</NavLink>
-      </div>
-      <div className={styles.about} >
-        <div className={styles.main}>
-          <Document
-            file={url}
-            onLoadSuccess={onDocumentLoadSuccess}
-            className={styles.document}
-          >
-            <Page
-              pageNumber={pageNumber}
-            />
-          </Document>
-          <div>
-            <div className="pagec">
-              Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+    <div className={about.principalContainer}>
+    <Link to= '/'><button className={about.button}>Volver</button></Link>
+      <h1 className={about.Title}>¡Conocé a los creadores de Coffees Order!</h1>
+      <div className={about.centerViewContainer}>
+      <div className={about.Cards}>
+        {
+          developers.map((d, i) => (
+            <div className={about.Developers} key={i}>
+              <img className= {about.ProfilePicture} src={d.profilePicture}/>
+              <div className= {about.Names}>
+                <p className= {about.FirstName}>
+                  {d.name}
+                </p>
+              </div>
+              <p className= {about.Role}>
+                {d.role}
+              </p>
+              <a href={d.linkedIn} target="_blank">
+              <AiFillLinkedin className= {about.LinkedIn}/>
+              </a>
+              <a href={d.gitHub} target="_blank">
+              <AiFillGithub className={about.GitHub}/>
+              </a>
             </div>
-            <div className="buttonc">
-              <button
-                type="button"
-                disabled={pageNumber <= 1}
-                onClick={previousPage}
-                className="Pre"
-              >
-                Previous
-              </button>
-              <button
-                type="button"
-                disabled={pageNumber >= numPages}
-                onClick={nextPage}
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
+          ))
+        }
       </div>
-      {/* <Footer /> */}
-    </Fragment>
+      </div>
+    </div>
   );
 }
+
+export default About;
