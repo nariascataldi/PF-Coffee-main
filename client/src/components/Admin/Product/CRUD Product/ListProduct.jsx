@@ -1,8 +1,7 @@
-import React from "react";
 import CardsProduct from "./CardsProduct";
 import style from '../../../../styles/Admin/ListProduct.module.css'
 
-//
+
 const ListProducts = () => {
 
   return (

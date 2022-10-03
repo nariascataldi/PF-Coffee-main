@@ -1,0 +1,68 @@
+.container_slider{
+          width: 90%;
+          max-width: 900px;
+          margin: auto;
+          overflow: hidden;
+          position: relative;
+}
+
+.slider{
+          display: flex;
+          width: 400%;
+          height: 400px;
+}
+
+.slider_section{
+          width: 100%;
+}
+
+.slider_img{
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+}
+
+.btn_right{
+       position: absolute;  
+       width: 40px;
+       height: 40px;
+       background: var(--primary);
+       top: 50%;
+       transform: translateY(-50);
+       font-size: 20px;
+       font-weight: bold;
+       text-align: center;
+       border: none;
+       border-radius: 50%;
+       cursor: pointer;
+       right: 10px;
+       color: var(--strong)
+}
+
+.btn_right:hover {
+          background: #fff;
+}
+
+.btn_left {
+       position: absolute;
+       width: 40px;
+       height: 40px;
+       background: var(--primary);
+       top: 50%;
+       transform: translateY(-50);
+       font-size: 20px;
+       font-weight: bold;
+       text-align: center;
+       border: none;
+       border-radius: 50%;
+       cursor: pointer;
+       right: 10px;
+       color: var(--strong);
+       left: 10px;
+}
+
+.btn_left:hover {
+       background: #fff;
+}
+

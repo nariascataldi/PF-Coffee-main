@@ -1,7 +1,20 @@
+.container {
+  background-color: var(--primary);
+}
+
+.title{
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 10px;
+  color: rgb(114, 114, 114);
+  margin-left: 6px;
+}
+
 .p_form {
-  /* display: none; */
-  color: orangered;
-  font-size: large;
+  color: rgb(255, 0, 179);
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 6px;
 }
 
 #submit {
@@ -15,13 +28,25 @@
 }
 
 .seleSelect {
-  background: #fceef0;
-  margin: 5px 0;
-  padding: 5px 0;
-  font-size: large;
-  color: rgb(14, 3, 61);
-  border: 1px solid white;
-  border-radius: 5px;
+        border-radius: 12px;
+        width: 50vh;
+        padding-left: 1vh;
+        margin-left: 1vh;
+        margin-right: 1vh;
+        background-color: var(--primary);
+        border-color: var(--strong);
+        color: rgb(114, 114, 114);
+        outline: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 18px;
+        margin: 1vh;
+}
+
+.seleSelect:hover {
+  background-color: var(--strong);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .seleOption {
@@ -68,4 +93,25 @@
   background-color: #fceef0;
   font-size: 1.5rem;
   width: 100%;
+}
+
+.error {
+  font-size: 10px;
+  color:#DD6873;
+  text-align: center;
+  font-weight: 700;
+}
+
+.remove {
+  margin-top: 20px;
+  background: var(--primary);
+  font-size: 15px;
+  border: none;
+  margin: 10px;
+  color: var(--strong);
+  font-weight: 700;
+}
+
+.remove:focus {
+  box-shadow: none;
 }

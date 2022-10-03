@@ -9,9 +9,7 @@ import styles from "../styles/Footer.module.css";
 
 export default function Footer () {
   const dispatch = useDispatch()
-  const [input, setInput] = useState({
-    mail: ''
-  })
+  const [input, setInput] = useState({mail: ''})
 
   function handleChange(e)  {
     setInput ({
