@@ -47,9 +47,19 @@ export default function FillCart() {
         //window.open(mercadoPagoRes.data)
         window.location.href = mercadoPagoRes.data;
     }
+    //verifico que este registrado para efectuar el pago
+    const infoUser= JSON.parse(localStorage.getItem('Sign In'));
+    const userInitInf = infoUser && infoUser.user.emailVerified
+
     function handleButtonPay() {
-      
+        if(userInitInf && userInitInf===true){
+             reducedCart.forEach(elem =>
+            dispatch(putStock(elem)))
         checkOut(reducedCart)
+        } else {
+            alert('You must log-in to buy')
+        }
+       
     }
 
     let sumaTotal = 0
@@ -58,12 +68,9 @@ export default function FillCart() {
     }
 
     useEffect(() => {
-
         localStorage.setItem("carrito", JSON.stringify(fillCart));
-
     }, [fillCart]);
-
-
+    
 
 
     return (
@@ -120,7 +127,7 @@ export default function FillCart() {
                         </li>
                         <li className='list-group-item fondo'><h2>Total to pay: ${sumaTotal}</h2> </li>
                     </ul>
-                    {fillCart.length ?
+                    {fillCart.length ? 
                         <button className='pay-btn-cart' onClick={handleButtonPay}>Pay</button> :
                         <button className='pay-btn-cart-empty'>Pay</button>
                     }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BsSearch, BsFillCartFill, BsFillCartPlusFill } from "react-icons/bs";
+import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
@@ -56,6 +56,11 @@ const NavBar = ({ noFilters }) => {
   const handleOnClick = () => {
     setMenu(!menu);
   };
+  
+  
+  const user= JSON.parse(localStorage.getItem('Sign In'))
+  
+  
 
   return (
     <div className={styles.navbar}>
@@ -72,11 +77,11 @@ const NavBar = ({ noFilters }) => {
         </Link>
       </div>
 
-      <li className={styles.nav_item}>
+      {/* <li className={styles.nav_item}>
         <Link to="/" className={styles.links}>
           Home
         </Link>
-      </li>
+      </li> */}
 
       <SearchBar/>
 
@@ -137,7 +142,7 @@ const NavBar = ({ noFilters }) => {
             <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
             <span> - </span>
             <input type="text" placeholder="Max." name="maxPrice" value={price.maxPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
-            <button onClick={(e) => handleSubmitPrice(e)}>
+            <button onClick={(e) => handleSubmitPrice(e)} className={styles.buttonPrice}>
               Search
             </button>
           </div>
@@ -157,6 +162,10 @@ const NavBar = ({ noFilters }) => {
           {fillCart.length > 0 && fillCart.length}
         </p>
       </Link>
+      { user?.user?.photoURL? 
+        <img src={ user.user.photoURL} className='signin-img-user'/> :
+        <BsPersonCircle className={styles.non_sesion_init_icon}/>
+      }
       {noFilters && (
         <>
           <h2></h2>
