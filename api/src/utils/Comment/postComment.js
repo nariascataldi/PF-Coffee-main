@@ -1,4 +1,4 @@
-const { Product, Comment } = require("../../db.js");
+const { Product, Comment, User } = require("../../db.js");
 
 const postComment = async (obj) => {
   let { id, stars, comment } = obj;
@@ -11,6 +11,8 @@ const postComment = async (obj) => {
 
   let prod = await Product.findByPk(id);
   commentCreate.setProduct(prod.id);
+  let user = await User.findByPk(id)
+  commentCreate.setUser(user.id)
 
   return commentCreate
 };
