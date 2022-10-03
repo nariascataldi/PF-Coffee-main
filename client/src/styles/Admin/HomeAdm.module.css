@@ -1,7 +1,29 @@
-.home_container{
-    background-color: #E3EFFB;
-    padding-top: 0vh;
+.home_container {
+    background-color: #EEF7FC;
+    height: 100vh;
 }
+
+.figulog {
+    border-radius: 10px;
+    color: azure;
+    font-weight: 900;
+}
+
+.figpos {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 7vw;
+    margin-top: -8vh;
+}
+
+.conteinTabla {
+    background-color: #FCEEF0;
+    border-color: black;
+    border-radius: 20px;
+    margin: 2vh
+}
+
 .searchBar {
     display: flex;
     justify-content: center;
@@ -34,5 +56,21 @@
     padding-right: 14px;
     color: var(--white);
     cursor: pointer;
-    
+
+}
+
+.rowcon {
+    padding: 4vh;
+}
+
+.colum2 {
+    background-color: #EEFCF3;
+}
+
+.colum10 {
+    background-color: #EEFCF3;
+}
+
+.bonton {
+    padding: 2vh;
 }

@@ -22,13 +22,15 @@
     "react-icons": "^4.4.0",
     "react-pdf": "^5.7.2",
     "react-redux": "^7.2.8",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.1",
+    "react-simple-chatbot": "^0.6.1",
+    "react-toastify": "^9.0.8",
     "reactstrap": "^9.1.4",
     "redirect": "^0.2.0",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "styled-components": "^5.3.5",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

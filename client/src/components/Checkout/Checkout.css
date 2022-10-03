@@ -4,6 +4,18 @@
     width: 50px;
     
 }
+.icon-pay-pending{
+    color: #dbdf23;
+    font-size: 30px;
+    width: 50px;
+    
+}
+.icon-pay-failure{
+    color: #dd5b3a;
+    font-size: 30px;
+    width: 50px;
+    
+}
 .btn-statuspay-tohome{
     background-color: #DD6873 ;
     border-radius: 12px;

@@ -5,7 +5,8 @@ const  pushDiets  = require('./src/utils/pushDatabase/pushDiets.js');
 const  pushCategories  = require('./src/utils/pushDatabase/pushCategories.js');
 const  pushProducts  = require('./src/utils/pushDatabase/pushProducts.js');
 const  pushProviders = require('./src/utils/pushDatabase/pushProviders.js');
-// const  pushUsers = require('./src/utils/pushDatabase/pushUsers')
+// const  pushUsers = require('./src/utils/pushDatabase/pushUsers');
+const pushNewsletter = require('./src/utils/pushDatabase/pushNewsletter.js');
 
 
 // Syncing all the models at once.
@@ -14,7 +15,8 @@ conn.sync({ force: true }).then(() => {
   pushCategories();
   pushDiets();
   // pushUsers();
-  pushProducts();    
+  pushProducts();
+  pushNewsletter();
 
 
   server.listen(backPort, () => {

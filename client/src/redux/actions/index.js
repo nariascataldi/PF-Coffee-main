@@ -28,10 +28,12 @@ export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 export const SET_STOCK = 'SET_STOCK'
 export const POST_NEWSLETTER = 'POST_NEWSLETTER'
+export const GET_ALL_NEWSLETTER = 'GET_ALL_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
 export const POST_ORDER = "POST_ORDER"
 export const SET_USER_INIT = 'SET_USER_INIT'
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -111,6 +113,24 @@ export function getAllCategories() {
     const json = await axios.get(URL + `/categories`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
+      payload: json.data
+    })
+  }
+};
+export function getAllOrders() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/orders`);
+    return dispatch({
+      type: GET_ALL_ORDERS,
+      payload: json.data
+    })
+  }
+};
+export function getAllNewsletter() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/newsletter`);
+    return dispatch({
+      type: GET_ALL_NEWSLETTER,
       payload: json.data
     })
   }
