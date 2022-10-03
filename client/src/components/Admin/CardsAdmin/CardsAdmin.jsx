@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import { useState } from 'react'
 import { useSelector } from "react-redux";
 import Card from "../CardAdmin/CardAdmin";
-import Paginated from "../../Paginated";
+import PaginatedAd from "../../PaginatedAd";
 import Loading from "../../Loading";
+import Table from 'react-bootstrap/Table';
 
-import styles from '../../../styles/Cards.module.css'
+import styles from '../../../styles/Admin/Cards.module.css'
 
 
 export default function Cards({ load }) {
@@ -28,7 +29,7 @@ export default function Cards({ load }) {
   return (
     <div>
       <div className={styles.paginadoAdmin}>
-        <Paginated
+        <PaginatedAd
           productsPerPage={productsPerPage}
           products={products}
           paginated={paginated}
@@ -37,22 +38,38 @@ export default function Cards({ load }) {
         />
       </div>
       <div >
+      <Table striped bordered hover>
+          <thead>
+            <tr>
+              {/* <th className="centrado">id</th> */}
+              <th className="centrado">Image</th>
+              <th className="centrado">Products</th>
+              <th className="centrado">Price</th>
+              {/* <th className="centrado">Cost</th>
+              <th className="centrado">Margin</th> */}
+              {/* <th className="centrado">Description</th>  */}
+              {/* <th className="centrado">Like</th> */}
+              <th className="centrado">Stock</th>
+              {/* <th className="centrado">Disable</th> */}
+            </tr>
+          </thead>
         {load ? <Loading /> :
           currentProducts.map(p => {
             return (!p.disable && <Card
               key={p.id}
-              id={p.id}
+              // id={p.id}
               name={p.name}
               image={p.image}
               title={p.title}
-              cost={p.cost}
-              margin={p.margin}
+              // cost={p.cost}
+              // margin={p.margin}
               price={p.price}
-              description={p.description}
-              disable={p.like}
+              // description={p.description}
+              // disable={p.like}
               stock={p.stock}
             />)
           })}
+          </Table>
       </div>
     </div>
   )
