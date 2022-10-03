@@ -58,7 +58,7 @@ export default function CardOrders({id, date, detail, payment, paid, delivered, 
             <tr>
                 <td className="centrado"><p>{id}</p></td>
                 <td className="centrado">{date}</td>
-                <td className="centrado"></td>
+                <td className="centrado">{detail.map(e =>(<ul>{e}</ul>))}</td>
                 <td className="centrado">{payment}</td>
                 <td className="centrado">{paid}</td>
                 {
