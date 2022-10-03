@@ -41,11 +41,16 @@ export default function Home(){
 
 
     return (
-      <div className={styles.home_container}>
-        <NavBar />
-        <Oferts />
-        <Cards load={load} />
-        <Footer />
-      </div>
+        <div className={styles.home_container}>
+            <NavBar />
+            <Cards load={load} />
+            <button className={styles.btn} onClick={(e)=>handleClick(e)}><BsChat/></button>
+            <div className={styles.container}>
+                {isOpen === true && 
+                <Chat className={styles.chat}/>            
+                }
+            </div>
+            <Footer />
+        </div>
     );
 }
