@@ -1,7 +1,6 @@
-import React from "react";
 import CardsProduct from "./CardsProduct";
 
-//
+
 const ListProducts = () => {
 
   return (

@@ -7,6 +7,8 @@ import { getAllCategories, clearDetail } from "../redux/actions";
 import NavBar from "./NavBar";
 import Cards from './Cards';
 import Footer from './Footer';
+// import Carousel from './Carousel'
+import Oferts from './Oferts'
 import styles from "../styles/Home.module.css";
 
 export default function Home(){
@@ -41,6 +43,7 @@ export default function Home(){
     return (
       <div className={styles.home_container}>
         <NavBar />
+        <Oferts />
         <Cards load={load} />
         <Footer />
       </div>

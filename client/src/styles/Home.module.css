@@ -1,3 +1,4 @@
 .home_container{
     background-color: var(--primary);
+    overflow-x: hidden;
 }

@@ -71,12 +71,8 @@ export default function FillCart() {
     }
 
     useEffect(() => {
-
         localStorage.setItem("carrito", JSON.stringify(fillCart));
-
     }, [fillCart]);
-
-
 
 
     return (

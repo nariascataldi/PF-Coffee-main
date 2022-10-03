@@ -40,7 +40,10 @@ const CardProduct = ({
         </thead>
         <tbody>
           <tr>
-            <td className="centrado"> <p>{id}</p> </td>
+            <td className="centrado">
+              {" "}
+              <p>{id}</p>{" "}
+            </td>
             <td className="centrado">
               <Figure>
                 <Figure.Image
@@ -56,19 +59,26 @@ const CardProduct = ({
             <td className="centrado"> $ {price} </td>
             <td className="centrado"> $ {cost} </td>
             <td className="centrado"> {margin} </td>
-            <td className="centrado">  {description} </td>
-            <td className="centrado">  {like} </td>
-            <td className="centrado">  {stock} </td>
-            {
-              disable === false ?
-                <td><p>Asset</p></td> :
-                <td><p>Inactive</p></td>
-            }
-            <td className="centrado"><Link to={`/modProduct/${id}`}>
-              <button type="button" className="btn btn-outline-primary" >modify</button>
-            </Link></td>
+            <td className="centrado"> {description} </td>
+            <td className="centrado"> {like} </td>
+            <td className="centrado"> {stock} </td>
+            {disable === false ? (
+              <td>
+                <p>Asset</p>
+              </td>
+            ) : (
+              <td>
+                <p>Inactive</p>
+              </td>
+            )}
+            <td className="centrado">
+              <Link to={`/modProduct/${id}`}>
+                <button type="button" className="btn btn-outline-primary">
+                  modify
+                </button>
+              </Link>
+            </td>
           </tr>
-
         </tbody>
       </table>
     </div>
