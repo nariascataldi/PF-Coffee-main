@@ -25,7 +25,7 @@ const SignIn = () => {
                 id: userInfo.user.uid,
                 name: userInfo._tokenResponse.firstName,
                 lastName: userInfo._tokenResponse.lastName,
-                status: 'Admin',
+                status: 'Client',
                 mail: userInfo.user.email,
                 avatar: userInfo.user.photoURL,
                 
