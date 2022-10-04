@@ -209,7 +209,7 @@ const rootReducer = (state = initialState, action) => {
       }
 
     case ORDER_BY_STOCK:
-      console.log({state});
+      // console.log({state});
       const sortStock = action.payload === 'min' ?
         state.products.sort(function (aStock, bStock) {
           let a = aStock.stock
@@ -236,16 +236,6 @@ const rootReducer = (state = initialState, action) => {
           }
           return 0;
         })
-
-        //   if (aAverage > bAverage) {
-        //     return -1;
-        //   }
-        //   if (bAverage > aAverage) {
-        //     return 1
-        //   }
-        //   return 0;
-        // })
-
       return {
         ...state,
         products: sortStock,
