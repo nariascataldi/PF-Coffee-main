@@ -19,6 +19,7 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import Loading from './Loading';
 import StarRating from './StarRating';
+import Comment from './Comment/Comment';
 
 import styles from '../styles/Detail.module.css'
 import { reduceCart } from '../utils/reduceCart';
@@ -34,7 +35,11 @@ export default function Detail(props){
   const [comment, setComment] = useState("");
 
   const { detail } = useSelector((state) => state);
+  const { userInit } = useSelector((state) => state)
    //console.log("detail: ", detail.id)
+   console.log("usuario", userInit)
+   let user = userInit.id
+   //console.log("id user",user)
 
   useEffect(() => {
     setLoad(true);
@@ -59,7 +64,7 @@ export default function Detail(props){
     console.log(stars);
     console.log(comment);
     e.preventDefault();
-    dispatch(postComment({ id, stars, comment }));
+    dispatch(postComment({ id, stars, comment, user }));
     toast("🧁 Comment create successfuly!", {
       position: "top-right",
       autoClose: 5000,
@@ -69,6 +74,7 @@ export default function Detail(props){
       draggable: true,
       progress: undefined,
     })
+    setComment(" ")
   };
 
   //actualizo el estado de redux 'filtCart' con la variable arrayLs
@@ -183,7 +189,7 @@ export default function Detail(props){
                   min="1"
                   max="5"
                 />
-                <StarRating stars={stars} />
+                <StarRating stars={stars}  />
                 <br />
                 <br />
                 <input
@@ -196,6 +202,7 @@ export default function Detail(props){
           </div>
         )}
       </div>
+        <Comment detail={detail}/>
       <Footer />
     </div>
   );
