@@ -6,28 +6,27 @@ import { resetFillCart, putStock } from "../../redux/actions";
 
 import Footer from "../Footer";
 import NavBar from "../NavBar";
-import './FillCart.css';
 import { BsFillCartDashFill } from "react-icons/bs";
 import { URL } from "../../config/Const";
 import { reduceCart } from "../../utils/reduceCart";
 
 import { ToastContainer, toast } from "react-toastify";
 
+import "./FillCart.css";
+
 export default function FillCart() {
 
     const { fillCart } = useSelector(state => state)
-    // const {allProducts} = useSelector(state=>state);
+
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
 
     const reducedCart = reduceCart(fillCart)
-    //jconsole.log(reducedCart)
 
 
     function onDelete(e) {
         dispatch(resetFillCart(e.id))
-
-        toast("❗Product delete", {
+        toast("Product delete", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -41,10 +40,8 @@ export default function FillCart() {
     //Mercado pago
 
     async function checkOut() {
-        console.log("entro")
         let mercadoPagoRes = await axios.post(URL + '/checkout', reducedCart);
-        console.log(mercadoPagoRes);
-        //window.open(mercadoPagoRes.data)
+        
         window.location.href = mercadoPagoRes.data;
     }
     //verifico que este registrado para efectuar el pago
@@ -57,10 +54,17 @@ export default function FillCart() {
             dispatch(putStock(elem)))
         checkOut(reducedCart)
         } else {
-            alert('You must log-in to buy')
+            toast("You must log-in to buy", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            })
         }
-       
-    }
+    };
 
     let sumaTotal = 0
     for (let i = 0; i < fillCart.length; i++) {

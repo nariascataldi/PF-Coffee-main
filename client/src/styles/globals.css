@@ -41,20 +41,3 @@ img {
           color: var(--primary);
           margin: 5rem 0;
 }
-
-
-/*
-:root {
-          --primary: #E3EFFB;
-          --smooth: #e1818b;
-          --strong: #DD6873;
-          --negro: #262626;
-          --blanco: #FFF;
-          --fuente-principal: 'Outfit', sans-serif;}  => CUSTOM PROPERTIES de CSS nativo
-
-          IMAGENES RESPONSIVES => img {max-width: 100%}
-
-    ESTILOS GLOBALES PARA QUE APLIQUEN A TODO EL PROYECTO, NO A UN COMPONENTE EN ESPECIFICO COMO LOS MODULOS.
-
-=>  La hoja de estilos NORMALIZE.CSS sirve para resetear y que los estilos sean consistentes en diferentes navegadores.
-*/
