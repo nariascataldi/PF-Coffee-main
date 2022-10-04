@@ -16,7 +16,7 @@ import "./FillCart.css";
 
 export default function FillCart() {
 
-    const { fillCart } = useSelector(state => state)
+    const { fillCart, userInit } = useSelector(state => state)
 
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
@@ -45,11 +45,12 @@ export default function FillCart() {
         window.location.href = mercadoPagoRes.data;
     }
     //verifico que este registrado para efectuar el pago
-    const infoUser= JSON.parse(localStorage.getItem('ususrio-creado'));
-    const userInitInf = infoUser && infoUser.id
+    // const infoUser= JSON.parse(localStorage.getItem('ususrio-creado'));
+    
 
     function handleButtonPay() {
-        if(userInitInf && userInitInf===true){
+        if(userInit.id){
+            console.log('se ejecuto la accion de pago')
              reducedCart.forEach(elem =>
             dispatch(putStock(elem)))
         checkOut(reducedCart)
