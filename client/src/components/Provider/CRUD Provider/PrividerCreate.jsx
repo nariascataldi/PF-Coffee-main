@@ -32,7 +32,7 @@ const FormProviderCreate = (props) => {
     const handleClickYesNo = (data, e) => {
         if(e.target.value === 'yes') {
             console.log(data);
-            dispatch(postProviders(data));
+            dispatch(postProviders({...data, logo: responseCloudinary.url}));
             toast("Provider Created", {
               position: "top-right",
               autoClose: 5000,
@@ -237,11 +237,6 @@ const FormProviderCreate = (props) => {
             </Link>
           </div>
         </form>
-        <div>
-          {!responseCloudinary ? null : (
-            <img src={responseCloudinary.secure_url} />
-          )}
-        </div>
       </div>
     );
 }

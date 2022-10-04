@@ -26,7 +26,8 @@ import {
   GET_ALL_USERS,
   GET_ALL_ORDERS,
   GET_ALL_NEWSLETTER,
-  ORDER_BY_STOCK
+  ORDER_BY_STOCK,
+  GET_ALL_OFERTS
   // fillCart
 } from '../actions'
 
@@ -47,6 +48,7 @@ const initialState = {
   userInit: JSON.parse(localStorage.getItem('usuario-creado')) || {},
   orders: [],
   newsletter: [],
+  oferts: [],
   filterBy: {
     title: '',
     category: '',
@@ -295,6 +297,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         newsletter: action.payload
+      }
+     case GET_ALL_OFERTS:
+      return {
+        ...state,
+        oferts: action.payload
       }
     default:
       return { ...state }
