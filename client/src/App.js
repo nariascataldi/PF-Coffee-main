@@ -14,6 +14,7 @@ import ProductAdmin from './components/Admin/Product/ProductAdmin';
 // import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
+import MyOrders from "./components/MyOrders/MyOrders";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import Modals from './components/Admin/Modals/Modals';
 
@@ -63,6 +64,7 @@ function App() {
           <Route path="forget-password/:token" element={<NewPassword />} />
           <Route path="forget-password" element={<ForgetPassword />} />
           <Route exact path="/fillCart" element={<FillCart />} />
+          <Route exact path='/myorders' element={<MyOrders />} />
           {/* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
           <Route exact path="/productAdmin" element={<ProductAdmin />} />
           <Route exact path="/homeAdmin" element={<PrivateRoute>

@@ -67,7 +67,7 @@ console.log(developers);
 function About() {
   return (
     <div className={about.principalContainer}>
-    <Link to= '/'><button className={about.button}>Volver</button></Link>
+    <Link to= '/'><button className={about.button}>Home</button></Link>
       <h1 className={about.Title}>¡Conocé a los creadores de Coffees Order!</h1>
       <div className={about.centerViewContainer}>
       <div className={about.Cards}>
