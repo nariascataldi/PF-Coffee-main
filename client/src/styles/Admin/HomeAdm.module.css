@@ -17,6 +17,15 @@
     margin-top: -8vh;
 }
 
+.figcenter{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.2;
+
+}
+
 .conteinTabla {
     background-color: #FCEEF0;
     border-color: black;
