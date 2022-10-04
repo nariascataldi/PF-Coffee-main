@@ -104,3 +104,14 @@ body {
   border-radius: 6px;
   border: 1px solid black;
 }
+.logophoncuitstatus{
+  padding: 2vh;
+  margin: 4vh;
+  background-color: #EEF7FC;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.phonecuitstatus{
+  width: 50vw;
+}
