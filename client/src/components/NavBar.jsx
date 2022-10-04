@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BsFillCartFill, BsPersonCircle } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getByTitle, setFilterState } from "../redux/actions";
+import { getByTitle, setFilterState } from "../redux/actions/index";
 
 import logo from "../assets/logo_coffee.png";
 import Menu from "../components/Menu/Menu";

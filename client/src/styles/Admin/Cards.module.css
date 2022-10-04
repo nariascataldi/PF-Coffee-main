@@ -31,3 +31,9 @@
   overflow-y: scroll;
 
 }
+
+.sors{
+  cursor: pointer;
+  background-color: #eefcff;
+  border: none;
+}
