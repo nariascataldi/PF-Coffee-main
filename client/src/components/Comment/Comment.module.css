@@ -26,3 +26,7 @@
 .stars{
     margin-right: 15px;
 }
+.number{
+    display: flex;
+    align-items: center;
+}
