@@ -61,7 +61,7 @@ export default function CardOrders({id, date, detail, payment, paid, delivered, 
                     detail.map(d => (
                         <div>
                             <p>
-                            {d}  
+                            {d}   
                             </p>
                         </div>
                     ))
