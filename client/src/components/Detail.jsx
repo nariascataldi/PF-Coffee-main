@@ -25,7 +25,7 @@ import styles from '../styles/Detail.module.css'
 import { reduceCart } from '../utils/reduceCart';
 
 
-export default function Detail(props){
+export default function Detail(props) {
   const dispatch = useDispatch();
   const { fillCart } = useSelector((state) => state);
   const { id } = useParams();
@@ -36,10 +36,10 @@ export default function Detail(props){
 
   const { detail } = useSelector((state) => state);
   const { userInit } = useSelector((state) => state)
-   //console.log("detail: ", detail.id)
-   console.log("usuario", userInit)
-   let user = userInit.id
-   //console.log("id user",user)
+  //console.log("detail: ", detail.id)
+  console.log("usuario", userInit)
+  let user = userInit.id
+  //console.log("id user",user)
 
   useEffect(() => {
     setLoad(true);
@@ -81,11 +81,11 @@ export default function Detail(props){
   let arrayLs = [];
 
   let quantityProductCart = reduceCart(fillCart)
-  let productToAddCart = quantityProductCart.filter(e=>e.id===detail.id)
-  console.log('Cantidad agragada',productToAddCart[0]?.quantity)
+  let productToAddCart = quantityProductCart.filter(e => e.id === detail.id)
+  console.log('Cantidad agragada', productToAddCart[0]?.quantity)
 
   const handleOnClick = () => {
-    if(productToAddCart[0]?.quantity === detail.stock){
+    if (productToAddCart[0]?.quantity === detail.stock) {
       return toast("❗The chosen quantity exceeds our stock", {
         position: "top-right",
         autoClose: 5000,
@@ -97,23 +97,23 @@ export default function Detail(props){
       })
     }
 
-    detail.stock = detail.stock - 1; 
+    detail.stock = detail.stock - 1;
     console.log(detail)
     //dispatch(putStock(detail))
     arrayLs.push(detail);
     //console.log(arrayLs)
     dispatch(setFillCart(arrayLs));
-      toast("✅Product successfuly added!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+    toast("✅Product successfuly added!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
-  console.log('Cantidad agragada',productToAddCart[0]?.quantity)
+  console.log('Cantidad agragada', productToAddCart[0]?.quantity)
   console.log('El stock en detail es', detail.stock)
   // lleno el local storage con el estado de redux 'fillCart
   useEffect(() => {
@@ -170,39 +170,43 @@ export default function Detail(props){
                 </div>
               )}
             </div>
+            {userInit.id ? (
+              <div className={styles.box}>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                  <h4>Comment</h4>
+                  <input
+                    type="text"
+                    onChange={(e) => handleChange(e)}
+                    className={styles.input}
+                    placeholder="complete..."
+                  />
+                  <h4>Starts</h4>
+                  <input
+                    type="number"
+                    onChange={(e) => handleStar(e)}
+                    placeholder="1->5"
+                    className={styles.input}
+                    min="1"
+                    max="5"
+                  />
+                  <StarRating stars={stars} />
+                  <br />
+                  <br />
+                  <button
+                    type="submit"
+                    className={styles.ad_commet}
+                    value="QUALIFY"
+                  >QUALIFY</button>
+                </form>
+              </div>
+            ) : <div></div>}
 
-            <div className={styles.box}>
-              <form onSubmit={(e) => handleSubmit(e)}>
-                <h4>Comment</h4>
-                <input
-                  type="text"
-                  onChange={(e) => handleChange(e)}
-                  className={styles.input}
-                  placeholder="complete..."
-                />
-                <h4>Starts</h4>
-                <input
-                  type="number"
-                  onChange={(e) => handleStar(e)}
-                  placeholder="1->5"
-                  className={styles.input}
-                  min="1"
-                  max="5"
-                />
-                <StarRating stars={stars}  />
-                <br />
-                <br />
-                <input
-                  type="submit"
-                  className={styles.ad_commet}
-                  value="QUALIFY"
-                />
-              </form>
-            </div>
+
+
           </div>
         )}
       </div>
-        <Comment detail={detail}/>
+      <Comment detail={detail} />
       <Footer />
     </div>
   );
