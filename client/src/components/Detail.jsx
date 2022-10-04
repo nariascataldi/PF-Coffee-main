@@ -75,6 +75,7 @@ export default function Detail(props) {
       progress: undefined,
     })
     setComment(" ")
+    window.location.reload()
   };
 
   //actualizo el estado de redux 'filtCart' con la variable arrayLs
