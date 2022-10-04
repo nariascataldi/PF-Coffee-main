@@ -13,6 +13,7 @@ import { reduceCart } from "../../utils/reduceCart";
 import { ToastContainer, toast } from "react-toastify";
 
 import "./FillCart.css";
+import { Link } from "react-router-dom";
 
 export default function FillCart() {
 
@@ -90,11 +91,12 @@ export default function FillCart() {
                         return (
 
                             <div className='card-detail'>
-
+                                <Link to={`/detail/${d.id}`}>
                                 <div>
 
                                     <img src={d.image} className='card-img-top img' alt="Image product" />
                                 </div>
+                                </Link>
                                 <div className='text-detail'>
                                     <div className='card-body'>
                                         <h1 className='card-title'>{d.title}</h1>
