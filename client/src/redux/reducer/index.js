@@ -25,7 +25,8 @@ import {
   SET_USER_INIT,
   GET_ALL_USERS,
   GET_ALL_ORDERS,
-  GET_ALL_NEWSLETTER
+  GET_ALL_NEWSLETTER,
+  ORDER_BY_STOCK
   // fillCart
 } from '../actions'
 
@@ -50,11 +51,11 @@ const initialState = {
     title: '',
     category: '',
     diet: '',
-    sort:'',
+    sort: '',
     minPrice: '',
     maxPrice: ''
   },
-  setReducedCart:[]
+  setReducedCart: []
 }
 
 
@@ -138,21 +139,21 @@ const rootReducer = (state = initialState, action) => {
         }
 
       }
-      // usuario con sesion iniciada
+    // usuario con sesion iniciada
     case GET_ALL_USERS:
       return {
         ...state,
         users: action.payload
       }
-    case SET_USER_INIT :
-    //   const localSUserInit = JSON.parse(localStorage.getItem('Sign in'))
-    const usuarioiniciado = [];
-     
+    case SET_USER_INIT:
+      //   const localSUserInit = JSON.parse(localStorage.getItem('Sign in'))
+      const usuarioiniciado = [];
+
       return {
         ...state,
         userInit: usuarioiniciado
       }
-   
+
     case FILTER:
       const allProd = state.allProducts;
       const titleFilter = state.filterBy.title === '' ? allProd : allProd.filter(e => {
@@ -169,44 +170,88 @@ const rootReducer = (state = initialState, action) => {
         if (!state.filterBy.maxPrice) return e.price >= state.filterBy.minPrice && e.price <= Infinity
         return e.price >= state.filterBy.minPrice && e.price <= state.filterBy.maxPrice
       })
-      const sort = state.filterBy.sort === '' ? filterPrice : state.filterBy.sort=== 'Z-A' ? [...filterPrice].sort((a,b)=>{
+      const sort = state.filterBy.sort === '' ? filterPrice : state.filterBy.sort === 'Z-A' ? [...filterPrice].sort((a, b) => {
         let A = a.title.toLowerCase();
         let B = b.title.toLowerCase();
-                if(A === B) {
-                    return 0; 
-                  }
-                if(A > B) {
-                    return -1;
-                  }
-                  if(A < B) {
-                    return 1;
-                  }
-        }) : state.filterBy.sort==='A-Z' ? [...filterPrice].sort((a,b)=>{
-                let A = a.title.toLowerCase();
-                let B = b.title.toLowerCase();
-                  if(A === B) {
-                    return 0; 
-                  }
-                  if(A < B) {
-                    return -1;
-                  }
-                  if(A > B) {
-                    return 1;
-                  }
-        }) : state.filterBy.sort==='High' ? [...filterPrice].sort((a,b)=>{
-              let A = a.price
-              let B = b.price
-                return B - A
-        }) : state.filterBy.sort==='Low' && [...filterPrice].sort((a,b)=>{
-              let A = a.price
-              let B = b.price
-                return A - B
-        })
+        if (A === B) {
+          return 0;
+        }
+        if (A > B) {
+          return -1;
+        }
+        if (A < B) {
+          return 1;
+        }
+      }) : state.filterBy.sort === 'A-Z' ? [...filterPrice].sort((a, b) => {
+        let A = a.title.toLowerCase();
+        let B = b.title.toLowerCase();
+        if (A === B) {
+          return 0;
+        }
+        if (A < B) {
+          return -1;
+        }
+        if (A > B) {
+          return 1;
+        }
+      }) : state.filterBy.sort === 'High' ? [...filterPrice].sort((a, b) => {
+        let A = a.price
+        let B = b.price
+        return B - A
+      }) : state.filterBy.sort === 'Low' && [...filterPrice].sort((a, b) => {
+        let A = a.price
+        let B = b.price
+        return A - B
+      })
       return {
         ...state,
         products: sort
       }
-    case FILL_CART :
+
+    case ORDER_BY_STOCK:
+      console.log({state});
+      const sortStock = action.payload === 'min' ?
+        state.products.sort(function (aStock, bStock) {
+          let a = aStock.stock
+          let b = bStock.stock
+
+          if (a > b) {
+            return 1;
+          }
+          if (b > a) {
+            return -1;
+          }
+          return 0;
+        })
+        :
+        state.products.sort(function (aStock, bStock) {
+          let a = aStock.stock
+          let b = bStock.stock
+
+          if (a > b) {
+            return -1;
+          }
+          if (b > a) {
+            return 1;
+          }
+          return 0;
+        })
+
+        //   if (aAverage > bAverage) {
+        //     return -1;
+        //   }
+        //   if (bAverage > aAverage) {
+        //     return 1
+        //   }
+        //   return 0;
+        // })
+
+      return {
+        ...state,
+        products: sortStock,
+      }
+
+    case FILL_CART:
       // const findIdStock = action.payload[0].id
       // console.log('el action payload es ',action.payload[0].title)
       return {
@@ -222,13 +267,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         fillCart: copyCart
       }
-    case CART_EMPTYING :
+    case CART_EMPTYING:
       return {
         ...state,
         fillCart: []
       }
-    case POST_PROVIDERS :
-      return{
+    case POST_PROVIDERS:
+      return {
         ...state,
         providers: action.payload
       }
@@ -246,18 +291,18 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
-    case GET_ALL_USERS :
-      return{
+    case GET_ALL_USERS:
+      return {
         ...state,
         users: action.payload
       }
-    case GET_ALL_ORDERS :
-      return{
+    case GET_ALL_ORDERS:
+      return {
         ...state,
         orders: action.payload
       }
-    case GET_ALL_NEWSLETTER :
-      return{
+    case GET_ALL_NEWSLETTER:
+      return {
         ...state,
         newsletter: action.payload
       }
