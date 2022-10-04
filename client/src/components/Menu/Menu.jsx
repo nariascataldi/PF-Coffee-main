@@ -1,37 +1,34 @@
 import React from 'react';
-// import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import {app, auth, signUp} from "../../firebase/index"
-import './Menu.css';
+import { auth } from "../../firebase/index"
 import { signOut } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
+
 import { setUserInit } from '../../redux/actions';
-import { useNavigate } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
+
+import "./Menu.css";
+
 
 export default function Menu({ menu }) {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const {userInit}= useSelector(state=>state)
     
-    
-    // function handleOnChange (e){
-    //     dispatch(sortAtoZ(e.target.value))
-    // }
-
-    // const seasonactivities=activities;
-    // const seasonSinDuplicado = []
-    //  seasonSinDuplicado = [...new Set(seasonactivities)]
-    //  console.log(seasonactivities);
-    //  console.log(seasonSinDuplicado)
     const cerrarSesion = () => {
         signOut(auth)
          localStorage.setItem('usuario-creado',JSON.stringify(''));
         localStorage.setItem('Sign In',JSON.stringify(''));
         dispatch(setUserInit(''))
-        alert('you logged out')
+        toast("You logged out", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
     
-    
-
     }
     return (
         <div className={`menu-container ${menu ? "open" : ""}`}>
@@ -50,7 +47,7 @@ export default function Menu({ menu }) {
             
             {userInit.id?
                 <button className='menubutton-crate-product' onClick={cerrarSesion}>Logout</button> :
-                <Link to='/signin'><button className='menubutton-crate-product'>Log in</button></Link>
+                <Link to='/signin'><button className='menubutton-crate-product'>Log in</button><ToastContainer/></Link>
             }
             
             <Link to='/about'><button className='menubutton-crate-product'>About</button></Link>

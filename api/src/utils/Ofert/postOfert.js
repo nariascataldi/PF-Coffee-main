@@ -44,7 +44,7 @@ let postOfert = async(obj)=>{
       Newsletter.findAll() 
         .then(r=> r.filter(o=> newsletters.includes(o.mail)) )
         .then(r=> r.map( async(d)=> await ofertCread.addNewsletter(d.mail) ) )   // d.dataValues.id
-        .catch(e=> console.log(e))   
+        .catch(e=> console.log(e))
     }; 
       
     let ofertCreated = await Ofert.findOne({

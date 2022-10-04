@@ -17,7 +17,7 @@ export default function ProductAdmin() {
 
   return (
     <Fragment>
-      <div className="container my-0 py-0">
+      <div >
         <div className="row">
           <div id='formularioProducto' className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-1 bg-white">
             <FormProduct />

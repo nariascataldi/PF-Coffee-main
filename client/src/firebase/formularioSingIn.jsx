@@ -146,9 +146,6 @@ const FormularioSignIn = ({handleModal}) => {
                     </form>
                 </div>
             )}
-            {/* <div className="px-4 py-2 text-center">
-                <span className="font-semibold text-indigo-800 cursor-pointer"><Link to="/passwordReset">Olvidé mi contraseña <HiOutlineArrowNarrowRight className="inline-block" /></Link></span>
-                </div> */}
     </div>
 )}
 

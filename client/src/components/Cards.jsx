@@ -64,8 +64,9 @@ export default function Cards({ load }) {
           <Loading />
         ) : (
           currentProducts.map((p) => {
+            {/* console.log({p}) */}
             return (
-              !p.disable && (
+              !p.disable && !p.stock <= 0 && (
                 <Card
                   key={p.id}
                   id={p.id}

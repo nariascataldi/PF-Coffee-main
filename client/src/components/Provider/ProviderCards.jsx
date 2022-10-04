@@ -15,9 +15,6 @@ const ProviderCards = () => {
       dispatch(getAllProviders());
     }, [dispatch]);
 
-    // React.useEffect( async () => {
-    //     await dispatch(getAllProviders())
-    // },[])
 
     return (
         <div>

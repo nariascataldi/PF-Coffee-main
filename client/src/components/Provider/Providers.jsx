@@ -10,14 +10,14 @@ import styles from '../../styles/Providers/Providers.module.css'
 const Providers = () => {
 
     return (
-        <div>
-            <NavBar noFilters />
-                <div className={styles.parent}>
-                    <h1>Providers</h1> 
-                    <ProviderCards />
-                </div>
-            <Footer />
+      <div>
+        <NavBar noFilters />
+        <div className={styles.container}>
+          <h1 className={styles.h1}>Providers</h1>
+          <ProviderCards />
         </div>
+        <Footer />
+      </div>
     );
 };
 
