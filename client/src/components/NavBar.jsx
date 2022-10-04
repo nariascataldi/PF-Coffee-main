@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle } from "react-icons/bs";
+import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle,BsFillPersonCheckFill } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
@@ -12,7 +12,7 @@ import styles from '../styles/NavBar.module.css';
 import SearchBar from "./SearchBar";
 
 const NavBar = ({ noFilters }) => {
-  const { categories, diets, fillCart, filterBy } = useSelector((state) => state);
+  const { categories, diets, fillCart, filterBy,userInit } = useSelector((state) => state);
   const [busqueda, setBusqueda] = useState("");
   const [menu, setMenu] = useState(false);
   const [price, setPrice] = useState({
@@ -58,7 +58,7 @@ const NavBar = ({ noFilters }) => {
   };
   
   
-  const user= JSON.parse(localStorage.getItem('Sign In'))
+ 
   
   
 
@@ -95,7 +95,7 @@ const NavBar = ({ noFilters }) => {
               className={styles.input_filter}
               onChange={handleSelect}
             >
-              <option value="">Categories</option>
+              <option value="">{filterBy?.category !=="" ? filterBy.category : 'Categories'}</option>
               <option value="">None</option>
               {categories?.map((p) => {
                 return (
@@ -113,7 +113,7 @@ const NavBar = ({ noFilters }) => {
               className={styles.input_filter}
               onChange={handleSelect}
             >
-              <option value="">Diets</option>
+              <option value="">{filterBy?.diet !=="" ? filterBy.diet : 'Diets'}</option>
               <option value="">None</option>
               {diets?.map((p) => {
                 return (
@@ -130,7 +130,7 @@ const NavBar = ({ noFilters }) => {
               className={styles.input_filter}
               onChange={handleSelect}
             >
-              <option value="">Sort</option>
+              <option value="">{filterBy?.sort !=="" ? filterBy.sort : 'Sort'}</option>
               <option value="A-Z">Alphabetically: A-Z</option>
               <option value="Z-A">Alphabetically: Z-A</option>
               <option value="High">Price: High to Low</option>
@@ -161,11 +161,16 @@ const NavBar = ({ noFilters }) => {
         >
           {fillCart.length > 0 && fillCart.length}
         </p>
+        
       </Link>
-      { user?.user?.photoURL? 
-        <img src={ user.user.photoURL} className='signin-img-user'/> :
+      
+      
+      { userInit.name ? 
+        <img src={ userInit?.avatar !=="" ? userInit.avatar : <BsFillPersonCheckFill/>}
+         className='signin-img-user' referrerPolicy="no-referrer"/> :
         <BsPersonCircle className={styles.non_sesion_init_icon}/>
       }
+
       {noFilters && (
         <>
           <h2></h2>

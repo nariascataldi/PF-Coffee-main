@@ -47,8 +47,8 @@ export default function FillCart() {
         window.location.href = mercadoPagoRes.data;
     }
     //verifico que este registrado para efectuar el pago
-    const infoUser= JSON.parse(localStorage.getItem('Sign In'));
-    const userInitInf = infoUser && infoUser.user.emailVerified
+    const infoUser= JSON.parse(localStorage.getItem('ususrio-creado'));
+    const userInitInf = infoUser && infoUser.id
 
     function handleButtonPay() {
         if(userInitInf && userInitInf===true){
