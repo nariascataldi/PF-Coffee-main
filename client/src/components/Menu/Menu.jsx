@@ -46,8 +46,12 @@ export default function Menu({ menu }) {
 
             
             {userInit.id?
-                <button className='menubutton-crate-product' onClick={cerrarSesion}>Logout</button> :
+                <div>
+                <button className='menubutton-crate-product' onClick={cerrarSesion}>Logout</button> 
+                <Link to='/myorders'><button className='menubutton-crate-product'>My Orders</button></Link>
+                </div>:
                 <Link to='/signin'><button className='menubutton-crate-product'>Log in</button><ToastContainer/></Link>
+               
             }
             
             <Link to='/about'><button className='menubutton-crate-product'>About</button></Link>
