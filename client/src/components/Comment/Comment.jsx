@@ -34,9 +34,9 @@ export default function Comment(detail) {
         <div className={styles.container}>
             <h1 className={styles.title}>Comments</h1>
             <div className={styles.caja}>
-                <h3 className={styles.stars}>{comment.map(b => (<ul><StarRating stars={b[1]} /></ul>))}</h3>
-                <h3 className={styles.name}>{usuario===undefined?" ":usuario.name + ":"}</h3>
-                <h3 className={styles.comment}>{comment.map(a => (<ul>{'" ' + a[0] + ' "'}</ul>))}</h3>
+                <p className={styles.stars}>{comment.map(b => (<ul><StarRating stars={b[1]} /></ul>))}</p>
+                <p className={styles.name}>{usuario===undefined?" ":usuario.name + ":"}</p>
+                <p className={styles.comment}>{comment.map(a => (<ul>{'" ' + a[0] + ' "'}</ul>))}</p>
             </div>
         </div>
     )
