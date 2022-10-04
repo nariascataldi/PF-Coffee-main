@@ -161,7 +161,7 @@ const SignIn =()=> {
                     />
                     <label>Avatar:</label>
                     <input name="avatar"
-                    type="url"
+                    type="field"
                     placeholder="Image..."
                     value={authData.avatar}
                     onChange={handleChange}
