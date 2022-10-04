@@ -47,10 +47,9 @@ export default function FillCart() {
     //verifico que este registrado para efectuar el pago
     // const infoUser= JSON.parse(localStorage.getItem('ususrio-creado'));
     
-
     function handleButtonPay() {
         if(userInit.id){
-            console.log('se ejecuto la accion de pago')
+            console.log('se ejecuto la accion de pag')
              reducedCart.forEach(elem =>
             dispatch(putStock(elem)))
         checkOut(reducedCart)
