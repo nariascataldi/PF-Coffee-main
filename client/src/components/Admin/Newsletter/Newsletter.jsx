@@ -201,7 +201,7 @@ export default function Newsletter (){
             <label className={styles.parentScrolls}>select all</label>
             <input
               className={styles.input}
-              type="radio"
+              type="checkbox"
               value={JSON.stringify(newsletter)}
               name="all"
               onClick={(e) => handleClickMails(e)}
@@ -216,7 +216,7 @@ export default function Newsletter (){
                 <div>
                   {p.mail}
                   <input
-                    type="radio"
+                    type="checkbox"
                     value={p.mail}
                     onClick={(e) => handleClickMails(e)}
                     checked={input.newsletters.includes(p.mail) ? true : false}

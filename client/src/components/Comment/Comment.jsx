@@ -25,18 +25,31 @@ export default function Comment(detail) {
       // if userInit.id es igual a userid que muestre el nombre en la linea 39
 
     let comment = [];
+    let estrellas = [];
+
+   
 
     detail.detail.comments?.map(a => {
         comment.push([a.comment, a.stars])
-
+        estrellas.push(a.stars)
     })
+    console.log("stars",estrellas)
+    let suma = 0;
+    for (let i = 0; i < estrellas.length; i++) {
+        suma = suma + estrellas[i] 
+    }
+    console.log("suma",suma)
+    let num = (suma/estrellas.length).toFixed(1)
+    let prom = Math.round(suma/estrellas.length)
+    console.log("promedio",num)
+
     return (
         <div className={styles.container}>
+            <div className={styles.number}><h1 className={styles.numero}>{num}</h1><StarRating className ={styles.estrella} stars={prom} /></div>
             <h1 className={styles.title}>Comments</h1>
             <div className={styles.caja}>
-                <p className={styles.stars}>{comment.map(b => (<ul><StarRating stars={b[1]} /></ul>))}</p>
-                <p className={styles.name}>{usuario===undefined?" ":usuario.name + ":"}</p>
-                <p className={styles.comment}>{comment.map(a => (<ul>{'" ' + a[0] + ' "'}</ul>))}</p>
+                <h3 className={styles.stars}>{comment.map(b => (<ul><StarRating stars={b[1]} /></ul>))}</h3>
+                <h3 className={styles.comment}>{comment.map(a => (<ul>{'" ' + a[0] + ' "'}</ul>))}</h3>
             </div>
         </div>
     )
