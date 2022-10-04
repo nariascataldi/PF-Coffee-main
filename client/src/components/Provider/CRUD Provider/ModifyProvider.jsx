@@ -16,7 +16,7 @@ import NavBarAdmin from '../../../components/Admin/NavBarAdmin/NavBarAdmin';
 
 import style from '../../../styles/Admin/ModifyProduct.module.css';
 
-const FormModifyProvider = (props) => {
+const FormModifyProvider = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpenModal, openModal, closeModal] = useModal(false)
@@ -45,13 +45,13 @@ const FormModifyProvider = (props) => {
   const { providerDetail } = useSelector((state) => state);
   console.log('El detalle de provider es: ', providerDetail)
   /**/
-  const onSubmit = async (data, e) => {
+  const onSubmit = async () => {
     await openModal()
   }
 
   const handleClickYesNo = (data, e) => {
     if (e.target.value) {
-      dispatch(putProviders(data, id));
+      dispatch(putProviders({...data, logo: responseCloudinary.url}, id));
 
       toast("Correctly modify", {
         position: "top-right",
@@ -73,10 +73,7 @@ const FormModifyProvider = (props) => {
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'Provider');
-    setLoading(true);
     await dispatch(postCloudinaryPhoto(data))
-    setImage(responseCloudinary.secure_url)
-    setLoading(false)
   }
   {/* */ }
   return (
@@ -186,13 +183,6 @@ const FormModifyProvider = (props) => {
 
           </div>
         </form>
-      </div>
-      <div>
-        {
-          !responseCloudinary ? null : (
-            <img src={responseCloudinary.secure_url} />
-          )
-        }
       </div>
     </div>
   )

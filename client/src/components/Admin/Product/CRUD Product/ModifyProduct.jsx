@@ -39,7 +39,7 @@ const FormModifyProduct = (props) => {
 
   const handleClickYesNo = (data, e) => {
     if (e.target.value === 'yes') {
-      dispatch(putProduct(data, id));
+      dispatch(putProduct({...data, image: responseCloudinary.url}, id));
 
       toast("Correctly modify", {
         position: "top-right",
@@ -63,11 +63,8 @@ const FormModifyProduct = (props) => {
     const files = e.target.files;
     const data = new FormData();
     data.append('file', files[0]);
-    data.append('upload_preset', 'Product');
-    setLoading(true);
+    data.append('upload_preset', 'Provider');
     await dispatch(postCloudinaryPhoto(data))
-    setImage(responseCloudinary.secure_url)
-    setLoading(false)
   }
 
 
@@ -198,11 +195,6 @@ const FormModifyProduct = (props) => {
           </Link>
           </div>
         </form>
-      </div>
-      <div>
-        {!responseCloudinary ? null : (
-          <img src={responseCloudinary.secure_url} />
-        )}
       </div>
     </div>
   );
