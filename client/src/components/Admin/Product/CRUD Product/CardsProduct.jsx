@@ -37,11 +37,11 @@ const CardsProduct = () => {
         products && products.map(p => (
           <CardProduct
             key={p.id}
+            image={p.image}
             id={p.id}
             title={p.title}
             price={p.price}
             description={p.description}
-            image={p.image}
             disable={p.disable}
             like={p.like}
             stock={p.stock}
