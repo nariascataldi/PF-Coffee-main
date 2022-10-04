@@ -44,12 +44,12 @@ body {
 }
 
 .titleform {
-  margin: 4vh;
-  display: flex;
+  /* margin: 4vh;
   background-color: #EEF7FC;
   border-radius: 20px;
   width: 86vw;
-  padding: 2vh;
+  padding: 2vh; */
+  display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
@@ -104,7 +104,8 @@ body {
   border-radius: 6px;
   border: 1px solid black;
 }
-.logophoncuitstatus{
+
+.logophoncuitstatus {
   padding: 2vh;
   margin: 4vh;
   background-color: #EEF7FC;
@@ -112,6 +113,19 @@ body {
   justify-content: space-around;
   flex-direction: row;
 }
-.phonecuitstatus{
+
+.phonecuitstatus {
   width: 50vw;
+}
+
+.inputlarge {
+  margin-top: 3vh;
+  width: 80vw;
+  height: 8vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border: none;
+  font-size: x-large;
+  padding-left: 10vw;
+
 }

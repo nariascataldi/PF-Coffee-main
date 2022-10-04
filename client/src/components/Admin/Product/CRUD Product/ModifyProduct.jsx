@@ -103,8 +103,9 @@ const FormModifyProduct = (props) => {
       <div className={style.container}>
         <form className={style.containerform} onSubmit={handleSubmit(onSubmit)}>
           <div id="Title" className={style.titleform}>
-            <label>title: </label>
+            {/* <label>Title of the Product</label> */}
             <input
+            className={style.inputlarge}
               type="text"
               defaultValue={productDetail.title}
               {...register("title", { required: true })}
