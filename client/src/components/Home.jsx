@@ -8,6 +8,8 @@ import { getAllCategories, clearDetail } from "../redux/actions";
 import NavBar from "./NavBar";
 import Cards from './Cards';
 import Footer from './Footer';
+import Oferts from './Oferts'
+
 import styles from "../styles/Home.module.css";
 
 import Chat from './ChatBot/ChatBot';

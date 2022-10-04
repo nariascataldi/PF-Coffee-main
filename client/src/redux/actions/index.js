@@ -34,6 +34,8 @@ export const CHANGE_MAIL = 'CHANGE_MAIL'
 export const POST_ORDER = "POST_ORDER"
 export const SET_USER_INIT = 'SET_USER_INIT'
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
+export const ORDER_BY_STOCK = "ORDER_BY_STOCK"
+
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -350,3 +352,9 @@ export function putStock(data) {
   }
 }
 
+export function orderByStock(payload) {
+  return {
+    type: ORDER_BY_STOCK,
+    payload,
+  }
+}

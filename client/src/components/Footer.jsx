@@ -9,9 +9,7 @@ import styles from "../styles/Footer.module.css";
 
 export default function Footer () {
   const dispatch = useDispatch()
-  const [input, setInput] = useState({
-    mail: ''
-  })
+  const [input, setInput] = useState({mail: ''})
 
   function handleChange(e)  {
     setInput ({
@@ -21,8 +19,13 @@ export default function Footer () {
     //console.log(e.target.value)
     console.log(input)
   }
+
+  React.useEffect(() => {
+    console.log(input)
+  },[input])
+
   function handleSubmit(e) {
-   e.prevent.default()
+   e.preventDefault()
   
       dispatch(postNewsletter(input))
        toast("🍩 Suscrito!", {
@@ -139,13 +142,12 @@ export default function Footer () {
                     <input
                       type="email"
                       id="form5Example2"
-                      className="form-control"
+                      className={styles.inputNewsletter}
                       name="mail"
+                      placeholder='Email Adress'
+                      value={input.mail}
                       onChange={(e) => handleChange(e)}
                     />
-                    <label className="form-label" for="form5Example2">
-                      Email address
-                    </label>
                   </div>
                 </div>
 
