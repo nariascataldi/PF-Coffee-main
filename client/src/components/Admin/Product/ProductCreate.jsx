@@ -11,6 +11,7 @@ import {
   getAllCategories, postCloudinaryPhoto 
 } from "../../../redux/actions";
 
+import { ToastContainer, toast } from "react-toastify";
 import styles from '../../../styles/Admin/ProductCreate.module.css';
 
 
@@ -122,8 +123,15 @@ export default function FormProduct() {
   const handleClickYesNo = (e) => {
     if (e.target.value === 'yes') {
       if (Object.values(errors).length > 0) {
-        alert("Please fill in all the fields")
-        // console.log('handleSubmit ', { errors });
+        toast("Please fill in all the fields", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
       }
       else {
         console.log('handleSubmit ', { input });
@@ -213,6 +221,7 @@ export default function FormProduct() {
           >
             No
           </button>
+          <ToastContainer/>
         </div>
       </Modal>
 
@@ -395,7 +404,10 @@ export default function FormProduct() {
             defaultValue="default"
             className={styles.seleSelect}
           >
-            <option value="default" disabled className={styles.seleOption}>
+            <option 
+              value="default" 
+              disabled 
+              className={styles.seleOption}>
               Providers
             </option>
             {provider &&

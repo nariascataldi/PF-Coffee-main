@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle } from "react-icons/bs";
+import { BsFillCartFill, BsPersonCircle } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getByTitle, setFilterState } from "../redux/actions";
@@ -18,10 +18,7 @@ const NavBar = ({ noFilters }) => {
   const [price, setPrice] = useState({
     minPrice: '',
     maxPrice: ''
-  })
-  // const [minPrice, setMinPrice] = useState('');
-  // const [maxPrice, setMaxPrice] = useState('');
-  const localStorageCart = JSON.parse(localStorage.getItem("carrito"));
+  });
 
   const dispatch = useDispatch();
 
@@ -66,7 +63,10 @@ const NavBar = ({ noFilters }) => {
     <div className={styles.navbar}>
       <div className={styles.menu_logo}>
         <div className={styles.contenedor_menu}>
-          <div   className={`${menu && styles.active} ${styles.navMenu}`}  onClick={() => handleOnClick()}>
+          <div
+            className={`${menu && styles.active} ${styles.navMenu}`}
+            onClick={() => handleOnClick()}
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -76,16 +76,7 @@ const NavBar = ({ noFilters }) => {
           <img src={logo} alt="img" className={styles.logo} />
         </Link>
       </div>
-
-      {/* <li className={styles.nav_item}>
-        <Link to="/" className={styles.links}>
-          Home
-        </Link>
-      </li> */}
-
-      <SearchBar/>
-
-      
+      <SearchBar />
 
       {!noFilters && (
         <>
@@ -137,35 +128,47 @@ const NavBar = ({ noFilters }) => {
               <option value="Low">Price: Low to High</option>
             </select>
           </div>
+
           <div>
-            <span>Price: </span>
-            <input type="text" placeholder="Min." name="minPrice" value={price.minPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
+            <span 
+            className={styles.input_price}>Price: </span>
+            <input
+              type="text"
+              placeholder="Min."
+              name="minPrice"
+              value={price.minPrice}
+              onChange={(e) => handlePriceChange(e)}
+              className={styles.inputPrice}
+            />
             <span> - </span>
-            <input type="text" placeholder="Max." name="maxPrice" value={price.maxPrice} onChange={(e) => handlePriceChange(e)} className={styles.inputPrice}/>
-            <button onClick={(e) => handleSubmitPrice(e)} className={styles.buttonPrice}>
-              Search
+            <input
+              type="text"
+              placeholder="Max."
+              name="maxPrice"
+              value={price.maxPrice}
+              onChange={(e) => handlePriceChange(e)}
+              className={styles.inputPrice}
+            />
+            <button
+              onClick={(e) => handleSubmitPrice(e)}
+              className={styles.buttonPrice}
+            >
+              Play
             </button>
           </div>
-
-
         </>
       )}
-      <Link 
-      className={styles.link_contador}
-      to="/fillCart">
-        <BsFillCartFill 
-        className={styles.carrito_nav} 
-        />
-        <p 
-        className={styles.contador_carrito}
-        >
+      <Link className={styles.link_contador} to="/fillCart">
+        <BsFillCartFill className={styles.carrito_nav} />
+        <p className={styles.contador_carrito}>
           {fillCart.length > 0 && fillCart.length}
         </p>
       </Link>
-      { user?.user?.photoURL? 
-        <img src={ user.user.photoURL} className='signin-img-user'/> :
-        <BsPersonCircle className={styles.non_sesion_init_icon}/>
-      }
+      {user?.user?.photoURL ? (
+        <img src={user.user.photoURL} className="signin-img-user" />
+      ) : (
+        <BsPersonCircle className={styles.non_sesion_init_icon} />
+      )}
       {noFilters && (
         <>
           <h2></h2>
