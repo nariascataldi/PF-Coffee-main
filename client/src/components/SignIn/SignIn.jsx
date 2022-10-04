@@ -1,57 +1,203 @@
 import React, { useEffect, useState } from "react";
-import { auth, signWithGoogle } from "../../firebase";
+import { signWithGoogle} from "../../firebase";
+import { auth, signUp} from "../../firebase/index"
+import {signInWithEmailAndPassword} from "firebase/auth"
 import { getAllUsers, postUser, setUserInit } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-
+import { BsGoogle } from "react-icons/bs";
+//createUserWithEmailAndPassword
 import './SignIn.css'
 import { useNavigate } from "react-router";
 
 // import CardInfomativaFormulario from "../../Components/Organisms/CardInformativaFormulario/CardInformativaFormulario";
 
 
-const SignIn = () => {
+const SignIn =()=> {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [usuario, setUsuario] = useState([])
     const [regOrInit , setregOrInit] = useState(false)
+    const [authData, setAuthData] = useState({
+        firstName:"",
+        lastName:"",
+        email: "",
+        password: "",
+        repeatpassword:"",
+        avatar:""
+      });
     useEffect(()=>{
         getAllUsers()
     },[])
-    const googleRegister = async () => {
-        
-    const userInfo= await signWithGoogle()
-        setUsuario(userInfo);
-            var newUser = {
-                id: userInfo.user.uid,
-                name: userInfo._tokenResponse.firstName,
-                lastName: userInfo._tokenResponse.lastName,
-                status: 'Admin',
-                mail: userInfo.user.email,
-                avatar: userInfo.user.photoURL,
+    const googleRegister = async () => {   
+        console.log('inicio de sesion con google')
+        const userInfo= await signWithGoogle()
+            setUsuario(userInfo);
+                var newUser = {
+                    id: userInfo.user.uid,
+                    name: userInfo._tokenResponse.firstName,
+                    lastName: userInfo._tokenResponse.lastName,
+                    status: 'Client',
+                    mail: userInfo.user.email,
+                    avatar: userInfo.user.photoURL,
                 
+                }
+                dispatch(postUser(newUser))
+                localStorage.setItem("Sign In", JSON.stringify(userInfo));
+                dispatch(setUserInit())
+                navigate('/')
+    }
+//////////// registro con mail //////////////
+    
+        const handleSubmit = (e) => {
+            e.preventDefault();
+             mailRegister();
+          };
+          const handleChange = (e) => {
+            e.preventDefault()
+            let data = {
+                ...authData,
+                [e.target.name]: e.target.value,
+              };
+              setAuthData(data);
             }
-            dispatch(postUser(newUser))
-            localStorage.setItem("Sign In", JSON.stringify(userInfo));
-            dispatch(setUserInit())
-            navigate('/')
-
+        
+    const mailRegister = async ()=> {
+        if(regOrInit){
+            console.log('registro')
+        const userInfoFireBase= await signUp(authData.email, authData.password)
+            console.log('user-info-firebase: ',userInfoFireBase)
+                var newUser = {
+                    id: userInfoFireBase.user.uid,
+                    name: authData.firstName,
+                    lastName: authData.lastName,
+                    status: 'Client',
+                    mail: userInfoFireBase.user.email,
+                    avatar: authData.avatar
+                }
+                console.log('Nuevo Usuario : ',newUser)
+                 dispatch(postUser(newUser))
+                 console.log('se ejecuto el post user')
+                localStorage.setItem("Sign In", JSON.stringify(newUser));
+                dispatch(setUserInit())
+                navigate('/')
+            } else {
+                console.log('inicio de sesion')
+                // const result = await signInWithEmailAndPassword (authData.email, authData.password); 
+                // console.log('user Found',result)
+                // const userFound = postUser(result);
+                // dispatch(postUser(userFound))
+                // localStorage.setItem("Sign In", JSON.stringify(newUser));
+                // dispatch(setUserInit())
+                // navigate('/')
+            }
+                
     }
     return (
         <div className='signin-page'>
             <div className='signin-card-wrapper'>
-                { regOrInit === false ? <h1>Log In</h1> : <h1>Register</h1> }
-                <button className='pay-btn-cart' onClick={googleRegister}>{`${regOrInit=== false ?
-                 'Login with Google' : 'Register with Google' }`}</button>
+                { !regOrInit && <h1>Log In</h1> } { regOrInit && <h1>Sign up</h1> }
+
+
+            {/*  }
+                // REGISTRARSE CON MAIL 
+                {  */}
+                <form onSubmit={handleSubmit}>
+                    { regOrInit &&
+                    <>
+                    <div className='form-reg-input'>
+                    <label>First name:</label>
+                    <input name="firstName"
+                    type="text"
+                    placeholder="First name..."
+                    value={authData.firstName}
+                    onChange={handleChange}
+                    className='inp-form-reg'
+                    />
+
+                    <label>Last name:</label>
+                    <input 
+                    type="text"
+                    placeholder="Last name..."
+                    value={authData.lastName}
+                    name='lastName'
+                    onChange={handleChange}
+                    className='inp-form-reg'
+                    />
+                    </div>
+                    </>
+                    }   
+                    <>
+                    <div className='form-reg-input'>
+                    <label>E-mail:</label>
+                    <input name="email"
+                    type="email"
+                    placeholder="Mail..."
+                    value={authData.email}
+                    onChange={handleChange}
+                    className='inp-form-reg'
+                    />
+
+                    <label>Password:</label>
+                    <input name="password"
+                    type="password"
+                    placeholder="Password..."
+                    value={authData.password}
+                    onChange={handleChange}
+                    className='inp-form-reg'
+                    />
+                    </div>
+                    </>
+                    
+                    { regOrInit &&
+                    <>   
+                    <div className='form-reg-input'>
+                    <label>Repeat password:</label>
+                    <input name="repeatpassword"
+                    type="password"
+                    placeholder="Password..."
+                    value={authData.repeatpassword}
+                    onChange={handleChange}
+                    className='inp-form-reg'
+                    />
+                    <label>Avatar:</label>
+                    <input name="avatar"
+                    type="field"
+                    placeholder="Image..."
+                    value={authData.avatar}
+                    onChange={handleChange}
+                    className='inp-form-reg'
+                    />
+                    </div>
+                    </>
+                    }
+                    
+
+                    <button type="submit" className='form-reg-init-btn'>
+                        {`${regOrInit ? 'Sign up' : 'Log In'}`}</button> 
+                    
+                    <button className='form-reg-init-btn' onClick={googleRegister}><spam className='with'>With google</spam> <BsGoogle/></button>
+
+                </form>
+
+
+
+
+
+                {/*  }
+                // INICIAR O REGISTRARSE CON GOOGLE 
+                {  */}
+                
                 {usuario?.user?.displayName &&
                     <div className='signin-info-user'>
                         <img src={usuario?.user?.photoURL ? usuario?.user.photoURL : 'imagen'} className='signin-img-user' />
                         <p>{usuario?.user.displayName}</p>
                     </div>
                     }
-                {regOrInit === false ? <p>You do not have an account? Sign up</p> :
-                    <p>Do you already have an account ? log in</p>
+                <button onClick={()=>setregOrInit(!regOrInit)} className='reg-init-btn'>
+                {regOrInit? <p>Do you already have an account ? Log in here</p> :
+                    <p>You do not have an account? Sign up here</p>
                     }    
-
+                </button>
             </div>
 
         </div>
