@@ -4,22 +4,20 @@ import Tabs from 'react-bootstrap/Tabs';
 import ListProducts from './CRUD Product/ListProduct';
 import ProductAdmin from './ProductAdmin';
 
-
-
 function Product() {
-  const [key, setKey] = useState('home');
-
+  const [key, setKey] = useState('prodCreate');
   return (
-    <Tabs
-      id="controlled-tab-example"
-      activeKey={key}
-      onSelect={(k) => setKey(k)}
-      className="mb-3"
-      defaultActiveKey='prodCreate'
-    >
-      <Tab eventKey="prodCreate" title="Create"> <ProductAdmin /> </Tab>
-      <Tab eventKey="prodEdit" title="Edit"> <ListProducts /> </Tab>
-    </Tabs>
+    <>
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3"
+      >
+        <Tab eventKey="prodCreate" title="Create"> <ProductAdmin /> </Tab>
+        <Tab eventKey="prodEdit" title="Edit"> <ListProducts /> </Tab>
+      </Tabs>
+    </>
   );
 }
 
