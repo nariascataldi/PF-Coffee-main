@@ -14,9 +14,18 @@
 .inputs {
     display: flex;
     flex-direction: column;
-    width: 15vw;
+    width: 50vw;
 }
 
 .inputDes {
     height: 10vh;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 10px;
+    color: rgb(114, 114, 114);
+    margin-left: 6px;
+    color: #0cb3c9
 }

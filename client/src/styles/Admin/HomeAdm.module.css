@@ -1,11 +1,11 @@
 .home_container {
-    background-color: #EEF7FC;
+    background-color: var(--primary);
     height: 100vh;
 }
 
 .figulog {
     border-radius: 10px;
-    color: azure;
+    color: var(--primary);
     font-weight: 900;
 }
 
@@ -28,7 +28,7 @@
 
 .conteinTabla {
     background-color: #FCEEF0;
-    border-color: black;
+    border-color: var(--black);
     border-radius: 20px;
     margin: 2vh
 }
@@ -82,4 +82,5 @@
 
 .bonton {
     padding: 2vh;
+
 }
