@@ -1,5 +1,10 @@
-.parent {
-    height: 100%;
-    padding-top: 16vh;
+.container{
     background-color: var(--primary);
+} 
+
+.h1 {
+    height: 100%;
+    padding-top: 60px;
+    color: rgb(114, 114, 114);
+    text-transform: uppercase;
 }
