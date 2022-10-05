@@ -20,6 +20,7 @@ const CardsProduct = () => {
     <table className="table">
         <thead className="table-primary">
           <tr>
+            <th className="centrado">Edit</th>
             <th className="centrado">id</th>
             <th className="centrado">Image</th>
             <th className="centrado">Products</th>
@@ -30,7 +31,6 @@ const CardsProduct = () => {
             <th className="centrado">Like</th>
             <th className="centrado">Stock</th>
             <th className="centrado">Disable</th>
-            <th className="centrado">Edit</th>
           </tr>
         </thead>
       {

@@ -20,6 +20,7 @@ const CardsProvider = () => {
     <table className="table">
       <thead className="table-primary">
         <tr>
+          <th></th>
           <th scope="col">Id</th>
           <th scope="col">Logo</th>
           <th scope="col">Name</th>
@@ -28,7 +29,6 @@ const CardsProvider = () => {
           <th scope="col">Phone</th>
           <th scope="col">CUIT</th>
           <th scope="col">State</th>
-          <th></th>
         </tr>
       </thead>
       {
