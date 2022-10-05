@@ -82,8 +82,8 @@ const FormModifyProvider = () => {
       <Modal isOpen={isOpenModal} closeModal={closeModal}>
         <h1>Modify Provider</h1>
         <div class="d-flex justify-content-evenly">
-          <button value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
-          <button value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
+          <button className={style.botonesformC} value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
+          <button className={style.botonesformC} value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
         </div>
       </Modal>
       <NavBarAdmin />

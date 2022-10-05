@@ -116,3 +116,15 @@
 .remove:focus {
   box-shadow: none;
 }
+
+.botonesformC {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--strong);
+  border-radius: 6px;
+  border: 1px solid black;
+  font-size: x-large;
+}

@@ -74,7 +74,7 @@ const FormModifyProduct = (props) => {
       <Modal isOpen={isOpenModal} closeModal={closeModal}>
         <h1>Modify Product</h1>
         <div class="d-flex justify-content-evenly">
-          <button
+          <button className={style.botonesformC}
             value="yes"
             onClick={handleSubmit(handleClickYesNo)}
             class="border-0"
@@ -82,7 +82,7 @@ const FormModifyProduct = (props) => {
             Yes
           </button>
           <ToastContainer />
-          <button
+          <button className={style.botonesformC}
             value="no"
             onClick={handleSubmit(handleClickYesNo)}
             class="border-0"

@@ -68,10 +68,11 @@ const FormProviderCreate = (props) => {
   {/* */ }
   return (
     <div>
-      <Modal isOpen={isOpenModal} closeModal={closeModal}>
-
+      <Modal isOpen={isOpenModal} closeModal={closeModal} className={style.modalbackground}>
+        <h1>Create Provider</h1>
         <div class="d-flex justify-content-evenly">
           <button
+            className={style.botonesformC}
             value="yes"
             onClick={handleSubmit(handleClickYesNo)}
             class="border-0"
@@ -80,6 +81,7 @@ const FormProviderCreate = (props) => {
           </button>
           <ToastContainer />
           <button
+            className={style.botonesformC}
             value="no"
             onClick={handleSubmit(handleClickYesNo)}
             class="border-0"
