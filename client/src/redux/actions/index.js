@@ -168,23 +168,11 @@ export const createProduct = (postData) => {
   }
 };
 
-export const postUser = (payload) =>
-  async (dispatch) => {
-    try {
-      const response = await axios.post(URL + '/users/registration', payload);
-      // .then(response => console.log(response))
-      // .catch(error => console.log(error))
-      console.log(response.data)
-      localStorage.setItem('usuario-creado',JSON.stringify(response.data))
-      return dispatch({
-        type: POST_USER,
-        payload: response.data,
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  };
+export const postUser = (payload) =>{
 
+      return axios.post(URL + '/users/registration', payload);
+    
+  };
 export const postOrder = (payload) =>
 async (dispatch) => {
   try {

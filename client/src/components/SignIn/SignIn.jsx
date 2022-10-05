@@ -8,6 +8,7 @@ import { BsGoogle } from "react-icons/bs";
 //createUserWithEmailAndPassword
 import './SignIn.css'
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 // import CardInfomativaFormulario from "../../Components/Organisms/CardInformativaFormulario/CardInformativaFormulario";
 
@@ -32,7 +33,6 @@ const SignIn =()=> {
     const googleRegister = async () => {   
         console.log('inicio de sesion con google')
         const userInfo= await signWithGoogle()
-            setUsuario(userInfo);
                 var newUser = {
                     id: userInfo.user.uid,
                     name: userInfo._tokenResponse.firstName,
@@ -42,17 +42,19 @@ const SignIn =()=> {
                     avatar: userInfo.user.photoURL,
                 
                 }
-                dispatch(postUser(newUser))
-                localStorage.setItem("Sign In", JSON.stringify(newUser));
-                dispatch(setUserInit())
+                const response = await postUser(newUser)
+                dispatch(setUserInit(response.data))
+                localStorage.setItem("Sign In", JSON.stringify(response.data));
+                localStorage.setItem("usuario-creado", JSON.stringify(response.data));
                 navigate('/')
     }
 //////////// registro con mail //////////////
     
         const handleSubmit = (e) => {
             e.preventDefault();
-            let findMailExist = users.filter(e=>e.mail=== authData.email)
-            console.log('usuario existente',findMailExist)
+            // let findMailExist = users.filter(e=>e.mail=== authData.email)
+            // console.log('usuario existente',findMailExist)
+            
             if(authData.password !==authData.repeatpassword && regOrInit){
               return  alert('Passwords do not match')
             // }if ( findMailExist === authData.email || regOrInit){
@@ -75,7 +77,8 @@ const SignIn =()=> {
         
     const mailRegister = async ()=> {
         if(regOrInit){
-            console.log('registro')
+            try{
+                console.log('registro')
         const userInfoFireBase= await signUp(authData.email, authData.password)
             console.log('user-info-firebase: ',userInfoFireBase)
                 var newUser = {
@@ -86,15 +89,21 @@ const SignIn =()=> {
                     mail: userInfoFireBase.user.email,
                     avatar: authData.avatar
                 }
-                console.log('Nuevo Usuario : ',newUser)
-                 dispatch(postUser(newUser))
-                 console.log('se ejecuto el post user')
-                localStorage.setItem("Sign In", JSON.stringify(newUser));
-                dispatch(setUserInit())
-                alert('Successfully registered')
+                const response = await postUser(newUser)
+                dispatch(setUserInit(response.data))
+                localStorage.setItem("Sign In", JSON.stringify(response.data));
+                localStorage.setItem("usuario-creado", JSON.stringify(response.data));
                 navigate('/')
+                alert('Successfully registered')
+            }catch(error){
+                alert(error.message)
+            }
+            
+                
             } else {
-                console.log('inicio de sesion')
+                
+                try{
+                    console.log('inicio de sesion')
                 const result = await signInWithEmailAndPassword (auth , authData.email, authData.password); 
                 console.log('RESPUESTA FIREBASE',result)
                 const sesionUserFound = users.filter(e=>e.mail=== result.user.email)
@@ -102,8 +111,11 @@ const SignIn =()=> {
                 console.log('sesion user found',firstElement)
                 localStorage.setItem("Sign In", JSON.stringify(firstElement));
                 localStorage.setItem("usuario-creado", JSON.stringify(firstElement)); 
-                dispatch(setUserInit()) 
+                dispatch(setUserInit(firstElement)) 
                 navigate('/')
+                }catch(error){
+                    alert(error.message)
+                }
             }
                 
     }
@@ -189,12 +201,17 @@ const SignIn =()=> {
 
                     <button type="submit" className='form-reg-init-btn'>
                         {`${regOrInit ? 'Sign up' : 'Log In'}`}</button> 
-                    
-                    <button className='form-reg-init-btn' onClick={googleRegister}><spam className='with'>With google</spam> <BsGoogle/></button>
-
                 </form>
-
-
+                <div>
+                <Link to='/' className='decoration-linkk'>
+                <button className='form-reg-init-btn1'>
+                    <span className='with'>Back to Home</span> 
+                </button> </Link>
+                <button className='form-reg-init-btn' onClick={googleRegister}>
+                    <span className='with'>With google</span> <BsGoogle/>
+                </button>
+                </div>
+                
 
 
 
@@ -202,12 +219,12 @@ const SignIn =()=> {
                 // INICIAR O REGISTRARSE CON GOOGLE 
                 {  */}
                 
-                {usuario?.user?.displayName &&
+                {/* {usuario?.user?.displayName &&
                     <div className='signin-info-user'>
                         <img src={usuario?.user?.photoURL ? usuario?.user.photoURL : 'imagen'} className='signin-img-user' />
                         <p>{usuario?.user.displayName}</p>
                     </div>
-                    }
+                    } */}
                 <button onClick={()=>setregOrInit(!regOrInit)} className='reg-init-btn'>
                 {regOrInit? <p>Do you already have an account ? Log in here</p> :
                     <p>You do not have an account? Sign up here</p>
