@@ -44,11 +44,6 @@ body {
 }
 
 .titleform {
-  /* margin: 4vh;
-  background-color: #EEF7FC;
-  border-radius: 20px;
-  width: 86vw;
-  padding: 2vh; */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -57,27 +52,18 @@ body {
 }
 
 .numberform {
-  margin: 4vh;
-  padding: 2vh;
-  background-color: #EEF7FC;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 .descimage {
-  padding: 2vh;
-  margin: 4vh;
-  background-color: #EEF7FC;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
 }
 
-.statstock {
-  padding: 2vh;
-  margin: 4vh;
-  background-color: #EEF7FC;
+.statstock { 
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -86,9 +72,6 @@ body {
 }
 
 .botones {
-  padding: 2vh;
-  margin: 4vh;
-  background-color: #EEF7FC;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -96,13 +79,16 @@ body {
 }
 
 .botonesform {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw;
   color: white;
   border-radius: 5px;
-  margin-left: 5px;
   border: none;
   background-color: var(--strong);
   border-radius: 6px;
   border: 1px solid black;
+  font-size: x-large;
 }
 
 .logophoncuitstatus {
@@ -124,8 +110,40 @@ body {
   height: 8vh;
   background-color: #EEF7FC;
   border-radius: 20px;
-  border: none;
+  border-color: cornflowerblue;
   font-size: x-large;
   padding-left: 10vw;
+}
 
+.inputsmall {
+  margin-top: 3vh;
+  margin: 2vh;
+  width: 23vw;
+  height: 8vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: x-large;
+  padding-left: 10vw;
+}
+
+.inputmedium{
+  padding: 6vh 1vh 1vh 4vh;
+  width: 40vw;
+  height: 20vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border: none;
+  /* border-color: cornflowerblue; */
+  font-size: large;
+}
+
+.labelgroup {
+  font-size: initial;
+  position: fixed;
+  padding: 3vh;
+  color: rgba(100, 148, 237, 0.4);
+}
+.imageupform{
+font-size: small;
 }

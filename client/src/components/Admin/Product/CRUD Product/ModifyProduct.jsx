@@ -100,7 +100,7 @@ const FormModifyProduct = (props) => {
       <div className={style.container}>
         <form className={style.containerform} onSubmit={handleSubmit(onSubmit)}>
           <div id="Title" className={style.titleform}>
-            {/* <label>Title of the Product</label> */}
+            <label className={style.labelgroup}>Title of the Product</label>
             <input
             className={style.inputlarge}
               type="text"
@@ -110,8 +110,9 @@ const FormModifyProduct = (props) => {
           </div>
           <div className={style.numberform}>
             <div id="Cost">
-              <label>Cost: </label>
-              <input
+              <label className={style.labelgroup}>Cost: </label>
+              <input 
+              className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.cost}
                 {...register("cost", {
@@ -120,8 +121,9 @@ const FormModifyProduct = (props) => {
               />
             </div>
             <div id="Margin">
-              <label>Margin </label>
+              <label className={style.labelgroup}>Margin </label>
               <input
+              className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.margin}
                 {...register("margin", {
@@ -130,8 +132,9 @@ const FormModifyProduct = (props) => {
               />
             </div>
             <div id="Price">
-              <label>Price </label>
+              <label className={style.labelgroup}>Price </label>
               <input
+              className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.price}
                 {...register("price", {
@@ -143,8 +146,9 @@ const FormModifyProduct = (props) => {
           </div>
           <div className={style.descimage}>
             <div id="Description">
-              <label>Description: </label>
+              <label className={style.labelgroup}>Description: </label>
               <textarea
+              className={style.inputmedium}
                 type="text"
                 defaultValue={productDetail.description}
                 {...register("description", {
@@ -152,12 +156,13 @@ const FormModifyProduct = (props) => {
                 })}
               />
             </div>
-            <div id="Image">
-              <label>Image: </label>
-              <Container>
-                <p>Uploading images</p>
-                <FormGroup>
+            <div id="Image" >
+              <label className={style.labelgroup}>Image: </label>
+              <Container >
+                {/* <p>Uploading images</p> */}
+                <FormGroup className={style.inputmedium} >
                   <Input
+                  className={style.imageupform}
                     type="file"
                     name="file"
                     placeholder="Image"
@@ -169,8 +174,10 @@ const FormModifyProduct = (props) => {
           </div>
           <div className={style.statstock}>
             <div id="Status">
-              <label>Status: </label>
-              <select {...register("disable", {})}>
+              <label className={style.labelgroup}>Status: </label>
+              <select
+              className={style.inputsmall}
+               {...register("disable", {})}>
                 <option disabled>
                   Status: {productDetail.disable === true ? "Inactive" : "Asset"}
                 </option>
@@ -179,8 +186,9 @@ const FormModifyProduct = (props) => {
               </select>
             </div>
             <div id="Stock">
-              <label>Stock </label>
+              <label className={style.labelgroup}>Stock </label>
               <input
+              className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.stock}
                 {...register("stock", {
