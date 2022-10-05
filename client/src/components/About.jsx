@@ -3,7 +3,7 @@ import Nestor from '../assets/Nestor.jpeg';
 import Carlos from '../assets/Carlos.jpeg';
 import Lu from '../assets/Nestor.jpeg';
 import Jona from '../assets/Jona.jpeg';
-import Gaspar from '../assets/Nestor.jpeg';
+import Gaspar from '../assets/Gaspar.jpeg';
 import Rodri from '../assets/Rodri.jpeg';
 import about from '../styles/About.module.css'
 import {AiFillGithub} from 'react-icons/ai';
@@ -48,7 +48,7 @@ const developers = [{
 {
  name: 'Gaspar Pérez',
  role: 'Full Stack Developer',
- linkedIn: 'https://www.linkedin.com/in/',
+ linkedIn: 'https://www.linkedin.com/in/gaspar-perez-9006a5239',
  gitHub: 'https://github.com/gasparperez2',
  profilePicture: Gaspar,
 },
@@ -67,7 +67,7 @@ console.log(developers);
 function About() {
   return (
     <div className={about.principalContainer}>
-    <Link to= '/'><button className={about.button}>Volver</button></Link>
+    <Link to= '/'><button className={about.button}>Home</button></Link>
       <h1 className={about.Title}>¡Conocé a los creadores de Coffees Order!</h1>
       <div className={about.centerViewContainer}>
       <div className={about.Cards}>

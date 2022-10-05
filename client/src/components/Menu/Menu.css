@@ -4,7 +4,8 @@
     flex-direction: column;
     align-items: center;
     width: 210px;
-    height: 320px;
+    min-height: 200px ;
+    max-height: 340px;
     position: fixed;
     top: 66.5px;
     right: 100%;

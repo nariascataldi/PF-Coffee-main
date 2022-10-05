@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../redux/actions";
+import { getAllProducts } from "../../redux/actions";
 
-export default function CardOrders({id, date, detail, payment, paid, delivered, total}) {
+export default function CardsMyOrders({id, date, detail, payment, paid, delivered, total}) {
 
     let dispatch = useDispatch();
 
@@ -47,7 +47,7 @@ export default function CardOrders({id, date, detail, payment, paid, delivered, 
                     <th className="centrado" onClick={(e) => handleClick(e)} style={{cursor:'pointer', color:'blue'}}>detail</th>
                     <th className="centrado">payment</th>
                     <th className="centrado">paid</th>
-                    <th className="centrado">delivered</th>
+                   
                     <th className="centrado">total</th>
                 </tr>
             </thead>
@@ -69,11 +69,7 @@ export default function CardOrders({id, date, detail, payment, paid, delivered, 
                 </td>
                 <td className="centrado">{payment}</td>
                 <td className="centrado">{paid}</td>
-                {
-                delivered === false ?
-                    <td><p>True</p></td> :
-                    <td><p>False</p></td>
-                }
+                
                 <td className="centrado">${total}</td>
             </tr>
             </tbody>

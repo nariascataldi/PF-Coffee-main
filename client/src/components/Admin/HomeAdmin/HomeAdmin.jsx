@@ -15,13 +15,14 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Tab from 'react-bootstrap/Tab';
-import Figure from 'react-bootstrap/Figure'
+import Figure from 'react-bootstrap/Figure';
 
 
 import Newsletter from '../Newsletter/Newsletter.jsx';
 import OrdersHistory from '../Orders/OrdersHistory.jsx'
 import Product from '../Product/Product.jsx';
 import Provider from '../../Provider/ProvHome.jsx';
+import ViewOferts from '../Newsletter/ViewOferts.jsx'
 
 
 export default function HomeAdmin() {
@@ -50,6 +51,7 @@ export default function HomeAdmin() {
                 <Nav.Item className={style.bonton}> <Nav.Link eventKey="prov">Provider</Nav.Link> </Nav.Item>
                 <Nav.Item className={style.bonton}> <Nav.Link eventKey="mailNews">Send Newsletter</Nav.Link> </Nav.Item>
                 <Nav.Item className={style.bonton}> <Nav.Link eventKey="orders">Order's History</Nav.Link> </Nav.Item>
+                <Nav.Item className={style.bonton}> <Nav.Link eventKey="viewOferts">View Oferts</Nav.Link> </Nav.Item>
               </Nav>
             </Col>
             <Col sm={1} ></Col>
@@ -60,6 +62,7 @@ export default function HomeAdmin() {
                 <Tab.Pane eventKey="prov"> <Provider />  </Tab.Pane>
                 <Tab.Pane eventKey="mailNews"> <Newsletter />  </Tab.Pane>
                 <Tab.Pane eventKey="orders"> <OrdersHistory />  </Tab.Pane>
+                <Tab.Pane eventKey="viewOferts"> <ViewOferts />  </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>

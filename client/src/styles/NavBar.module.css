@@ -90,10 +90,10 @@
 
 .input_filter {
           border-radius: 12px;
-          width: 20vh;
-          padding-left: 1vh;
-          margin-left: 1vh;
-          margin-right: 1vh;
+          width: 16vh;
+          padding-left: 0.5vh;
+          margin-left: 0.5vh;
+          margin-right: 0.5vh;
           background-color: var(--primary);
           border-color: var(--strong);
           color: rgb(114, 114, 114);
@@ -101,7 +101,7 @@
           cursor: pointer;
           border-radius: 5px;
           font-size: 14px;
-          margin: 1vh;
+          margin: 0.5vh;
 }
 
 .input_filter:hover {
@@ -187,16 +187,20 @@
 .navMenu.active >  span:nth-child(3) {
     transform: translateY(-9px) rotate(90deg);
 }
+
 .divPrice {
-    font-size: 14px;
+    font-size: 4px;
     color: rgb(114, 114, 114);
 }
+
 .inputPrice {
     background-color: var(--primary);
-    width: 4vw;
+    width: 5vw;
     border-radius: 5px;
     border: 1px solid var(--strong);
+    font-size: 14px;
 }
+
 .buttonPrice {
     color: white;
     border-radius: 5px;
@@ -204,10 +208,33 @@
     border: none;
     background-color: var(--strong);
     border-radius: 6px;
-    border: 1px solid black;
+    width: 60px;
+    height: 20px;
 }
+
 .non_sesion_init_icon{
     color: rgb(114, 114, 114);
     width: 26px;
     height: 26px;
+}
+.styles.sesion_init_icon{
+    color: rgb(114, 180, 111);
+    width: 26px;
+    height: 26px;
+}
+
+.input_price {
+    border-radius: 12px;
+    width: 20vh;
+    padding-left: 1vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    background-color: var(--primary);
+    border-color: var(--strong);
+    color: rgb(114, 114, 114);
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 1vh;
 }

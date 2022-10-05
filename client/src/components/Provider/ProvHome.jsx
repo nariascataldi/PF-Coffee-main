@@ -4,16 +4,17 @@ import Tabs from 'react-bootstrap/Tabs';
 import FormProvider from '../Provider/CRUD Provider/PrividerCreate';
 import ListProviders from '../Provider/CRUD Provider/ListProvider.jsx';
 
+
 function Provider() {
-  const [key, setKey] = useState('home');
+  const [key, setKey] = useState('addProvider');
 
   return (
+    <>
     <Tabs
       id="controlled-tab-example"
       activeKey={key}
       onSelect={(k) => setKey(k)}
       className="mb-3"
-      defaultActiveKey='addProvider'
     >
       <Tab eventKey="addProvider" title="Create">
       <FormProvider />
@@ -22,6 +23,7 @@ function Provider() {
       <ListProviders />
       </Tab>
     </Tabs>
+    </>
   );
 }
 

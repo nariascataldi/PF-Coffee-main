@@ -36,6 +36,8 @@ export const SET_USER_INIT = 'SET_USER_INIT'
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
 export const PUT_USER = "PUT_USER"
 export const GET_USER_DETAIL = "GET_USER_DETAIL"
+export const ORDER_BY_STOCK = "ORDER_BY_STOCK"
+export const GET_ALL_OFERTS = 'GET_ALL_OFERTS'
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -144,6 +146,15 @@ export function getAllNewsletter() {
     const json = await axios.get(URL + `/newsletter`);
     return dispatch({
       type: GET_ALL_NEWSLETTER,
+      payload: json.data
+    })
+  }
+};
+export function getAllOferts() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/oferts`);
+    return dispatch({
+      type: GET_ALL_OFERTS,
       payload: json.data
     })
   }
@@ -374,3 +385,9 @@ export function putStock(data) {
   }
 }
 
+export function orderByStock(payload) {
+  return {
+    type: ORDER_BY_STOCK,
+    payload,
+  }
+}

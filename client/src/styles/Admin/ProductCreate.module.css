@@ -2,7 +2,7 @@
   background-color: var(--primary);
 }
 
-.title{
+.title {
   text-transform: uppercase;
   font-weight: 700;
   margin-top: 10px;
@@ -11,36 +11,36 @@
 }
 
 .p_form {
-  color: rgb(255, 0, 179);
+  color: var(--strong);
   font-size: 12px;
   font-weight: 700;
   margin-left: 6px;
 }
 
 #submit {
-  background-color: #DD6873;
-  color: white;
-  border-color: #DD6873;
+  background-color: var(--strong);
+  color: var(--white);
+  border-color: var(--strong);
   border-radius: 3px;
   margin: 6px;
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 5px 5px 10px var(--black);
   font-size: 2rem;
 }
 
 .seleSelect {
-        border-radius: 12px;
-        width: 50vh;
-        padding-left: 1vh;
-        margin-left: 1vh;
-        margin-right: 1vh;
-        background-color: var(--primary);
-        border-color: var(--strong);
-        color: rgb(114, 114, 114);
-        outline: none;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 18px;
-        margin: 1vh;
+  border-radius: 12px;
+  width: 45vh;
+  padding-left: 1vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  background-color: var(--primary);
+  border-color: var(--strong);
+  color: rgb(114, 114, 114);
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
+  margin: 1vh;
 }
 
 .seleSelect:hover {
@@ -48,6 +48,7 @@
   border-color: var(--primary);
   color: var(--primary);
 }
+
 
 .seleOption {
   color: black;
@@ -97,7 +98,7 @@
 
 .error {
   font-size: 10px;
-  color:#DD6873;
+  color: #DD6873;
   text-align: center;
   font-weight: 700;
 }

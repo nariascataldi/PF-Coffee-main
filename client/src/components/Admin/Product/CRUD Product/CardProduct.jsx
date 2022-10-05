@@ -22,22 +22,6 @@ const CardProduct = ({
 
 
   return (
-    <div>
-      <table className="table">
-        <thead className="table-primary">
-          <tr>
-            <th className="centrado">id</th>
-            <th className="centrado">Image</th>
-            <th className="centrado">Products</th>
-            <th className="centrado">Price</th>
-            <th className="centrado">Cost</th>
-            <th className="centrado">Margin</th>
-            <th className="centrado">Description</th>
-            <th className="centrado">Like</th>
-            <th className="centrado">Stock</th>
-            <th className="centrado">Disable</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td className="centrado">
@@ -71,6 +55,7 @@ const CardProduct = ({
                 <p>Inactive</p>
               </td>
             )}
+            
             <td className="centrado">
               <Link to={`/modProduct/${id}`}>
                 <button type="button" className="btn btn-outline-primary">
@@ -80,8 +65,6 @@ const CardProduct = ({
             </td>
           </tr>
         </tbody>
-      </table>
-    </div>
   );
 };
 
