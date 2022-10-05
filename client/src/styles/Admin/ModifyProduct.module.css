@@ -44,40 +44,31 @@ body {
 }
 
 .titleform {
-  margin: 4vh;
   display: flex;
-  background-color: #EEF7FC;
-  border-radius: 20px;
-  width: 86vw;
-  padding: 2vh;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   align-content: center;
 }
 
+.titleformprov {
+  display: flex;
+  padding-left: 5vw;
+}
+
 .numberform {
-  margin: 4vh;
-  padding: 2vh;
-  background-color: #EEF7FC;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
 .descimage {
-  padding: 2vh;
-  margin: 4vh;
-  background-color: #EEF7FC;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
 }
 
 .statstock {
-  padding: 2vh;
-  margin: 4vh;
-  background-color: #EEF7FC;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -86,9 +77,6 @@ body {
 }
 
 .botones {
-  padding: 2vh;
-  margin: 4vh;
-  background-color: #EEF7FC;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -96,15 +84,30 @@ body {
 }
 
 .botonesform {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-top: 2vw;
   color: white;
   border-radius: 5px;
-  margin-left: 5px;
   border: none;
   background-color: var(--strong);
   border-radius: 6px;
   border: 1px solid black;
+  font-size: x-large;
 }
-.logophoncuitstatus{
+.botonesformC {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--strong);
+  border-radius: 6px;
+  border: 1px solid black;
+  font-size: x-large;
+}
+
+.logophoncuitstatus {
   padding: 2vh;
   margin: 4vh;
   background-color: #EEF7FC;
@@ -112,6 +115,107 @@ body {
   justify-content: space-around;
   flex-direction: row;
 }
-.phonecuitstatus{
+
+.phonecuitstatus {
   width: 50vw;
+}
+
+.inputlarge {
+  margin-top: 3vh;
+  width: 80vw;
+  height: 7vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: x-large;
+  padding-left: 10vw;
+}
+
+.inputlargeC {
+  margin-top: 3vh;
+  width: 60vw;
+  height: 7vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: x-large;
+  padding-left: 10vw;
+}
+
+.inputsmall {
+  margin-top: 3vh;
+  margin: 2vh;
+  width: 23vw;
+  height: 7vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: x-large;
+  padding-left: 10vw;
+}
+
+.inputsmallprov {
+  margin: 1vh;
+  width: 39vw;
+  height: 6vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: x-large;
+  padding-left: 8vw;
+}
+.inputsmallprovC {
+  margin: 1vh;
+  width: 30vw;
+  height: 5vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: large;
+  padding-left: 8vw;
+}
+
+.inputmedium {
+  padding: 6vh 1vh 1vh 4vh;
+  width: 40vw;
+  height: 20vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border: none;
+  /* border-color: cornflowerblue; */
+  font-size: large;
+}
+
+.inputmediumC {
+  padding: 5vh 1vh 1vh 4vh;
+  width: 25vw;
+  height: 20vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: small;
+}
+
+.labelgroup {
+  font-size: initial;
+  position: fixed;
+  padding: 3vh;
+  color: rgba(100, 148, 237, 0.4);
+}
+
+.imageupform {
+  font-size: small;
+}
+
+.perror {
+  font-size: small;
+  color: coral;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+.modalbackground{
+  height: 40vh;
+  width: 40vw;
 }

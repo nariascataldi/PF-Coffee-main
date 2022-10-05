@@ -193,9 +193,7 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-console.log(payload)
       const response = await axios.post(URL + '/users/registration', payload)
-      console.log(response) 
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
       console.log(response.data)

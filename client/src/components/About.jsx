@@ -5,12 +5,12 @@ import Lu from '../assets/Lu.jpeg';
 import Jona from '../assets/Jona.jpeg';
 import Gaspar from '../assets/Gaspar.jpeg';
 import Rodri from '../assets/Rodri.jpeg';
-import about from '../styles/About.module.css'
 import {AiFillGithub} from 'react-icons/ai';
 import {AiFillLinkedin} from 'react-icons/ai';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 
+import about from '../styles/About.module.css'
 
 const developers = [{
   name: 'Néstor Arias Cataldi',

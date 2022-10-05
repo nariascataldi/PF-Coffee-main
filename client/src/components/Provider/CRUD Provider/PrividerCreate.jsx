@@ -7,90 +7,182 @@ import { Modal } from 'reactstrap'
 import { Link } from "react-router-dom";
 
 import { useModal } from "../../../hooks/UseModal";
-import { postCloudinaryPhoto, postProviders  } from "../../../redux/actions/index";
+import { postCloudinaryPhoto, postProviders } from "../../../redux/actions/index";
 import { ToastContainer, toast } from "react-toastify";
+
+import style from '../../../styles/Admin/ModifyProduct.module.css';
 
 
 const FormProviderCreate = (props) => {
-    const dispatch= useDispatch();
-    const navigate= useNavigate();
-    const [isOpenModal, openModal, closeModal] = useModal(false)
-    let responseCloudinary = useSelector(state => state.responseCloudinary)
-    const [loading, setLoading] = useState(false);
-    const [image, setImage] = useState('');
-    
-    const { register, handleSubmit, formState:{errors}} = useForm({
-        /*defaultValues:{
-            name: '',
-            mail: '',
-            adress: '',
-            phone: '',
-            CUIT: ''
-        }*/
-    });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [isOpenModal, openModal, closeModal] = useModal(false)
+  let responseCloudinary = useSelector(state => state.responseCloudinary)
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState('');
 
-    const handleClickYesNo = (data, e) => {
-        if(e.target.value === 'yes') {
-            console.log(data);
-            dispatch(postProviders({...data, logo: responseCloudinary.url}));
-            toast("Provider Created", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-    
-            navigate('/homeAdmin')
-        } 
-        closeModal()
-    }
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    /*defaultValues:{
+        name: '',
+        mail: '',
+        adress: '',
+        phone: '',
+        CUIT: ''
+    }*/
+  });
 
-    const onSubmit = async (data,e) => {
-   
-        await openModal()
-    }
+  const handleClickYesNo = (data, e) => {
+    if (e.target.value === 'yes') {
+      console.log(data);
+      dispatch(postProviders({ ...data, logo: responseCloudinary.url }));
+      toast("Provider Created", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
-    const uploadImage = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append('file', files[0]);
-        data.append('upload_preset', 'Provider');
-        setLoading(true);
-        await dispatch(postCloudinaryPhoto(data))
-        setImage(responseCloudinary.secure_url)
-        setLoading(false)
+      navigate('/homeAdmin')
     }
-{/* */}
-    return (
-      <div>
-        <Modal isOpen={isOpenModal} closeModal={closeModal}>
-          
-          <div class="d-flex justify-content-evenly">
-            <button
-              value="yes"
-              onClick={handleSubmit(handleClickYesNo)}
-              class="border-0"
-            >
-              Yes
-            </button>
-            <ToastContainer />
-            <button
-              value="no"
-              onClick={handleSubmit(handleClickYesNo)}
-              class="border-0"
-            >
-              No
-            </button>
-            <ToastContainer />
+    closeModal()
+  }
+
+  const onSubmit = async (data, e) => {
+
+    await openModal()
+  }
+
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'Provider');
+    setLoading(true);
+    await dispatch(postCloudinaryPhoto(data))
+    setImage(responseCloudinary.secure_url)
+    setLoading(false)
+  }
+  {/* */ }
+  return (
+    <div>
+      <Modal isOpen={isOpenModal} closeModal={closeModal} className={style.modalbackground}>
+        <h1>Create Provider</h1>
+        <div class="d-flex justify-content-evenly">
+          <button
+            className={style.botonesformC}
+            value="yes"
+            onClick={handleSubmit(handleClickYesNo)}
+            class="border-0"
+          >
+            Yes
+          </button>
+          <ToastContainer />
+          <button
+            className={style.botonesformC}
+            value="no"
+            onClick={handleSubmit(handleClickYesNo)}
+            class="border-0"
+          >
+            No
+          </button>
+          <ToastContainer />
+        </div>
+      </Modal>
+      {/* <h3 className="display-5">Provider Create</h3> */}
+      <hr />
+      <form onSubmit={handleSubmit(onSubmit)}>
+
+        <div className={style.titleformprov}>
+          <label className={style.labelgroup} >Name: </label>
+          <input className={style.inputlargeC} type="text" {...register('name', {
+            required: true
+          })} />
+          {errors.name?.type === 'required' && <p className={style.perror} >name is required</p>}
+        </div>
+        <div className={style.titleformprov}>
+          <div>
+            <label className={style.labelgroup} >E-mail: </label>
+            <input className={style.inputlargeC} type="mail" {...register('mail', {
+              required: true,
+              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            })} />
+
+            {errors.mail?.type === 'required' && <p className={style.perror} >e-mail is required</p>}
+            {errors.mail?.type === 'pattern' && <p className={style.perror} >formato incorrecto</p>}
           </div>
-        </Modal>
-        <h3 className="display-5">Provider Create</h3>
-        <hr />
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="input-group input-group-lg">
+        </div>
+        <div className={style.titleformprov}>
+          <div>
+            <label className={style.labelgroup} >Adress: </label>
+            <input className={style.inputlargeC} type="text" {...register('adress', {
+              required: true
+            })} />
+
+            {errors.adress?.type === 'required' && <p className={style.perror} >adress is required</p>}
+          </div>
+        </div>
+        {/*  contenedor logo phone cuit status */}
+        <div className={style.logophoncuitstatus}>
+          <div>
+            {/* <label className={style.labelgroup} >Logo: </label> */}
+            <input
+              className={style.inputmediumC}
+              type="file"
+              name="file"
+              placeholder="Logo"
+              onChange={uploadImage}
+              id="inputGroupFile01"
+            />
+          </div>
+
+          <div className={style.phonecuitstatus}>
+            <div>
+              <label className={style.labelgroup} >Phone: </label>
+              <input className={style.inputsmallprovC} type="number" {...register('phone', {
+                required: true
+              })} />
+
+              {errors.phone?.type === 'required' && <p className={style.perror} >phone is required</p>}
+            </div>
+
+            <div>
+              <label className={style.labelgroup} >CUIT: </label>
+              <input className={style.inputsmallprovC} type="number" {...register('CUIT', {
+                required: true
+              })} />
+
+              {errors.CUIT?.type === 'required' && <p className={style.perror} >CUIT is required</p>}
+            </div>
+
+            <div>
+              <label className={style.labelgroup} >Status: </label>
+              <select className={style.inputsmallprovC} id="inputGroup-sizing-lg"{...register('disable', {
+                required: true
+              })}>
+                <option disabled>Status: </option>
+                <option value={false} >Asset</option>
+                <option value={true} >Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div className={style.botones}>
+
+          <input type="submit" value="Save" className={style.botonesformC} />
+          <Link to="/homeAdmin" ><button className={style.botonesformC}>Cancel</button></Link>
+
+        </div>
+      </form>
+    </div>
+  );
+}
+export default FormProviderCreate;
+
+/* <div className="input-group input-group-lg">
             <label
               className="input-group-text btn btn-lg btn-primary"
               id="inputGroup-sizing-lg"
@@ -225,13 +317,7 @@ const FormProviderCreate = (props) => {
             <Link to="/homeAdmin">
               <button className="btn btn-danger">Cancel</button>
             </Link>
-          </div>
-        </form>
-      </div>
-    );
-}
-export default FormProviderCreate;
-
+          </div> */
 
 /*
 import React, { useState } from "react";

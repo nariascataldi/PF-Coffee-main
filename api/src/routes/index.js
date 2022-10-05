@@ -1,6 +1,7 @@
 const { Router } = require('express');
-const { Provider, Product, User } = require("../db");
 
+const { Provider, Product, User } = require("../db");
+const nodemailer = require("nodemailer");
 
 // const checkAuth = require("../middlewares/checkAuth");
 
@@ -31,6 +32,16 @@ const { productsGet,
 
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
+
+const {
+  userRegist,
+  userLogin,
+  confirm,
+  forgetPassword,
+  checkToken,
+  newPass,
+  profile
+} = require("../controllers/authControllers.js");
 
 const {
   userRegist,
@@ -96,6 +107,7 @@ router.post('/newsletter', mailPost);
 router.post('/oferts', ofertPost)
 
 router.post("/nodemailer", nodemailerPost);
+
 
 //---------------PUT
 
@@ -270,6 +282,8 @@ router.put('/productsEdit/:id', async (req,res)=>{
     console.log("El error del put es en product: ", err)
   }
 })
+
+
 
 module.exports = router;
 
