@@ -7,9 +7,11 @@ import { postNewsletter } from '../redux/actions/index';
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/Footer.module.css";
 
+
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import About from './About2';
 
 const popoverTerms = (
   <Popover id="popover-basic">
@@ -184,7 +186,7 @@ export default function Footer() {
             Instagram
           </a>
           <a
-            href='https://www.github.com/'
+            href='https://github.com/nariascataldi/PF-Coffee-main'
             type="button"
             className={styles.button}>
             <svg
@@ -243,7 +245,8 @@ export default function Footer() {
 
               <div className="col-auto">
                 <button
-                  type="submit" className="btn btn-primary mb-4" >
+                // "btn btn-primary mb-4"
+                  type="submit" className={styles.buttonSub} > 
                   Subscribe
                 </button>
                 <ToastContainer />

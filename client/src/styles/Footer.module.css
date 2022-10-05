@@ -57,6 +57,7 @@
 }
 .singII {
     min-width: 88px;
+    margin-top: 0.5vh;
 }
 
 .option {
@@ -71,6 +72,7 @@
 }
 
 .inputNewsletter {
+    margin-top: 1.5vh;
     width: 98%;
     height: 2.5vh;
 }
@@ -81,3 +83,14 @@
     color: black;
     font-size: initial;;
 }
+
+.buttonSub {
+    color: white;
+    border: none;
+    background-color: var(--strong);
+    border-radius: 6px;
+  }
+  .buttonSub:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px #fe4f22;
+  }

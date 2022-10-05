@@ -4,28 +4,28 @@ import { useSelector } from "react-redux";
 
 import Card from "./Card";
 
-import Slides from "./Slides";
+// import Slides from "./Slides";
 import Paginated from "./Paginated";
 import Loading from "./Loading";
 
-import Image2 from "../assets/coffee Order.jpg";
-import Image3 from "../assets/hotSale.jpg";
+// import Image2 from "../assets/coffee Order.jpg";
+// import Image3 from "../assets/hotSale.jpg";
 
 import styles from '../styles/Cards.module.css'
 
 export default function Cards({ load }) {
   const { products } = useSelector((state) => state);
 
-  const images = [
-    {
-      src: Image2,
-      title: "WELCOME!!",
-    },
-    {
-      src: Image3,
-      title: "Exclusive discount in online store.",
-    },
-  ];
+  // const images = [
+  //   {
+  //     src: Image2,
+  //     title: "WELCOME!!",
+  //   },
+  //   {
+  //     src: Image3,
+  //     title: "Exclusive discount in online store.",
+  //   },
+  // ];
 
   //paginado
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,9 +47,9 @@ export default function Cards({ load }) {
 
   return (
     <div>
-      <Slides 
+      {/* <Slides 
       interval={5000} 
-      images={images} />
+      images={images} /> */}
 
       <Paginated
         productsPerPage={productsPerPage}
