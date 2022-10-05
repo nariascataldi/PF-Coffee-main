@@ -113,8 +113,9 @@ const FormModifyProfile = (props) => {
                 <br/>
 
                 <div>
+                
+                
                 <label className={sty.title}>Avatar: </label>
-                <Container>
                 <FormGroup>
                         <Input
                             className={sty.upload}
@@ -124,7 +125,7 @@ const FormModifyProfile = (props) => {
                             onChange={uploadImage}
                         />
                 </FormGroup>
-                </Container>        
+                       
                 </div>
                 <br/>
                 <div>
@@ -137,7 +138,7 @@ const FormModifyProfile = (props) => {
                 <br/>
                 <div>
                 <button id={sty.submit} type="submit" value="Save">Save</button>
-                <Link to="/profileUser" ><button id={sty.submit}>Cancel</button></Link>
+                <Link to="/" ><button id={sty.submit}>Cancel</button></Link>
                 </div>
             </form>
             </div>
