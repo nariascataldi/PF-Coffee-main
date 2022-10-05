@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { signWithGoogle} from "../../firebase";
-import { signUp} from "../../firebase/index"
-
+import { auth, signUp} from "../../firebase/index";
 import {
   getAllUsers,
   postUser,
@@ -117,7 +116,7 @@ const SignIn =()=> {
                 navigate('/')
             } else {
                 console.log('inicio de sesion')
-                const result = await signInWithEmailAndPassword ( authData.email, authData.password); 
+                const result = await signInWithEmailAndPassword (auth, authData.email, authData.password); 
                 console.log('RESPUESTA FIREBASE',result)
                 const sesionUserFound = users.filter(e=>e.mail=== result.user.email)
                 const firstElement = sesionUserFound.shift()
