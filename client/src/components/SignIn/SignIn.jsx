@@ -15,6 +15,7 @@ import './SignIn.css'
 import { useNavigate } from "react-router";
 
 import { ToastContainer, toast } from "react-toastify";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // import CardInfomativaFormulario from "../../Components/Organisms/CardInformativaFormulario/CardInformativaFormulario";
 
@@ -22,6 +23,7 @@ import { ToastContainer, toast } from "react-toastify";
 const SignIn =()=> {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const {users} = useSelector(state=>state)
     const [usuario, setUsuario] = useState([])
     const [regOrInit , setregOrInit] = useState(false)
     const [authData, setAuthData] = useState({
@@ -33,7 +35,7 @@ const SignIn =()=> {
         avatar:""
       });
     useEffect(()=>{
-        getAllUsers()
+        dispatch(getAllUsers())
     },[])
     const googleRegister = async () => {   
         console.log('inicio de sesion con google')
@@ -51,8 +53,7 @@ const SignIn =()=> {
                 }
                 console.log('NEWUSER', newUser)
                 dispatch(postUser(newUser))
-
-                localStorage.setItem("Sign In", JSON.stringify(userInfo));
+                localStorage.setItem("Sign In", JSON.stringify(newUser));
                 dispatch(setUserInit())
                 navigate('/')
     }
@@ -71,6 +72,18 @@ const SignIn =()=> {
                draggable: true,
                progress: undefined,
              });
+            let findMailExist = users.filter(e=>e.mail=== authData.email)
+            console.log('usuario existente',findMailExist)
+            if(authData.password !==authData.repeatpassword && regOrInit){
+              return  alert('Passwords do not match')
+            // }if ( findMailExist === authData.email || regOrInit){
+            //     return  alert('This email has already been registered before! Try another !')
+                        
+            } if(authData.email === '' ||authData.password === '' ){
+                return  alert('Password and email are required !') 
+            }  else {
+             return mailRegister();
+            }
           };
 
           const handleChange = (e) => {
@@ -100,16 +113,19 @@ const SignIn =()=> {
                  console.log('se ejecuto el post user')
                 localStorage.setItem("Sign In", JSON.stringify(newUser));
                 dispatch(setUserInit())
+                alert('Successfully registered')
                 navigate('/')
             } else {
                 console.log('inicio de sesion')
-                // const result = await signInWithEmailAndPassword (authData.email, authData.password); 
-                // console.log('user Found',result)
-                // const userFound = postUser(result);
-                // dispatch(postUser(userFound))
-                // localStorage.setItem("Sign In", JSON.stringify(newUser));
-                // dispatch(setUserInit())
-                // navigate('/')
+                const result = await signInWithEmailAndPassword ( authData.email, authData.password); 
+                console.log('RESPUESTA FIREBASE',result)
+                const sesionUserFound = users.filter(e=>e.mail=== result.user.email)
+                const firstElement = sesionUserFound.shift()
+                console.log('sesion user found',firstElement)
+                localStorage.setItem("Sign In", JSON.stringify(firstElement));
+                localStorage.setItem("usuario-creado", JSON.stringify(firstElement)); 
+                dispatch(setUserInit()) 
+                navigate('/')
             }
                 
     }
