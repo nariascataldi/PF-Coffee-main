@@ -15,6 +15,7 @@ const NavBar = ({ noFilters }) => {
   const { categories, diets, fillCart, filterBy,userInit } = useSelector((state) => state);
   const [busqueda, setBusqueda] = useState("");
   const [menu, setMenu] = useState(false);
+  const usuarioIiniciado=JSON.parse(localStorage.getItem('Sign In'));
   const [price, setPrice] = useState({
     minPrice: '',
     maxPrice: ''
@@ -167,8 +168,8 @@ const NavBar = ({ noFilters }) => {
       </Link>
       
       
-      { userInit.name ? 
-        <img src={ userInit?.avatar !=="" ? userInit.avatar : <BsFillPersonCheckFill/>}
+      { usuarioIiniciado.name ? 
+        <img src={ usuarioIiniciado?.avatar !=="" ? usuarioIiniciado.avatar : <BsFillPersonCheckFill/>}
          className='signin-img-user' referrerPolicy="no-referrer"/> :
         <BsPersonCircle className={styles.non_sesion_init_icon}/>
       }
