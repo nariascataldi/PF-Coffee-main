@@ -168,7 +168,7 @@ const NavBar = ({ noFilters }) => {
       </Link>
       
       
-      { usuarioIiniciado.name ? 
+      { usuarioIiniciado?.name ? 
         <img src={ usuarioIiniciado?.avatar !=="" ? usuarioIiniciado.avatar : <BsFillPersonCheckFill/>}
          className='signin-img-user' referrerPolicy="no-referrer"/> :
         <BsPersonCircle className={styles.non_sesion_init_icon}/>
