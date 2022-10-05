@@ -75,3 +75,9 @@
     height: 2.5vh;
 }
 
+.footerbtn{
+    border: none;
+    background-color: #FCEEF0;
+    color: black;
+    font-size: initial;;
+}
