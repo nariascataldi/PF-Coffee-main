@@ -28,6 +28,7 @@ import {
   GET_ALL_NEWSLETTER,
   GET_USER_DETAIL,
   ORDER_BY_STOCK,
+  RESET_FILTER,
   GET_ALL_OFERTS  } from '../actions'
 
 
@@ -159,6 +160,18 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userInit: action.payload
       }
+      case RESET_FILTER :
+        return {
+          ...state,
+          filterBy: {
+            title: '',
+            category: '',
+            diet: '',
+            sort: '',
+            minPrice: '',
+            maxPrice: ''
+          }
+        }
 
     case FILTER:
       const allProd = state.allProducts;

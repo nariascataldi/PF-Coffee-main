@@ -38,6 +38,7 @@ export const PUT_USER = "PUT_USER"
 export const GET_USER_DETAIL = "GET_USER_DETAIL"
 export const ORDER_BY_STOCK = "ORDER_BY_STOCK"
 export const GET_ALL_OFERTS = 'GET_ALL_OFERTS'
+export const RESET_FILTER ='RESET_FILTER'
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -246,10 +247,9 @@ export function postOferts(payload) {
 }
 
 export function   postNodemailer(payload) {
-  return async function (){
-    const json = await axios.post(URL + '/nodemailer', payload);
-    return json
-  }
+  return axios.post(URL + '/nodemailer', {
+    mail: payload
+  });
 }
 
 export function setFilterState(payload) {
@@ -261,6 +261,11 @@ export function setFilterState(payload) {
 export function filter() {
   return {
     type: FILTER,
+  }
+};
+export function resetFilter() {
+  return {
+    type: RESET_FILTER,
   }
 };
 export function changeMailArray(payload) {

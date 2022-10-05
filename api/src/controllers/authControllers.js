@@ -212,8 +212,7 @@ const nodemailerPost = async (req, res) => {
   // });
 
   // JSON.stringify(clientCreated);
-  
-  async function sendMail() {
+
     try {
       let transporter = nodemailer.createTransport({
         service: "Gmail",
@@ -221,9 +220,12 @@ const nodemailerPost = async (req, res) => {
         port: 587,
         secure: false,
         auth: {
-          user: NODEMAILER_USE,
-          pass: NODEMAILER_PASS
+          user: "coffeeorder2022@gmail.com",
+          pass: "jnxlvlysqherlzxd"
         },
+        tls: {
+          rejectUnauthorized: false
+        }
       })
       const mailOptions = {
         from: "Coffe´s <coffeeorder2022@gmail.com>",
@@ -236,21 +238,21 @@ const nodemailerPost = async (req, res) => {
                 </a>`,
       };
       const result = await transporter.sendMail(mailOptions);
-      return result;
+      console.log({result})
+      if (mail && result) {
+        await User.findOne({ where: { mail: mail } })
+        res.status(200).send('Enviado')
+      } 
     } catch (error) {
       console.log(error);
+      res.status(500).send(error.message)
     }
-  }
-  sendMail()
 
 
-  if (mail) {
-    await User.findOne({ where: { mail: mail } })
-    res.status(200).send('Enviado')
-  } else {
-    const error = new Error("There is already a user with that email !!");
-    return res.status(400).json({ msg: error.message })
-  }
+  // else {
+  //   const error = new Error("There is already a user with that email !!");
+  //   return res.status(400).json({ msg: error.message })
+  // }
 };
 
 

@@ -37,7 +37,7 @@ const SignIn =()=> {
                     id: userInfo.user.uid,
                     name: userInfo._tokenResponse.firstName,
                     lastName: userInfo._tokenResponse.lastName,
-                    status: 'Client',
+                    status: 'Admin',
                     mail: userInfo.user.email,
                     avatar: userInfo.user.photoURL,
                 
@@ -123,10 +123,10 @@ const SignIn =()=> {
                 dispatch(setUserInit(response.data))
                 localStorage.setItem("Sign In", JSON.stringify(response.data));
                 localStorage.setItem("usuario-creado", JSON.stringify(response.data));
-                dispatch(postNodemailer(newUser.mail));
+                await postNodemailer(newUser.mail);
                 toast("Welcome email sent! 🧁", {
                   position: "top-right",
-                  autoClose: 5000,
+                  autoClose: 3000,
                   hideProgressBar: false,
                   closeOnClick: true,
                   pauseOnHover: true,
@@ -136,14 +136,17 @@ const SignIn =()=> {
                 
                 toast('Successfully registered', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
                   });
-                //   navigate('/')
+                  setTimeout(() => {
+                    navigate('/')
+                }, 5000);
+                  
             }catch(error){
                 toast((error.message), {
                     position: "top-right",
