@@ -22,19 +22,21 @@ import {
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
   POST_NEWSLETTER,
-  SET_USER_INIT,
   GET_ALL_USERS,
+  SET_USER_INIT,
   GET_ALL_ORDERS,
   GET_ALL_NEWSLETTER,
-  ORDER_BY_STOCK
-  // fillCart
-} from '../actions'
+  GET_USER_DETAIL,
+  ORDER_BY_STOCK,
+  GET_ALL_OFERTS  } from '../actions'
+
 
 const initialState = {
   allProducts: [],
   products: [],
   users: [],
   productDetail: {},
+  userDetail:{},
   providers: [],
   providerDetail: {},
   categories: [],
@@ -47,6 +49,7 @@ const initialState = {
   userInit: JSON.parse(localStorage.getItem('Sign In')) || {},
   orders: [],
   newsletter: [],
+  oferts: [],
   filterBy: {
     title: '',
     category: '',
@@ -81,6 +84,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         productDetail: action.payload
       }
+    case GET_USER_DETAIL:
+        return {
+          ...state,
+          userDetail: action.payload
+        }
     case CLEAR_DETAIL:
       return {
         ...state,
@@ -293,6 +301,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         newsletter: action.payload
+      }
+     case GET_ALL_OFERTS:
+      return {
+        ...state,
+        oferts: action.payload
       }
     default:
       return { ...state }

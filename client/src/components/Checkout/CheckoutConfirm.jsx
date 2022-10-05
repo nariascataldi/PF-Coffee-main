@@ -13,6 +13,7 @@ import '../Checkout/Checkout.css'
 
 export default function CheckoutConfirm() {
   const { fillCart } = useSelector((state) => state);
+  const {userInit}= useSelector((state)=>state)
 
   const dispatch = useDispatch()
   const location = useLocation();
@@ -33,6 +34,7 @@ export default function CheckoutConfirm() {
   const reducedCart = reduceCart(fillCart)
   //console.log('reduce.cart ', reducedCart)
 
+  let user = userInit.id
   let total = 0
   let detail = []
 
@@ -42,7 +44,7 @@ export default function CheckoutConfirm() {
   })
   //console.log(total1,detail1)
 
-  let carrito = { total, detail, paid: statusPago }
+  let carrito = { total, detail, paid: statusPago, user }
   //console.log(carrito)
 
 

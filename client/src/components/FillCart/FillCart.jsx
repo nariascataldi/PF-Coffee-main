@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { resetFillCart, putStock } from "../../redux/actions";
 
@@ -16,6 +17,7 @@ import "./FillCart.css";
 import { Link } from "react-router-dom";
 
 export default function FillCart() {
+    const navigate = useNavigate();
 
     const { fillCart, userInit } = useSelector(state => state)
 
@@ -63,7 +65,11 @@ export default function FillCart() {
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
-            })
+            },
+            )
+            setTimeout(() => {
+                navigate('/signin')
+              }, 5000);
         }
     };
 

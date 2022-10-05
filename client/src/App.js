@@ -14,6 +14,7 @@ import ProductAdmin from './components/Admin/Product/ProductAdmin';
 // import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
+import MyOrders from "./components/MyOrders/MyOrders";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import Modals from './components/Admin/Modals/Modals';
 
@@ -38,6 +39,7 @@ import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 import Newsletter from './components/Admin/Newsletter/Newsletter';
 import SignIn from './components/SignIn/SignIn';
 import PrivateRoute from './components/PrivateRoute';
+import ProfileUser from './components/my profile/ProfileUser';
 
 
 function App() {
@@ -55,7 +57,8 @@ function App() {
           {/* <Route exact path='/' element={<LandingPage />} /> */}
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
-          {/* <Route index element={<Login />} /> */}
+          {/*  */}
+          <Route exact path='/login' element={<Login />} />
           <Route path="/form" element={<Perfil />} />
           <Route path="/about" element={<About />} />
           <Route path="/detail/:id" element={<Detail />} />
@@ -63,6 +66,7 @@ function App() {
           <Route path="forget-password/:token" element={<NewPassword />} />
           <Route path="forget-password" element={<ForgetPassword />} />
           <Route exact path="/fillCart" element={<FillCart />} />
+          <Route exact path='/myorders' element={<MyOrders />} />
           {/* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
           <Route exact path="/productAdmin" element={<ProductAdmin />} />
           <Route exact path="/homeAdmin" element={<PrivateRoute>
@@ -88,6 +92,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}/>
           <Route exact path='/signin' element={<SignIn/>}/>
+          <Route exact path='/profileUser' element={<ProfileUser />}/>
         </Routes>
       </div>
     </>

@@ -16,7 +16,7 @@ import NavBarAdmin from '../../../components/Admin/NavBarAdmin/NavBarAdmin';
 
 import style from '../../../styles/Admin/ModifyProduct.module.css';
 
-const FormModifyProvider = (props) => {
+const FormModifyProvider = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpenModal, openModal, closeModal] = useModal(false)
@@ -45,13 +45,13 @@ const FormModifyProvider = (props) => {
   const { providerDetail } = useSelector((state) => state);
   console.log('El detalle de provider es: ', providerDetail)
   /**/
-  const onSubmit = async (data, e) => {
+  const onSubmit = async () => {
     await openModal()
   }
 
   const handleClickYesNo = (data, e) => {
     if (e.target.value) {
-      dispatch(putProviders(data, id));
+      dispatch(putProviders({ ...data, logo: responseCloudinary.url }, id));
 
       toast("Correctly modify", {
         position: "top-right",
@@ -73,19 +73,17 @@ const FormModifyProvider = (props) => {
     const data = new FormData();
     data.append('file', files[0]);
     data.append('upload_preset', 'Provider');
-    setLoading(true);
     await dispatch(postCloudinaryPhoto(data))
-    setImage(responseCloudinary.secure_url)
-    setLoading(false)
   }
   {/* */ }
   return (
     <div>
+      {/* ---------Navbar y Modal -----------------*/}
       <Modal isOpen={isOpenModal} closeModal={closeModal}>
         <h1>Modify Provider</h1>
         <div class="d-flex justify-content-evenly">
-          <button value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
-          <button value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
+          <button className={style.botonesformC} value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
+          <button className={style.botonesformC} value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
         </div>
       </Modal>
       <NavBarAdmin />
@@ -94,81 +92,75 @@ const FormModifyProvider = (props) => {
           <Figure.Image className={style.figulog} width={17 * 5} height={18 * 5} alt="El Logo" src={logo} />
         </Figure>
       </div>
-      <h3 className="display-5">Provider Modify </h3>
-      <hr />
+      {/* ---------------------------------------------- */}
+      {/* <h3 className="display-5">Provider Modify </h3> */}
       <div className={style.container} >
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className={style.titleform}>
-            <div className="input-group input-group-lg">
-              <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Name: </label>
-              <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="text" defaultValue={providerDetail.name}{...register('name', {
-                required: true
-              })} />
-
-              {errors.name?.type === 'required' && <p>name is required</p>}
-            </div>
+        <form className={style.containerform} onSubmit={handleSubmit(onSubmit)}>
+          <div className={style.titleformprov}>
+            <label className={style.labelgroup} >Name: </label>
+            <input className={style.inputlarge} type="text" defaultValue={providerDetail.name}{...register('name', {
+              required: true
+            })} />
+            {errors.name?.type === 'required' && <p className={style.perror} >name is required</p>}
           </div>
-          <div className={style.titleform}>
-            <div className="input-group input-group-lg">
-              <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">E-mail: </label>
-              <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="mail" defaultValue={providerDetail.mail}{...register('mail', {
+          <div className={style.titleformprov}>
+            <div>
+              <label className={style.labelgroup} >E-mail: </label>
+              <input className={style.inputlarge} type="mail" defaultValue={providerDetail.mail}{...register('mail', {
                 required: true,
                 pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
               })} />
 
-              {errors.mail?.type === 'required' && <p>e-mail is required</p>}
-              {errors.mail?.type === 'pattern' && <p>formato incorrecto</p>}
+              {errors.mail?.type === 'required' && <p className={style.perror} >e-mail is required</p>}
+              {errors.mail?.type === 'pattern' && <p className={style.perror} >formato incorrecto</p>}
             </div>
           </div>
-          <div className={style.titleform}>
-            <div className="input-group input-group-lg">
-              <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Adress: </label>
-              <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="text" defaultValue={providerDetail.adress}{...register('adress', {
+          <div className={style.titleformprov}>
+            <div>
+              <label className={style.labelgroup} >Adress: </label>
+              <input className={style.inputlarge} type="text" defaultValue={providerDetail.adress}{...register('adress', {
                 required: true
               })} />
 
-              {errors.adress?.type === 'required' && <p>adress is required</p>}
+              {errors.adress?.type === 'required' && <p className={style.perror} >adress is required</p>}
             </div>
           </div>
           {/*  contenedor logo phone cuit status */}
           <div className={style.logophoncuitstatus}>
-            <div className="input-group input-group-lg">
-              <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Logo: </label>
-
+            <div>
+              <label className={style.labelgroup} >Logo: </label>
               <input
+                className={style.inputmedium}
                 type="file"
                 name="file"
                 placeholder="Logo"
                 onChange={uploadImage}
-                className="form-control"
                 id="inputGroupFile01"
               />
-
-
             </div>
 
             <div className={style.phonecuitstatus}>
-              <div className="input-group input-group-lg">
-                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Phone: </label>
-                <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="number" defaultValue={providerDetail.phone}{...register('phone', {
+              <div>
+                <label className={style.labelgroup} >Phone: </label>
+                <input className={style.inputsmallprov} type="number" defaultValue={providerDetail.phone}{...register('phone', {
                   required: true
                 })} />
 
-                {errors.phone?.type === 'required' && <p>phone is required</p>}
+                {errors.phone?.type === 'required' && <p className={style.perror} >phone is required</p>}
               </div>
 
-              <div className="input-group input-group-lg">
-                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">CUIT: </label>
-                <input className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" type="number" defaultValue={providerDetail.CUIT}{...register('CUIT', {
+              <div>
+                <label className={style.labelgroup} >CUIT: </label>
+                <input className={style.inputsmallprov} type="number" defaultValue={providerDetail.CUIT}{...register('CUIT', {
                   required: true
                 })} />
 
-                {errors.CUIT?.type === 'required' && <p>CUIT is required</p>}
+                {errors.CUIT?.type === 'required' && <p className={style.perror} >CUIT is required</p>}
               </div>
 
-              <div className="input-group input-group-lg">
-                <label className="input-group-text btn btn-lg btn-primary" id="inputGroup-sizing-lg">Status: </label>
-                <select className="form-select" id="inputGroup-sizing-lg"{...register('disable', {
+              <div>
+                <label className={style.labelgroup} >Status: </label>
+                <select className={style.inputsmallprov} id="inputGroup-sizing-lg"{...register('disable', {
                   required: true
                 })}>
                   <option disabled>Status: {providerDetail.disable === true ? "Inactive" : "Asset"}</option>
@@ -181,18 +173,11 @@ const FormModifyProvider = (props) => {
 
           <div className={style.botones}>
 
-              <input type="submit" value="Save" className={style.botonesform} />
-              <Link to="/homeAdmin" ><button className={style.botonesform}>Cancel</button></Link>
+            <input type="submit" value="Save" className={style.botonesform} />
+            <Link to="/homeAdmin" ><button className={style.botonesform}>Cancel</button></Link>
 
           </div>
         </form>
-      </div>
-      <div>
-        {
-          !responseCloudinary ? null : (
-            <img src={responseCloudinary.secure_url} />
-          )
-        }
       </div>
     </div>
   )

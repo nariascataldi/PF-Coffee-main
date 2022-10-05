@@ -1,8 +1,9 @@
 const { Router } = require('express');
-// const middlewareAuth = require('../middlewares/middlewareAuth');
-// const middlewareAdmin = require('../middlewares/middlewareAdmin');
 
-const checkAuth = require("../middlewares/checkAuth");
+const { Provider, Product, User } = require("../db");
+const nodemailer = require("nodemailer");
+
+// const checkAuth = require("../middlewares/checkAuth");
 
 const { productsGet,
         prodIDget,
@@ -18,14 +19,12 @@ const { productsGet,
         commentPost,
         orderPost,
         ordersGet,
-        // userPost,
         usersGet,
         userAlt,
         providerAlt,
         providerIDremove,
         userIDremove,  
         stockPut,
-        userIDget,
         mailPost,
         mailGet,
         ofertPost,
@@ -33,16 +32,17 @@ const { productsGet,
 
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
-const { 
-        userRegist,
-        userLogin,
-        confirm,
-        forgetPassword,
-        checkToken,
-        newPass,
-        profile  } = require('../controllers/authControllers.js');
 
-// import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
+const {
+  userRegist,
+  userLogin,
+  confirm,
+  forgetPassword,
+  checkToken,
+  newPass,
+  nodemailerPost,
+  profile
+} = require("../controllers/authControllers.js");
 
 const router = Router();
 
@@ -53,17 +53,17 @@ router.get('/products', productsGet);  // ruta probada !!!!!! --
 
 router.get('/products/:id', prodIDget);   // ruta probada !!!!!! --
 
-router.get('/diets', dietsGet);     // ruta probada !!!!!! --
+router.get('/diets', dietsGet);    
 
-router.get('/categories', categoriesGet);    // ruta probada !!!!!! --
+router.get('/categories', categoriesGet);   
 
-router.get('/comment', commentGet)   // ruta probada !!!!!! --
+router.get('/comment', commentGet)  
 
-router.get('/providers', providersGet);    // ruta probada !!!!!! --
+router.get('/providers', providersGet);   
 
-router.get('/providers/:id', providerIDget);      // ruta probada !!!!!! -- middlewareAdmin,
+router.get('/providers/:id', providerIDget);     
 
-router.get('/users', usersGet);    // ruta NO probada !!!!!! --
+router.get('/users', usersGet);   
 
 router.get('/orders', ordersGet);
 
@@ -71,82 +71,137 @@ router.get('/newsletter', mailGet);
 
 router.get('/oferts', ofertsGet);
 
-// router.get('/users/:id', userIDget);      // ruta NO probada !!!!!! --
-
-// router.get('/orders', ordersGet);    // ruta NO probada !!!!!! --
-
-// router.get('/orders/:id', orderIDget);      // ruta NO probada !!!!!! --
 
 //---------------DELETE
 
-router.delete('/products/remove', prodIDremove);  // ruta probada !!!!!! --
+router.delete('/products/remove', prodIDremove); 
 
-router.delete('/users/remove', providerIDremove);  // ruta  NO probada !!!!!! --
+router.delete('/users/remove', providerIDremove); 
 
-router.delete('/providers/remove', userIDremove);  // ruta NO probada !!!!!! --
+router.delete('/providers/remove', userIDremove); 
 
 
 //---------------POST
 
-router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
+router.post('/products', prodPost);   
 
-router.post("/providers", providerPost);   // ruta probada !!!!!! -- middlewareAdmin,
+router.post("/providers", providerPost);   
 
-router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAuth,
+router.post('/comment', commentPost);     
 
 router.post('/orders', orderPost);
 
-
-// router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
-
-router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
+router.post("/checkout", checkoutControllers.pago);    
 
 router.post('/newsletter', mailPost);
 
 router.post('/oferts', ofertPost)
 
+router.post("/nodemailer", nodemailerPost);
+
 
 //---------------PUT
 
-router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! -- middlewareAdmin,
+router.put('/products/:attribute', altAttribute);  
 
-router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
+router.put('/users/:attribute', userAlt);  
 
-router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
+router.put('/providers/:attribute', providerAlt);  
 
 router.put('/editStock', stockPut);
 
-//////////////// yooooo y Yo también
-
 
 /* -------------- Auth ---------------------*/
-router.post('/users/registration', userRegist);               // ruta probada !!!!!! --
+router.post('/users/registration', userRegist);               
 
-router.post('/users/login', userLogin);                       // ruta probada !!!!!! --
+router.post('/users/login', userLogin);                      
 
-router.get("/users/confirm/:token", confirm);                // ruta probada !!!!!! --
+router.get("/users/confirm/:token", confirm);                
 
-//Es de tipo post porque el usuario va a enviar su email y comprobamos que ese email exista, en caso de que sea asi le enviamos un nuevo token
-router.post("/users/forget-password", forgetPassword);       // ruta probada !!!!!! -- Olvide Password
+router.post("/users/forget-password", forgetPassword);       
 
-//COMPUEBA QUE EL NVO TOKEN SEA VALIDO Y QUE EL USUARIO EXISTA
-router.get("/users/forget-password/:token", checkToken);     // ruta probada !!!!!! --
+router.get("/users/forget-password/:token", checkToken);     
 
-router.post("/users/forget-password/:token", newPass);       // ruta probada !!!!!! --
+router.post("/users/forget-password/:token", newPass);     
 
-//entra al endpoind, ejecuta el middeware y dsp ejecuta el perfil
-router.get("/users/profile", checkAuth, profile);
+// router.get("/users/profile", checkAuth, profile);
 
-//checkAuth => VERIFICA QUE EL JWT QUE SEA VALIDO, QUE EXISTA, QUE ESTE ENVIADO POR HEADER,
-//SI TODO ESTA BIEN SE VA HACIA PROFILE
-  
 /* -------------- Auth ---------------------*/
 
 
+const getUserId =async (id)=>{
+  try{
+      if(id){
+          const db = await User.findByPk(id)
+          return{
+            name: db.name,
+            id: db.id,
+            lastName: db.lastName,
+            avatar: db.avatar.toString(),
+            birthday: db.birthday,
+            status: db.status,
+            mail: db.mail,
+            confirm: db.confirm,
+            disable: db.disable,
+            basket: db.basket,
+            token: db.token
+
+          }
+      }
+      
+  }catch (error){console.log( 'el error del id es: ', error)}
+}
+
+router.get('/getUserId/:id', async(req,res)=>{
+  const {id} = req.params;
+  try{
+      if(id){
+          let userId = await getUserId(id)
+          userId ?
+          res.status(200).send(userId) : 
+          res.status(404).send('user no encontrado')
+      }
+  }catch (error){console.log('El error del user id es: ', error)}
+})
 
 
 
-const {Provider, Product} = require('../db')
+router.put('/mUser/:id', async (req,res)=>{
+  try{
+    const{id}=req.params;
+    const {
+      name,
+      lastName,
+      avatar,
+      birthday,
+      status,
+      mail,
+      confirm,
+      disable,
+      basket,
+      token
+
+    } = req.body;
+
+    const modifyUser11 = await User.update({
+      name,
+      lastName,
+      avatar,
+      birthday,
+      status,
+      mail,
+      confirm,
+      disable,
+      basket,
+      token
+    },
+    {where: {id}}
+    );
+    res.send(modifyUser11);
+  }catch (err){
+    console.log("El error del put user es: ", err)
+  }
+})
 
 router.put('/edit/:id', async (req,res)=>{
   try{
@@ -174,7 +229,7 @@ router.put('/edit/:id', async (req,res)=>{
     );
     res.send(modifyProvider);
   }catch (err){
-    console.log("El error del put es: ", err)
+    console.log("El error del put provider es: ", err)
   }
 })
 router.put('/productsEdit/:id', async (req,res)=>{
@@ -219,4 +274,8 @@ router.put('/productsEdit/:id', async (req,res)=>{
   }
 })
 
+
+
 module.exports = router;
+
+

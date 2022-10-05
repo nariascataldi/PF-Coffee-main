@@ -207,14 +207,14 @@ export default function FormProduct() {
         <h1> Create product: {input.title}</h1>
 
         <div class="d-flex justify-content-evenly">
-          <button
+          <button className={styles.botonesformC}
             value="yes"
             onClick={(e) => handleClickYesNo(e)}
             class="border-0"
           >
             Yes
           </button>
-          <button
+          <button className={styles.botonesformC}
             value="no"
             onClick={(e) => handleClickYesNo(e)}
             class="border-0"

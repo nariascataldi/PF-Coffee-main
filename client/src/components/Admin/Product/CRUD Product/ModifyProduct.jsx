@@ -39,7 +39,7 @@ const FormModifyProduct = (props) => {
 
   const handleClickYesNo = (data, e) => {
     if (e.target.value === 'yes') {
-      dispatch(putProduct(data, id));
+      dispatch(putProduct({ ...data, image: responseCloudinary.url }, id));
 
       toast("Correctly modify", {
         position: "top-right",
@@ -63,20 +63,18 @@ const FormModifyProduct = (props) => {
     const files = e.target.files;
     const data = new FormData();
     data.append('file', files[0]);
-    data.append('upload_preset', 'Product');
-    setLoading(true);
+    data.append('upload_preset', 'Provider');
     await dispatch(postCloudinaryPhoto(data))
-    setImage(responseCloudinary.secure_url)
-    setLoading(false)
   }
 
 
   return (
     <div className={style.bodymod}>
+      {/* ---------Navbar y Modal -----------------*/}
       <Modal isOpen={isOpenModal} closeModal={closeModal}>
         <h1>Modify Product</h1>
         <div class="d-flex justify-content-evenly">
-          <button
+          <button className={style.botonesformC}
             value="yes"
             onClick={handleSubmit(handleClickYesNo)}
             class="border-0"
@@ -84,7 +82,7 @@ const FormModifyProduct = (props) => {
             Yes
           </button>
           <ToastContainer />
-          <button
+          <button className={style.botonesformC}
             value="no"
             onClick={handleSubmit(handleClickYesNo)}
             class="border-0"
@@ -100,11 +98,13 @@ const FormModifyProduct = (props) => {
           <Figure.Image className={style.figulog} width={17 * 5} height={18 * 5} alt="El Logo" src={logo} />
         </Figure>
       </div>
+      {/* ---------------------------------------------- */}
       <div className={style.container}>
         <form className={style.containerform} onSubmit={handleSubmit(onSubmit)}>
           <div id="Title" className={style.titleform}>
-            <label>title: </label>
+            <label className={style.labelgroup}>Title of the Product</label>
             <input
+              className={style.inputlarge}
               type="text"
               defaultValue={productDetail.title}
               {...register("title", { required: true })}
@@ -112,8 +112,9 @@ const FormModifyProduct = (props) => {
           </div>
           <div className={style.numberform}>
             <div id="Cost">
-              <label>Cost: </label>
+              <label className={style.labelgroup}>Cost: </label>
               <input
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.cost}
                 {...register("cost", {
@@ -122,8 +123,9 @@ const FormModifyProduct = (props) => {
               />
             </div>
             <div id="Margin">
-              <label>Margin </label>
+              <label className={style.labelgroup}>Margin </label>
               <input
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.margin}
                 {...register("margin", {
@@ -132,8 +134,9 @@ const FormModifyProduct = (props) => {
               />
             </div>
             <div id="Price">
-              <label>Price </label>
+              <label className={style.labelgroup}>Price </label>
               <input
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.price}
                 {...register("price", {
@@ -145,8 +148,9 @@ const FormModifyProduct = (props) => {
           </div>
           <div className={style.descimage}>
             <div id="Description">
-              <label>Description: </label>
+              <label className={style.labelgroup}>Description: </label>
               <textarea
+                className={style.inputmedium}
                 type="text"
                 defaultValue={productDetail.description}
                 {...register("description", {
@@ -154,12 +158,13 @@ const FormModifyProduct = (props) => {
                 })}
               />
             </div>
-            <div id="Image">
-              <label>Image: </label>
-              <Container>
-                <p>Uploading images</p>
-                <FormGroup>
+            <div id="Image" >
+              <label className={style.labelgroup}>Image: </label>
+              <Container >
+                {/* <p>Uploading images</p> */}
+                <FormGroup className={style.inputmedium} >
                   <Input
+                    className={style.imageupform}
                     type="file"
                     name="file"
                     placeholder="Image"
@@ -171,8 +176,10 @@ const FormModifyProduct = (props) => {
           </div>
           <div className={style.statstock}>
             <div id="Status">
-              <label>Status: </label>
-              <select {...register("disable", {})}>
+              <label className={style.labelgroup}>Status: </label>
+              <select
+                className={style.inputsmall}
+                {...register("disable", {})}>
                 <option disabled>
                   Status: {productDetail.disable === true ? "Inactive" : "Asset"}
                 </option>
@@ -181,8 +188,9 @@ const FormModifyProduct = (props) => {
               </select>
             </div>
             <div id="Stock">
-              <label>Stock </label>
+              <label className={style.labelgroup}>Stock </label>
               <input
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.stock}
                 {...register("stock", {
@@ -192,17 +200,12 @@ const FormModifyProduct = (props) => {
             </div>
           </div>
           <div className={style.botones}>
-          <input className={style.botonesform} type="submit" value="Save" />
-          <Link to="/homeAdmin">
-            <button className={style.botonesform} >Cancel</button>
-          </Link>
+            <input className={style.botonesform} type="submit" value="Save" />
+            <Link to="/homeAdmin">
+              <button className={style.botonesform} >Cancel</button>
+            </Link>
           </div>
         </form>
-      </div>
-      <div>
-        {!responseCloudinary ? null : (
-          <img src={responseCloudinary.secure_url} />
-        )}
       </div>
     </div>
   );
