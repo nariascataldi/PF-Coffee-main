@@ -10,36 +10,31 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    id_user: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    prod_title: {
-      type: DataTypes.STRING
-    },
+   
     date: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
         allowNull: false
     },
     detail: {
-        type: DataTypes.STRING,
+        type: DataTypes.JSON,
         allowNull: false
     },
     payment: {
         type:DataTypes.STRING,
+        defaultValue: "Mercado Pago",
         allowNull: false
     },
     paid: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+        type: DataTypes.STRING,
+        defaultValue: "Pending"
     },
     delivered: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
     total: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.TEXT,
         allowNull: true
     }
   },{

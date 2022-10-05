@@ -1,4 +1,4 @@
-const { Product, Diet, Category, Provider, Comment } = require('../../db.js');
+const { Product, Diet, Category, Provider, Comment, Ofert } = require('../../db.js');
 
 
 async function getIDproduct (id) {
@@ -7,7 +7,7 @@ async function getIDproduct (id) {
     let response = await Product.findOne({
         // logging: console.log,
         where: { id: id },
-        include: [ Diet, Category, Provider, Comment ] // Provider,
+        include: [ Diet, Category, Provider, Comment, Ofert ] // Provider,
       });
     return response;
 

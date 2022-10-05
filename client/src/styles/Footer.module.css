@@ -55,11 +55,6 @@
     align-items: center;
     justify-content: center;
 }
-
-.singI {
-    padding-top: 4px;
-}
-
 .singII {
     min-width: 88px;
 }
@@ -75,5 +70,8 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-
+.inputNewsletter {
+    width: 98%;
+    height: 2.5vh;
+}
 

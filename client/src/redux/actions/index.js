@@ -26,9 +26,18 @@ export const GET_LOGIN = 'GET_LOGIN'
 export const FILL_CART_LOCAL_S = 'FILL_CART_LOCAL_S'
 export const SET_PROVIDERS = 'SET_PROVIDERS'
 export const SET_PRODUCTS = 'SET_PRODUCTS'
+export const SET_STOCK = 'SET_STOCK'
 export const POST_NEWSLETTER = 'POST_NEWSLETTER'
+export const GET_ALL_NEWSLETTER = 'GET_ALL_NEWSLETTER'
 export const CART_EMPTYING = 'CART_EMPTYING'
 export const CHANGE_MAIL = 'CHANGE_MAIL'
+export const POST_ORDER = "POST_ORDER"
+export const SET_USER_INIT = 'SET_USER_INIT'
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
+export const PUT_USER = "PUT_USER"
+export const GET_USER_DETAIL = "GET_USER_DETAIL"
+export const ORDER_BY_STOCK = "ORDER_BY_STOCK"
+export const GET_ALL_OFERTS = 'GET_ALL_OFERTS'
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -85,6 +94,17 @@ export function getProductDetail(id) {
     })
   }
 };
+
+export function getUserDetail(id) {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/getUserId/${id}`);//getUserId
+    return dispatch({
+      type: GET_USER_DETAIL,
+      payload: json.data
+    })
+  }
+};
+
 export function getAllProviders() {
   return async function (dispatch) {
     const json = await axios.get(URL + `/providers`);
@@ -108,6 +128,33 @@ export function getAllCategories() {
     const json = await axios.get(URL + `/categories`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
+      payload: json.data
+    })
+  }
+};
+export function getAllOrders() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/orders`);
+    return dispatch({
+      type: GET_ALL_ORDERS,
+      payload: json.data
+    })
+  }
+};
+export function getAllNewsletter() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/newsletter`);
+    return dispatch({
+      type: GET_ALL_NEWSLETTER,
+      payload: json.data
+    })
+  }
+};
+export function getAllOferts() {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/oferts`);
+    return dispatch({
+      type: GET_ALL_OFERTS,
       payload: json.data
     })
   }
@@ -146,9 +193,13 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
+
       const response = await axios.post(URL + '/users/registration', payload)
+
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
+      console.log(response.data)
+      localStorage.setItem('usuario-creado',JSON.stringify(response.data))
       return dispatch({
         type: POST_USER,
         payload: response.data,
@@ -157,6 +208,19 @@ export const postUser = (payload) =>
       console.log(error)
     }
   };
+
+export const postOrder = (payload) =>
+async (dispatch) => {
+  try {
+    const response = await axios.post( URL + "/orders", payload)
+    return dispatch({
+      type: POST_ORDER,
+      payload: response.data,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 export const confirmId = id => async dispatch => {
   try {
@@ -182,9 +246,16 @@ export function postProduct(payload) {
 
 export function postNewsletter(payload) {
   return async function () {
-    const json = await axios.post(URL + '/nwsletter', payload);
+    const json = await axios.post(URL + '/newsletter', payload);
     return json
     
+  }
+}
+
+export function postOferts(payload) {
+  return async function () {
+    const json = await axios.post(URL + '/oferts', payload);
+    return json
   }
 }
 
@@ -229,6 +300,14 @@ export function cartEmptying (){
     type:CART_EMPTYING
   }
 }
+// Usuario registrado
+export function setUserInit(payload) {
+  return {
+    type: SET_USER_INIT,
+    payload
+  }
+}
+
 export function postProviders(payload) {
   return async function () {
     const info = await axios.post(URL + '/providers', payload);
@@ -283,5 +362,34 @@ export function putProduct(data, id) {
         payload: res.data
       })
     );
+  }
+}
+
+export function putUser(data, id) {
+  return async function (dispatch) {
+    axios.put(URL + `/mUser/${id}`, data).then(res =>
+      dispatch({
+        type: PUT_USER,
+        payload: res.data
+      })
+    );
+  }
+}
+
+export function putStock(data) {
+  return async function (dispatch) {
+    axios.put(URL + '/editStock', data).then(res =>
+      dispatch({
+        type: SET_STOCK,
+        payload: res.data
+      })
+      )
+  }
+}
+
+export function orderByStock(payload) {
+  return {
+    type: ORDER_BY_STOCK,
+    payload,
   }
 }

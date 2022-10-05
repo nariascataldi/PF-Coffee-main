@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from "react-toastify";
+
 import { postNewsletter }from '../redux/actions/index';
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/Footer.module.css";
 
 export default function Footer () {
   const dispatch = useDispatch()
-  const [input, setInput] = useState({
-    mail: ''
-  })
+  const [input, setInput] = useState({mail: ''})
 
   function handleChange(e)  {
     setInput ({
@@ -19,13 +19,25 @@ export default function Footer () {
     //console.log(e.target.value)
     console.log(input)
   }
+
+  React.useEffect(() => {
+    console.log(input)
+  },[input])
+
   function handleSubmit(e) {
    e.preventDefault()
   
       dispatch(postNewsletter(input))
-      alert("suscrito")
-      setInput({mail: ''})
-    
+       toast("🍩 Suscrito!", {
+         position: "top-right",
+         autoClose: 5000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: true,
+         draggable: true,
+         progress: undefined,
+       })
+      setInput({mail: ''}) 
   }
 
     return (
@@ -130,13 +142,12 @@ export default function Footer () {
                     <input
                       type="email"
                       id="form5Example2"
-                      className="form-control"
+                      className={styles.inputNewsletter}
                       name="mail"
+                      placeholder='Email Adress'
+                      value={input.mail}
                       onChange={(e) => handleChange(e)}
                     />
-                    <label className="form-label" for="form5Example2">
-                      Email address
-                    </label>
                   </div>
                 </div>
 
@@ -145,16 +156,18 @@ export default function Footer () {
                   type="submit" className="btn btn-primary mb-4" >
                     Subscribe
                   </button>
+                  <ToastContainer/>
                 </div>
               </div>
             </form>
           </section>
           <section className={styles.select}>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+              {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
               distinctio earum repellat quaerat voluptatibus placeat nam,
               commodi optio pariatur est quia magnam eum harum corrupti dicta,
-              aliquam sequi voluptate quas.
+              aliquam sequi voluptate quas. */}
+              The photo may differ from the actual product. Donna is fat free, right in the middle.
             </p>
           </section>
           <section>

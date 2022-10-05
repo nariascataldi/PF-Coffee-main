@@ -24,12 +24,14 @@ const { productsGet,
         userAlt,
         providerAlt,
         providerIDremove,
-        userIDremove,
-        userIDget,
+        userIDremove,  
+        stockPut,
+        //userIDget,
         mailPost,
         mailGet,
         ofertPost,
         ofertsGet  } = require('../controllers');
+
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
 const {
@@ -88,6 +90,7 @@ router.delete('/providers/remove', userIDremove);  // ruta NO probada !!!!!! --
 
 //---------------POST
 
+//router.post('/usr', userPost)
 router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
 
 router.post("/providers", providerPost);   // ruta probada !!!!!! -- middlewareAdmin,
@@ -96,17 +99,14 @@ router.post('/comment', commentPost);     // ruta probada !!!!!! -- middlewareAu
 
 router.post('/orders', orderPost);
 
+
 // router.post("/orders", middlewareAuth, orderPost);   // ruta NO probada !!!!!! --
 
 router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 
-router.post('/nwsletter', mailPost);
+router.post('/newsletter', mailPost);
 
 router.post('/oferts', ofertPost)
-<<<<<<< HEAD
-=======
-
->>>>>>> e59efc43951bba9950b51857c619343656804cee
 
 //---------------PUT
 
@@ -116,6 +116,9 @@ router.put('/users/:attribute', userAlt);  // ruta  NO probada !!!!!! -- middlew
 
 router.put('/providers/:attribute', providerAlt);  // ruta  NO probada !!!!!! -- middlewareAdmin,
 
+router.put('/editStock', stockPut);
+
+//////////////// yooooo y Yo también
 
 
 /* -------------- Auth ---------------------*/
@@ -142,20 +145,81 @@ router.get("/users/profile", checkAuth, profile);
 /* -------------- Auth ---------------------*/
 
 
+const {Provider, Product, User} = require('../db')
 
-
-
-const {Provider, Product, Newsletter} = require('../db')
-
-/*router.post('/nwl', async (res,req)=>{
-  let{mail}=req.body;
+const getUserId =async (id)=>{
   try{
-    await Newsletter.create({mail})
-    return res.send("mail registrado")
-  }catch(err){
-    console.log("el err del nwl es: ", err)
+      if(id){
+          const db = await User.findByPk(id)
+          return{
+            name: db.name,
+            id: db.id,
+            lastName: db.lastName,
+            avatar: db.avatar.toString(),
+            birthday: db.birthday,
+            status: db.status,
+            mail: db.mail,
+            confirm: db.confirm,
+            disable: db.disable,
+            basket: db.basket,
+            token: db.token
+
+          }
+      }
+      
+  }catch (error){console.log( 'el error del id es: ', error)}
+}
+
+router.get('/getUserId/:id', async(req,res)=>{
+  const {id} = req.params;
+  try{
+      if(id){
+          let userId = await getUserId(id)
+          userId ?
+          res.status(200).send(userId) : 
+          res.status(404).send('user no encontrado')
+      }
+  }catch (error){console.log('El error del user id es: ', error)}
+})
+
+
+
+router.put('/mUser/:id', async (req,res)=>{
+  try{
+    const{id}=req.params;
+    const {
+      name,
+      lastName,
+      avatar,
+      birthday,
+      status,
+      mail,
+      confirm,
+      disable,
+      basket,
+      token
+
+    } = req.body;
+
+    const modifyUser11 = await User.update({
+      name,
+      lastName,
+      avatar,
+      birthday,
+      status,
+      mail,
+      confirm,
+      disable,
+      basket,
+      token
+    },
+    {where: {id}}
+    );
+    res.send(modifyUser11);
+  }catch (err){
+    console.log("El error del put user es: ", err)
   }
-})*/
+})
 
 router.put('/edit/:id', async (req,res)=>{
   try{
@@ -183,7 +247,7 @@ router.put('/edit/:id', async (req,res)=>{
     );
     res.send(modifyProvider);
   }catch (err){
-    console.log("El error del put es: ", err)
+    console.log("El error del put provider es: ", err)
   }
 })
 router.put('/productsEdit/:id', async (req,res)=>{

@@ -8,48 +8,47 @@ module.exports = (sequelize) => {
     "user",
     {
       id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true,
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         trim: true,
       },
       lastName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       status: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         defaultValue: "Client",
       },
       mail: {
         type: DataTypes.STRING,
-        validate: {
-          isEmail: true,
-        },
+        // validate: {
+        //   isEmail: true,
+        // },
         allowNull: false,
-        trim: true,
-        unique: true,
+        // trim: true,
+        // unique: true,
       },
-      pass: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        trim: true,
-      },
+      // pass: {
+      //   type: DataTypes.STRING,
+      //   allowNull: true,
+      //   trim: true,
+      // },
       avatar: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
       },
       birthday: {
         type: DataTypes.STRING,
       },
       confirm: {
         type: DataTypes.BOOLEAN,
-        default: false
+        default: true
       },
       disable: {
         type: DataTypes.BOOLEAN,

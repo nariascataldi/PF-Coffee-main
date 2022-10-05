@@ -14,6 +14,7 @@ import ProductAdmin from './components/Admin/Product/ProductAdmin';
 // import ProviderCreate from './components/Admin/FormProvider/PrividerCreate';
 import Providers from "./components/Provider/Providers";
 import FillCart from "./components/FillCart/FillCart";
+import MyOrders from "./components/MyOrders/MyOrders";
 import FormularioUsuario from "./components/Account/UserCreate/UserCreate";
 import Modals from './components/Admin/Modals/Modals';
 
@@ -25,6 +26,8 @@ import ConfirmAccount from "../src/components/Authentication/Pages/ConfirmAccoun
 
 import './styles/normalize.css'
 import './styles/globals.css'
+import "react-toastify/dist/ReactToastify.css";
+
 import ListProvider from './components/Provider/CRUD Provider/ListProvider';
 import FormModifyProvider from './components/Provider/CRUD Provider/ModifyProvider';
 import FormModifyProduct from './components/Admin/Product/CRUD Product/ModifyProduct';
@@ -34,6 +37,9 @@ import ListProducts from './components/Admin/Product/CRUD Product/ListProduct';
 import Loading from './components/Loading';
 import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 import Newsletter from './components/Admin/Newsletter/Newsletter';
+import SignIn from './components/SignIn/SignIn';
+import PrivateRoute from './components/PrivateRoute';
+import ProfileUser from './components/my profile/ProfileUser';
 
 
 function App() {
@@ -60,9 +66,12 @@ function App() {
           <Route path="forget-password/:token" element={<NewPassword />} />
           <Route path="forget-password" element={<ForgetPassword />} />
           <Route exact path="/fillCart" element={<FillCart />} />
+          <Route exact path='/myorders' element={<MyOrders />} />
           {/* <Route exact path="/productAdminEdit" element={<ProductAdminEdit />} />*/}
           <Route exact path="/productAdmin" element={<ProductAdmin />} />
-          <Route exact path="/homeAdmin" element={<HomeAdmin />} />
+          <Route exact path="/homeAdmin" element={<PrivateRoute>
+            <HomeAdmin/>
+          </PrivateRoute>} />
           <Route
             exact
             path="/modProvider/:id"
@@ -74,11 +83,16 @@ function App() {
           <Route exact path="/list" element={<ListProvider />} />
           {/* <Route exact path='/crud/product' element={<CrudApp />} /> */}
           {/* <Route exact path="/providerCreate" element={<ProviderCreate />} /> */}
-          <Route exact path="/providers" element={<Providers />} />
+          <Route exact path="/providers" element={ <PrivateRoute>
+            <Providers />
+          </PrivateRoute>} />
           <Route exact path="/formusers" element={<FormularioUsuario />} />
           <Route exact path="/modals" element={<Modals />} />
           <Route exact path="/checkout/congrats" element={<CheckoutConfirm />} />
           <Route path="*" element={<NotFound />} />
+          <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}/>
+          <Route exact path='/signin' element={<SignIn/>}/>
+          <Route exact path='/profileUser' element={<ProfileUser />}/>
         </Routes>
       </div>
     </>

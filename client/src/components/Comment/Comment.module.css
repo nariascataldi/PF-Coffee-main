@@ -1,0 +1,32 @@
+.container {
+    background-color: var(--primary);
+    display: grid;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.caja {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    width: 800px;
+    height: 200px;
+
+}
+.comment{
+    color: rgb(144, 156, 156);
+    font-style: italic ;
+}
+.name{
+    color: rgb(144, 156, 156);
+    font-style: italic ;
+    margin-left: 40px;
+    font-size: large;
+}
+.stars{
+    margin-right: 15px;
+}
+.number{
+    display: flex;
+    align-items: center;
+}

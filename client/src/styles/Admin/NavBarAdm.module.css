@@ -1,25 +1,7 @@
-.navBar {
-    background-color: #eefcf3;
-}
-
 .links {
     text-decoration: none;
     color: inherit;
 }
-
-/* --------------------------------- */
-/* .navbar {
-    border-bottom: 1.35px solid rgba(0, 0, 0, 0.644);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed !important;
-    background-color: var(--primary);
-    top: 0;
-    width: 100%;
-    z-index: 10;
-    padding-right: 20px;
-} */
 
 .menu_logo {
     display: flex;
@@ -86,6 +68,7 @@
     border-color: var(--primary);
     color: var(--primary);
 }
+
 .searchBar {
     display: flex;
     justify-content: center;
@@ -121,7 +104,7 @@
     cursor: pointer;
 }
 
-.autoCompleteContainer{
+.autoCompleteContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -145,7 +128,6 @@
     margin: 0;
     border: 1px solid gray;
     color: rgb(243, 241, 241);
-    /* transform: translateY(300%); */
 }
 
 .autoComplete:hover {

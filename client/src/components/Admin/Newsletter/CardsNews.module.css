@@ -1,0 +1,69 @@
+.divScrollProducts {
+    width: 400px;
+    background-color: var(--white);
+    height: 250px;
+    margin: 10px 10px 10px 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.parentScrolls {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgb(114, 114, 114);
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.inputDes {
+    height: 10vh;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 10px;
+    color: rgb(114, 114, 114);
+    margin-left: 6px;
+}
+
+.seleSelect {
+    border-radius: 12px;
+    width: 70vh;
+    padding-left: 1vh;
+   
+    background-color: var(--primary);
+ 
+    color: rgb(114, 114, 114);
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 10px;
+    margin-left: -1px;
+}
+
+.seleSelect:hover {
+    background-color: var(--strong);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.button {
+    background-color: var(--smooth);
+    border-radius: 12px;
+    border: none;
+    color: white;
+    height: 30px;
+    width: 100px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.button:hover {
+    background-color: var(--strong);
+}

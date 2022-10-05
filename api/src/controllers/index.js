@@ -21,10 +21,12 @@ const deleteProv = require('../utils/Provider/deleteProv');
 const deleteUser = require('../utils/User/deleteUser');
 const postOrder = require('../utils/Order/postOrder');
 const getOrders = require('../utils/Order/getOrders.js');
+const editStock = require('../utils/Stock/editStock');
 const postMail = require('../utils/postMail')
 const getMail = require('../utils/getMail')
 const postOfert = require('../utils/Ofert/postOfert')
 const getOferts = require('../utils/Ofert/getOfert')
+
 
 
 const productsGet = async (req, res, next) => {
@@ -118,6 +120,13 @@ const orderPost = async (req, res, next) => {
     console.log('input en controllers API: ', req.body);
     let response = await postOrder(req.body) || {};
     res.send(response)   //    petición   probada !!!!!! --
+  } catch (e) { next(e) }
+};
+
+const stockPut = async (req, res, next) => {
+  try {
+    let response = await editStock(req.body) || {};
+    res.send(response)
   } catch (e) { next(e) }
 };
 
@@ -299,11 +308,13 @@ module.exports = {
   providerAlt,
   userIDremove,
   providerIDremove,
+  stockPut,
   mailPost,
   mailGet,
   ofertPost,
   ofertsGet
 };
+
 
   
 

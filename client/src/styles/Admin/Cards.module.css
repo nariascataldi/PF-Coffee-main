@@ -1,0 +1,39 @@
+.not_found {
+  padding-top: 120px;
+  padding-left: 260px;
+  padding-bottom: 250px;
+}
+
+.cards_wraper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 52px;
+  padding-left: 150px;
+  padding-right: 150px;
+  width: 100vw;
+}
+
+.paginadoAdmin {
+  margin-top: 0;
+  padding-top: 0px;
+}
+
+.conte {
+
+  background-color: #eefcff;
+  height: 70vh;
+  border-radius: 20px;
+  /* margin: 10px 10px 10px 0px; */
+  margin: 0vh 5vh 5vh 5vh;
+  overflow: hidden;
+  overflow-y: scroll;
+
+}
+
+.sors{
+  cursor: pointer;
+  background-color: #eefcff;
+  border: none;
+}

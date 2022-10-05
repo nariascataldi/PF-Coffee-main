@@ -7,9 +7,12 @@ const { FRONT } = require('./db.js');
 const frontPort = FRONT || 3030;
 const cors = require('cors');
 
+
 require('./db.js');
 
 const server = express();
+server.use(cors())
+
 server.use(cors())
 
 //CONFIGURACION CORS

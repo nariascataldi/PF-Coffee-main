@@ -1,7 +1,38 @@
-.home_container{
-    background-color: #E3EFFB;
-    padding-top: 0vh;
+.home_container {
+    background-color: var(--primary);
+    height: 100vh;
 }
+
+.figulog {
+    border-radius: 10px;
+    color: var(--primary);
+    font-weight: 900;
+}
+
+.figpos {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    margin-right: 7vw;
+    margin-top: -8vh;
+}
+
+.figcenter{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.2;
+
+}
+
+.conteinTabla {
+    background-color: #FCEEF0;
+    border-color: var(--black);
+    border-radius: 20px;
+    margin: 2vh
+}
+
 .searchBar {
     display: flex;
     justify-content: center;
@@ -34,5 +65,21 @@
     padding-right: 14px;
     color: var(--white);
     cursor: pointer;
-    
+
+}
+
+.rowcon {
+    padding: 4vh;
+}
+
+.colum2 {
+    background-color: #EEFCF3;
+}
+
+.colum10 {
+    background-color: #EEFCF3;
+}
+
+.bonton {
+    padding: 2vh;
 }

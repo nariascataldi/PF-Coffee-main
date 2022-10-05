@@ -71,12 +71,19 @@ User.hasMany(Order, {
 });
 Order.belongsTo(User);
 
+User.hasMany(Comment, {
+  //foreignKey: "id_user"
+});
+Comment.belongsTo(User);
+
 Provider.hasMany(Order, {
   //foreignKey: "id_provider"
 });
 Order.belongsTo(Provider);
 
 User.hasMany(Newsletter);
+
+Newsletter.belongsTo(User);
 
 
 Product.belongsToMany(Category, { through: "product_category"});
@@ -109,6 +116,9 @@ Diet.belongsToMany(Ofert, { through: "ofert_diet" });
 
 Ofert.belongsToMany(User, { through: "ofert_user" });
 User.belongsToMany(Ofert, { through: "ofert_user" });
+
+Ofert.belongsToMany(Product, { through: "ofert_product" });
+Product.belongsToMany(Ofert, { through: "ofert_product" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

@@ -1,31 +1,27 @@
 
-const { Order, Product, User } = require("../../db.js");
+const { Order, User } = require("../../db.js");
 
 const postOrder = async (obj) => {
-  let { id, title, price, products, mail, quantity, total } = obj;
+  let { detail, total, paid, user} = obj;
 
- 
 
-  let orderCreate = await Order.create({
-    id_user: mail,
-    prod_title: title,
-    detail:  " Units: " + quantity,
-    payment: "Mercado Pago",
-    total: total 
+  const orderCreate = await Order.create({
+    detail,
+    total,
+    paid,
+    user
   });
-
-  if (products && products.length > 0 ){
-    Product.findAll()
-      .then(r=> r.filter(o=> products.includes(o.title)) )
-      .then(r=> r.map( async(p)=> await orderCreate.addProduct(p.id) ) )   // dt.dataValues.id
-      .catch(e=> console.log(e))
-  };
-  let usr = await User.findByPk(mail);
-  orderCreate.setUser(usr.mail);
- 
-
-  
-  return orderCreate;
+let order = await Order.findOne({where:{id: orderCreate.id}})
+if(user && user.length > 0) {
+User.findAll()
+.then(r=>r.filter(o=>user.include(o.id)))
+.then(r=>r.map(async(p)=> await orderCreate.addUser(p.id)))
+}
+let order2 = await Order.findOne({
+  where: { id: order.id },
+  include: [ User] 
+});
+  return order2;
 };
 
 module.exports = postOrder;
