@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const nodemailer = require("nodemailer");
-const { google } = require("googleapis");
-const { User } = require("../db");
+// const { google } = require("googleapis");
+// const { User } = require("../db");
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
 
 const checkAuth = require("../middlewares/checkAuth");
