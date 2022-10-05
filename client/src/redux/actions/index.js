@@ -34,6 +34,8 @@ export const CHANGE_MAIL = 'CHANGE_MAIL'
 export const POST_ORDER = "POST_ORDER"
 export const SET_USER_INIT = 'SET_USER_INIT'
 export const GET_ALL_ORDERS = "GET_ALL_ORDERS"
+export const PUT_USER = "PUT_USER"
+export const GET_USER_DETAIL = "GET_USER_DETAIL"
 export const ORDER_BY_STOCK = "ORDER_BY_STOCK"
 export const GET_ALL_OFERTS = 'GET_ALL_OFERTS'
 
@@ -92,6 +94,17 @@ export function getProductDetail(id) {
     })
   }
 };
+
+export function getUserDetail(id) {
+  return async function (dispatch) {
+    const json = await axios.get(URL + `/getUserId/${id}`);//getUserId
+    return dispatch({
+      type: GET_USER_DETAIL,
+      payload: json.data
+    })
+  }
+};
+
 export function getAllProviders() {
   return async function (dispatch) {
     const json = await axios.get(URL + `/providers`);
@@ -344,6 +357,17 @@ export function putProduct(data, id) {
     axios.put(URL + `/productsEdit/${id}`, data).then(res =>
       dispatch({
         type: SET_PRODUCTS,
+        payload: res.data
+      })
+    );
+  }
+}
+
+export function putUser(data, id) {
+  return async function (dispatch) {
+    axios.put(URL + `/mUser/${id}`, data).then(res =>
+      dispatch({
+        type: PUT_USER,
         payload: res.data
       })
     );
