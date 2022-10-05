@@ -33,7 +33,7 @@ const SignIn =()=> {
         avatar:""
       });
     useEffect(()=>{
-        getAllUsers()
+        dispatch(getAllUsers())
     },[])
     const googleRegister = async () => {   
         console.log('inicio de sesion con google')
