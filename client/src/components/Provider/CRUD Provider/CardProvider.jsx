@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from '../../../styles/NavBar.module.css';
 
 
 const ProviderCard = ({ name, mail, logo, adress, phone, CUIT, disable, id }) => {
@@ -8,7 +9,8 @@ const ProviderCard = ({ name, mail, logo, adress, phone, CUIT, disable, id }) =>
   return (
     <tbody>
       <tr>
-        <th scope="row"> <p>{id}</p></th>
+        <td><Link to={`/modProvider/${id}`}><button type="button" className={styles.buttonPrice} >modify</button></Link></td>
+        <td scope="row"> <p>{id}</p></td>
         <td><img src={logo} alt={name} width='70 vw' /></td>
         <td><p>{name}</p></td>
         <td><p>{mail}</p></td>
@@ -20,7 +22,6 @@ const ProviderCard = ({ name, mail, logo, adress, phone, CUIT, disable, id }) =>
             <td><p>Asset</p></td> :
             <td><p>Inactive</p></td>
         }
-        <td><Link to={`/modProvider/${id}`}><button type="button" className="btn btn-outline-primary">modify</button></Link></td>
       </tr>
 
     </tbody>
