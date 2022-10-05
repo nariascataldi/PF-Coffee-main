@@ -16,7 +16,7 @@ export default function OrdersHistory() {
 
     return (
         <div>
-            <NavBar/>
+            <NavBar noFilters/>
             <h1>Orders</h1>
             {   !orders? <div><h1> You  do not have orders!!</h1></div>:
                 orders && orders.map(o => (

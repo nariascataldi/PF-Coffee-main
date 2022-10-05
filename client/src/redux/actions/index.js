@@ -38,6 +38,7 @@ export const PUT_USER = "PUT_USER"
 export const GET_USER_DETAIL = "GET_USER_DETAIL"
 export const ORDER_BY_STOCK = "ORDER_BY_STOCK"
 export const GET_ALL_OFERTS = 'GET_ALL_OFERTS'
+export const RESET_FILTER ='RESET_FILTER'
 
 export function getAllProducts() {
   return async function (dispatch) {
@@ -190,23 +191,11 @@ export const createProduct = (postData) => {
   }
 };
 
-export const postUser = (payload) =>
-  async (dispatch) => {
-    try {
-      const response = await axios.post(URL + '/users/registration', payload)
-      // .then(response => console.log(response))
-      // .catch(error => console.log(error))
-      console.log(response.data)
-      localStorage.setItem('usuario-creado',JSON.stringify(response.data))
-      return dispatch({
-        type: POST_USER,
-        payload: response.data,
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  };
+export const postUser = (payload) =>{
 
+      return axios.post(URL + '/users/registration', payload);
+    
+  };
 export const postOrder = (payload) =>
 async (dispatch) => {
   try {
@@ -258,10 +247,9 @@ export function postOferts(payload) {
 }
 
 export function   postNodemailer(payload) {
-  return async function (){
-    const json = await axios.post(URL + '/nodemailer', payload);
-    return json
-  }
+  return axios.post(URL + '/nodemailer', {
+    mail: payload
+  });
 }
 
 export function setFilterState(payload) {
@@ -273,6 +261,11 @@ export function setFilterState(payload) {
 export function filter() {
   return {
     type: FILTER,
+  }
+};
+export function resetFilter() {
+  return {
+    type: RESET_FILTER,
   }
 };
 export function changeMailArray(payload) {

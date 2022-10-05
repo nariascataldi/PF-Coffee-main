@@ -15,7 +15,7 @@
     align-items: center;
     background-color: #EEF7FC ;
     width: 60%;
-    height: 50%;
+    height: 55%;
     border-radius: 32px;
 }
 .signin-info-user{
@@ -57,4 +57,16 @@
 .with{
     font-size: 10px;
     font-weight: 300;
+}
+.decoration-linkk{
+    text-decoration: none;
+}
+.form-reg-init-btn1{
+    border:none;
+    background-color: white;
+    color:#DD6873;
+    width: 120px;
+    height: 34px;
+    border-radius: 12px;
+    margin: 8px;
 }

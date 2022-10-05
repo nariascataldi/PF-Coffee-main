@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle,BsFillPersonCheckFill } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getByTitle, setFilterState } from "../redux/actions/index";
+import { getByTitle, resetFilter, setFilterState } from "../redux/actions/index";
 
 import logo from "../assets/logo_coffee.png";
 import Menu from "../components/Menu/Menu";
@@ -21,6 +21,7 @@ const NavBar = ({ noFilters }) => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   React.useEffect(()=>{
     
@@ -54,7 +55,10 @@ const NavBar = ({ noFilters }) => {
     setMenu(!menu);
   };
   
-  
+  const sacarFiltros =()=>{
+    dispatch(resetFilter())
+    navigate('/')
+  }
  
   
   
@@ -72,9 +76,11 @@ const NavBar = ({ noFilters }) => {
             <span></span>
           </div>
         </div>
-        <Link to="/">
-          <img src={logo} alt="img" className={styles.logo} />
-        </Link>
+        
+          <button onClick={sacarFiltros} className={styles.botonresetfilter}> 
+          <img src={logo} alt="img" className={styles.logo} /></button>
+         
+
       </div>
       <SearchBar />
 

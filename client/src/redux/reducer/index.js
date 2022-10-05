@@ -28,6 +28,7 @@ import {
   GET_ALL_NEWSLETTER,
   GET_USER_DETAIL,
   ORDER_BY_STOCK,
+  RESET_FILTER,
   GET_ALL_OFERTS  } from '../actions'
 
 
@@ -46,7 +47,7 @@ const initialState = {
   responseCloudinary: {},
   token: [],
   checkedMails: [],
-  userInit: JSON.parse(localStorage.getItem('usuario-creado')) || {},
+  userInit: JSON.parse(localStorage.getItem('Sign In')) || {},
   orders: [],
   newsletter: [],
   oferts: [],
@@ -154,13 +155,23 @@ const rootReducer = (state = initialState, action) => {
         users: action.payload
       }
     case SET_USER_INIT:
-      //   const localSUserInit = JSON.parse(localStorage.getItem('Sign in'))
-      const usuarioiniciado = [];
 
       return {
         ...state,
-        userInit: usuarioiniciado
+        userInit: action.payload
       }
+      case RESET_FILTER :
+        return {
+          ...state,
+          filterBy: {
+            title: '',
+            category: '',
+            diet: '',
+            sort: '',
+            minPrice: '',
+            maxPrice: ''
+          }
+        }
 
     case FILTER:
       const allProd = state.allProducts;

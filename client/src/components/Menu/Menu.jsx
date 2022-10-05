@@ -16,9 +16,9 @@ export default function Menu({ menu }) {
     
     const cerrarSesion = () => {
         signOut(auth)
-         localStorage.setItem('usuario-creado',JSON.stringify(''));
-        localStorage.setItem('Sign In',JSON.stringify(''));
-        dispatch(setUserInit(''))
+         localStorage.removeItem('usuario-creado');
+        localStorage.removeItem('Sign In');
+        dispatch(setUserInit({}))
         toast("You logged out", {
           position: "top-right",
           autoClose: 5000,

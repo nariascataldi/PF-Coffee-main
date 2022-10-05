@@ -238,3 +238,7 @@
     font-size: 14px;
     margin: 1vh;
 }
+.botonresetfilter{
+    border: none;
+    background-color: #E3EFFB;
+}

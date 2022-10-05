@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import FormModifyProvider from './UpdateProfile'
 import Orders from './Order'
 //import Profile from './Profile'
-import NavBar from "../Admin/NavBarAdmin/NavBarAdmin"
+import NavBar from "../NavBar"
 import logo from '../../assets/logo_coffee.png'
 
 
@@ -26,7 +26,7 @@ function ProfileUser(){
 return(
     <div className={style.home_container}> 
       <div className={style.conteinTabla}>
-        <NavBar></NavBar>
+        <NavBar noFilters/>
         <div className={style.figpos}>
         <Figure>
           <Figure.Image className={style.figulog} width={17 * 5} height={18 * 5} alt="El Logo" src={logo} />
