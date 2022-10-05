@@ -14,6 +14,7 @@ import { reduceCart } from "../../utils/reduceCart";
 import { ToastContainer, toast } from "react-toastify";
 
 import "./FillCart.css";
+import { Link } from "react-router-dom";
 
 export default function FillCart() {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function FillCart() {
 
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
-
+    const usuarioIiniciado=JSON.parse(localStorage.getItem('Sign In')) 
     const reducedCart = reduceCart(fillCart)
 
 
@@ -50,7 +51,7 @@ export default function FillCart() {
     // const infoUser= JSON.parse(localStorage.getItem('ususrio-creado'));
     
     function handleButtonPay() {
-        if(userInit.id){
+        if(usuarioIiniciado.id){
             console.log('se ejecuto la accion de pag')
              reducedCart.forEach(elem =>
             dispatch(putStock(elem)))
@@ -96,11 +97,12 @@ export default function FillCart() {
                         return (
 
                             <div className='card-detail'>
-
+                                <Link to={`/detail/${d.id}`}>
                                 <div>
 
                                     <img src={d.image} className='card-img-top img' alt="Image product" />
                                 </div>
+                                </Link>
                                 <div className='text-detail'>
                                     <div className='card-body'>
                                         <h1 className='card-title'>{d.title}</h1>

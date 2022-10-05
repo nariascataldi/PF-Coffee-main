@@ -46,7 +46,7 @@ const initialState = {
   responseCloudinary: {},
   token: [],
   checkedMails: [],
-  userInit: JSON.parse(localStorage.getItem('usuario-creado')) || {},
+  userInit: JSON.parse(localStorage.getItem('Sign In')) || {},
   orders: [],
   newsletter: [],
   oferts: [],
@@ -154,12 +154,10 @@ const rootReducer = (state = initialState, action) => {
         users: action.payload
       }
     case SET_USER_INIT:
-      //   const localSUserInit = JSON.parse(localStorage.getItem('Sign in'))
-      const usuarioiniciado = [];
 
       return {
         ...state,
-        userInit: usuarioiniciado
+        userInit: action.payload
       }
 
     case FILTER:
