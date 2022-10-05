@@ -18,14 +18,14 @@ const { productsGet,
         commentPost,
         orderPost,
         ordersGet,
-        // userPost,
+         //userPost,
         usersGet,
         userAlt,
         providerAlt,
         providerIDremove,
         userIDremove,  
         stockPut,
-        userIDget,
+        //userIDget,
         mailPost,
         mailGet,
         ofertPost,
@@ -88,6 +88,7 @@ router.delete('/providers/remove', userIDremove);  // ruta NO probada !!!!!! --
 
 //---------------POST
 
+//router.post('/usr', userPost)
 router.post('/products', prodPost);    // ruta probada !!!!!! -- middlewareAdmin,
 
 router.post("/providers", providerPost);   // ruta probada !!!!!! -- middlewareAdmin,
@@ -146,7 +147,81 @@ router.get("/users/profile", checkAuth, profile);
 
 
 
-const {Provider, Product} = require('../db')
+const {Provider, Product, User} = require('../db')
+
+const getUserId =async (id)=>{
+  try{
+      if(id){
+          const db = await User.findByPk(id)
+          return{
+            name: db.name,
+            id: db.id,
+            lastName: db.lastName,
+            avatar: db.avatar.toString(),
+            birthday: db.birthday,
+            status: db.status,
+            mail: db.mail,
+            confirm: db.confirm,
+            disable: db.disable,
+            basket: db.basket,
+            token: db.token
+
+          }
+      }
+      
+  }catch (error){console.log( 'el error del id es: ', error)}
+}
+
+router.get('/getUserId/:id', async(req,res)=>{
+  const {id} = req.params;
+  try{
+      if(id){
+          let userId = await getUserId(id)
+          userId ?
+          res.status(200).send(userId) : 
+          res.status(404).send('user no encontrado')
+      }
+  }catch (error){console.log('El error del user id es: ', error)}
+})
+
+
+
+router.put('/mUser/:id', async (req,res)=>{
+  try{
+    const{id}=req.params;
+    const {
+      name,
+      lastName,
+      avatar,
+      birthday,
+      status,
+      mail,
+      confirm,
+      disable,
+      basket,
+      token
+
+    } = req.body;
+
+    const modifyUser11 = await User.update({
+      name,
+      lastName,
+      avatar,
+      birthday,
+      status,
+      mail,
+      confirm,
+      disable,
+      basket,
+      token
+    },
+    {where: {id}}
+    );
+    res.send(modifyUser11);
+  }catch (err){
+    console.log("El error del put user es: ", err)
+  }
+})
 
 router.put('/edit/:id', async (req,res)=>{
   try{
@@ -174,7 +249,7 @@ router.put('/edit/:id', async (req,res)=>{
     );
     res.send(modifyProvider);
   }catch (err){
-    console.log("El error del put es: ", err)
+    console.log("El error del put provider es: ", err)
   }
 })
 router.put('/productsEdit/:id', async (req,res)=>{

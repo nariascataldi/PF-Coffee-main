@@ -25,7 +25,8 @@ import {
   SET_USER_INIT,
   GET_ALL_USERS,
   GET_ALL_ORDERS,
-  GET_ALL_NEWSLETTER
+  GET_ALL_NEWSLETTER,
+  GET_USER_DETAIL
   // fillCart
 } from '../actions'
 
@@ -34,6 +35,7 @@ const initialState = {
   products: [],
   users: [],
   productDetail: {},
+  userDetail:{},
   providers: [],
   providerDetail: {},
   categories: [],
@@ -80,6 +82,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         productDetail: action.payload
       }
+    case GET_USER_DETAIL:
+        return {
+          ...state,
+          userDetail: action.payload
+        }
     case CLEAR_DETAIL:
       return {
         ...state,

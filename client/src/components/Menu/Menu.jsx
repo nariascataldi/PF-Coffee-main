@@ -39,10 +39,15 @@ export default function Menu({ menu }) {
             {userInit?.status ==='Admin' &&
                 <>
                 <Link to='/homeAdmin'><button className='menubutton-crate-product'>Home Admin</button></Link>
-                <Link to='/providers'><button className='menubutton-crate-product'>Provider</button></Link>
+                <Link to='/profileUser'><button className='menubutton-crate-product'>My Account</button></Link>
                 </>
             }
-
+            {
+                userInit?.status === 'Client' &&
+                <>
+                <Link to='/profileUser'><button className='menubutton-crate-product'>My Account</button></Link>
+                </>
+            }
             
 
             {/* <Link to='/providerCreate'><button className='menubutton-crate-product'>Add new Provider</button></Link> */}

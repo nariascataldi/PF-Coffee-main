@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
       //   trim: true,
       // },
       avatar: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
       },
       birthday: {
         type: DataTypes.STRING,

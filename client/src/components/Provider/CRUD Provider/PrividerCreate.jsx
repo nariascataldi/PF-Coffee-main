@@ -67,7 +67,7 @@ const FormProviderCreate = (props) => {
     return (
       <div>
         <Modal isOpen={isOpenModal} closeModal={closeModal}>
-          <h1 className="">Create provider</h1>
+          
           <div class="d-flex justify-content-evenly">
             <button
               value="yes"
@@ -98,9 +98,7 @@ const FormProviderCreate = (props) => {
               Name:{" "}
             </label>
             <input
-              className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
+
               type="text"
               {...register("name", {
                 required: true,
@@ -118,9 +116,7 @@ const FormProviderCreate = (props) => {
               E-mail:{" "}
             </label>
             <input
-              className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
+
               type="mail"
               {...register("mail", {
                 required: true,
@@ -140,9 +136,6 @@ const FormProviderCreate = (props) => {
               Adress:{" "}
             </label>
             <input
-              className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
               type="text"
               {...register("adress", {
                 required: true,
@@ -178,9 +171,6 @@ const FormProviderCreate = (props) => {
               Phone:{" "}
             </label>
             <input
-              className="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
               type="number"
               {...register("phone", {
                 required: true,
