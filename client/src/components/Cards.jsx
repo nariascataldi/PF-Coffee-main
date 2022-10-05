@@ -29,7 +29,7 @@ export default function Cards({ load }) {
 
   //paginado
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(8);
+  const [productsPerPage, setProductsPerPage] = useState(10);
   const indexOfLast = currentPage * productsPerPage;
   const indexOfFirst = indexOfLast - productsPerPage;
   const currentProducts = products.slice(indexOfFirst, indexOfLast);
