@@ -52,7 +52,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr 0.5fr 1fr;
     grid-template-columns: 1fr 1fr;
-    background-color: #92626285;
+    background-color: #dd6873;
     width: 25rem;
     height: 25rem;
     border-radius: 1rem;
@@ -83,6 +83,7 @@
     justify-self: center;
     width: 2.5rem;
     height: 2.5rem;
+    color: whitesmoke;
 }
 .GitHub:hover {
     transform: scale(2.1);
@@ -96,6 +97,8 @@
     justify-self: center;
     width: 2.5rem;
     height: 2.5rem;
+    color: whitesmoke;
+
 }
 
 .LinkedIn:hover {
