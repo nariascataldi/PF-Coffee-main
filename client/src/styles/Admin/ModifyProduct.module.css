@@ -63,7 +63,7 @@ body {
   flex-direction: row;
 }
 
-.statstock { 
+.statstock {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -127,7 +127,7 @@ body {
   padding-left: 10vw;
 }
 
-.inputmedium{
+.inputmedium {
   padding: 6vh 1vh 1vh 4vh;
   width: 40vw;
   height: 20vh;
@@ -144,6 +144,7 @@ body {
   padding: 3vh;
   color: rgba(100, 148, 237, 0.4);
 }
-.imageupform{
-font-size: small;
+
+.imageupform {
+  font-size: small;
 }
