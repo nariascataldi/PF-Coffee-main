@@ -22,15 +22,15 @@ import {
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
   POST_NEWSLETTER,
+  GET_ALL_USERS,
   SET_USER_INIT,
   GET_ALL_USERS,
   GET_ALL_ORDERS,
   GET_ALL_NEWSLETTER,
   GET_USER_DETAIL,
   ORDER_BY_STOCK,
-  GET_ALL_OFERTS
-  // fillCart
-} from '../actions'
+  GET_ALL_OFERTS  } from '../actions'
+
 
 const initialState = {
   allProducts: [],

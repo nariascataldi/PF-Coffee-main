@@ -1,6 +1,8 @@
 const { Router } = require('express');
-// const middlewareAuth = require('../middlewares/middlewareAuth');
-// const middlewareAdmin = require('../middlewares/middlewareAdmin');
+const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
+const { User } = require("../db");
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
 
 const checkAuth = require("../middlewares/checkAuth");
 
@@ -18,7 +20,6 @@ const { productsGet,
         commentPost,
         orderPost,
         ordersGet,
-         //userPost,
         usersGet,
         userAlt,
         providerAlt,
@@ -33,14 +34,15 @@ const { productsGet,
 
 const checkoutControllers = require('../utils/CheckOut/checkoutControllers');
 
-const { 
-        userRegist,
-        userLogin,
-        confirm,
-        forgetPassword,
-        checkToken,
-        newPass,
-        profile  } = require('../controllers/authControllers.js');
+const {
+  userRegist,
+  userLogin,
+  confirm,
+  forgetPassword,
+  checkToken,
+  newPass,
+  profile
+} = require("../controllers/authControllers.js");
 
 // import * as ctrls from '../controllers ---> ej: ctrls.productGet   (babel)
 
@@ -106,7 +108,6 @@ router.post('/newsletter', mailPost);
 
 router.post('/oferts', ofertPost)
 
-
 //---------------PUT
 
 router.put('/products/:attribute', altAttribute);  // ruta probada !!!!!! -- middlewareAdmin,
@@ -142,9 +143,6 @@ router.get("/users/profile", checkAuth, profile);
 //SI TODO ESTA BIEN SE VA HACIA PROFILE
   
 /* -------------- Auth ---------------------*/
-
-
-
 
 
 const {Provider, Product, User} = require('../db')
@@ -294,4 +292,72 @@ router.put('/productsEdit/:id', async (req,res)=>{
   }
 })
 
+
+router.post("/nodemailer", async (req, res) => {
+  const { name, lastName, mail, pass, avatar, birthday } = req.body;
+  const clientCreated = await User.create({
+    name,
+    lastName,
+    mail,
+    pass,
+    avatar,
+    birthday,
+  });
+
+  JSON.stringify(clientCreated);
+  const oAuth2Client = new google.auth.OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    REDIRECT_URI
+  );
+  oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+  async function sendMail() {
+    try {
+      const accessToken = await oAuth2Client.getAccessToken();
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          type: "OAuth2",
+          user: "coffeeorder2022@gmail.com",
+          clientId: CLIENT_ID,
+          clientSecret: CLIENT_SECRET,
+          refreshToken: REFRESH_TOKEN,
+          accessToken: accessToken,
+        },
+      });
+      const mailOptions = {
+        from: "Coffe´s <coffeeorder2022@gmail.com>",
+        to: mail,
+        subject: "🍩New message from your contact form🧁",
+        html: `<a href="https://ibb.co/C7hLPnH">
+                 <img src="https://i.ibb.co/R0z8jCD/mail.jpg" 
+                      alt="mail" 
+                      border="0">
+                </a>`,
+      };
+      const result = await transporter.sendMail(mailOptions);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  sendMail()
+  if(mail){
+        await User.findOne({ where: { mail: mail } })
+        res.status(200).send('Enviado')
+  } else {
+      const error = new Error("There is already a user with that email !!");
+    return res.status(400).json({ msg: error.message})
+  }
+});
+
+
 module.exports = router;
+
+/*<a href="https://ibb.co/gR8F1Wx"></a> align="center" alt="Welcome" border="0"
+
+
+<a href="https://ibb.co/gR8F1Wx"><img src="https://i.ibb.co/P6yzpWd/hot-sale-for-retail-with-pink-circle.jpg" alt="hot-sale-for-retail-with-pink-circle" border="0"></a>
+
+<a href="https://ibb.co/C7hLPnH"><img src="https://i.ibb.co/R0z8jCD/mail.jpg" alt="mail" border="0"></a>
+*/

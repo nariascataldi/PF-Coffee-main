@@ -5,16 +5,18 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { FRONT } = require('./db.js');
 const frontPort = FRONT || 3030;
- const cors = require("cors");
+const cors = require('cors');
+
 
 require('./db.js');
 
 const server = express();
+server.use(cors())
 
 server.use(cors())
 
 //CONFIGURACION CORS
-// const whitelist = ["*"]; //DOMINIOS PERMITIDOS
+
 
 // const corsOptions = {
 //   origin: function(origin, callback){
@@ -26,7 +28,14 @@ server.use(cors())
 //   }
 // };
 
-// server.use(cors(corsOptions))
+// var corsOptions = {
+//   origin: "*",
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   preflightContinue: false,
+//   optionsSuccessStatus: 204, // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
+
+// server.use(cors(corsOptions));
 
 server.name = 'API';
 
@@ -35,7 +44,7 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
