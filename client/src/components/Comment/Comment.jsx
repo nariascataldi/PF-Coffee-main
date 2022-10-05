@@ -39,7 +39,9 @@ export default function Comment(detail) {
         suma = suma + estrellas[i] 
     }
     console.log("suma",suma)
-    let num = (suma/estrellas.length).toFixed(1)
+    let num = 0
+    if(suma === 0){num = 0} else{
+    num = (suma/estrellas.length).toFixed(1)}
     let prom = Math.round(suma/estrellas.length)
     console.log("promedio",num)
 

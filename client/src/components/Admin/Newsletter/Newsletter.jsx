@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import { Container, FormGroup, Input } from "reactstrap";
 
 import { 
     getAllCategories, 
     getAllDiets, 
     getAllNewsletter, 
     getAllProducts, 
+    postCloudinaryPhoto, 
     postOferts } from "../../../redux/actions";
 
 import styles from './CardsNews.module.css'
@@ -18,10 +20,10 @@ export default function Newsletter (){
     let products = useSelector(state => state.products)
     let categories = useSelector(state => state.categories)
     let diets = useSelector(state => state.diets)
+    let responseCloudinary = useSelector(state => state.responseCloudinary)
     let [input, setInput] = useState({
         title: '',
         description: '',
-        image: '',
         disable: false,
         sale: '',
         newsletters: [],
@@ -46,6 +48,15 @@ export default function Newsletter (){
         dispatch(getAllCategories())
         dispatch(getAllDiets())
     },[])
+
+    const uploadImage = async (e) => {
+      const files = e.target.files;
+      const data = new FormData();
+      data.append('file', files[0]);
+      data.append('upload_preset', 'Provider');
+      await dispatch(postCloudinaryPhoto(data))
+    }
+  
 
     const handleChangeInput = async (e) => {
         await setInput({
@@ -124,10 +135,11 @@ export default function Newsletter (){
             dispatch(postOferts({
                 ...input,
                 products: [],
+                image: responseCloudinary.url,
                 [productOption]: input.products
             }))
         }
-        else dispatch(postOferts(input))
+        else dispatch(postOferts({...input, image: responseCloudinary.url}))
          toast("Offer created successfully", {
            position: "top-right",
            autoClose: 5000,
@@ -140,7 +152,6 @@ export default function Newsletter (){
         setInput({
             title: '',
             description: '',
-            image: '',
             disable: false,
             sale: '',
             newsletters: [],
@@ -178,12 +189,17 @@ export default function Newsletter (){
               onChange={(e) => handleChangeInput(e)}
             />
             <label className={styles.title}>Image</label>
-            <input
-              type="text"
-              name="image"
-              value={input.image}
-              onChange={(e) => handleChangeInput(e)}
-            />
+            <Container>
+                <p>Uploading images</p>
+                <FormGroup>
+                  <Input
+                    type="file"
+                    name="file"
+                    placeholder="Image"
+                    onChange={uploadImage}
+                  />
+                </FormGroup>
+              </Container>
           </div>
         </div>
         <select

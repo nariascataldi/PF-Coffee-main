@@ -43,11 +43,19 @@ export default function Menu({ menu }) {
             
 
             {/* <Link to='/providerCreate'><button className='menubutton-crate-product'>Add new Provider</button></Link> */}
-
+            {userInit?.status ==='Client' &&
+                <>
+                <Link to='/myorders'><button className='menubutton-crate-product'>My Orders</button></Link>
+                </>
+            }
             
             {userInit.id?
-                <button className='menubutton-crate-product' onClick={cerrarSesion}>Logout</button> :
+                <div>
+                <button className='menubutton-crate-product' onClick={cerrarSesion}>Logout</button> 
+                
+                </div>:
                 <Link to='/signin'><button className='menubutton-crate-product'>Log in</button><ToastContainer/></Link>
+               
             }
             
             <Link to='/about'><button className='menubutton-crate-product'>About</button></Link>
