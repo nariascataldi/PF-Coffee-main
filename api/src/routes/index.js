@@ -103,6 +103,10 @@ router.post("/checkout", checkoutControllers.pago);    //ruta de mercado pago
 router.post('/nwsletter', mailPost);
 
 router.post('/oferts', ofertPost)
+<<<<<<< HEAD
+=======
+
+>>>>>>> e59efc43951bba9950b51857c619343656804cee
 
 //---------------PUT
 
@@ -141,7 +145,17 @@ router.get("/users/profile", checkAuth, profile);
 
 
 
-const {Provider, Product} = require('../db')
+const {Provider, Product, Newsletter} = require('../db')
+
+/*router.post('/nwl', async (res,req)=>{
+  let{mail}=req.body;
+  try{
+    await Newsletter.create({mail})
+    return res.send("mail registrado")
+  }catch(err){
+    console.log("el err del nwl es: ", err)
+  }
+})*/
 
 router.put('/edit/:id', async (req,res)=>{
   try{

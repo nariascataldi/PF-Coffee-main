@@ -22,7 +22,13 @@ import {
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
   POST_NEWSLETTER,
+<<<<<<< HEAD
   GET_ALL_USERS  } from '../actions'
+=======
+  GET_ALL_USERS
+  // fillCart
+} from '../actions'
+>>>>>>> e59efc43951bba9950b51857c619343656804cee
 
 const initialState = {
   allProducts: [],
