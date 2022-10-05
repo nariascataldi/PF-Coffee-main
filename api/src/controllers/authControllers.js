@@ -3,11 +3,7 @@ const bcrypt = require('bcryptjs');
 const { User, SECRET } = require('../db.js');
 const nodemailer = require("nodemailer");
 //const { google } = require("googleapis");
-const {
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI,
-  REFRESH_TOKEN } = process.env;
+const { NODEMAILER_USE, NODEMAILER_PASS } = process.env;
 
 
 // const emailRegister = require('../helper/emails.js');
@@ -205,45 +201,28 @@ const newPass = async (req, res) => {
 // };
 
 const nodemailerPost = async (req, res) => {
-  const { name, lastName, mail, pass, avatar, birthday } = req.body;
-  const clientCreated = await User.create({
-    name,
-    lastName,
-    mail,
-    pass,
-    avatar,
-    birthday,
-  });
+  const { mail } = req.body;
+  // const clientCreated = await User.create({
+  //   name,
+  //   lastName,
+  //   mail,
+  //   pass,
+  //   avatar,
+  //   birthday,
+  // });
 
-  JSON.stringify(clientCreated);
-  // const oAuth2Client = new google.auth.OAuth2(
-  //   CLIENT_ID,
-  //   CLIENT_SECRET,
-  //   REDIRECT_URI
-  // );
-  // oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+  // JSON.stringify(clientCreated);
+  
   async function sendMail() {
     try {
-      // const accessToken = await oAuth2Client.getAccessToken();
-      // const transporter = nodemailer.createTransport({
-      //   service: "gmail",
-      //   auth: {
-      //     type: "OAuth2",
-      //     user: "coffeeorder2022@gmail.com",
-      //     clientId: CLIENT_ID,
-      //     clientSecret: CLIENT_SECRET,
-      //     refreshToken: REFRESH_TOKEN,
-      //     accessToken: accessToken,
-      //   },
-      //});
       let transporter = nodemailer.createTransport({
         service: "Gmail",
         host: "smtp.correoseguro.co",
         port: 587,
         secure: false,
         auth: {
-          user: 'coffeeorder2022@gmail.com',
-          pass: 'jnxlvlysqherlzxd',
+          user: NODEMAILER_USE,
+          pass: NODEMAILER_PASS
         },
       })
       const mailOptions = {

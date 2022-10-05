@@ -91,16 +91,7 @@ const SignIn =()=> {
                   });
             }  else {
               mailRegister();
-                dispatch(postNodemailer());
-             toast("Welcome email sent! 🧁", {
-               position: "top-right",
-               autoClose: 5000,
-               hideProgressBar: false,
-               closeOnClick: true,
-               pauseOnHover: true,
-               draggable: true,
-               progress: undefined,
-             });
+               
             }
           };
           const handleChange = (e) => {
@@ -132,10 +123,37 @@ const SignIn =()=> {
                 dispatch(setUserInit(response.data))
                 localStorage.setItem("Sign In", JSON.stringify(response.data));
                 localStorage.setItem("usuario-creado", JSON.stringify(response.data));
-                navigate('/')
-                alert('Successfully registered')
+                dispatch(postNodemailer(newUser.mail));
+                toast("Welcome email sent! 🧁", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                });
+                
+                toast('Successfully registered', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+                //   navigate('/')
             }catch(error){
-                alert(error.message)
+                toast((error.message), {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
             }
             
                 
