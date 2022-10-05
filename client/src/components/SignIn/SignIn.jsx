@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { signWithGoogle} from "../../firebase";
 import { auth, signUp} from "../../firebase/index"
 import {signInWithEmailAndPassword} from "firebase/auth"
-import { getAllUsers, postUser, setUserInit } from "../../redux/actions";
+import { getAllUsers, postNodemailer, postUser, setUserInit } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { BsGoogle } from "react-icons/bs";
 //createUserWithEmailAndPassword
 import './SignIn.css'
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 // import CardInfomativaFormulario from "../../Components/Organisms/CardInformativaFormulario/CardInformativaFormulario";
 
 
@@ -56,14 +56,51 @@ const SignIn =()=> {
             // console.log('usuario existente',findMailExist)
             
             if(authData.password !==authData.repeatpassword && regOrInit){
-              return  alert('Passwords do not match')
+              return  toast('Passwords do not match', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
             // }if ( findMailExist === authData.email || regOrInit){
             //     return  alert('This email has already been registered before! Try another !')
                         
-            } if(authData.email === '' ||authData.password === '' ){
-                return  alert('Password and email are required !') 
+            }if(authData.firstName ==='' || authData.lastName===''){
+                return  toast('Complete name and password !', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+            } 
+            if(authData.email === '' ||authData.password === '' ){
+                return toast('Password and email are required !', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
             }  else {
-             return mailRegister();
+              mailRegister();
+                dispatch(postNodemailer());
+             toast("Welcome email sent! 🧁", {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+             });
             }
           };
           const handleChange = (e) => {
@@ -81,6 +118,7 @@ const SignIn =()=> {
                 console.log('registro')
         const userInfoFireBase= await signUp(authData.email, authData.password)
             console.log('user-info-firebase: ',userInfoFireBase)
+            console.log(authData)
                 var newUser = {
                     id: userInfoFireBase.user.uid,
                     name: authData.firstName,
@@ -90,6 +128,7 @@ const SignIn =()=> {
                     avatar: authData.avatar
                 }
                 const response = await postUser(newUser)
+                console.log('response',response)
                 dispatch(setUserInit(response.data))
                 localStorage.setItem("Sign In", JSON.stringify(response.data));
                 localStorage.setItem("usuario-creado", JSON.stringify(response.data));
@@ -201,6 +240,7 @@ const SignIn =()=> {
 
                     <button type="submit" className='form-reg-init-btn'>
                         {`${regOrInit ? 'Sign up' : 'Log In'}`}</button> 
+                        <ToastContainer />
                 </form>
                 <div>
                 <Link to='/' className='decoration-linkk'>

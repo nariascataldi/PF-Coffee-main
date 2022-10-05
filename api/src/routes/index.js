@@ -40,16 +40,6 @@ const {
   forgetPassword,
   checkToken,
   newPass,
-  profile
-} = require("../controllers/authControllers.js");
-
-const {
-  userRegist,
-  userLogin,
-  confirm,
-  forgetPassword,
-  checkToken,
-  newPass,
   nodemailerPost,
 } = require("../controllers/authControllers.js");
 

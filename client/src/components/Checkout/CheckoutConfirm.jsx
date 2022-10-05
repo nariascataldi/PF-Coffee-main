@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useHistory, useParams, Link } from "react-router-dom";
+import { useLocation, useHistory, useParams, Link,useNavigate } from "react-router-dom";
 import { cartEmptying, postOrder, putStock } from "../../redux/actions";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
@@ -17,6 +17,8 @@ export default function CheckoutConfirm() {
 
   const dispatch = useDispatch()
   const location = useLocation();
+  const navigate = useNavigate()
+
   const datosPago = location.search.split("&");
   console.log(datosPago)
   //ESTADO DE PAGO
@@ -60,8 +62,9 @@ export default function CheckoutConfirm() {
         dispatch(putStock(elem)))
       console.log('status pago = ', statusPago)
       setTimeout(() => {
-        return dispatch(cartEmptying())
-      }, 15000);
+        navigate('/')
+        dispatch(cartEmptying())
+      }, 10000);
     }
   }, []);
   useEffect(() => {
