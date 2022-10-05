@@ -39,7 +39,7 @@ const FormModifyProduct = (props) => {
 
   const handleClickYesNo = (data, e) => {
     if (e.target.value === 'yes') {
-      dispatch(putProduct({...data, image: responseCloudinary.url}, id));
+      dispatch(putProduct({ ...data, image: responseCloudinary.url }, id));
 
       toast("Correctly modify", {
         position: "top-right",
@@ -70,6 +70,7 @@ const FormModifyProduct = (props) => {
 
   return (
     <div className={style.bodymod}>
+      {/* ---------Navbar y Modal -----------------*/}
       <Modal isOpen={isOpenModal} closeModal={closeModal}>
         <h1>Modify Product</h1>
         <div class="d-flex justify-content-evenly">
@@ -97,12 +98,13 @@ const FormModifyProduct = (props) => {
           <Figure.Image className={style.figulog} width={17 * 5} height={18 * 5} alt="El Logo" src={logo} />
         </Figure>
       </div>
+      {/* ---------------------------------------------- */}
       <div className={style.container}>
         <form className={style.containerform} onSubmit={handleSubmit(onSubmit)}>
           <div id="Title" className={style.titleform}>
             <label className={style.labelgroup}>Title of the Product</label>
             <input
-            className={style.inputlarge}
+              className={style.inputlarge}
               type="text"
               defaultValue={productDetail.title}
               {...register("title", { required: true })}
@@ -111,8 +113,8 @@ const FormModifyProduct = (props) => {
           <div className={style.numberform}>
             <div id="Cost">
               <label className={style.labelgroup}>Cost: </label>
-              <input 
-              className={style.inputsmall}
+              <input
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.cost}
                 {...register("cost", {
@@ -123,7 +125,7 @@ const FormModifyProduct = (props) => {
             <div id="Margin">
               <label className={style.labelgroup}>Margin </label>
               <input
-              className={style.inputsmall}
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.margin}
                 {...register("margin", {
@@ -134,7 +136,7 @@ const FormModifyProduct = (props) => {
             <div id="Price">
               <label className={style.labelgroup}>Price </label>
               <input
-              className={style.inputsmall}
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.price}
                 {...register("price", {
@@ -148,7 +150,7 @@ const FormModifyProduct = (props) => {
             <div id="Description">
               <label className={style.labelgroup}>Description: </label>
               <textarea
-              className={style.inputmedium}
+                className={style.inputmedium}
                 type="text"
                 defaultValue={productDetail.description}
                 {...register("description", {
@@ -162,7 +164,7 @@ const FormModifyProduct = (props) => {
                 {/* <p>Uploading images</p> */}
                 <FormGroup className={style.inputmedium} >
                   <Input
-                  className={style.imageupform}
+                    className={style.imageupform}
                     type="file"
                     name="file"
                     placeholder="Image"
@@ -176,8 +178,8 @@ const FormModifyProduct = (props) => {
             <div id="Status">
               <label className={style.labelgroup}>Status: </label>
               <select
-              className={style.inputsmall}
-               {...register("disable", {})}>
+                className={style.inputsmall}
+                {...register("disable", {})}>
                 <option disabled>
                   Status: {productDetail.disable === true ? "Inactive" : "Asset"}
                 </option>
@@ -188,7 +190,7 @@ const FormModifyProduct = (props) => {
             <div id="Stock">
               <label className={style.labelgroup}>Stock </label>
               <input
-              className={style.inputsmall}
+                className={style.inputsmall}
                 type="number"
                 defaultValue={productDetail.stock}
                 {...register("stock", {
@@ -198,10 +200,10 @@ const FormModifyProduct = (props) => {
             </div>
           </div>
           <div className={style.botones}>
-          <input className={style.botonesform} type="submit" value="Save" />
-          <Link to="/homeAdmin">
-            <button className={style.botonesform} >Cancel</button>
-          </Link>
+            <input className={style.botonesform} type="submit" value="Save" />
+            <Link to="/homeAdmin">
+              <button className={style.botonesform} >Cancel</button>
+            </Link>
           </div>
         </form>
       </div>

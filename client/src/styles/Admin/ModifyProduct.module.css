@@ -51,6 +51,11 @@ body {
   align-content: center;
 }
 
+.titleformprov {
+  display: flex;
+  padding-left: 5vw;
+}
+
 .numberform {
   display: flex;
   flex-direction: row;
@@ -90,6 +95,17 @@ body {
   border: 1px solid black;
   font-size: x-large;
 }
+.botonesformC {
+  margin-left: 2vw;
+  margin-right: 2vw;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--strong);
+  border-radius: 6px;
+  border: 1px solid black;
+  font-size: x-large;
+}
 
 .logophoncuitstatus {
   padding: 2vh;
@@ -107,7 +123,18 @@ body {
 .inputlarge {
   margin-top: 3vh;
   width: 80vw;
-  height: 8vh;
+  height: 7vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: x-large;
+  padding-left: 10vw;
+}
+
+.inputlargeC {
+  margin-top: 3vh;
+  width: 60vw;
+  height: 7vh;
   background-color: #EEF7FC;
   border-radius: 20px;
   border-color: cornflowerblue;
@@ -119,12 +146,33 @@ body {
   margin-top: 3vh;
   margin: 2vh;
   width: 23vw;
-  height: 8vh;
+  height: 7vh;
   background-color: #EEF7FC;
   border-radius: 20px;
   border-color: cornflowerblue;
   font-size: x-large;
   padding-left: 10vw;
+}
+
+.inputsmallprov {
+  margin: 1vh;
+  width: 39vw;
+  height: 6vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: x-large;
+  padding-left: 8vw;
+}
+.inputsmallprovC {
+  margin: 1vh;
+  width: 30vw;
+  height: 5vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border-color: cornflowerblue;
+  font-size: large;
+  padding-left: 8vw;
 }
 
 .inputmedium {
@@ -138,6 +186,17 @@ body {
   font-size: large;
 }
 
+.inputmediumC {
+  padding: 5vh 1vh 1vh 4vh;
+  width: 25vw;
+  height: 20vh;
+  background-color: #EEF7FC;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: small;
+}
+
 .labelgroup {
   font-size: initial;
   position: fixed;
@@ -147,4 +206,12 @@ body {
 
 .imageupform {
   font-size: small;
+}
+
+.perror {
+  font-size: small;
+  color: coral;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
 }
