@@ -13,7 +13,7 @@ import "./Menu.css";
 export default function Menu({ menu }) {
     const dispatch = useDispatch()
     const {userInit}= useSelector(state=>state)
-    
+    const usuarioIiniciado=JSON.parse(localStorage.getItem('Sign In')) 
     const cerrarSesion = () => {
         signOut(auth)
          localStorage.setItem('usuario-creado',JSON.stringify(''));
@@ -33,7 +33,7 @@ export default function Menu({ menu }) {
     return (
         <div className={`menu-container ${menu ? "open" : ""}`}>
 
-            {userInit?.status ==='Admin' &&
+            {usuarioIiniciado?.status ==='Admin' &&
                 <>
                 <Link to='/homeAdmin'><button className='menubutton-crate-product'>Home Admin</button></Link>
                 <Link to='/providers'><button className='menubutton-crate-product'>Provider</button></Link>
@@ -45,7 +45,7 @@ export default function Menu({ menu }) {
             {/* <Link to='/providerCreate'><button className='menubutton-crate-product'>Add new Provider</button></Link> */}
 
             
-            {userInit.id?
+            {usuarioIiniciado.id?
                 <button className='menubutton-crate-product' onClick={cerrarSesion}>Logout</button> :
                 <Link to='/signin'><button className='menubutton-crate-product'>Log in</button><ToastContainer/></Link>
             }

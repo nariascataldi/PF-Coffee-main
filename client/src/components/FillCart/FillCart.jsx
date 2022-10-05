@@ -21,7 +21,7 @@ export default function FillCart() {
 
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
-
+    const usuarioIiniciado=JSON.parse(localStorage.getItem('Sign In')) 
     const reducedCart = reduceCart(fillCart)
 
 
@@ -49,7 +49,7 @@ export default function FillCart() {
     // const infoUser= JSON.parse(localStorage.getItem('ususrio-creado'));
     
     function handleButtonPay() {
-        if(userInit.id){
+        if(usuarioIiniciado.id){
             console.log('se ejecuto la accion de pag')
              reducedCart.forEach(elem =>
             dispatch(putStock(elem)))
