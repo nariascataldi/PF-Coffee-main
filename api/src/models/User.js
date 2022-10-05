@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, UUIDV4 } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         allowNull: true,
         primaryKey: true,
+        defaultValue: UUIDV4,
       },
       name: {
         type: DataTypes.STRING,
@@ -49,7 +50,7 @@ module.exports = (sequelize) => {
       },
       confirm: {
         type: DataTypes.BOOLEAN,
-        default: true
+        default: true,
       },
       disable: {
         type: DataTypes.BOOLEAN,

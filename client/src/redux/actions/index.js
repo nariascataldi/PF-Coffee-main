@@ -193,9 +193,7 @@ export const createProduct = (postData) => {
 export const postUser = (payload) =>
   async (dispatch) => {
     try {
-
       const response = await axios.post(URL + '/users/registration', payload)
-
       // .then(response => console.log(response))
       // .catch(error => console.log(error))
       console.log(response.data)
@@ -255,6 +253,13 @@ export function postNewsletter(payload) {
 export function postOferts(payload) {
   return async function () {
     const json = await axios.post(URL + '/oferts', payload);
+    return json
+  }
+}
+
+export function   postNodemailer(payload) {
+  return async function (){
+    const json = await axios.post(URL + '/nodemailer', payload);
     return json
   }
 }
