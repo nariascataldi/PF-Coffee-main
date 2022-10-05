@@ -39,6 +39,7 @@ import CheckoutConfirm from './components/Checkout/CheckoutConfirm';
 import Newsletter from './components/Admin/Newsletter/Newsletter';
 import SignIn from './components/SignIn/SignIn';
 import PrivateRoute from './components/PrivateRoute';
+import ProfileUser from './components/my profile/ProfileUser';
 
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route exact path="/checkout/congrats" element={<CheckoutConfirm />}/>
           <Route exact path='/signin' element={<SignIn/>}/>
+          <Route exact path='/profileUser' element={<ProfileUser />}/>
         </Routes>
       </div>
     </>
