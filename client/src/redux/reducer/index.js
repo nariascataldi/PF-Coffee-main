@@ -23,6 +23,7 @@ import {
   POST_COMMENT,
   POST_NEWSLETTER,
   SET_USER_INIT,
+  GET_ALL_USERS,
   GET_ALL_ORDERS,
   GET_ALL_NEWSLETTER,
   GET_USER_DETAIL,
@@ -288,11 +289,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state
       }
-    case GET_ALL_USERS:
-      return {
-        ...state,
-        users: action.payload
-      }
+    // case GET_ALL_USERS:
+    //   return {
+    //     ...state,
+    //     users: action.payload
+    //   }
     case GET_ALL_ORDERS:
       return {
         ...state,
