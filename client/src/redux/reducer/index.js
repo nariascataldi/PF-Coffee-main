@@ -21,10 +21,8 @@ import {
   GET_CLOUDINARY_RESPONSE,
   CLEAR_CLOUDINARY_RESPONSE,
   POST_COMMENT,
-  POST_NEWSLETTER
-  GET_ALL_USERS
-  // fillCart
-} from '../actions'
+  POST_NEWSLETTER,
+  GET_ALL_USERS  } from '../actions'
 
 const initialState = {
   allProducts: [],
