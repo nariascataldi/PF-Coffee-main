@@ -58,7 +58,7 @@ const SignIn =()=> {
             if(authData.password !==authData.repeatpassword && regOrInit){
               return  toast('Passwords do not match', {
                 position: "top-right",
-                autoClose: 5000,
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -71,7 +71,7 @@ const SignIn =()=> {
             }if(authData.firstName ==='' || authData.lastName===''){
                 return  toast('Complete name and password !', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -82,7 +82,7 @@ const SignIn =()=> {
             if(authData.email === '' ||authData.password === '' ){
                 return toast('Password and email are required !', {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -150,7 +150,7 @@ const SignIn =()=> {
             }catch(error){
                 toast((error.message), {
                     position: "top-right",
-                    autoClose: 5000,
+                    autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { postUser } from '../../../redux/actions'
 import styles from "../../../styles/Authentication/Register.module.css";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Register = () => {
 
@@ -30,10 +32,26 @@ const Register = () => {
     if (
       [ input.name, input.lastName, input.mail, input.pass, input.repeatPass].includes("")
     ) {
-      alert("Todos los campos son obligatorios");
+      toast("All fields are required", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
     }
     if (input.pass !== input.repeatPass) {
-      alert("Las contraseñas deben ser iguales");
+      toast("Passwords must be the same", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
     }
     if (input.pass.length < 6) {
       alert("La contraseña debe ser mayor de 6 caracteres");

@@ -4,6 +4,8 @@ import { nameValidator } from "./validators";
 import DatePicker from 'react-datepicker';
 import { postUser } from "../../../redux/actions";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+
 
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -28,7 +30,15 @@ const FormularioUsuario = () => {
     console.log(data);
     e.preventDefault();
     dispatch(postUser(data));
-    alert('User create successfuly!');
+    toast("User create successfuly!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
     e.target.reset();
   }
   const incluirCUIT = watch('incluirCUIT');
@@ -165,6 +175,7 @@ const FormularioUsuario = () => {
           <button className={style.createButton} type="submit" value="Enviar">
             Send
           </button>
+          <ToastContainer />
         </form>
       </div>
     </div>

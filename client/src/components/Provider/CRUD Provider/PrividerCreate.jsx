@@ -38,7 +38,7 @@ const FormProviderCreate = (props) => {
       dispatch(postProviders({ ...data, logo: responseCloudinary.url }));
       toast("Provider Created", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -391,7 +391,7 @@ const FormProvider = () => {
 
         toast("Correctly created", {
               position: "top-right",
-              autoClose: 5000,
+              autoClose: 3000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
