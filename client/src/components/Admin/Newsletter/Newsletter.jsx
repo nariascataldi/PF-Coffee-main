@@ -155,7 +155,9 @@ export default function Newsletter (){
             disable: false,
             sale: '',
             newsletters: [],
-            products: []
+            products: [],
+            dateStart: '',
+            dateEnd: ''
         })
     }
 
@@ -188,6 +190,20 @@ export default function Newsletter (){
               value={input.sale}
               onChange={(e) => handleChangeInput(e)}
             />
+            <label className={styles.title}>Starting Date</label>
+              <input
+                type="date"
+                name="dateStart"
+                value={input.dateStart}
+                onChange={(e) => handleChangeInput(e)}
+              />
+            <label className={styles.title}>Ending Date</label>
+              <input
+                type="date"
+                name="dateEnd"
+                value={input.dateEnd}
+                onChange={(e) => handleChangeInput(e)}
+              />
             <label className={styles.title}>Image</label>
             <Container>
                 <p>Uploading images</p>

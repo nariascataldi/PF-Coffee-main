@@ -29,8 +29,13 @@ module.exports = (sequelize) => {
     sale: {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    dateStart: {
+      type: DataTypes.STRING
+    },
+    dateEnd: {
+      type: DataTypes.STRING
     }
-
   },{
     timestamps: false
 });

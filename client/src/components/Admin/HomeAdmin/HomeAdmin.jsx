@@ -49,9 +49,9 @@ export default function HomeAdmin() {
                 <Nav.Item className={style.bonton} > <Nav.Link eventKey="homeAdmin">Home Admin</Nav.Link> </Nav.Item>
                 <Nav.Item className={style.bonton}> <Nav.Link eventKey="prod">Product</Nav.Link> </Nav.Item>
                 <Nav.Item className={style.bonton}> <Nav.Link eventKey="prov">Provider</Nav.Link> </Nav.Item>
-                <Nav.Item className={style.bonton}> <Nav.Link eventKey="mailNews">Send Newsletter</Nav.Link> </Nav.Item>
+                <Nav.Item className={style.bonton}> <Nav.Link eventKey="mailNews">Create Offer</Nav.Link> </Nav.Item>
+                <Nav.Item className={style.bonton}> <Nav.Link eventKey="viewOferts">View Offer</Nav.Link> </Nav.Item>
                 <Nav.Item className={style.bonton}> <Nav.Link eventKey="orders">Order's History</Nav.Link> </Nav.Item>
-                <Nav.Item className={style.bonton}> <Nav.Link eventKey="viewOferts">View Oferts</Nav.Link> </Nav.Item>
               </Nav>
             </Col>
             <Col sm={1} ></Col>
