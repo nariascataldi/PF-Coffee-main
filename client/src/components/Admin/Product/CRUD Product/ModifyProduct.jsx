@@ -14,6 +14,8 @@ import logo from '../../../../assets/logo_coffee.png';
 import NavBarAdmin from '../../NavBarAdmin/NavBarAdmin';
 
 import style from '../../../../styles/Admin/ModifyProduct.module.css';
+import sty from '../../../../styles/Admin/ProductCreate.module.css'
+
 
 const FormModifyProduct = (props) => {
   const dispatch = useDispatch();
@@ -71,7 +73,7 @@ const FormModifyProduct = (props) => {
   return (
     <div className={style.bodymod}>
       {/* ---------Navbar y Modal -----------------*/}
-      <Modal isOpen={isOpenModal} closeModal={closeModal}>
+      {/* <Modal isOpen={isOpenModal} closeModal={closeModal}>
         <h1>Modify Product</h1>
         <div class="d-flex justify-content-evenly">
           <button className={style.botonesformC}
@@ -90,6 +92,25 @@ const FormModifyProduct = (props) => {
             No
           </button>
           <ToastContainer />
+        </div>
+      </Modal> */}
+      <Modal className={sty.conteimodal} isOpen={isOpenModal} closeModal={closeModal}>
+        <h1 className={sty.h1modal} > Modify Product</h1>
+
+        <div className={sty.buttonModal}>
+          <button id={sty.submit} 
+            value="yes"
+            onClick={handleSubmit(handleClickYesNo)}
+          >
+            Yes
+          </button>
+          <button id={sty.submit}
+            value="no"
+            onClick={handleSubmit(handleClickYesNo)}
+          >
+            No
+          </button>
+          <ToastContainer/>
         </div>
       </Modal>
       <NavBarAdmin />

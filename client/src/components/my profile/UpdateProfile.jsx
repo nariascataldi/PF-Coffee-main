@@ -79,11 +79,11 @@ const FormModifyProfile = (props) => {
         </div>
 
         <div>
-            <Modal isOpen={isOpenModal} closeModal={closeModal}>
-                <h1>Modify User</h1>
-                <div class="d-flex justify-content-evenly">
-                    <button value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
-                    <button value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
+            <Modal className={sty.conteimodal} isOpen={isOpenModal} closeModal={closeModal}>
+                <h1 className={sty.h1modal} >Modify User</h1>
+                <div className={sty.buttonModal}>
+                    <button value='yes' onClick={handleSubmit(handleClickYesNo)} id={sty.submit}>Yes</button>
+                    <button value='no' onClick={handleSubmit(handleClickYesNo)} id={sty.submit}>No</button>
                 </div>
             </Modal>
 

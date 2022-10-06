@@ -13,6 +13,8 @@ import {
 
 import { ToastContainer, toast } from "react-toastify";
 import styles from '../../../styles/Admin/ProductCreate.module.css';
+import sty from '../../../styles/Admin/ProductCreate.module.css'
+
 
 
 var testName = /^[A-Z][a-z][^$()!¡@#/=¿{}?*%&|<>#]*$/;
@@ -203,21 +205,21 @@ export default function FormProduct() {
 
   return (
     <div className={styles.container}>
-      <Modal isOpen={isOpenModal} closeModal={closeModal}>
-        <h1> Create product: {input.title}</h1>
+      <Modal className={sty.conteimodal} isOpen={isOpenModal} closeModal={closeModal}>
+        <h1 className={sty.h1modal} > Create product: {input.title}</h1>
 
-        <div class="d-flex justify-content-evenly">
-          <button className={styles.botonesformC}
+        <div className={sty.buttonModal}>
+          <button id={sty.submit} className={styles.botonesformC}
             value="yes"
             onClick={(e) => handleClickYesNo(e)}
-            class="border-0"
+
           >
             Yes
           </button>
-          <button className={styles.botonesformC}
+          <button id={sty.submit} className={styles.botonesformC}
             value="no"
             onClick={(e) => handleClickYesNo(e)}
-            class="border-0"
+
           >
             No
           </button>

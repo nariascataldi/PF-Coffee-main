@@ -15,6 +15,8 @@ import logo from '../../../assets/logo_coffee.png';
 import NavBarAdmin from '../../../components/Admin/NavBarAdmin/NavBarAdmin';
 
 import style from '../../../styles/Admin/ModifyProduct.module.css';
+import sty from '../../../styles/Admin/ProductCreate.module.css'
+
 
 const FormModifyProvider = () => {
   const dispatch = useDispatch();
@@ -79,11 +81,11 @@ const FormModifyProvider = () => {
   return (
     <div>
       {/* ---------Navbar y Modal -----------------*/}
-      <Modal isOpen={isOpenModal} closeModal={closeModal}>
-        <h1>Modify Provider</h1>
-        <div class="d-flex justify-content-evenly">
-          <button className={style.botonesformC} value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
-          <button className={style.botonesformC} value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
+      <Modal className={sty.conteimodal} isOpen={isOpenModal} closeModal={closeModal}>
+        <h1 className={sty.h1modal}>Modify Provider</h1>
+        <div className={sty.buttonModal}>
+          <button className={style.botonesformC} value='yes' onClick={handleSubmit(handleClickYesNo)} id={sty.submit}>Yes</button>
+          <button className={style.botonesformC} value='no' onClick={handleSubmit(handleClickYesNo)} id={sty.submit}>No</button>
         </div>
       </Modal>
       <NavBarAdmin />
