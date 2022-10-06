@@ -67,7 +67,7 @@ export default function Detail(props) {
     dispatch(postComment({ id, stars, comment, user }));
     toast("🧁 Comment create successfuly!", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -89,7 +89,7 @@ export default function Detail(props) {
     if (productToAddCart[0]?.quantity === detail.stock) {
       return toast("❗The chosen quantity exceeds our stock", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -106,7 +106,7 @@ export default function Detail(props) {
     dispatch(setFillCart(arrayLs));
     toast("✅Product successfuly added!", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
