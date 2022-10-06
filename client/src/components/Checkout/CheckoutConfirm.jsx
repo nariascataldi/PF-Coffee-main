@@ -116,6 +116,7 @@ export default function CheckoutConfirm() {
             <div >
               <div className='cart-container'>
                 <h1> Payment status:  " {statusPago} "  <BsFillPatchExclamationFill className='icon-pay-failure' /></h1>
+                {/* <h2>Your product will be ready in 15 minutes to pick up from the branch</h2> */}
                 <Link to='/'>
                   <button className='btn-statuspay-tohome'>Back to home</button>
                 </Link>
