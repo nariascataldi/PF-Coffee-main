@@ -4,14 +4,14 @@ let postOfert = async(obj)=>{
   try {
     console.log('input en utils postProduct API: ', obj);
 
-    let { title, disable, price, description, image, sale, diets, categories, users, products, newsletters  } = obj;
+    let { title, disable, price, description, image, sale, diets, categories, users, products, newsletters, dateStart, dateEnd  } = obj;
     
     // capitalize
     // if (title.includes(' ')) {
     //    title = title.split(' ').map(p=> p.slice(0,1).toUpperCase().concat(p.slice(1).toLowerCase())).join(' ')
     // } else { title = title[0].toUpperCase().concat(title.slice(1).toLowerCase()) };
 
-    let ofert = await Ofert.create({ title, disable, price, description, image, sale });  
+    let ofert = await Ofert.create({ title, disable, price, description, image, sale, dateStart, dateEnd });  
 
 
     let ofertCread = await Ofert.findOne({ where: { title: title } }); //  console.log(prodCread); console.log(title);
