@@ -3,7 +3,8 @@
     padding: 50px;
     margin: 50px;
     width: 50vw;
-    background-color: var(--strong);
+    background-color: #EEF7FC;
+    border-radius: 20px;
 }
 
 .rigth {

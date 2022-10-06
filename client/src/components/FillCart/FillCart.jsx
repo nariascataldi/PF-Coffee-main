@@ -32,7 +32,7 @@ export default function FillCart() {
         dispatch(resetFillCart(e.id))
         toast("Product delete", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,

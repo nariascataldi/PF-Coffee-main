@@ -128,3 +128,21 @@
   border: 1px solid black;
   font-size: x-large;
 }
+
+.h1modal {
+  text-align: center;
+}
+
+.conteimodal {
+  /* margin: 5vh; */
+  padding: 3vh;
+  background-color: #EEF7FC;
+  border-color: #DD6873;
+  border-radius: 30px;
+
+}
+.buttonModal{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

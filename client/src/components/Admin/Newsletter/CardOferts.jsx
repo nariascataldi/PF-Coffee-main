@@ -21,8 +21,8 @@ const CardOferts = () => {
                     <div>
                         <strong>{o.title}</strong>
                         <p>{o.description}</p>
-                        <p>discount: {o.sale}%</p>
                         <p>Date: from {o.dateStart} to {o.dateEnd}</p>
+                        <p>Discount: {o.sale}%</p>
                         <img src={o.image}/>
                     </div>
                     <div className={styles.rigth}>

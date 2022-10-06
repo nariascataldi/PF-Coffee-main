@@ -142,7 +142,7 @@ export default function Newsletter (){
         else dispatch(postOferts({...input, image: responseCloudinary.url}))
          toast("Offer created successfully", {
            position: "top-right",
-           autoClose: 5000,
+           autoClose: 3000,
            hideProgressBar: false,
            closeOnClick: true,
            pauseOnHover: true,

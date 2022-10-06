@@ -11,6 +11,7 @@ import { postCloudinaryPhoto, postProviders } from "../../../redux/actions/index
 import { ToastContainer, toast } from "react-toastify";
 
 import style from '../../../styles/Admin/ModifyProduct.module.css';
+import sty from '../../../styles/Admin/ProductCreate.module.css'
 
 
 const FormProviderCreate = (props) => {
@@ -37,7 +38,7 @@ const FormProviderCreate = (props) => {
       dispatch(postProviders({ ...data, logo: responseCloudinary.url }));
       toast("Provider Created", {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -68,14 +69,14 @@ const FormProviderCreate = (props) => {
   {/* */ }
   return (
     <div>
-      <Modal isOpen={isOpenModal} closeModal={closeModal} className={style.modalbackground}>
-        <h1>Create Provider</h1>
-        <div class="d-flex justify-content-evenly">
+      <Modal className={sty.conteimodal} isOpen={isOpenModal} closeModal={closeModal}>
+        <h1 className={sty.h1modal}>Create Provider</h1>
+        <div className={sty.buttonModal}>
           <button
             className={style.botonesformC}
             value="yes"
             onClick={handleSubmit(handleClickYesNo)}
-            class="border-0"
+            id={sty.submit}
           >
             Yes
           </button>
@@ -84,7 +85,7 @@ const FormProviderCreate = (props) => {
             className={style.botonesformC}
             value="no"
             onClick={handleSubmit(handleClickYesNo)}
-            class="border-0"
+            id={sty.submit}
           >
             No
           </button>
@@ -390,7 +391,7 @@ const FormProvider = () => {
 
         toast("Correctly created", {
               position: "top-right",
-              autoClose: 5000,
+              autoClose: 3000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,

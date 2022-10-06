@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import DatePicker from 'react-datepicker';
 import Profile from "./Profile";
 import sty from '../../styles/Admin/ProductCreate.module.css'
+import imagen from './Profile.module.css'
 
 
 const FormModifyProfile = (props) => {
@@ -44,11 +45,11 @@ const FormModifyProfile = (props) => {
 
     const handleClickYesNo = (data, e) => {
         if(e.target.value) {
-            dispatch(putUser(data, userInit.id));
+            dispatch(putUser({...data, avatar: responseCloudinary.secure_url}, userInit.id));
           
             toast("Correctly modify", {
               position: "top-right",
-              autoClose: 5000,
+              autoClose: 3000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -66,10 +67,10 @@ const FormModifyProfile = (props) => {
         const data = new FormData();
         data.append('file', files[0]);
         data.append('upload_preset', 'Provider');
-        setLoading(true);
+        //setLoading(true);
         await dispatch(postCloudinaryPhoto(data))
-        setImage(responseCloudinary.secure_url)
-        setLoading(false)
+        //setImage(responseCloudinary.secure_url)
+        //setLoading(false)
     }
 {/*FiUser */}
     return (
@@ -79,11 +80,11 @@ const FormModifyProfile = (props) => {
         </div>
 
         <div>
-            <Modal isOpen={isOpenModal} closeModal={closeModal}>
-                <h1>Modify User</h1>
-                <div class="d-flex justify-content-evenly">
-                    <button value='yes' onClick={handleSubmit(handleClickYesNo)} class='border-0'>Yes</button>
-                    <button value='no' onClick={handleSubmit(handleClickYesNo)} class='border-0'>No</button>
+            <Modal className={sty.conteimodal} isOpen={isOpenModal} closeModal={closeModal}>
+                <h1 className={sty.h1modal} >Modify User</h1>
+                <div className={sty.buttonModal}>
+                    <button value='yes' onClick={handleSubmit(handleClickYesNo)} id={sty.submit}>Yes</button>
+                    <button value='no' onClick={handleSubmit(handleClickYesNo)} id={sty.submit}>No</button>
                 </div>
             </Modal>
 
@@ -94,7 +95,7 @@ const FormModifyProfile = (props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div >
                 <label className={sty.title} min-width="300px">Name: </label>
-                <input className={sty.form_control} type="text" defaultValue={userDetail.name}{...register('name',{
+                <input className={imagen.laima} type="text" defaultValue={userDetail.name}{...register('name',{
                     required: true
                 })}/>
                 
@@ -103,7 +104,7 @@ const FormModifyProfile = (props) => {
                 <br/>
                 <div>
                 <label className={sty.title}>Last Name: </label>
-                <input className={sty.form_control} type="text" defaultValue={userDetail.lastName}{...register('lastName',{
+                <input className={imagen.laima} type="text" defaultValue={userDetail.lastName}{...register('lastName',{
                     required: true
                 })}/>
                 
@@ -118,7 +119,7 @@ const FormModifyProfile = (props) => {
                 <label className={sty.title}>Avatar: </label>
                 <FormGroup>
                         <Input
-                            className={sty.upload}
+                            className={imagen.laima}
                             type="file"
                             name="file"
                             placeholder="📷 avatar"
@@ -130,7 +131,7 @@ const FormModifyProfile = (props) => {
                 <br/>
                 <div>
             <label className={sty.title}>Birthday: </label>
-            <input type="date"  className={sty.form_control}{...register("birthday", {
+            <input type="date"  className={imagen.laima}{...register("birthday", {
                 valueAsDate: false
                 })}/>
           </div>
