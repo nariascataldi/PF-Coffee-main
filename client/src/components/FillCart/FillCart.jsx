@@ -24,6 +24,7 @@ export default function FillCart() {
     const localStorageCart = JSON.parse(localStorage.getItem('carrito'))
     const dispatch = useDispatch()
     const usuarioIiniciado=JSON.parse(localStorage.getItem('Sign In')) 
+
     const reducedCart = reduceCart(fillCart)
 
 
@@ -51,7 +52,7 @@ export default function FillCart() {
     // const infoUser= JSON.parse(localStorage.getItem('ususrio-creado'));
     
     function handleButtonPay() {
-        if(usuarioIiniciado.id){
+        if(userInit.id){
             console.log('se ejecuto la accion de pag')
              reducedCart.forEach(elem =>
             dispatch(putStock(elem)))
@@ -59,7 +60,7 @@ export default function FillCart() {
         } else {
             toast("You must log-in to buy", {
               position: "top-right",
-              autoClose: 5000,
+              autoClose: 3000,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -69,7 +70,7 @@ export default function FillCart() {
             )
             setTimeout(() => {
                 navigate('/signin')
-              }, 5000);
+              }, 3000);
         }
     };
 
