@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import { BsSearch, BsFillCartFill, BsFillCartPlusFill, BsPersonCircle,BsFillPersonCheckFill } from "react-icons/bs";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getByTitle, resetFilter, setFilterState } from "../redux/actions/index";
+import { getByTitle, resetFilter, setFilterState, getUserDetail } from "../redux/actions/index";
 
 import logo from "../assets/logo_coffee.png";
 import Menu from "../components/Menu/Menu";
@@ -19,6 +19,11 @@ const NavBar = ({ noFilters }) => {
     minPrice: '',
     maxPrice: ''
   });
+
+  let userDetail= useSelector(state=>state.userDetail)
+    useEffect(()=>{
+        dispatch(getUserDetail(userInit.id))
+    },[])
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -173,8 +178,8 @@ const NavBar = ({ noFilters }) => {
       </Link>
       
       
-      { userInit.name ? 
-        <img src={ userInit?.avatar !=="" ? userInit.avatar : <BsFillPersonCheckFill/>}
+      { userDetail.name ? 
+        <img src={ userDetail?.avatar !=="" ? userDetail.avatar : <BsFillPersonCheckFill/>}
          className='signin-img-user' referrerPolicy="no-referrer"/> :
         <BsPersonCircle className={styles.non_sesion_init_icon}/>
       }

@@ -16,7 +16,7 @@ function Profile (){
     console.log("del storage: ", userInit)
 return(
     <div className={styles.container}>
-    <div>
+    <div >
     <img src={userDetail?.avatar} className={styles.img} alt="avatar not found"/><br></br>
     </div>
     <div className={styles.container2}>
